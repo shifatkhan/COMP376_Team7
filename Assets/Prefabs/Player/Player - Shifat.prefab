@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7168958154271173046}
   - component: {fileID: 7168958154271173040}
   m_Layer: 0
-  m_Name: Player vShifat
+  m_Name: Player - Shifat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
