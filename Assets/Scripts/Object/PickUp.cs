@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public Transform theDest;
+    public Transform objectPosition;
 
     public void PickObjectUp()
     {
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false; //No gravity on object when holding it
-        this.transform.position = theDest.position;
-        this.transform.parent = GameObject.Find("PickupDest").transform;
+        this.transform.position = objectPosition.position;
+        this.transform.parent = GameObject.Find("PickupObject").transform;
         this.transform.localRotation = Quaternion.identity; //object is held upright
         this.transform.localPosition = Vector3.zero;
     }
