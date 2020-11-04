@@ -12,7 +12,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Food")]
 public class FoodData : ScriptableObject
 {
-    public float cost;
+    public string foodName;
+    public float price;
     public float prepTime;
     public GameObject foodPrefab;
 }

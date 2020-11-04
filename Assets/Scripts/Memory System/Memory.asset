@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b015c7b506bc14b8eca11472d894ea, type: 3}
-  m_Name: Sushi
+  m_Script: {fileID: 11500000, guid: c909c54f1e893de46a8e9458c7dc995f, type: 3}
+  m_Name: Memory
   m_EditorClassIdentifier: 
-  foodName: Sushi
-  price: 10
-  prepTime: 15
-  foodPrefab: {fileID: 7986703078178927757, guid: 79b1d0720cbac504bafeebdf607034b6, type: 3}
+  foodsMemorized: []

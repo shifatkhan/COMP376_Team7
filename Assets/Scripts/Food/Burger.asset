@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b015c7b506bc14b8eca11472d894ea, type: 3}
   m_Name: Burger
   m_EditorClassIdentifier: 
-  cost: 5
+  foodName: Burger
+  price: 5
   prepTime: 10
   foodPrefab: {fileID: 3907376345075354384, guid: f58404cecd9b6374d8c4043754711968, type: 3}

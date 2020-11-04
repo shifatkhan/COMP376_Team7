@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This class will be representing an instance (or gameobject) of a food.
+/// This class will be representing an instance (gameobject) of a food.
 /// This instance will be transfered from the customer to the player to the chef.
 /// 
 /// @author ShifatKhan
@@ -11,7 +11,8 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
     [SerializeField] private FoodData food;
-    public float cost { get; private set; }
+    public string foodName { get; private set; }
+    public float price { get; private set; }
     public float prepTime { get; private set; }
 
     [Tooltip("The table this food is assigned to.")]
@@ -19,14 +20,15 @@ public class Food : MonoBehaviour
 
     void Start()
     {
-        cost = food.cost;
+        price = food.price;
         prepTime = food.prepTime;
     }
 
     public void SetFood(FoodData food)
     {
         this.food = food;
-        cost = food.cost;
+        foodName = food.foodName;
+        price = food.price;
         prepTime = food.prepTime;
     }
 }
