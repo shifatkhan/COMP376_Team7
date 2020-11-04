@@ -16,6 +16,13 @@ public class MemoryUI : MonoBehaviour
     [SerializeField]
     private GameObject memorySlot;
 
+    private Transform memorySlotsContainer;
+
+    private void Awake()
+    {
+        memorySlotsContainer = transform.Find("Memory Slots Container");
+    }
+
     /// <summary>
     /// Refresh the memory slots found inside the memory UI.
     /// This will look into the MemoryData scriptable object to 
@@ -25,9 +32,9 @@ public class MemoryUI : MonoBehaviour
     {
         // Remove old items before rebuilding memory.
         // This avoids duplicate slots.
-        foreach (Transform child in transform)
+        foreach (Transform child in memorySlotsContainer)
         {
-            if (child == memorySlot) continue;
+            //if (child == memorySlot) continue;
             Destroy(child.gameObject);
         }
 
@@ -38,11 +45,15 @@ public class MemoryUI : MonoBehaviour
             GameObject newSlot = Instantiate(memorySlot);
 
             newSlot.transform.Find("Food Name text").GetComponent<Text>().text = food.foodName;
-            Text t = newSlot.transform.Find("Food Price text").Find("Food Price value").GetComponent<Text>();
-            t.text = food.price.ToString();
+            newSlot.transform.Find("Food Price text").Find("Food Price value").GetComponent<Text>().text = food.price.ToString();
             newSlot.transform.Find("Food Prep text").Find("Food Prep value").GetComponent<Text>().text = food.prepTime.ToString();
 
-            newSlot.transform.SetParent(transform);
+            newSlot.transform.SetParent(memorySlotsContainer);
         }
+    }
+
+    private void OnEnable()
+    {
+        UpdateMemoryUI();
     }
 }
