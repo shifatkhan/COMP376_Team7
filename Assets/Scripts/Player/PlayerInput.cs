@@ -7,6 +7,9 @@ public class PlayerInput : MonoBehaviour
     public Vector3 directionalInput { get; private set; }
     public bool jumpInput { get; private set; } // TODO: Remove. Testing instantaneous inputs.
 
+    bool holdingObject = false;
+
+    GameObject currentObjectHold;
     void Update()
     {
         // MOVE - remove 'normalized' for analog movements.
@@ -20,17 +23,38 @@ public class PlayerInput : MonoBehaviour
         foreach (Collider objectNear in nearbyObjects)
         {
             //Hold object
+            //Press 'f' to to pickup closest object
+            if(Input.GetButtonDown("PickDrop") && objectNear.transform.tag == "Mop" && holdingObject == false)
+            {
+                objectNear.GetComponent<PickUp>().PickObjectUp();
+                currentObjectHold = objectNear.gameObject;
+                holdingObject = true;
 
+
+            } 
+            
+            //Presses 'f' to to drop object
+            else if(Input.GetButtonDown("PickDrop") && holdingObject == true)
+            {
+                currentObjectHold.GetComponent<PickUp>().PlaceObjectDown();
+                holdingObject = false;
+                currentObjectHold = null;
+            } 
+            
             //Destroy object
             if(objectNear.transform.tag == "Puddle")
             {
                 //Presses 'x' to clean spill with mop
-                if(Input.GetButtonDown("Clean"))
+                if(Input.GetButtonDown("Clean") && currentObjectHold != null && currentObjectHold.transform.tag == "Mop")
                 {
+                    currentObjectHold.GetComponent<AudioSource>().Play();
                     Destroy(objectNear.gameObject);
                 } 
             }
         }
+
+
+
         
 
     }
