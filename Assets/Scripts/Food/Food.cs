@@ -14,6 +14,9 @@ public class Food : MonoBehaviour
     public float cost { get; private set; }
     public float prepTime { get; private set; }
 
+    [Tooltip("The table this food is assigned to.")]
+    public int tableNumber;
+
     void Start()
     {
         cost = food.cost;

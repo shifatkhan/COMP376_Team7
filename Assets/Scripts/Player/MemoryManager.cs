@@ -3,23 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// Holds a list (max 4) of food in memory.
 /// 
 /// @author ShifatKhan
 /// </summary>
 public class MemoryManager : MonoBehaviour
 {
-    private 
+    private List<Food> foodMemorized;
 
-    // Start is called before the first frame update
     void Start()
+    {
+        foodMemorized = new List<Food>(4);
+    }
+
+    void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool AddFood(Food food)
     {
-        
+        if (foodMemorized.Count >= 4)
+            return false;
+
+        foodMemorized.Add(food);
+        return true;
     }
 }
