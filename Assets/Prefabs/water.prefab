@@ -108,8 +108,8 @@ GameObject:
   - component: {fileID: 7124260837785919794}
   - component: {fileID: 3300970794067448982}
   m_Layer: 0
-  m_Name: water 1
-  m_TagString: Untagged
+  m_Name: water
+  m_TagString: Puddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
