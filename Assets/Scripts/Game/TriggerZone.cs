@@ -13,6 +13,7 @@ public class TriggerZone : MonoBehaviour
         {         
             endPosition = col.transform.parent.position;
             CalculateEndPosition(col.transform.parent.gameObject); 
+
             //Sliding effect
             StartCoroutine (MoveOverSeconds (col.transform.parent.gameObject, endPosition, 1f)); //Moves over 1 second
         }
@@ -32,6 +33,7 @@ public class TriggerZone : MonoBehaviour
         objectToMove.transform.position = end;
     }
 
+    //Calculate the end position of the player depending on which side he came from
     void CalculateEndPosition(GameObject objectToMove)
     {
         //This means the player is moving in the left direction, heading into the trigger zone right side;

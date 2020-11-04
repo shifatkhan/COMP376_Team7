@@ -9,7 +9,12 @@ public class PlayerInput : MonoBehaviour
 
     bool holdingObject = false;
 
-    GameObject currentObjectHold;
+    float startTime = 0f; //Timer for button holding
+    float holdButtonTime = 2f; //Hold button for 3 seconds
+    float timer = 0f;
+
+    GameObject currentObjectHold; //Reference to current object being hold
+
     void Update()
     {
         // MOVE - remove 'normalized' for analog movements.
@@ -20,17 +25,15 @@ public class PlayerInput : MonoBehaviour
 
         //Nearby objects within a radius of 2
         Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, 2);
+
         foreach (Collider objectNear in nearbyObjects)
         {
-            //Hold object
             //Press 'f' to to pickup closest object
-            if(Input.GetButtonDown("PickDrop") && objectNear.transform.tag == "Mop" && holdingObject == false)
+            if(Input.GetButtonDown("PickDrop") && objectNear.transform.tag == "Mop" && holdingObject == false) //Should remove the tag == mop, and make it so that the player can hold any pickupble object
             {
                 objectNear.GetComponent<PickUp>().PickObjectUp();
                 currentObjectHold = objectNear.gameObject;
                 holdingObject = true;
-
-
             } 
             
             //Presses 'f' to to drop object
@@ -40,15 +43,31 @@ public class PlayerInput : MonoBehaviour
                 holdingObject = false;
                 currentObjectHold = null;
             } 
-            
-            //Destroy object
+
+            //Near water spill
             if(objectNear.transform.tag == "Puddle")
             {
-                //Presses 'x' to clean spill with mop
-                if(Input.GetButtonDown("Clean") && currentObjectHold != null && currentObjectHold.transform.tag == "Mop")
+                //Start timer for button hold
+                if(Input.GetButtonDown("Clean"))
                 {
-                    currentObjectHold.GetComponent<AudioSource>().Play();
-                    Destroy(objectNear.gameObject);
+                    startTime = Time.deltaTime;
+                }
+
+                //Presses 'x' to clean spill with mop
+                if(Input.GetButton("Clean") && currentObjectHold != null && currentObjectHold.transform.tag == "Mop")
+                {
+                    timer += Time.deltaTime;
+                    if(startTime + holdButtonTime <= timer)
+                    {
+                        currentObjectHold.GetComponent<AudioSource>().Play();
+
+                        //Show bubbly effect and destroy objects after 2 second
+                        objectNear.GetComponentInChildren<ParticleSystem>().Play();
+                        Destroy(objectNear.gameObject, 2);
+
+                        //Reset timer
+                        timer = 0;
+                    }
                 } 
             }
         }

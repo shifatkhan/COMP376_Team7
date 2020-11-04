@@ -9,7 +9,7 @@ public class FloorHazards : MonoBehaviour
     void Start() 
     {
         //Spawn Puddle
-        InvokeRepeating("SpawnPuddle", Random.Range(10, 15), Random.Range(10, 20)); //1st puddle will appear between 10 to 15 sec, the following puddles will appear every 10 to 20 seconds
+        InvokeRepeating("SpawnPuddle", Random.Range(10, 15), Random.Range(20, 30)); //1st puddle will appear between 10 to 15 sec, the following puddles will appear every 20 to 30 seconds
         
     }
     void SpawnPuddle()
