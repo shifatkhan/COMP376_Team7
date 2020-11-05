@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// This class takes care of the food queue in the prep table.
+/// When a food is served, it will start preparing the next food in queue.
+/// 
+/// @author ShifatKhan
+/// </summary>
 public class PrepTable : MonoBehaviour
 {
     [SerializeField]

@@ -92,7 +92,6 @@ GameObject:
   - component: {fileID: 3263437737847445284}
   - component: {fileID: 3263437737847445283}
   - component: {fileID: 3263437737847445286}
-  - component: {fileID: 3263437737847445287}
   m_Layer: 5
   m_Name: Client Test Button
   m_TagString: Untagged
@@ -165,7 +164,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3263437737847445281}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -227,24 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memory: {fileID: 11400000, guid: 1076c03143d9d71499bdfc0b85e94d68, type: 2}
   memoryEvent: {fileID: 11400000, guid: 06dabe3ad7d7b0042b5e95535b7e9c53, type: 2}
-  foodFactory: {fileID: 3263437737847445287}
   memoryUI: {fileID: 3263437739255654702}
---- !u!114 &3263437737847445287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3263437737847445281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdc8a1a5df269dc4ca01906e2f1e9bca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foods:
-  - {fileID: 11400000, guid: 3c8cfa77bef032641be507bff957b5f0, type: 2}
-  - {fileID: 11400000, guid: 61b49b1cc4f3f2f4b958920d8db37288, type: 2}
-  - {fileID: 11400000, guid: afea233dd132b2842b6b75d7d3cb1e55, type: 2}
 --- !u!1 &3263437738784567645
 GameObject:
   m_ObjectHideFlags: 0

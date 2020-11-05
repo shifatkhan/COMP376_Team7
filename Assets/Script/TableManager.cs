@@ -58,7 +58,11 @@ public class TableManager : MonoBehaviour
         spawnTime = Time.time + spawnRate;
         //isOccupied = false;
 
-
+        // Assign a table number to each table.
+        for (int i = 0; i < tables.Length; i++)
+        {
+            tables[i].GetComponent<Table>().tableNumber = i + 1;
+        }
     }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // Update is called once per frame

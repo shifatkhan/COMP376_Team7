@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class represents a slot on the Prep table.
+/// AKA When the chef cooks the food and places the food on this table.
+/// 
+/// @author ShifatKhan
+/// </summary>
 public class PrepSlot : MonoBehaviour
 {
     public bool occupied { get; private set; }
@@ -92,6 +98,8 @@ public class PrepSlot : MonoBehaviour
         foodSlot = null;
     }
 
+    // TODO: Move interact code to a different script.
+    // It is used by PrepSlot, PrepTable, and Table.
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

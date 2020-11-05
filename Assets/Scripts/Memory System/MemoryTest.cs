@@ -5,6 +5,8 @@ using UnityEngine;
 /// <summary>
 /// This test class will be placed inside the player later on.
 /// This adds the orders into the memory.
+/// 
+/// @author ShifatKhan
 /// </summary>
 public class MemoryTest : MonoBehaviour
 {
@@ -14,7 +16,6 @@ public class MemoryTest : MonoBehaviour
     [SerializeField]
     private GameEvent memoryEvent;
 
-    [SerializeField]
     private FoodFactory foodFactory;
 
     public GameObject memoryUI;
@@ -22,6 +23,7 @@ public class MemoryTest : MonoBehaviour
     private void Start()
     {
         memory.Clear();
+        foodFactory = GameObject.Find("FoodFactory - Shifat").GetComponent<FoodFactory>();
     }
 
     private void Update()

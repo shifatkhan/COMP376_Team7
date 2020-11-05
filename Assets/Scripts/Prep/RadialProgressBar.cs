@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class is only responsible for a radial progress bar.
+/// Change the value of `progress` from 0 to 100 to update the bar.
+/// 
+/// @author ShifatKhan
+/// </summary>
 public class RadialProgressBar : MonoBehaviour
 {
     public Image bgImage;

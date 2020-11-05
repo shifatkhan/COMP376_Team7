@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class will billboard a UI element in world space.
+/// 
+/// @author ShifatKhan
+/// </summary>
 public class Billboarding : MonoBehaviour
 {
     public Transform cam;
