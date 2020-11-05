@@ -29,7 +29,7 @@ public class PlayerInput : MonoBehaviour
         foreach (Collider objectNear in nearbyObjects)
         {
             //Press 'f' to to pickup closest object
-            if(Input.GetButtonDown("PickDrop") && objectNear.transform.tag == "Mop" && holdingObject == false) //Should remove the tag == mop, and make it so that the player can hold any pickupble object
+            if(Input.GetButtonDown("Interact") && objectNear.transform.tag == "Mop" && holdingObject == false) //Should remove the tag == mop, and make it so that the player can hold any pickupble object
             {
                 objectNear.GetComponent<PickUp>().PickObjectUp();
                 currentObjectHold = objectNear.gameObject;
@@ -37,7 +37,7 @@ public class PlayerInput : MonoBehaviour
             } 
             
             //Presses 'f' to to drop object
-            else if(Input.GetButtonDown("PickDrop") && holdingObject == true)
+            else if(Input.GetButtonDown("Interact") && holdingObject == true)
             {
                 currentObjectHold.GetComponent<PickUp>().PlaceObjectDown();
                 holdingObject = false;
