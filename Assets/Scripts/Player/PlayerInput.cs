@@ -15,6 +15,8 @@ public class PlayerInput : MonoBehaviour
 
     GameObject currentObjectHold; //Reference to current object being hold
 
+    public LayerMask pickupLayer; // TODO: move to different pickup script.
+
     void Update()
     {
         // MOVE - remove 'normalized' for analog movements.
@@ -23,41 +25,60 @@ public class PlayerInput : MonoBehaviour
         // JUMP
         jumpInput = Input.GetButtonDown("Jump");
 
-        //Nearby objects within a radius of 2
-        Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, 2);
+        // -------------------------- TODO: Move to another Pickup script --------------------------- //
 
-        foreach (Collider objectNear in nearbyObjects)
+        if (Input.GetButtonDown("Interact"))
         {
-            //Press 'f' to to pickup closest object
-            if(Input.GetButtonDown("Interact") && objectNear.transform.tag == "Mop" && holdingObject == false) //Should remove the tag == mop, and make it so that the player can hold any pickupble object
+            if(holdingObject == false)
             {
-                objectNear.GetComponent<PickUp>().PickObjectUp();
-                currentObjectHold = objectNear.gameObject;
-                holdingObject = true;
-            } 
-            
-            //Presses 'f' to to drop object
-            else if(Input.GetButtonDown("Interact") && holdingObject == true)
+                //Nearby objects within a radius of 2
+                Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, 2, pickupLayer);
+
+                if(nearbyObjects.Length > 0)
+                {
+                    // Check the nearest object if there are more than 1.
+                    Collider nearest = nearbyObjects[0];
+
+                    foreach (Collider objectNear in nearbyObjects)
+                    {
+                        if(Vector3.Distance(transform.position, objectNear.transform.position) < Vector3.Distance(transform.position, nearest.transform.position))
+                        {
+                            nearest = objectNear;
+                        }
+                    }
+
+                    nearest.GetComponent<PickUp>().PickObjectUp();
+                    currentObjectHold = nearest.gameObject;
+                    holdingObject = true;
+                }
+            }
+            else
             {
                 currentObjectHold.GetComponent<PickUp>().PlaceObjectDown();
                 holdingObject = false;
                 currentObjectHold = null;
-            } 
+            }
+        }
 
+        Collider[] puddles = Physics.OverlapSphere(transform.position, 2);
+
+
+        foreach (Collider objectNear in puddles)
+        {
             //Near water spill
-            if(objectNear.transform.tag == "Puddle")
+            if (objectNear.transform.tag == "Puddle")
             {
                 //Start timer for button hold
-                if(Input.GetButtonDown("Clean"))
+                if (Input.GetButtonDown("Clean"))
                 {
                     startTime = Time.deltaTime;
                 }
 
                 //Presses 'x' to clean spill with mop
-                if(Input.GetButton("Clean") && currentObjectHold != null && currentObjectHold.transform.tag == "Mop")
+                if (Input.GetButton("Clean") && currentObjectHold != null && currentObjectHold.transform.tag == "Mop")
                 {
                     timer += Time.deltaTime;
-                    if(startTime + holdButtonTime <= timer)
+                    if (startTime + holdButtonTime <= timer)
                     {
                         currentObjectHold.GetComponent<AudioSource>().Play();
 
@@ -68,13 +89,8 @@ public class PlayerInput : MonoBehaviour
                         //Reset timer
                         timer = 0;
                     }
-                } 
+                }
             }
         }
-
-
-
-        
-
     }
 }
