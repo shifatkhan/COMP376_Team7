@@ -847,6 +847,7 @@ GameObject:
   - component: {fileID: 779545209}
   - component: {fileID: 779545208}
   - component: {fileID: 779545207}
+  - component: {fileID: 779545210}
   m_Layer: 0
   m_Name: Prepped3
   m_TagString: Untagged
@@ -862,7 +863,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779545205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9, y: 0.2, z: 0}
+  m_LocalPosition: {x: 1.9, y: 0.276, z: 0}
   m_LocalScale: {x: 1, y: 0.36, z: 1}
   m_Children: []
   m_Father: {fileID: 1720419999}
@@ -930,6 +931,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779545205}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &779545210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779545205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9757f4bd03691447bcc5f18c68f5cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodSlot:
+    food: {fileID: 0}
+    foodName: 
+    price: 0
+    prepTime: 0
+    tableNumber: 0
+  foodGameObject: {fileID: 0}
 --- !u!1 &780217058
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,6 +962,7 @@ GameObject:
   - component: {fileID: 780217062}
   - component: {fileID: 780217061}
   - component: {fileID: 780217060}
+  - component: {fileID: 780217063}
   m_Layer: 0
   m_Name: Prepped1
   m_TagString: Untagged
@@ -957,7 +978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780217058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0.2, z: 0}
+  m_LocalPosition: {x: -1.5, y: 0.2760002, z: 0}
   m_LocalScale: {x: 1, y: 0.36, z: 1}
   m_Children: []
   m_Father: {fileID: 1720419999}
@@ -1025,6 +1046,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780217058}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &780217063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780217058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9757f4bd03691447bcc5f18c68f5cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodSlot:
+    food: {fileID: 0}
+    foodName: 
+    price: 0
+    prepTime: 0
+    tableNumber: 0
+  foodGameObject: {fileID: 0}
 --- !u!1 &792391920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1576,7 @@ GameObject:
   - component: {fileID: 1004638863}
   - component: {fileID: 1004638862}
   - component: {fileID: 1004638861}
+  - component: {fileID: 1004638864}
   m_Layer: 0
   m_Name: Prepped2
   m_TagString: Untagged
@@ -1551,7 +1592,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004638859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0.2, y: 0.2760002, z: 0}
   m_LocalScale: {x: 1, y: 0.36, z: 1}
   m_Children: []
   m_Father: {fileID: 1720419999}
@@ -1619,6 +1660,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004638859}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1004638864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004638859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9757f4bd03691447bcc5f18c68f5cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodSlot:
+    food: {fileID: 0}
+    foodName: 
+    price: 0
+    prepTime: 0
+    tableNumber: 0
+  foodGameObject: {fileID: 0}
 --- !u!1 &1017296372
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class PrepSlot : MonoBehaviour
 
     void Start()
     {
-        
+        occupied = false;
     }
 
     void Update()

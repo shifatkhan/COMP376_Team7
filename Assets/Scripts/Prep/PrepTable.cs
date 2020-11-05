@@ -12,7 +12,7 @@ public class PrepTable : MonoBehaviour
     private MemoryData memory;
 
     [SerializeField]
-    private List<FoodSlot> foodsMemorized = new List<FoodSlot>();
+    private Queue<FoodSlot> foodQueue = new Queue<FoodSlot>();
 
     public bool canInteract = false;
 
@@ -34,14 +34,47 @@ public class PrepTable : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire3") && canInteract)
         {
-            // GET FOODS
-            foodsMemorized = memory.GetFoodsMemorized().ToList<FoodSlot>();
-            memory.Clear();
+            QueueFoods();
+        }
+    }
 
-            // PREP FOODS
-            for (int i = 0; i < prepSlots.Count; i++)
+    private void QueueFoods()
+    {
+        List<FoodSlot> tempFoodsInMemory = memory.GetFoodsMemorized().ToList();
+
+        // GET FOODS
+        if (tempFoodsInMemory.Count == 0)
+            return;
+        else
+        {
+            foreach (FoodSlot f in tempFoodsInMemory)
             {
-                prepSlots[i].GetComponent<PrepSlot>().QueueFood(foodsMemorized[i]);
+                foodQueue.Enqueue(f);
+            }
+        }
+
+        memory.Clear();
+        print($"foodsMemorized: {foodQueue.Count}");
+
+        // PREP FOODS
+        //for (int i = 0, j = 0; i < prepSlots.Count && j < foodsMemorized.Count; i++,j++)
+        //{
+        //    print($"foodsMemorized{i}: {foodsMemorized.Count}");
+        //    PrepSlot current = prepSlots[i].GetComponent<PrepSlot>();
+        //    if (!current.occupied)
+        //    {
+        //        current.QueueFood(foodsMemorized[i]);
+        //        foodsMemorized.RemoveAt(i);
+        //        j--; // Since we removed an item.
+        //    }
+        //}
+
+        for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
+        {
+            PrepSlot current = prepSlots[i].GetComponent<PrepSlot>();
+            if (!current.occupied)
+            {
+                current.QueueFood(foodQueue.Dequeue());
             }
         }
     }
