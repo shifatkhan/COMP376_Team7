@@ -40,7 +40,7 @@ public class TableManager : MonoBehaviour
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public GameObject[] tables;
 
-    public bool isOccupied;                    //If the table already has a group on it
+    //public bool isOccupied;                    //If the table already has a group on it
 
     //private float time;                             //current time
     private float spawnTime = 0f;
@@ -54,9 +54,10 @@ public class TableManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        spawnTime = Time.time;
-        isOccupied = false;
+
+        spawnTime = Time.time + spawnRate;
+        //isOccupied = false;
+
 
     }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -70,12 +71,13 @@ public class TableManager : MonoBehaviour
             spawnTime += spawnRate;
 
             int i = Random.Range(0, tables.Length);
-            Debug.Log(tables[i]);
-            if (isOccupied == false)
+            // Check if table is occupied
+            if (tables[i].GetComponent<Table>().isOccupied == false)
             {
                 tables[i].GetComponent<Table>().EnableCustomers();
             }
         }
+       
 
     }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

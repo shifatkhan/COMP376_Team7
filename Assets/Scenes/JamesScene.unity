@@ -486,6 +486,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1221223057}
     m_Modifications:
+    - target: {fileID: 178627126764722497, guid: cebd136865c4b438ea885009f26ecd97, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fce179b57abfbab46b1a72e508feb389, type: 2}
     - target: {fileID: 2692163318583164652, guid: cebd136865c4b438ea885009f26ecd97, type: 3}
       propertyPath: m_Name
       value: Cube
@@ -790,6 +794,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1252447365}
     m_Modifications:
+    - target: {fileID: 178627126764722497, guid: cebd136865c4b438ea885009f26ecd97, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fce179b57abfbab46b1a72e508feb389, type: 2}
     - target: {fileID: 2692163318583164652, guid: cebd136865c4b438ea885009f26ecd97, type: 3}
       propertyPath: m_Name
       value: Cube
