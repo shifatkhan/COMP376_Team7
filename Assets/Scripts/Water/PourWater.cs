@@ -21,11 +21,15 @@ public class PourWater : MonoBehaviour
     private Slider slider;
     private float sliderWidth = 200f;   // TODO get width programmatically
     private RectTransform perfectZoneImg;
+
+    private WaterCupBar waterBarRef;
+
     private bool stopPouring = false;
     
 
     void Start()
     {
+        waterBarRef = GameObject.Find("Water Cup Bar").GetComponent<WaterCupBar>();
         perfectZoneImg = transform.Find("Perfect Zone Image").GetComponent<RectTransform>();
         slider = GetComponent<Slider>();
         slider.value = 0;
@@ -55,9 +59,17 @@ public class PourWater : MonoBehaviour
                 if (slider.value >= (sliderWidth - failZoneLength) / sliderWidth)
                     Debug.LogWarning("FAIL ZONE");
                 else if (slider.value >= (sliderWidth - failZoneLength - perfectZoneLength) / sliderWidth)
+                {
                     Debug.LogWarning("PERFECT ZONE");
+                    waterBarRef.waterFilled();
+                }
+                    
                 else
+                {
                     Debug.LogWarning("SUCCESS ZONE");
+                    waterBarRef.waterFilled();
+                }
+                
 
                 StartCoroutine(WaitBeforeDestroy());
             }
