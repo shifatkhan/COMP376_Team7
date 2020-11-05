@@ -1,1 +1,1 @@
-# COMP472_Team7
+# COMP376_Team7
