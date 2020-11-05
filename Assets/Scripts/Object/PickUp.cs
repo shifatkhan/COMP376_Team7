@@ -10,6 +10,11 @@ public class PickUp : MonoBehaviour
     {
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false; //No gravity on object when holding it
+
+        //Free rotation and position, so it stops moving when picked
+        GetComponent<Rigidbody>().freezeRotation = true; 
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        
         this.transform.position = objectPosition.position;
         this.transform.parent = GameObject.Find("PickupObject").transform;
         this.transform.localRotation = Quaternion.identity; //object is held upright
@@ -21,5 +26,7 @@ public class PickUp : MonoBehaviour
         this.transform.parent = null;
         GetComponent<BoxCollider>().enabled = true;
         GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().freezeRotation = false; 
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
 }
