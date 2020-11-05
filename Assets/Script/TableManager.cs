@@ -16,6 +16,7 @@ using UnityEngine;
 //  }
 //}
 
+
 //Where EnableCustomers can be a function that changes the color of that table
 public class TableManager : MonoBehaviour
 {
@@ -53,8 +54,8 @@ public class TableManager : MonoBehaviour
             int i = Random.Range(0, tables.Length);
             Debug.Log(tables[i]);
             tables[i].GetComponent<Table>().EnableCustomers();
-            //EnableCustomers();
-            time = minTime;
+            
+            //time = minTime;
         }
         SetRandomTime();
 
