@@ -398,6 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c811d73b6bd20485d83314b348d6e180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOccupied: 0
 --- !u!65 &1221223055
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -487,7 +488,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2692163318583164652, guid: cebd136865c4b438ea885009f26ecd97, type: 3}
       propertyPath: m_Name
-      value: Cube 1
+      value: Cube
       objectReference: {fileID: 0}
     - target: {fileID: 6232833144256787622, guid: cebd136865c4b438ea885009f26ecd97, type: 3}
       propertyPath: m_LocalPosition.x
@@ -621,6 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c811d73b6bd20485d83314b348d6e180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOccupied: 0
 --- !u!65 &1252447362
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -909,5 +911,9 @@ PrefabInstance:
       propertyPath: myObject
       value: 
       objectReference: {fileID: 1252447364}
+    - target: {fileID: 7914595556820773181, guid: 45bdd2266280c4155b568c79d08994b4, type: 3}
+      propertyPath: spawnRate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45bdd2266280c4155b568c79d08994b4, type: 3}
