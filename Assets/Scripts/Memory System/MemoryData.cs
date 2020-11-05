@@ -59,18 +59,19 @@ public class MemoryData : ScriptableObject
 [System.Serializable]
 public class FoodSlot
 {
+    public FoodData food;
     public string foodName;
     public float price;
     public float prepTime;
     public int tableNumber;
 
-    public FoodSlot(FoodData food, int tableNumber) : this(food.foodName, food.price, food.prepTime, tableNumber) { }
-
-    public FoodSlot(string foodName, float price, float prepTime, int tableNumber)
+    public FoodSlot(FoodData food, int tableNumber)
     {
-        this.foodName = foodName;
-        this.price = price;
-        this.prepTime = prepTime;
+        this.food = food;
+        this.foodName = food.foodName;
+        this.price = food.price;
+        this.prepTime = food.prepTime;
         this.tableNumber = tableNumber;
     }
+
 }
