@@ -107,8 +107,9 @@ GameObject:
   - component: {fileID: 7460383936769854275}
   - component: {fileID: 7168958154271173046}
   - component: {fileID: 7168958154271173040}
+  - component: {fileID: 3657015900267057669}
   m_Layer: 0
-  m_Name: Player vShifat
+  m_Name: Player - Shifat
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,6 +173,19 @@ MonoBehaviour:
   moveSpeed: 6
   jumpForce: 3.5
   turnSpeed: 1000
+--- !u!65 &3657015900267057669
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7168958154271173043}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: -0, y: 0, z: -0}
 --- !u!1 &7168958154308345953
 GameObject:
   m_ObjectHideFlags: 0
