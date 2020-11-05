@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class is only responsible for the player's movements.
+/// 
+/// @author ShifatKhan
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerMovement : MonoBehaviour
