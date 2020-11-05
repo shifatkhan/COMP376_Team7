@@ -14,7 +14,8 @@ public class PrepTable : MonoBehaviour
     [SerializeField]
     private Queue<FoodSlot> foodQueue = new Queue<FoodSlot>();
 
-    public bool canInteract = false;
+    [SerializeField]
+    private bool canInteract = false; // Checks if player is in range.
 
     void Awake()
     {
@@ -29,13 +30,14 @@ public class PrepTable : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire3") && canInteract)
         {
             QueueFoods();
         }
+
+        CheckForFreeSlots();
     }
 
     private void QueueFoods()
@@ -54,27 +56,44 @@ public class PrepTable : MonoBehaviour
         }
 
         memory.Clear();
-        print($"foodsMemorized: {foodQueue.Count}");
 
         // PREP FOODS
-        //for (int i = 0, j = 0; i < prepSlots.Count && j < foodsMemorized.Count; i++,j++)
+        //for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
         //{
-        //    print($"foodsMemorized{i}: {foodsMemorized.Count}");
         //    PrepSlot current = prepSlots[i].GetComponent<PrepSlot>();
         //    if (!current.occupied)
         //    {
-        //        current.QueueFood(foodsMemorized[i]);
-        //        foodsMemorized.RemoveAt(i);
-        //        j--; // Since we removed an item.
+        //        current.PrepFood(foodQueue.Dequeue());
         //    }
         //}
+    }
 
+    private void CheckForFreeSlots()
+    {
+        bool free = false;
+
+        // Check if there's a free slot.
         for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
         {
             PrepSlot current = prepSlots[i].GetComponent<PrepSlot>();
             if (!current.occupied)
             {
-                current.QueueFood(foodQueue.Dequeue());
+                free = true;
+                break;
+            }
+        }
+
+        // Return void is there are no free slots.
+        if (!free)
+            return;
+
+        // PREP FOODS
+        for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
+        {
+            PrepSlot current = prepSlots[i].GetComponent<PrepSlot>();
+            if (!current.occupied)
+            {
+                current.PrepFood(foodQueue.Dequeue());
             }
         }
     }
@@ -93,7 +112,6 @@ public class PrepTable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             canInteract = false;
-
         }
     }
 }

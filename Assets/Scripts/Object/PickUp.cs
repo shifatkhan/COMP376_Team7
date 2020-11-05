@@ -6,6 +6,11 @@ public class PickUp : MonoBehaviour
 {
     public Transform objectPosition;
 
+    private void Awake()
+    {
+        objectPosition = GameObject.Find("PickupObject").transform;
+    }
+
     public void PickObjectUp()
     {
         GetComponent<BoxCollider>().enabled = false;

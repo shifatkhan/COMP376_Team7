@@ -15,6 +15,8 @@ public class PrepSlot : MonoBehaviour
     private float timer;
     private bool cooking = false;
 
+    private bool canInteract = false; // Checks if player is in range.
+
     private void Awake()
     {
         progressBar = GetComponentInChildren<RadialProgressBar>();
@@ -29,6 +31,11 @@ public class PrepSlot : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButtonDown("Interact") && canInteract)
+        {
+            TakeFood();
+        }
+
         if (cooking)
         {
             timer += Time.deltaTime;
@@ -36,7 +43,7 @@ public class PrepSlot : MonoBehaviour
         }
     }
 
-    public void QueueFood(FoodSlot food)
+    public void PrepFood(FoodSlot food)
     {
         foodSlot = food;
         
@@ -64,5 +71,41 @@ public class PrepSlot : MonoBehaviour
         foodGameObject.AddComponent<Food>();
         foodGameObject.GetComponent<Food>().SetFood(foodSlot.food);
         foodGameObject.GetComponent<Food>().tableNumber = foodSlot.tableNumber;
+    }
+
+    public void TakeFood()
+    {
+        // Don't do anything if it is still cooking.
+        if (cooking)
+            return;
+
+        ResetSlot();
+    }
+
+    private void ResetSlot()
+    {
+        occupied = false;
+        cooking = false;
+        timer = 0;
+        progressBarGameObject.SetActive(false);
+        foodGameObject = null;
+        foodSlot = null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canInteract = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            canInteract = false;
+        }
     }
 }
