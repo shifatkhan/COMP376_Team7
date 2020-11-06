@@ -128,6 +128,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5027475328138638847, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
   m_PrefabInstance: {fileID: 1049517106}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &80589422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80589421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703eea135e5022f44bb71c8d7eaae1b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patienceStatusPrefab: {fileID: 3048783729388176980, guid: e254e840d55d1c44f969b9589c8abab0, type: 3}
+  skillCheckPrefab: {fileID: 7842780114100664482, guid: 9c5012aa9c64dce48be54afd9b486561, type: 3}
 --- !u!1 &208594367
 GameObject:
   m_ObjectHideFlags: 0
