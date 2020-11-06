@@ -4,6 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// Holds a list (max 4) of food in memory.
+/// 
+/// @author ShifatKhan
 /// </summary>
 [CreateAssetMenu(menuName = "Memory")]
 public class MemoryData : ScriptableObject

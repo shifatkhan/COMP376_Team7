@@ -6,6 +6,11 @@ public class PickUp : MonoBehaviour
 {
     public Transform objectPosition;
 
+    private void Awake()
+    {
+        objectPosition = GameObject.FindGameObjectWithTag("Player").transform.Find("PickupObject").transform;
+    }
+
     public void PickObjectUp()
     {
         GetComponent<BoxCollider>().enabled = false;
@@ -16,7 +21,7 @@ public class PickUp : MonoBehaviour
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         
         this.transform.position = objectPosition.position;
-        this.transform.parent = GameObject.Find("PickupObject").transform;
+        this.transform.parent = objectPosition;
         this.transform.localRotation = Quaternion.identity; //object is held upright
         this.transform.localPosition = Vector3.zero;
     }

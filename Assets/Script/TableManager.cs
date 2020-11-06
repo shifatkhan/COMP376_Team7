@@ -6,14 +6,31 @@ using UnityEngine;
 //- Have a TableManager script: This will randomly assign clients to a table (we dont need to show the client models
 //for now. We can just make the table change color to show that it is occupied)
 
-//Hmm so what I think we should do is have an Array of GameObjects[] called tables
-//We will populate this array in the inspector by order of the table numbers (each table will have a unique number).
-//Then, inside the TableManager script, you can do something like (in pseudo code)
-//Update(){
-//    every Random.range(0, maxInterval) seconds{
-//        int i = Random.range(0, tables.size);
-//        tables[i].EnableCustomers(): 
-//  }
+//[SerializeField]
+//private float spawnRate = 2f; // AKA Something will happen every 2 seconds
+
+//// This variable represents the last Time you spawned something
+//// So if you spawned something at 20 seconds, this will be equal to 20 seconds.
+//// Time.time is the in-game counter, so the 20 seconds mentioned above is when Time.time = 20s
+//private float spawnTime = 0f;
+
+//void Start()
+//{
+//    spawnTime = Time.time; // If you ever enable the gameobject in the middle of the game.
+//}
+
+//void Update()
+//{
+//    // Check if we should spawn.
+//    if (Time.time > spawnTime)
+//    {
+//        spawnTime += ghostSpawnRate;
+
+//        int i = random
+//            if (table[i] has no customers)
+//                Enable customers
+//        }
+
 //}
 
 
@@ -23,47 +40,52 @@ public class TableManager : MonoBehaviour
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public GameObject[] tables;
 
-    private bool seated = false;                    //If the table already has a group on it
-    //private float timer = 30;                        //Timers when customers are seated
+    //public bool isOccupied;                    //If the table already has a group on it
 
-    public float maxTime = 15;
-    public float minTime = 2; 
+    //private float time;                             //current time
+    private float spawnTime = 0f;
 
-    private float time;                             //current time
-    private float spawnTime;
+    [SerializeField]
+    private float spawnRate = 2f;
 
-  
+
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // Start is called before the first frame update
     void Start()
     {
-        SetRandomTime();
-        time = minTime;
+
+        spawnTime = Time.time + spawnRate;
+        //isOccupied = false;
+
+        // Assign a table number to each table.
+        for (int i = 0; i < tables.Length; i++)
+        {
+            tables[i].GetComponent<Table>().tableNumber = i + 1;
+        }
     }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // Update is called once per frame
     void Update()
     {
-        //Counts up
-        time += Time.deltaTime;
- 
-        // Check to randomly choose table to be occupied
-        if (time >= spawnTime)
+        
+        // Check if we should spawn.
+        if (Time.time > spawnTime)
         {
+            spawnTime += spawnRate;
+
             int i = Random.Range(0, tables.Length);
-            Debug.Log(tables[i]);
-            tables[i].GetComponent<Table>().EnableCustomers();
-            
-            //time = minTime;
+            // Check if table is occupied
+            if (tables[i].GetComponent<Table>().isOccupied == false)
+            {
+                tables[i].GetComponent<Table>().EnableCustomers();
+            }
         }
-        SetRandomTime();
+       
 
     }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public void SetRandomTime()
-    {
-        spawnTime = Random.Range(minTime, maxTime);
-    }
 
 }
+
+

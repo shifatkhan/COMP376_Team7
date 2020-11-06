@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// This class takes care of the food queue in the prep table.
+/// When a food is served, it will start preparing the next food in queue.
+/// 
+/// @author ShifatKhan
+/// </summary>
 public class PrepTable : MonoBehaviour
 {
     [SerializeField]
@@ -12,9 +18,10 @@ public class PrepTable : MonoBehaviour
     private MemoryData memory;
 
     [SerializeField]
-    private List<FoodSlot> foodsMemorized = new List<FoodSlot>();
+    private Queue<FoodSlot> foodQueue = new Queue<FoodSlot>();
 
-    public bool canInteract = false;
+    [SerializeField]
+    private bool canInteract = false; // Checks if player is in range.
 
     void Awake()
     {
@@ -29,19 +36,70 @@ public class PrepTable : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire3") && canInteract)
         {
-            // GET FOODS
-            foodsMemorized = memory.GetFoodsMemorized().ToList<FoodSlot>();
-            memory.Clear();
+            QueueFoods();
+        }
 
-            // PREP FOODS
-            for (int i = 0; i < prepSlots.Count; i++)
+        CheckForFreeSlots();
+    }
+
+    private void QueueFoods()
+    {
+        List<FoodSlot> tempFoodsInMemory = memory.GetFoodsMemorized().ToList();
+
+        // GET FOODS
+        if (tempFoodsInMemory.Count == 0)
+            return;
+        else
+        {
+            foreach (FoodSlot f in tempFoodsInMemory)
             {
-                prepSlots[i].GetComponent<PrepSlot>().QueueFood(foodsMemorized[i]);
+                foodQueue.Enqueue(f);
+            }
+        }
+
+        memory.Clear();
+
+        // PREP FOODS
+        //for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
+        //{
+        //    PrepSlot current = prepSlots[i].GetComponent<PrepSlot>();
+        //    if (!current.occupied)
+        //    {
+        //        current.PrepFood(foodQueue.Dequeue());
+        //    }
+        //}
+    }
+
+    private void CheckForFreeSlots()
+    {
+        bool free = false;
+
+        // Check if there's a free slot.
+        for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
+        {
+            PrepSlot current = prepSlots[i].GetComponent<PrepSlot>();
+            if (!current.occupied)
+            {
+                free = true;
+                break;
+            }
+        }
+
+        // Return void is there are no free slots.
+        if (!free)
+            return;
+
+        // PREP FOODS
+        for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
+        {
+            PrepSlot current = prepSlots[i].GetComponent<PrepSlot>();
+            if (!current.occupied)
+            {
+                current.PrepFood(foodQueue.Dequeue());
             }
         }
     }
@@ -60,7 +118,6 @@ public class PrepTable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             canInteract = false;
-
         }
     }
 }
