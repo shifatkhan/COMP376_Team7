@@ -15,7 +15,7 @@ public class PlayerInput : MonoBehaviour
 
     GameObject currentObjectHold; //Reference to current object being hold
 
-    public LayerMask pickupLayer; // TODO: move to different pickup script.
+    //public LayerMask pickupLayer; // TODO: move to different pickup script.
 
     void Update()
     {
@@ -29,68 +29,75 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetButtonDown("Interact"))
         {
-            if(holdingObject == false)
-            {
-                //Nearby objects within a radius of 2
-                Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, 2, pickupLayer);
+            // if(holdingObject == false)
+            // {
+            //     //Nearby objects within a radius of 2
+            //     Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, 2, pickupLayer);
 
-                if(nearbyObjects.Length > 0)
-                {
-                    // Check the nearest object if there are more than 1.
-                    Collider nearest = nearbyObjects[0];
+            //     if(nearbyObjects.Length > 0)
+            //     {
+            //         // Check the nearest object if there are more than 1.
+            //         Collider nearest = nearbyObjects[0];
 
-                    foreach (Collider objectNear in nearbyObjects)
-                    {
-                        if(Vector3.Distance(transform.position, objectNear.transform.position) < Vector3.Distance(transform.position, nearest.transform.position))
-                        {
-                            nearest = objectNear;
-                        }
-                    }
+            //         foreach (Collider objectNear in nearbyObjects)
+            //         {
+            //             if(Vector3.Distance(transform.position, objectNear.transform.position) < Vector3.Distance(transform.position, nearest.transform.position))
+            //             {
+            //                 nearest = objectNear;
+            //             }
+            //         }
 
-                    nearest.GetComponent<PickUp>().PickObjectUp();
-                    currentObjectHold = nearest.gameObject;
-                    holdingObject = true;
-                }
-            }
-            else
-            {
-                currentObjectHold.GetComponent<PickUp>().PlaceObjectDown();
-                holdingObject = false;
-                currentObjectHold = null;
-            }
+            //         nearest.GetComponent<PickUp>().PickObjectUp();
+            //         currentObjectHold = nearest.gameObject;
+            //         holdingObject = true;
+            //     }
+            // }
+            // else
+            // {
+            //     currentObjectHold.GetComponent<PickUp>().PlaceObjectDown();
+            //     holdingObject = false;
+            //     currentObjectHold = null;
+            // }
+
+            GetComponent<CheckNearbyInteraction>().NearbyObjects();
         }
 
-        Collider[] puddles = Physics.OverlapSphere(transform.position, 2);
-
-
-        foreach (Collider objectNear in puddles)
+        if (Input.GetButtonDown("Clean"))
         {
-            //Near water spill
-            if (objectNear.transform.tag == "Puddle")
-            {
-                //Start timer for button hold
-                if (Input.GetButtonDown("Clean"))
-                {
-                    startTime = Time.deltaTime;
-                }
-
-                //Presses 'x' to clean spill with mop
-                if (Input.GetButton("Clean") && currentObjectHold != null && currentObjectHold.transform.tag == "Mop")
-                {
-                    timer += Time.deltaTime;
-                    if (startTime + holdButtonTime <= timer)
-                    {
-                        currentObjectHold.GetComponent<AudioSource>().Play();
-
-                        //Show bubbly effect and destroy objects after 2 second
-                        objectNear.GetComponentInChildren<ParticleSystem>().Play();
-                        Destroy(objectNear.gameObject, 2);
-
-                        //Reset timer
-                        timer = 0;
-                    }
-                }
-            }
+            GetComponent<CleanSpill>().CleanWaterSpill();
         }
+        // Collider[] puddles = Physics.OverlapSphere(transform.position, 2);
+
+
+        // foreach (Collider objectNear in puddles)
+        // {
+        //     //Near water spill
+        //     if (objectNear.transform.tag == "Puddle")
+        //     {
+        //         Debug.Log("Puddle");
+        //         //Start timer for button hold
+        //         if (Input.GetButtonDown("Clean"))
+        //         {
+        //             startTime = Time.deltaTime;
+        //         }
+
+        //         //Presses 'x' to clean spill with mop
+        //         if (Input.GetButton("Clean") && currentObjectHold != null && currentObjectHold.transform.tag == "Mop")
+        //         {
+        //             timer += Time.deltaTime;
+        //             if (startTime + holdButtonTime <= timer)
+        //             {
+        //                 currentObjectHold.GetComponent<AudioSource>().Play();
+
+        //                 //Show bubbly effect and destroy objects after 2 second
+        //                 objectNear.GetComponentInChildren<ParticleSystem>().Play();
+        //                 Destroy(objectNear.gameObject, 2);
+
+        //                 //Reset timer
+        //                 timer = 0;
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
