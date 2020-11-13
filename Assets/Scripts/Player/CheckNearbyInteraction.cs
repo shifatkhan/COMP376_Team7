@@ -26,7 +26,7 @@ public class CheckNearbyInteraction : MonoBehaviour
                     }
                 }
 
-                //Call pickObjectUp method in PickUp script
+                //Picks up the object
                 PickUp pickUpScript = nearest.GetComponent<PickUp>();
                 if(pickUpScript != null) //Object must contain PickUp script
                 {
@@ -37,6 +37,7 @@ public class CheckNearbyInteraction : MonoBehaviour
 
             }
         }
+        //Drop object
         else
         {
             currentObjectHold.GetComponent<PickUp>().PlaceObjectDown();

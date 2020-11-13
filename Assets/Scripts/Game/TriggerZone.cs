@@ -10,12 +10,27 @@ public class TriggerZone : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         if(col.transform.tag == "Player")
-        {         
+        {   
+            //Check if player is holding a mop (should be a child object of PickupObject)      
+            foreach(Transform children in col.transform.Find("PickupObject"))
+            {
+                if(children.gameObject.tag == "Mop")
+                {
+                    //GetComponent<AudioSource>().Play();   //Sound effect of mopping
+                    //GetComponentInChildren<ParticleSystem>().Play();  //Show bubbly effect
+
+                    //Player cleans up spill if he is holding the mop
+                    Destroy(gameObject);
+                }
+            }
+
+            //If Player is not holding mop, he will slide
             endPosition = col.transform.position;
             CalculateEndPosition(col.transform.gameObject); 
 
             //Sliding effect
             StartCoroutine (MoveOverSeconds (col.transform.gameObject, endPosition, 1f)); //Moves over 1 second
+
         }
     }
     
