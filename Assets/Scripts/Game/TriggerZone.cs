@@ -11,11 +11,11 @@ public class TriggerZone : MonoBehaviour
     {
         if(col.transform.tag == "Player")
         {         
-            endPosition = col.transform.parent.position;
-            CalculateEndPosition(col.transform.parent.gameObject); 
+            endPosition = col.transform.position;
+            CalculateEndPosition(col.transform.gameObject); 
 
             //Sliding effect
-            StartCoroutine (MoveOverSeconds (col.transform.parent.gameObject, endPosition, 1f)); //Moves over 1 second
+            StartCoroutine (MoveOverSeconds (col.transform.gameObject, endPosition, 1f)); //Moves over 1 second
         }
     }
     
