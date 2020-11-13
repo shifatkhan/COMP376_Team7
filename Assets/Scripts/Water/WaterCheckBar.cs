@@ -12,29 +12,29 @@ public class WaterCheckBar : MonoBehaviour
     [SerializeField]
     float perfectZoneSize = 0.1f;
     [SerializeField]
-    float failZoneSize = 0.1f;
+    float failZoneSize = 0.05f;
 
     // the zone's length on the bar
     private float failZoneLength;
     private float perfectZoneLength;
 
     private Slider slider;
-    private float sliderWidth = 200f;   // TODO get width programmatically
+    private float sliderWidth = 100f;   // TODO get width programmatically
     private RectTransform perfectZoneImg;
-
-    private WaterCupBar waterBarRef;
+    private Button spaceIndicator;
 
     private bool stopPouring = false;
     
 
     void Start()
     {
-        waterBarRef = GameObject.Find("Water Cup Bar").GetComponent<WaterCupBar>();
-        perfectZoneImg = transform.Find("Perfect Zone Image").GetComponent<RectTransform>();
         slider = GetComponent<Slider>();
         slider.value = 0;
+        perfectZoneImg = transform.Find("Perfect Zone Image").GetComponent<RectTransform>();
+        spaceIndicator = transform.Find("Indicator").GetComponent<Button>();
 
         // find the starting point of each zone to calc which zone the skill check handle lands on
+        sliderWidth = GetComponent<RectTransform>().sizeDelta.x;
         failZoneLength = sliderWidth * failZoneSize;
         perfectZoneLength = sliderWidth * perfectZoneSize;
 
@@ -49,31 +49,33 @@ public class WaterCheckBar : MonoBehaviour
     
     void Update()
     {
+        if (slider.value >= 0.5)
+            spaceIndicator.interactable = true;
+
         if (!stopPouring)
         {
-            // TODO change input name
-            if (Input.GetButton("Jump") || slider.value >= 1)
+            if ((slider.value >= 0.5 && Input.GetButton("Hit Water Check")) || slider.value >= 1)
             {
                 stopPouring = true;  // stops pouring water
 
-                if (slider.value >= (sliderWidth - failZoneLength) / sliderWidth)
-                    Debug.LogWarning("FAIL ZONE");
-                else if (slider.value >= (sliderWidth - failZoneLength - perfectZoneLength) / sliderWidth)
-                {
-                    Debug.LogWarning("PERFECT ZONE");
-                    waterBarRef.waterFilled();
-                }
-                    
-                else
+                float perfZoneStartPoint = sliderWidth - failZoneLength - perfectZoneLength;
+
+                if (slider.value < (perfZoneStartPoint / sliderWidth))
                 {
                     Debug.LogWarning("SUCCESS ZONE");
-                    waterBarRef.waterFilled();
+                }
+                else if (slider.value <= (perfZoneStartPoint + perfectZoneLength) / sliderWidth)
+                {
+                    Debug.LogWarning("PERFECT ZONE");
+                }
+                else
+                {
+                    Debug.LogWarning("FAIL ZONE");
                 }
                 
-
+                // indicate where they landed the water check before destroying
                 StartCoroutine(WaitBeforeDestroy());
             }
-
             else if (slider.value < 1)
                 slider.value += fillSpeed * Time.deltaTime;
         }

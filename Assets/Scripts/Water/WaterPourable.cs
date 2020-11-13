@@ -59,7 +59,6 @@ public class WaterPourable : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.LogWarning("HERE");
         if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking)
         {
             skillChecking = true;
