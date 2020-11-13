@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PourWater : MonoBehaviour
+public class WaterCheckBar : MonoBehaviour
 {
     [SerializeField]
     float fillSpeed = 0.5f;
