@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
     public Vector3 directionalInput { get; private set; }
     public bool jumpInput { get; private set; } // TODO: Remove. Testing instantaneous inputs.
+    public bool interactInput { get; private set; }
 
     void Update()
     {
@@ -15,9 +16,6 @@ public class PlayerInput : MonoBehaviour
         // JUMP
         jumpInput = Input.GetButtonDown("Jump");
 
-        if (Input.GetButtonDown("Interact"))
-        {
-            GetComponent<CheckNearbyInteraction>().NearbyObjects();
-        }
+        interactInput = Input.GetButtonDown("Interact");
     }
 }
