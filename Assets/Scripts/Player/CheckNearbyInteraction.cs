@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheckNearbyInteraction : MonoBehaviour
 {
     bool holdingObject = false;
-    GameObject currentObjectHold; //Reference to current object being hold
+    GameObject currentObjectHold; //Reference to current object being held
 
     void Update() 
     {
@@ -14,7 +14,6 @@ public class CheckNearbyInteraction : MonoBehaviour
         {
             NearbyObjects();
         }
-        
     }
 
     void NearbyObjects()
@@ -55,5 +54,11 @@ public class CheckNearbyInteraction : MonoBehaviour
             currentObjectHold = null;
         }
         
+    }
+
+    //Returns current object held
+    public GameObject getHeldObject()
+    {
+        return currentObjectHold;
     }
 }
