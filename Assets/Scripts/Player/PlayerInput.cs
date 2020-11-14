@@ -27,7 +27,7 @@ public class PlayerInput : MonoBehaviour
 
         // -------------------------- TODO: Move to another Pickup script --------------------------- //
 
-        if (Input.GetButtonDown("Interact"))
+        if (Input.GetButtonDown("PickDrop"))
         {
             if(holdingObject == false)
             {

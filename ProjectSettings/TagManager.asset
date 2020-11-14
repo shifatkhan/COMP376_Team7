@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Puddle
   - Mop
+  - Water Jug
   layers:
   - Default
   - TransparentFX

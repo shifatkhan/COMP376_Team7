@@ -15,7 +15,7 @@ public class WaterPourable : MonoBehaviour
     private GameObject canvasRef;
     private Transform skillCheckObj;
     private Transform waterCupBarObj;
-    private Slider slider;
+    private Slider waterCup;
 
     private bool skillChecking = false;
 
@@ -27,8 +27,8 @@ public class WaterPourable : MonoBehaviour
         waterCupBarObj = Instantiate(waterStatusPrefab, screenPos, Quaternion.identity);
         waterCupBarObj.SetParent(canvasRef.transform);
 
-        slider = waterCupBarObj.GetComponent<Slider>();
-        slider.value = 1f;
+        waterCup = waterCupBarObj.GetComponent<Slider>();
+        waterCup.value = 1f;
     }
 
     void Update()
@@ -47,24 +47,30 @@ public class WaterPourable : MonoBehaviour
         {
             waterCupBarObj.gameObject.SetActive(true);
 
-            if (slider.value > 0)
-                slider.value -= drainRate * Time.deltaTime;
+            if (waterCup.value > 0)
+                waterCup.value -= drainRate * Time.deltaTime;
         }
     }
 
     public void waterFilled()
     {
-        slider.value = 1f;
+        waterCup.value = 1f;
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking)
+        // TODO change compare tag when they make a new pickup script
+        bool holdingWaterJug = false;
+        var heldObject = other.GetComponent<PlayerInput>().currentObjectHold;
+        if (heldObject != null && heldObject.CompareTag("WaterJug"))
+            holdingWaterJug = true;
+
+        if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup.value <= 0.4f && holdingWaterJug)
         {
             skillChecking = true;
 
             Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-            skillCheckObj = Instantiate(waterCheckPrefab, screenPos, Quaternion.identity);
+            skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
             skillCheckObj.SetParent(canvasRef.transform);
         }
     }
