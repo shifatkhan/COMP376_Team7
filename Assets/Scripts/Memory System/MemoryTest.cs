@@ -23,7 +23,7 @@ public class MemoryTest : MonoBehaviour
     private void Start()
     {
         memory.Clear();
-        foodFactory = GameObject.Find("FoodFactory - Shifat").GetComponent<FoodFactory>();
+        //foodFactory = GameObject.Find("FoodFactory - Shifat").GetComponent<FoodFactory>();
     }
 
     private void Update()
