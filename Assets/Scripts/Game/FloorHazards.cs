@@ -15,12 +15,12 @@ public class FloorHazards : MonoBehaviour
     void SpawnPuddle()
     {
         //Spawn puddle at a random x, z location
-        float xRandom = Random.Range(-8, 8);
+        float xRandom = Random.Range(-8, 19);
         float y = 0.25f;
-        float zRandom = Random.Range(-4.7f, 1);
+        float zRandom = Random.Range(-15f, 1.5f);
         
-        Vector3 spawnPosition = new Vector3(xRandom, y, zRandom);
-        GameObject newPuddle = Instantiate(waterPuddle, spawnPosition, Quaternion.identity) as GameObject;
+        Vector3 spawnPosition = new Vector3(xRandom, y, zRandom); //Add code so that it does not spawn on top of chair, table, etc.
+        GameObject newPuddle = Instantiate(waterPuddle, spawnPosition, Quaternion.identity) as GameObject; 
         newPuddle.transform.Rotate(0, Random.Range(0, 360), 0, Space.World); //Random y rotation
     }
 }
