@@ -21,7 +21,7 @@ public class FloorHazards : MonoBehaviour
         float y;
         float zRandom;
         
-        //Repeat calculation of position until it is in a position that does not hold another object (floor, table, etc.). Spill should not be spawned on top of another object.
+        //Repeat calculation of spill position until it is in a position that does not hold another object (floor, table, etc.). Spill should not be spawned on top of another object.
         do
         {
             //Spawn puddle at a random x, z location

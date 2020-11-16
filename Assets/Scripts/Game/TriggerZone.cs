@@ -7,6 +7,20 @@ public class TriggerZone : MonoBehaviour
     Vector3 endPosition; //Position where player ends up after sliding
     float endPositionIncrement = 4;
 
+    ParticleSystem ps;
+    AudioSource mopAudio;
+    GameObject[] mop;
+
+    bool slidingEffect = true;
+
+    void Awake()
+    {
+        ps = GetComponentInChildren<ParticleSystem>(); //Bubble effect
+
+        mop = GameObject.FindGameObjectsWithTag("Mop");
+        mopAudio = mop[0].GetComponent<AudioSource>(); //Cleaning audio of mop
+    }
+
     void OnTriggerEnter(Collider col)
     {
         if(col.transform.tag == "Player")
@@ -16,20 +30,28 @@ public class TriggerZone : MonoBehaviour
             {
                 if(children.gameObject.tag == "Mop")
                 {
-                    //GetComponent<AudioSource>().Play();   //Sound effect of mopping
-                    //GetComponentInChildren<ParticleSystem>().Play();  //Show bubbly effect
+                    slidingEffect = false; //Cannot slide anymore
+
+                    //transform.GetChild(0).gameObject.SetActive(false); //Uncomment this if we want water spill to become invisible immediately as mop goes over it
+                    
+                    mopAudio.Play();   //Sound effect of mopping
+                    ps.Play();  //Show bubbly effect of spill
 
                     //Player cleans up spill if he is holding the mop
-                    Destroy(gameObject);
+                    Destroy(gameObject, 2);
                 }
             }
 
             //If Player is not holding mop, he will slide
-            endPosition = col.transform.position;
-            CalculateEndPosition(col.transform.gameObject); 
+            if(slidingEffect == true)
+            {
+                endPosition = col.transform.position;
+                CalculateEndPosition(col.transform.gameObject); 
 
-            //Sliding effect
-            StartCoroutine (MoveOverSeconds (col.transform.gameObject, endPosition, 1f)); //Moves over 1 second
+                //Sliding effect
+                StartCoroutine (MoveOverSeconds (col.transform.gameObject, endPosition, 1f)); //Moves over 1 second
+            }
+
 
         }
     }
