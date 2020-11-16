@@ -3,17 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Table : MonoBehaviour
+/// <summary>
+/// This Table class will be keeping track of a table's state and the loop.
+/// The loop consists of the TableState.
+/// 
+/// This script inherits from Interactable, which allows Player to interact on it.
+/// 
+/// @author: ShifatKhan, Nhut Vo
+/// </summary>
+public enum TableState
 {
-    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    Empty,
+    Occupied,
+    ReadyToOrder,
+    WaitingForFood,
+    Eating,
+    ReadyToPay
+}
+public class Table : Interactable
+{
+    [Header("Table info")]
     public int tableNumber;
-    public bool isOccupied;                    //If the table already has a group on it
 
-    public FoodSlot order;
-    public bool readyToOrder; // TODO: Change these booleans into an Enum state.
-    public bool waiting;
-    public bool eating;
-    public bool readyToPay;
+    public TableState tableState { get; private set; }
+
+    private FoodSlot order;
 
     public float pay;
     private GameObject foodOnTable;
@@ -23,9 +37,7 @@ public class Table : MonoBehaviour
 
     private FoodFactory foodFactory;
 
-    [SerializeField]
-    private bool canInteract = false;
-
+    [Header("Other")]
     [SerializeField]
     private MemoryData memory;
 
@@ -35,42 +47,45 @@ public class Table : MonoBehaviour
     [SerializeField]
     private Text score;
 
-    public void Start()
+    public override void Start()
     {
+        base.Start();
         transform.Find("Cube").gameObject.SetActive(false);
-        readyToOrder = false;
-        isOccupied = false;
-        foodFactory = GameObject.Find("FoodFactory - Shifat").GetComponent<FoodFactory>();
+
+        tableState = TableState.Empty;
+
+        foodFactory = GameObject.FindGameObjectWithTag("Food Factory").GetComponent<FoodFactory>();
 
         score = GameObject.Find("Score value").GetComponent<Text>();
     }
 
-    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    private void Update()
+    public override void Update()
     {
-        //gameObject.transform.GetChild(2).gameObject.SetActive(false);
-        if(Input.GetButtonDown("Fire1") && canInteract)
+        base.Update();
+    }
+
+    public override void OnInteract()
+    {
+        base.OnInteract();
+
+        if (tableState == TableState.ReadyToOrder)
         {
-            if (readyToOrder)
-            {
-                Waiting();
-            }
-            else if (readyToPay)
-            {
-                Pay();
-            }
+            Waiting();
+        }
+        else if (tableState == TableState.ReadyToPay)
+        {
+            Pay();
         }
     }
 
-    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    // Make table so it occupied
-    // As for the prototype, it just changed the color to red --> means O-C-C-U-P-I-E-D
     public void EnableCustomers()
     {
 
         //gameObject.transform.GetChild(2).gameObject.SetActive(true);
         transform.Find("Cube").gameObject.SetActive(true);
-        isOccupied = true;
+
+        tableState = TableState.Occupied;
+
         StartCoroutine(OrderFood(Random.Range(minOrderTime, maxOrderTime)));
     }
 
@@ -82,7 +97,7 @@ public class Table : MonoBehaviour
         order = new FoodSlot(foodFactory.GetRandomFood(), tableNumber);
         pay = order.price;
 
-        readyToOrder = true;
+        tableState = TableState.ReadyToOrder;
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.green;
     }
@@ -92,9 +107,11 @@ public class Table : MonoBehaviour
         // Add food to memory.
         if (!memory.AddFood(order))
             return;
+
         memoryEvent.Raise();
-        readyToOrder = false;
-        waiting = true;
+        
+        tableState = TableState.WaitingForFood;
+
         order = null;
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.yellow;
@@ -102,8 +119,7 @@ public class Table : MonoBehaviour
 
     public void Eating()
     {
-        waiting = false;
-        eating = true;
+        tableState = TableState.Eating;
 
         StartCoroutine(EatingCo(Random.Range(minOrderTime, maxOrderTime)));
 
@@ -116,17 +132,15 @@ public class Table : MonoBehaviour
 
         // Finished eating.
         Destroy(foodOnTable);
-        
-        eating = false;
-        readyToPay = true;
+
+        tableState = TableState.ReadyToPay;
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.white;
     }
 
     public void Pay()
     {
-        isOccupied = false;
-        readyToPay = false;
+        tableState = TableState.Empty;
 
         // TODO: Move score to a Game Master gameobject.
         score.text = (int.Parse(score.text) + pay).ToString();
@@ -135,18 +149,13 @@ public class Table : MonoBehaviour
         transform.Find("Cube").gameObject.SetActive(false);
     }
 
-    public void Seated()
+    public override void OnTriggerEnter(Collider other)
     {
-        transform.Find("Cube").gameObject.SetActive(false);
-    }
+        base.OnTriggerEnter(other);
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            canInteract = true;
-        }
-        else if (other.CompareTag("Mop")) // Mop is a temporary tag. It represents objects that can be picked up.
+        // TODO: Fix food pushing player off if it's not the correct food.
+
+        if (other.CompareTag("Food"))
         {
             // Check if a Food was placed on the table.
             Food food = other.GetComponent<Food>();
@@ -163,15 +172,6 @@ public class Table : MonoBehaviour
 
                 Eating();
             }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-
-        if (other.CompareTag("Player"))
-        {
-            canInteract = false;
         }
     }
 }
