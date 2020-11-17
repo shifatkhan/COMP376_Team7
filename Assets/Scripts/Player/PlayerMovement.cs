@@ -16,11 +16,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 3.5f;
     [SerializeField] private float turnSpeed = 50f;
 
-    private PlayerInput playerInput;
+    //private PlayerInput playerInput;
+    private PlayerInputManager playerInput;
 
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
+        //playerInput = GetComponent<PlayerInput>();
+        playerInput = PlayerInputManager.instance;
     }
 
     private void Update()
