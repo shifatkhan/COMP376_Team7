@@ -25,7 +25,7 @@ public class CameraMovement : MonoBehaviour
     {
         //Debug.Log(vcamFT.m_ScreenX);
         //Debug.Log(vcamFT.m_DeadZoneWidth);
-        Debug.Log(player[0].transform.position);
+        //Debug.Log(player[0].transform.position);
 
         //Within distance of left wall
         if(player[0].transform.position.x >=0.5f && player[0].transform.position.x<=12.4f)
