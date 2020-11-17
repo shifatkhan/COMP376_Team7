@@ -25,11 +25,6 @@ public class PourWater : MonoBehaviour
     private WaterCupBar waterBarRef;
 
     private bool stopPouring = false;
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> ba621dec287e7bbaa19dcee16fa69cb717a003d6
 
     void Start()
     {
