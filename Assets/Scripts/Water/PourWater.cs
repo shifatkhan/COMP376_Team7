@@ -50,11 +50,7 @@ public class PourWater : MonoBehaviour
         // TODO temporarily disable player movement
     }
 
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> ba621dec287e7bbaa19dcee16fa69cb717a003d6
     void Update()
     {
         if (!stopPouring)
@@ -71,21 +67,11 @@ public class PourWater : MonoBehaviour
                     Debug.LogWarning("PERFECT ZONE");
                     waterBarRef.waterFilled();
                 }
-<<<<<<< HEAD
-                    
-=======
-
->>>>>>> ba621dec287e7bbaa19dcee16fa69cb717a003d6
                 else
                 {
                     Debug.LogWarning("SUCCESS ZONE");
                     waterBarRef.waterFilled();
                 }
-<<<<<<< HEAD
-                
-=======
-
->>>>>>> ba621dec287e7bbaa19dcee16fa69cb717a003d6
 
                 StartCoroutine(WaitBeforeDestroy());
             }
