@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5333365639534383377}
   - component: {fileID: 332226910507204196}
   - component: {fileID: 4328967660652374956}
+  - component: {fileID: 9054400826987889588}
   m_Layer: 0
   m_Name: Long Couch
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9054400826987889588
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546695751489280560}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.6571198, y: 4.7891216, z: 3.5415363}
+  m_Center: {x: 0.0029847622, y: 2.4030466, z: 0.4113242}

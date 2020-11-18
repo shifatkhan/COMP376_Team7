@@ -19,15 +19,28 @@ public class PlayerMovement : MonoBehaviour
     //private PlayerInput playerInput;
     private PlayerInputManager playerInput;
 
+    Animator playerAnimator;
+
     void Start()
     {
-        //playerInput = GetComponent<PlayerInput>();
-        playerInput = PlayerInputManager.instance;
+        playerInput = GetComponent<PlayerInput>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         UpdateFaceDirection();
+
+        //Walking animation when player is walking
+        if(gameObject.GetComponent<PlayerInput>().directionalInput != Vector3.zero)
+        {
+            playerAnimator.SetBool("isWalking", true);
+        }
+        //Idle animation when player is not walking
+        else
+        {
+            playerAnimator.SetBool("isWalking", false);
+        }
     }
 
     private void FixedUpdate()

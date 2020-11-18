@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Puddle
   - Mop
+  - Water Jug
+  - Food Factory
+  - Food
   layers:
   - Default
   - TransparentFX

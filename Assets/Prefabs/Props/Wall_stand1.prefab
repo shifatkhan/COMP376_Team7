@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6267130266645662842}
   - component: {fileID: 4593986097589796320}
   - component: {fileID: 1551263992362798327}
+  - component: {fileID: -3068207028547113606}
   m_Layer: 0
   m_Name: Wall_stand1
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-3068207028547113606
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846121636762892211}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.6922948, y: 0.32772034, z: 1.5500903}
+  m_Center: {x: 0, y: 0, z: 0}
