@@ -12,6 +12,7 @@ public class WaterPourable : MonoBehaviour
     [SerializeField]
     float drainRate = 0.1f;
 
+    private PlayerInput playerInput;
     private GameObject canvasRef;
     private Transform skillCheckObj;
     private Transform waterCupBarObj;
@@ -22,6 +23,7 @@ public class WaterPourable : MonoBehaviour
     void Start()
     {
         canvasRef = GameObject.Find("Canvas - Game");
+        playerInput = GetComponent<PlayerInput>();
 
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
         waterCupBarObj = Instantiate(waterStatusPrefab, screenPos, Quaternion.identity);
@@ -39,9 +41,12 @@ public class WaterPourable : MonoBehaviour
         {
             waterCupBarObj.gameObject.SetActive(false);
 
+            // TODO temporarily disable player movement
+
             // enable water draining again if done skill check
             if (skillCheckObj == null)
                 skillChecking = false;
+                // TODO enable player movement again
         }
         else if (!skillChecking)
         {
@@ -59,10 +64,10 @@ public class WaterPourable : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup.value <= 0.4f)
+        if (playerInput.interactInput && other.CompareTag("Player") && !skillChecking && waterCup.value <= 0.5f)
         {
             // check if player is holding a water jug
-            if (other.gameObject.GetComponent<CheckNearbyInteraction>().getHeldObject().CompareTag("WaterJug"))
+            if (other.gameObject.GetComponent<CheckNearbyInteraction>().getHeldObject().CompareTag("Water Jug"))
             {
                 skillChecking = true;
 
