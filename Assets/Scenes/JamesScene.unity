@@ -1665,7 +1665,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c811d73b6bd20485d83314b348d6e180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOccupied: 0
+  interacted: 0
+  interactEvent: {fileID: 0}
+  tableNumber: 0
+  pay: 0
+  maxOrderTime: 20
+  minOrderTime: 5
+  memory: {fileID: 0}
+  memoryEvent: {fileID: 0}
+  score: {fileID: 0}
 --- !u!65 &1221223055
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1897,7 +1905,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c811d73b6bd20485d83314b348d6e180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOccupied: 0
+  interacted: 0
+  interactEvent: {fileID: 0}
+  tableNumber: 0
+  pay: 0
+  maxOrderTime: 20
+  minOrderTime: 5
+  memory: {fileID: 0}
+  memoryEvent: {fileID: 0}
+  score: {fileID: 0}
 --- !u!65 &1252447362
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1970,7 +1986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7986703078178927746, guid: 79b1d0720cbac504bafeebdf607034b6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.11
+      value: -4.19
       objectReference: {fileID: 0}
     - target: {fileID: 7986703078178927746, guid: 79b1d0720cbac504bafeebdf607034b6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2699,10 +2715,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe00d20fdcfab24e9358aae0edbb815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interacted: 0
+  interactEvent: {fileID: 0}
   prepSlots: []
   memory: {fileID: 11400000, guid: 1076c03143d9d71499bdfc0b85e94d68, type: 2}
-  foodsMemorized: []
-  canInteract: 0
 --- !u!65 &1659171428
 BoxCollider:
   m_ObjectHideFlags: 0
