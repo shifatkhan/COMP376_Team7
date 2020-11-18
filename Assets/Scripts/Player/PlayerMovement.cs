@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
+        playerInput = GetComponent<PlayerInputManager>();
         playerAnimator = GetComponent<Animator>();
     }
 
