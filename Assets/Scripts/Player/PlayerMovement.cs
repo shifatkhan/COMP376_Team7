@@ -17,30 +17,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSpeed = 50f;
 
     //private PlayerInput playerInput;
-    private PlayerInputManager playerInput;
-
+    private PlayerInput playerInput;
     Animator playerAnimator;
 
     void Start()
     {
-        playerInput = GetComponent<PlayerInputManager>();
+        playerInput = GetComponent<PlayerInput>();
         playerAnimator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         UpdateFaceDirection();
-
-        //Walking animation when player is walking
-        if(gameObject.GetComponent<PlayerInput>().directionalInput != Vector3.zero)
-        {
-            playerAnimator.SetBool("isWalking", true);
-        }
-        //Idle animation when player is not walking
-        else
-        {
-            playerAnimator.SetBool("isWalking", false);
-        }
     }
 
     private void FixedUpdate()
