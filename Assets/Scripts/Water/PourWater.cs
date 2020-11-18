@@ -25,7 +25,6 @@ public class PourWater : MonoBehaviour
     private WaterCupBar waterBarRef;
 
     private bool stopPouring = false;
-    
 
     void Start()
     {
@@ -46,7 +45,7 @@ public class PourWater : MonoBehaviour
         // TODO temporarily disable player movement
     }
 
-    
+
     void Update()
     {
         if (!stopPouring)
@@ -63,13 +62,11 @@ public class PourWater : MonoBehaviour
                     Debug.LogWarning("PERFECT ZONE");
                     waterBarRef.waterFilled();
                 }
-                    
                 else
                 {
                     Debug.LogWarning("SUCCESS ZONE");
                     waterBarRef.waterFilled();
                 }
-                
 
                 StartCoroutine(WaitBeforeDestroy());
             }
