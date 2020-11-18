@@ -59,19 +59,17 @@ public class WaterPourable : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        // TODO change compare tag when they make a new pickup script
-        bool holdingWaterJug = false;
-        var heldObject = other.GetComponent<PlayerInput>().currentObjectHold;
-        if (heldObject != null && heldObject.CompareTag("WaterJug"))
-            holdingWaterJug = true;
-
-        if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup.value <= 0.4f && holdingWaterJug)
+        if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup.value <= 0.4f)
         {
-            skillChecking = true;
+            // check if player is holding a water jug
+            if (other.gameObject.GetComponent<CheckNearbyInteraction>().getHeldObject().CompareTag("WaterJug"))
+            {
+                skillChecking = true;
 
-            Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-            skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
-            skillCheckObj.SetParent(canvasRef.transform);
+                Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+                skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
+                skillCheckObj.SetParent(canvasRef.transform);
+            }
         }
     }
 }

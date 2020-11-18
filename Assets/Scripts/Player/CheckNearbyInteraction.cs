@@ -6,11 +6,17 @@ public class CheckNearbyInteraction : MonoBehaviour
 {
     bool holdingObject = false;
     GameObject currentObjectHold; //Reference to current object being held
+    PlayerInput playerInput;
+
+    void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
 
     void Update() 
     {
         //If player presses 'f' to pick or drop object
-        if(GetComponent<PlayerInput>().interactInput == true)
+        if(playerInput.interactInput == true)
         {
             NearbyObjects();
         }
