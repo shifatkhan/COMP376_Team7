@@ -65,7 +65,6 @@ public class CheckNearbyInteraction : MonoBehaviour
     //Returns current object held
     public GameObject getHeldObject()
     {
-        Debug.LogWarning(currentObjectHold.tag);
         return currentObjectHold;
     }
 }
