@@ -29,10 +29,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         UpdateFaceDirection();
-    }
-
-    private void FixedUpdate()
-    {
         Move();
     }
 

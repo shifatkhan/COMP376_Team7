@@ -33,7 +33,7 @@ public class FloorHazards : MonoBehaviour
 
             objectHit = Physics.OverlapSphere(spawnPosition, 0.2f);
             //Debug.Log(objectHit.Length);
-        }while(objectHit.Length != 0);
+        }while(objectHit.Length > 1); //1 since we have a collider that confines the whole building, so objectHit.length will always be at least 1
 
         GameObject newPuddle = Instantiate(waterPuddle, spawnPosition, Quaternion.identity) as GameObject; 
         newPuddle.transform.Rotate(0, Random.Range(0, 360), 0, Space.World); //Random y rotation
