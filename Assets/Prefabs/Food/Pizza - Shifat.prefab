@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7051038060542556188}
   m_Layer: 11
   m_Name: Pizza - Shifat
-  m_TagString: Mop
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

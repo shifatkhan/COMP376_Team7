@@ -14,13 +14,28 @@ public class FloorHazards : MonoBehaviour
     }
     void SpawnPuddle()
     {
-        //Spawn puddle at a random x, z location
-        float xRandom = Random.Range(-8, 8);
-        float y = 0.25f;
-        float zRandom = Random.Range(-4.7f, 1);
+        Vector3 spawnPosition;
+        Collider[] objectHit;
+
+        float xRandom;
+        float y;
+        float zRandom;
         
-        Vector3 spawnPosition = new Vector3(xRandom, y, zRandom);
-        GameObject newPuddle = Instantiate(waterPuddle, spawnPosition, Quaternion.identity) as GameObject;
+        //Repeat calculation of spill position until it is in a position that does not hold another object (floor, table, etc.). Spill should not be spawned on top of another object.
+        do
+        {
+            //Spawn puddle at a random x, z location
+            xRandom = Random.Range(-9, 23);
+            y = 0.25f;
+            zRandom = Random.Range(-15f, 1.5f);
+   
+            spawnPosition = new Vector3(xRandom, y, zRandom); 
+
+            objectHit = Physics.OverlapSphere(spawnPosition, 0.2f);
+            //Debug.Log(objectHit.Length);
+        }while(objectHit.Length != 0);
+
+        GameObject newPuddle = Instantiate(waterPuddle, spawnPosition, Quaternion.identity) as GameObject; 
         newPuddle.transform.Rotate(0, Random.Range(0, 360), 0, Space.World); //Random y rotation
     }
 }

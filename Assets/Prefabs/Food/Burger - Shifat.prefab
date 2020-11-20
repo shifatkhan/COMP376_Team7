@@ -3510,7 +3510,7 @@ GameObject:
   - component: {fileID: 4039907490349534236}
   m_Layer: 11
   m_Name: Burger - Shifat
-  m_TagString: Mop
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3657,8 +3657,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.6602077, y: 2.5954893, z: 5.241404}
-  m_Center: {x: 0.2048105, y: 0.7977444, z: -0.16475558}
+  m_Size: {x: 5.6602077, y: 2.5954893, z: 3.6848092}
+  m_Center: {x: 0.2048105, y: 0.7977444, z: -0.9430531}
 --- !u!114 &4039907490349534236
 MonoBehaviour:
   m_ObjectHideFlags: 0

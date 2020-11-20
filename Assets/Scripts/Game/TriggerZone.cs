@@ -7,15 +7,52 @@ public class TriggerZone : MonoBehaviour
     Vector3 endPosition; //Position where player ends up after sliding
     float endPositionIncrement = 4;
 
+    ParticleSystem ps;
+    AudioSource mopAudio;
+    GameObject[] mop;
+
+    bool slidingEffect = true;
+
+    void Awake()
+    {
+        ps = GetComponentInChildren<ParticleSystem>(); //Bubble effect
+
+        mop = GameObject.FindGameObjectsWithTag("Mop");
+        mopAudio = mop[0].GetComponent<AudioSource>(); //Cleaning audio of mop
+    }
+
     void OnTriggerEnter(Collider col)
     {
         if(col.transform.tag == "Player")
-        {         
-            endPosition = col.transform.position;
-            CalculateEndPosition(col.transform.gameObject); 
+        {   
+            //Check if player is holding a mop (should be a child object of PickupObject)      
+            foreach(Transform children in col.transform.Find("PickupObject"))
+            {
+                if(children.gameObject.tag == "Mop")
+                {
+                    slidingEffect = false; //Cannot slide anymore
 
-            //Sliding effect
-            StartCoroutine (MoveOverSeconds (col.transform.gameObject, endPosition, 1f)); //Moves over 1 second
+                    //transform.GetChild(0).gameObject.SetActive(false); //Uncomment this if we want water spill to become invisible immediately as mop goes over it
+                    
+                    mopAudio.Play();   //Sound effect of mopping
+                    ps.Play();  //Show bubbly effect of spill
+
+                    //Player cleans up spill if he is holding the mop
+                    Destroy(gameObject, 2);
+                }
+            }
+
+            //If Player is not holding mop, he will slide
+            if(slidingEffect == true)
+            {
+                endPosition = col.transform.position;
+                CalculateEndPosition(col.transform.gameObject); 
+
+                //Sliding effect
+                StartCoroutine (MoveOverSeconds (col.transform.gameObject, endPosition, 1f)); //Moves over 1 second
+            }
+
+
         }
     }
     

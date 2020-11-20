@@ -17,12 +17,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSpeed = 50f;
 
     //private PlayerInput playerInput;
-    private PlayerInputManager playerInput;
+    private PlayerInput playerInput;
+    Animator playerAnimator;
 
     void Start()
     {
-        //playerInput = GetComponent<PlayerInput>();
-        playerInput = PlayerInputManager.instance;
+        playerInput = GetComponent<PlayerInput>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     private void Update()

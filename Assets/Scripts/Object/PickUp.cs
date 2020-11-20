@@ -5,20 +5,24 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public Transform objectPosition;
+    Rigidbody objectRigidBody;
+    BoxCollider objectBoxCollider;
 
     private void Awake()
     {
         objectPosition = GameObject.FindGameObjectWithTag("Player").transform.Find("PickupObject").transform;
+        objectRigidBody = GetComponent<Rigidbody>();
+        objectBoxCollider = GetComponent<BoxCollider>();
     }
 
     public void PickObjectUp()
     {
-        GetComponent<BoxCollider>().enabled = false;
-        GetComponent<Rigidbody>().useGravity = false; //No gravity on object when holding it
+        objectBoxCollider.enabled = false;
+        objectRigidBody.useGravity = false; //No gravity on object when holding it
 
         //Free rotation and position, so it stops moving when picked
-        GetComponent<Rigidbody>().freezeRotation = true; 
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        objectRigidBody.freezeRotation = true; 
+        objectRigidBody.constraints = RigidbodyConstraints.FreezePosition;
         
         this.transform.position = objectPosition.position;
         this.transform.parent = objectPosition;
@@ -29,9 +33,9 @@ public class PickUp : MonoBehaviour
     public void PlaceObjectDown()
     {
         this.transform.parent = null;
-        GetComponent<BoxCollider>().enabled = true;
-        GetComponent<Rigidbody>().useGravity = true;
-        GetComponent<Rigidbody>().freezeRotation = false; 
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        objectBoxCollider.enabled = true;
+        objectRigidBody.useGravity = true;
+        objectRigidBody.freezeRotation = false; 
+        objectRigidBody.constraints = RigidbodyConstraints.None;
     }
 }

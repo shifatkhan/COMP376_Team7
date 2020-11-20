@@ -9,7 +9,7 @@ using UnityEngine;
 /// 
 /// @author ShifatKhan
 /// </summary>
-public class PrepTable : MonoBehaviour
+public class PrepTable : Interactable
 {
     [SerializeField]
     private List<Transform> prepSlots;
@@ -20,30 +20,32 @@ public class PrepTable : MonoBehaviour
     [SerializeField]
     private Queue<FoodSlot> foodQueue = new Queue<FoodSlot>();
 
-    [SerializeField]
-    private bool canInteract = false; // Checks if player is in range.
-
     void Awake()
     {
         prepSlots = new List<Transform>();
     }
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
+
         foreach (Transform child in transform)
         {
             prepSlots.Add(child);
         }
     }
 
-    void Update()
+    public override void Update()
     {
-        if (Input.GetButtonDown("Fire3") && canInteract)
-        {
-            QueueFoods();
-        }
-
+        base.Update();
         CheckForFreeSlots();
+    }
+
+    public override void OnInteract()
+    {
+        base.OnInteract();
+
+        QueueFoods();
     }
 
     private void QueueFoods()
@@ -101,23 +103,6 @@ public class PrepTable : MonoBehaviour
             {
                 current.PrepFood(foodQueue.Dequeue());
             }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            canInteract = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-
-        if (other.CompareTag("Player"))
-        {
-            canInteract = false;
         }
     }
 }
