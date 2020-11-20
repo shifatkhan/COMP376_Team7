@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7827079587801594607}
   m_Layer: 0
   m_Name: Nick's AI_Agent
-  m_TagString: Untagged
+  m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,3 +131,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208fd51ea48e3544db57b0e6a49d192d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tableNumber: 0

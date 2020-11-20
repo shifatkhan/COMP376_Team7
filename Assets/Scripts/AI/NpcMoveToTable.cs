@@ -5,7 +5,7 @@ using UnityEngine;
 public class NpcMoveToTable : MonoBehaviour
 {
 
-    int tableNumber;
+    public int tableNumber;
     UnityEngine.AI.NavMeshAgent agent;
 
     // Start is called before the first frame update
@@ -23,8 +23,8 @@ public class NpcMoveToTable : MonoBehaviour
 
     void SetAgentTableDestination()
     {
-        GameObject[] tables = GameObject.FindGameObjectsWithTag("Table");
-        tableNumber = Random.Range(0, tables.Length - 1);
+        Table[] tables = GameObject.Find("TableManager").GetComponent<TableManager>().tables;
+        tableNumber = Random.Range(0, tables.Length);
         agent.destination = tables[tableNumber].transform.position;
     }
 }

@@ -692,6 +692,18 @@ PrefabInstance:
       propertyPath: minOrderTime
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.data[0]
+      value: 
+      objectReference: {fileID: 677265145}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.data[1]
+      value: 
+      objectReference: {fileID: 677265144}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.data[2]
+      value: 
+      objectReference: {fileID: 677265143}
     - target: {fileID: 2924878476410849179, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -746,6 +758,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+--- !u!1 &677265143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 507800804819255801, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+  m_PrefabInstance: {fileID: 677265142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &677265144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7419818793803812106, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+  m_PrefabInstance: {fileID: 677265142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &677265145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6727505251111214459, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+  m_PrefabInstance: {fileID: 677265142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &756754697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,6 +1723,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
       propertyPath: maxOrderTime
       value: 20
       objectReference: {fileID: 0}
@@ -1860,6 +1891,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
       propertyPath: maxOrderTime
       value: 20
       objectReference: {fileID: 0}
@@ -1867,6 +1902,18 @@ PrefabInstance:
       propertyPath: minOrderTime
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1137109134}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1137109133}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1137109132}
     - target: {fileID: 2924878476410849179, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1921,6 +1968,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+--- !u!1 &1137109132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 507800804819255801, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+  m_PrefabInstance: {fileID: 1137109131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1137109133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7419818793803812106, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+  m_PrefabInstance: {fileID: 1137109131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1137109134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6727505251111214459, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+  m_PrefabInstance: {fileID: 1137109131}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1142132619 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
@@ -1971,6 +2033,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
       propertyPath: maxOrderTime
       value: 20
       objectReference: {fileID: 0}
@@ -1978,6 +2044,18 @@ PrefabInstance:
       propertyPath: minOrderTime
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1286158144}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1286158143}
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1286158142}
     - target: {fileID: 2924878476410849179, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2032,6 +2110,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+--- !u!1 &1286158142 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 507800804819255801, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+  m_PrefabInstance: {fileID: 1286158141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1286158143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7419818793803812106, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+  m_PrefabInstance: {fileID: 1286158141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1286158144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6727505251111214459, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+  m_PrefabInstance: {fileID: 1286158141}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1342770653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2391,6 +2484,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
+      propertyPath: chairs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2924878476410849176, guid: d968bbcc14688fc4cb7bf11b20929f80, type: 3}
       propertyPath: maxOrderTime
       value: 20
