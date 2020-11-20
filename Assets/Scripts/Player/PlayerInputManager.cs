@@ -7,8 +7,7 @@ public class PlayerInputManager : MonoBehaviour
     public Vector3 directionalInput { get; private set; }
     public bool jumpInput { get; private set; } // TODO: Remove. Testing instantaneous inputs.
     public bool interactInput { get; private set; } = false;
-    GameObject currentObjectHold; //Reference to current object being hold
-
+  
     // Singleton Pattern
     public static PlayerInputManager instance;
 
