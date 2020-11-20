@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator SlipCo()
     {
         slipping = true;
+        AudioManager.PlayPlayerSlip();
 
         yield return new WaitForSeconds(slipDuration);
 
