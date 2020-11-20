@@ -380,6 +380,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillSpeed: 0.5
+  sfx:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   perfectZoneSize: 0.1
   failZoneSize: 0.05
 --- !u!1 &7842780114277696763

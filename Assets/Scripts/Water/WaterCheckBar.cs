@@ -42,8 +42,6 @@ public class WaterCheckBar : MonoBehaviour
         float perfectZoneCenter = sliderWidth - failZoneLength - (perfectZoneLength / 2);
         perfectZoneImg.anchoredPosition = new Vector2(perfectZoneCenter, 0);
         perfectZoneImg.sizeDelta = new Vector2(perfectZoneLength, 22f);
-
-        
     }
 
 
@@ -64,17 +62,20 @@ public class WaterCheckBar : MonoBehaviour
                 {
                     Debug.LogWarning("SUCCESS ZONE");
                     tableBeingPoured.waterFilled();
+                    AudioManager.PlayWaterCheckSuccess();
                 }
                 else if (slider.value <= (perfZoneStartPoint + perfectZoneLength) / sliderWidth)
                 {
                     Debug.LogWarning("PERFECT ZONE");
                     tableBeingPoured.waterFilled();
+                    AudioManager.PlayWaterCheckPerfect();
                     // TODO add to tip bonus
                 }
                 else
                 {
                     Debug.LogWarning("FAIL ZONE");
                     tableBeingPoured.waterFilled();
+                    AudioManager.PlayWaterCheckFail();
                     // TODO remove tip bonus
                 }
                 
