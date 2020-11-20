@@ -19,14 +19,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float slipDuration = 3f;
 
     //private PlayerInput playerInput;
-    private PlayerInput playerInput;
+
     private Rigidbody rb;
+    private PlayerInputManager playerInput;
     Animator playerAnimator;
 
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
+        //playerInput = GetComponent<PlayerInput>();
+        playerInput = PlayerInputManager.instance;
         playerAnimator = GetComponent<Animator>();
     }
 

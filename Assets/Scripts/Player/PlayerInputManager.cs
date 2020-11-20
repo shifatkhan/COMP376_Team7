@@ -7,6 +7,7 @@ public class PlayerInputManager : MonoBehaviour
     public Vector3 directionalInput { get; private set; }
     public bool jumpInput { get; private set; } // TODO: Remove. Testing instantaneous inputs.
     public bool interactInput { get; private set; } = false;
+
     public bool pickDropInput { get; private set; } = false;
     
     // Singleton Pattern
@@ -30,7 +31,7 @@ public class PlayerInputManager : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+
     void Update()
     {
         // MOVE - remove 'normalized' for analog movements.
@@ -41,4 +42,5 @@ public class PlayerInputManager : MonoBehaviour
         interactInput = Input.GetButtonDown("Interact");
         pickDropInput = Input.GetButtonDown("PickDrop");
     }
-}
+ }
+

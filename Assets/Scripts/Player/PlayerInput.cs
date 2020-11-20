@@ -17,6 +17,7 @@ public class PlayerInput : MonoBehaviour
         // JUMP
         jumpInput = Input.GetButtonDown("Jump");
 
+        // INTERACT (with tables etc)
         interactInput = Input.GetButtonDown("Interact");
 
         pickDropInput = Input.GetButtonDown("PickDrop");
