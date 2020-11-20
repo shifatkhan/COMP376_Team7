@@ -16,7 +16,7 @@ public class CheckNearbyInteraction : MonoBehaviour
     void Update() 
     {
         //If player presses 'f' to pick or drop object
-        if(playerInput.interactInput == true)
+        if(playerInput.pickDropInput == true)
         {
             NearbyObjects();
         }
