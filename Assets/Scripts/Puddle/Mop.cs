@@ -6,6 +6,8 @@ public class Mop : MonoBehaviour
 {
     private AudioSource audioSource;
 
+    [SerializeField] private GameObject cleaningPrefab;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -19,6 +21,7 @@ public class Mop : MonoBehaviour
             //      Also, instead of waiting 2 seconds before destroying, instantiate a particle onDestroy.
             Destroy(other.gameObject);
             audioSource.Play();
+            Instantiate(cleaningPrefab, transform.position, transform.rotation);
         }
     }
 }

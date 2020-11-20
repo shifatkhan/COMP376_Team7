@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: Delete this file.
 [System.Obsolete("This class won't be used anymore. It's going to be replaced by Mop.cs", true)]
 public class TriggerZone : MonoBehaviour
 {
