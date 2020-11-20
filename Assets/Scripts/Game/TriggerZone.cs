@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete("This class won't be used anymore. It's going to be replaced by Mop.cs", true)]
 public class TriggerZone : MonoBehaviour
 {
     Vector3 endPosition; //Position where player ends up after sliding

@@ -13,23 +13,42 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Player stats")]// TODO: Replace this with a ScriptableObject.
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 3.5f;
     [SerializeField] private float turnSpeed = 50f;
+
+    [SerializeField] private bool slipping = false;
+    [SerializeField] private float slipDuration = 3f;
 
     //private PlayerInput playerInput;
     private PlayerInput playerInput;
+    private Rigidbody rb;
     Animator playerAnimator;
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        rb = GetComponent<Rigidbody>();
+        playerAnimator = GetComponent<Animator>();
+    }
 
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        playerAnimator = GetComponent<Animator>();
+        //playerInput = GetComponent<PlayerInput>();
+        //rb = GetComponent<Rigidbody>();
+        //playerAnimator = GetComponent<Animator>();
+
+        slipping = false;
     }
 
     private void Update()
     {
-        UpdateFaceDirection();
+        //UpdateFaceDirection();
+        //Move();
+    }
+
+    private void FixedUpdate()
+    {
         Move();
+        UpdateFaceDirection();
     }
 
     /// <summary>
@@ -37,11 +56,16 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        // Add move speed.
-        Vector3 movement = playerInput.directionalInput * moveSpeed;
-
-        // Move.
-        transform.Translate(movement * Time.deltaTime, Space.World);
+        if (!slipping)
+        {
+            // Move player by explicitly changing its velocity.
+            rb.velocity = playerInput.directionalInput * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            // Move player using forces so it slips like ice.
+            rb.AddForce(playerInput.directionalInput * moveSpeed * Time.deltaTime);
+        }
     }
 
     /// <summary>
@@ -52,6 +76,23 @@ public class PlayerMovement : MonoBehaviour
         if (playerInput.directionalInput.magnitude >= 0.1f)
         {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(playerInput.directionalInput), turnSpeed * Time.deltaTime);
+        }
+    }
+
+    private IEnumerator SlipCo()
+    {
+        slipping = true;
+
+        yield return new WaitForSeconds(slipDuration);
+
+        slipping = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Puddle"))
+        {
+            StartCoroutine(SlipCo());
         }
     }
 }

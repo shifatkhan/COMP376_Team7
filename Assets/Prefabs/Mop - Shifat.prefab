@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 3104089207090791931}
   - component: {fileID: 4382676514658318583}
   - component: {fileID: 4382676514658318580}
+  - component: {fileID: 5650106567238755764}
   - component: {fileID: 4382676514658318577}
   - component: {fileID: 4382676514658318581}
+  - component: {fileID: 2899259432438844925}
   m_Layer: 11
   m_Name: Mop - Shifat
   m_TagString: Mop
@@ -29,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3464126558181712942}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.2395496, y: 0.2731702, z: -2.0640645}
   m_LocalScale: {x: 1.72, y: 1.36, z: 1}
   m_Children: []
@@ -114,6 +116,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.54684293, y: 1.7084743, z: 0.044482503}
   m_Center: {x: -0.00048159063, y: 0.8372002, z: 0}
+--- !u!65 &5650106567238755764
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464126558181712942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7181583, y: 0.8458415, z: 0.044482503}
+  m_Center: {x: 0.0002611515, y: -0.13937792, z: 0}
 --- !u!82 &4382676514658318577
 AudioSource:
   m_ObjectHideFlags: 0
@@ -170,7 +185,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -223,3 +238,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPosition: {fileID: 0}
+--- !u!114 &2899259432438844925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464126558181712942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42073ff54ab3f34cba8756b7d87d360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

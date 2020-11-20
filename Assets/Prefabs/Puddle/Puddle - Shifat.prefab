@@ -92,8 +92,9 @@ GameObject:
   - component: {fileID: 474433904681291964}
   - component: {fileID: 999332597917960709}
   - component: {fileID: 6822395782638941349}
+  - component: {fileID: 7596096002770698274}
   m_Layer: 0
-  m_Name: water - Shifat
+  m_Name: Puddle - Shifat
   m_TagString: Puddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999332597917960710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.25775, y: 0.25000048, z: -4.6406054}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.05, y: 0.1, z: 0.05}
   m_Children:
   - {fileID: 4302112400102625670}
@@ -218,12 +219,25 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999332597917960710}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4ffefcc49ba20b84a86844a0a6069d67, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 94.83818, y: 1, z: 84.36261}
-  m_Center: {x: -0.6664276, y: 0, z: 10.645194}
+  m_Size: {x: 30.367346, y: 1, z: 24.633522}
+  m_Center: {x: -0.8653879, y: 0, z: 8.33353}
+--- !u!114 &7596096002770698274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999332597917960710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d624fca6c59f4d9448e9601c20367180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToSpawn: {fileID: 5852269672373090152, guid: 8d345a6ee8b028c4aa9c225ed56584a2, type: 3}
 --- !u!1001 &8314035942519304841
 PrefabInstance:
   m_ObjectHideFlags: 0
