@@ -4955,38 +4955,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
-      propertyPath: waterCheckFailClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 2c331e503ada6af408f0bfcfc2d4b21c, type: 3}
-    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
-      propertyPath: waterCheckSuccessClip
-      value: 
-      objectReference: {fileID: 8300000, guid: e868c41d7d890c345ba2cbeb37c078b8, type: 3}
-    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
-      propertyPath: waterCheckPerfectClip
-      value: 
-      objectReference: {fileID: 8300000, guid: a96a854c1c23ac347bff68ff7dbc198a, type: 3}
-    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
-      propertyPath: menuClickClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 130fec3f29dfd6d4788ba443f11e661c, type: 3}
-    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
-      propertyPath: musicGroup
-      value: 
-      objectReference: {fileID: -4414341336658451301, guid: 358728edc25fa964694fde7cbf4786ec, type: 2}
-    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
-      propertyPath: sfxGroup
-      value: 
-      objectReference: {fileID: 1937919286969800881, guid: 358728edc25fa964694fde7cbf4786ec, type: 2}
-    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
-      propertyPath: playerGroup
-      value: 
-      objectReference: {fileID: -7695510877192483359, guid: 358728edc25fa964694fde7cbf4786ec, type: 2}
-    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
-      propertyPath: voiceGroup
-      value: 
-      objectReference: {fileID: -8544763352455526516, guid: 358728edc25fa964694fde7cbf4786ec, type: 2}
     - target: {fileID: 7326747575624417350, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
       propertyPath: m_Name
       value: Audio Manager
