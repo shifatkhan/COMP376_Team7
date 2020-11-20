@@ -10,6 +10,11 @@ public class CheckNearbyInteraction : MonoBehaviour
 
     void Awake()
     {
+        //playerInput = PlayerInputManager.instance;
+    }
+
+    private void Start()
+    {
         playerInput = PlayerInputManager.instance;
     }
 

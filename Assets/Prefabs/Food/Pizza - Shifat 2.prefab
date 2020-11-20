@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -664402187574058668}
   - component: {fileID: -7051038060542556188}
   m_Layer: 11
-  m_Name: Pizza - Shifat
+  m_Name: Pizza - Shifat 2
   m_TagString: Mop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,8 +62,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 17.654806, y: 14.108015, z: 4.023123}
-  m_Center: {x: -0.12600422, y: -0.039380047, z: 1.5115623}
+  m_Size: {x: 15.0630865, y: 3.162878, z: 15.16264}
+  m_Center: {x: 0.3218785, y: 1.6541828, z: -0.24494454}
 --- !u!114 &-7051038060542556188
 MonoBehaviour:
   m_ObjectHideFlags: 0
