@@ -4334,7 +4334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterStatusPrefab: {fileID: 5842412367512952488, guid: 58082f6a9bd7fe54d9a912651f0b21e2, type: 3}
   waterCheckPrefab: {fileID: 7842780114100664482, guid: 9c5012aa9c64dce48be54afd9b486561, type: 3}
-  drainRate: 0.1
+  drainRate: 0.05
 --- !u!1001 &1719618884
 PrefabInstance:
   m_ObjectHideFlags: 0
