@@ -37,6 +37,10 @@ public class Table : Interactable
 
     private FoodFactory foodFactory;
 
+    [SerializeField]
+    public GameObject[] chairs;
+    public bool[] occupiedChairs { get; private set; }
+
     [Header("Other")]
     [SerializeField]
     private MemoryData memory;
@@ -50,6 +54,9 @@ public class Table : Interactable
     public override void Start()
     {
         base.Start();
+
+        occupiedChairs = new bool[chairs.Length];
+
         transform.Find("Cube").gameObject.SetActive(false);
 
         tableState = TableState.Empty;
@@ -80,8 +87,6 @@ public class Table : Interactable
 
     public void EnableCustomers()
     {
-
-        //gameObject.transform.GetChild(2).gameObject.SetActive(true);
         transform.Find("Cube").gameObject.SetActive(true);
 
         tableState = TableState.Occupied;
@@ -171,6 +176,22 @@ public class Table : Interactable
                 foodOnTable = other.gameObject;
 
                 Eating();
+            }
+        }
+        else if (other.tag == "Customer")
+        {
+            if (other.GetComponent<NpcMoveToTable>().tableNumber == this.tableNumber)
+            {
+                for (int i = 0; i < occupiedChairs.Length; i++)
+                {
+                    if (!occupiedChairs[i])
+                    {
+                        other.transform.position = chairs[i].transform.position;
+                        occupiedChairs[i] = true;
+                        this.EnableCustomers();
+                        break;
+                    }
+                }
             }
         }
     }
