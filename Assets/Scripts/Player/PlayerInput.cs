@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
     public Vector3 directionalInput { get; private set; }
     public bool jumpInput { get; private set; } // TODO: Remove. Testing instantaneous inputs.
     public bool interactInput { get; private set; } = false;
+    public bool pickDropInput { get; private set; } = false;
 
     void Update()
     {
@@ -16,6 +17,9 @@ public class PlayerInput : MonoBehaviour
         // JUMP
         jumpInput = Input.GetButtonDown("Jump");
 
+        // INTERACT (with tables etc)
         interactInput = Input.GetButtonDown("Interact");
+
+        pickDropInput = Input.GetButtonDown("PickDrop");
     }
 }

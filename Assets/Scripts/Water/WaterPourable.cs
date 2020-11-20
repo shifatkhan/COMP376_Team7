@@ -10,7 +10,7 @@ public class WaterPourable : MonoBehaviour
     [SerializeField]
     Transform waterCheckPrefab;
     [SerializeField]
-    float drainRate = 0.1f;
+    float drainRate = 0.05f;
 
     private GameObject canvasRef;
     private Transform skillCheckObj;
@@ -39,16 +39,36 @@ public class WaterPourable : MonoBehaviour
         {
             waterCupBarObj.gameObject.SetActive(false);
 
+            // TODO temporarily disable player movement
+
             // enable water draining again if done skill check
             if (skillCheckObj == null)
                 skillChecking = false;
+                // TODO enable player movement again
         }
         else if (!skillChecking)
         {
             waterCupBarObj.gameObject.SetActive(true);
 
             if (waterCup.value > 0)
-                waterCup.value -= drainRate * Time.deltaTime;
+                waterCup.value -= (drainRate * 0.1f) * Time.deltaTime;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup.value <= 0.5f)
+        {
+            // check if player is holding a water jug
+            if (other.gameObject.GetComponent<CheckNearbyInteraction>().getHeldObject().CompareTag("Water Jug"))
+            {
+                skillChecking = true;
+
+                Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+                skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
+                skillCheckObj.SetParent(canvasRef.transform);
+                skillCheckObj.GetComponent<WaterCheckBar>().setTablePoured(this);
+            }
         }
     }
 
@@ -57,19 +77,18 @@ public class WaterPourable : MonoBehaviour
         waterCup.value = 1f;
     }
 
-    void OnTriggerStay(Collider other)
+    public void drinkSpeedEasy()
     {
-        if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup.value <= 0.4f)
-        {
-            // check if player is holding a water jug
-            if (other.gameObject.GetComponent<CheckNearbyInteraction>().getHeldObject().CompareTag("WaterJug"))
-            {
-                skillChecking = true;
+        drainRate = 0.02f;
+    }
 
-                Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-                skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
-                skillCheckObj.SetParent(canvasRef.transform);
-            }
-        }
+    public void drinkSpeedMedium()
+    {
+        drainRate = 0.04f;
+    }
+
+    public void drinkSpeedHard()
+    {
+        drainRate = 0.1f;
     }
 }
