@@ -9,7 +9,10 @@ public class PlayerInputManager : MonoBehaviour
     public bool interactInput { get; private set; } = false;
 
     public bool pickDropInput { get; private set; } = false;
-    
+
+    public bool throwHold { get; private set; } = false;
+    public bool throwRelease { get; private set; } = false;
+
     // Singleton Pattern
     public static PlayerInputManager instance;
 
@@ -41,6 +44,9 @@ public class PlayerInputManager : MonoBehaviour
         jumpInput = Input.GetButtonDown("Jump");
         interactInput = Input.GetButtonDown("Interact");
         pickDropInput = Input.GetButtonDown("PickDrop");
+
+        throwHold = Input.GetButtonDown("ThrowHold");
+        throwRelease = Input.GetButtonDown("ThrowRelease");
     }
  }
 
