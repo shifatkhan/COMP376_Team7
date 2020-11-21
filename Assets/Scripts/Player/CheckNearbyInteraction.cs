@@ -6,11 +6,16 @@ public class CheckNearbyInteraction : MonoBehaviour
 {
     bool holdingObject = false;
     GameObject currentObjectHold; //Reference to current object being held
-    PlayerInput playerInput;
+    PlayerInputManager playerInput;
 
     void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
+        //playerInput = PlayerInputManager.instance;
+    }
+
+    private void Start()
+    {
+        playerInput = PlayerInputManager.instance;
     }
 
     void Update() 

@@ -5,14 +5,14 @@ using UnityEngine;
 public class NpcMoveToTable : MonoBehaviour
 {
 
-    int tableNumber;
+    public int tableNumber;
     UnityEngine.AI.NavMeshAgent agent;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        SetAgentTableDestination();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        //SetAgentTableDestination();
     }
 
     // Update is called once per frame
@@ -21,10 +21,20 @@ public class NpcMoveToTable : MonoBehaviour
         
     }
 
+    public void DisableAIMovement()
+    {
+        agent.enabled = false;
+    }
+
+    public void SetTableNumber(int tableNumber)
+    {
+        this.tableNumber = tableNumber;
+        SetAgentTableDestination();
+    }
+
     void SetAgentTableDestination()
     {
-        GameObject[] tables = GameObject.FindGameObjectsWithTag("Table");
-        tableNumber = Random.Range(0, tables.Length - 1);
+        Table[] tables = GameObject.Find("TableManager").GetComponent<TableManager>().tables;
         agent.destination = tables[tableNumber].transform.position;
     }
 }
