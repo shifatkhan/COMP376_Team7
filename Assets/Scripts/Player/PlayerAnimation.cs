@@ -8,7 +8,7 @@ public class PlayerAnimation : MonoBehaviour
     private PlayerInputManager playerInput;
 
     Animator playerAnimator;
-    void Awake()
+    void Start()
     {
         //playerInput = GetComponent<PlayerInput>();
         playerInput = PlayerInputManager.instance;

@@ -9,10 +9,10 @@ public class NpcMoveToTable : MonoBehaviour
     UnityEngine.AI.NavMeshAgent agent;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        SetAgentTableDestination();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        //SetAgentTableDestination();
     }
 
     // Update is called once per frame
@@ -21,10 +21,20 @@ public class NpcMoveToTable : MonoBehaviour
         
     }
 
+    public void DisableAIMovement()
+    {
+        agent.enabled = false;
+    }
+
+    public void SetTableNumber(int tableNumber)
+    {
+        this.tableNumber = tableNumber;
+        SetAgentTableDestination();
+    }
+
     void SetAgentTableDestination()
     {
         Table[] tables = GameObject.Find("TableManager").GetComponent<TableManager>().tables;
-        tableNumber = Random.Range(0, tables.Length);
         agent.destination = tables[tableNumber].transform.position;
     }
 }

@@ -8,7 +8,6 @@ using UnityEngine;
 /// @author ShifatKhan
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(PlayerInput))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player stats")]// TODO: Replace this with a ScriptableObject.
@@ -28,12 +27,13 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         //playerInput = GetComponent<PlayerInput>();
-        playerInput = PlayerInputManager.instance;
+        //playerInput = PlayerInputManager.instance;
         playerAnimator = GetComponent<Animator>();
     }
 
     void Start()
     {
+        playerInput = PlayerInputManager.instance;
         //playerInput = GetComponent<PlayerInput>();
         //rb = GetComponent<Rigidbody>();
         //playerAnimator = GetComponent<Animator>();
@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator SlipCo()
     {
         slipping = true;
+        AudioManager.PlayPlayerSlip();
 
         yield return new WaitForSeconds(slipDuration);
 
