@@ -23,25 +23,25 @@ public class TableManager : MonoBehaviour
         // Assign a table number to each table.
         for (int i = 0; i < tables.Length; i++)
         {
-            tables[i].tableNumber = i + 1;
+            tables[i].tableNumber = i;
         }
     }
 
     void Update()
     {
         
-        // Check if we should spawn.
-        if (Time.time > spawnTime)
-        {
-            spawnTime += spawnRate;
+        //// Check if we should spawn.
+        //if (Time.time > spawnTime)
+        //{
+        //    spawnTime += spawnRate;
 
-            int i = Random.Range(0, tables.Length);
-            // Check if table is occupied
-            if (tables[i].tableState == TableState.Empty)
-            {
-                tables[i].EnableCustomers();
-            }
-        }
+        //    int i = Random.Range(0, tables.Length);
+        //    // Check if table is occupied
+        //    if (tables[i].tableState == TableState.Empty)
+        //    {
+        //        tables[i].EnableCustomers();
+        //    }
+        //}
     }
 }
 

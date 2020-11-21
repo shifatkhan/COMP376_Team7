@@ -13,7 +13,7 @@ using UnityEngine.UI;
 /// </summary>
 public enum TableState
 {
-    Empty,
+    Available,
     Occupied,
     ReadyToOrder,
     WaitingForFood,
@@ -37,8 +37,7 @@ public class Table : Interactable
 
     private FoodFactory foodFactory;
 
-    [SerializeField]
-    public GameObject[] chairs;
+    public List<GameObject> chairs { get; private set; }
     public bool[] occupiedChairs { get; private set; }
 
     [Header("Other")]
@@ -55,11 +54,22 @@ public class Table : Interactable
     {
         base.Start();
 
-        occupiedChairs = new bool[chairs.Length];
+        chairs = new List<GameObject>();
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+            if (child.tag == "Chair")
+            {
+                chairs.Add(child.gameObject);
+            }
+        }
+
+        occupiedChairs = new bool[chairs.Count];
 
         transform.Find("Cube").gameObject.SetActive(false);
 
-        tableState = TableState.Empty;
+        tableState = TableState.Available;
 
         foodFactory = GameObject.FindGameObjectWithTag("Food Factory").GetComponent<FoodFactory>();
 
@@ -145,7 +155,7 @@ public class Table : Interactable
 
     public void Pay()
     {
-        tableState = TableState.Empty;
+        tableState = TableState.Available;
 
         // TODO: Move score to a Game Master gameobject.
         score.text = (int.Parse(score.text) + pay).ToString();
@@ -186,6 +196,7 @@ public class Table : Interactable
                 {
                     if (!occupiedChairs[i])
                     {
+                        other.GetComponent<NpcMoveToTable>().DisableAIMovement();
                         other.transform.position = chairs[i].transform.position;
                         occupiedChairs[i] = true;
                         this.EnableCustomers();
