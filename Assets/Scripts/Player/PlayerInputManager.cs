@@ -30,8 +30,6 @@ public class PlayerInputManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
-
     void Update()
     {
         // MOVE - remove 'normalized' for analog movements.
