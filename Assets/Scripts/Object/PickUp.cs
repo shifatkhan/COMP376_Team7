@@ -8,9 +8,11 @@ public class PickUp : MonoBehaviour
     Rigidbody objectRigidBody;
     BoxCollider objectBoxCollider;
 
+    public bool pickedUp { get; private set; }
+
     private void Awake()
     {
-        objectPosition = GameObject.FindGameObjectWithTag("Player").transform.Find("PickupObject").transform;
+        objectPosition = GameObject.FindGameObjectWithTag("Player").transform.Find("Armature/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/PickupObject").transform;
         objectRigidBody = GetComponent<Rigidbody>();
         objectBoxCollider = GetComponent<BoxCollider>();
     }
@@ -28,6 +30,8 @@ public class PickUp : MonoBehaviour
         this.transform.parent = objectPosition;
         this.transform.localRotation = Quaternion.identity; //object is held upright
         this.transform.localPosition = Vector3.zero;
+
+        pickedUp = true;
     }
 
     public void PlaceObjectDown()
@@ -37,5 +41,7 @@ public class PickUp : MonoBehaviour
         objectRigidBody.useGravity = true;
         objectRigidBody.freezeRotation = false; 
         objectRigidBody.constraints = RigidbodyConstraints.None;
+
+        pickedUp = false;
     }
 }

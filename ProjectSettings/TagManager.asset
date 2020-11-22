@@ -9,6 +9,9 @@ TagManager:
   - Water Jug
   - Food Factory
   - Food
+  - Customer
+  - Table
+  - Chair
   layers:
   - Default
   - TransparentFX

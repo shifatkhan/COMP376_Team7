@@ -20,7 +20,6 @@ public class PlayerInput : MonoBehaviour
         // INTERACT (with tables etc)
         interactInput = Input.GetButtonDown("Interact");
 
-        // PICK DROP Item
         pickDropInput = Input.GetButtonDown("PickDrop");
     }
 }
