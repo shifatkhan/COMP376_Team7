@@ -6,35 +6,28 @@ using UnityEngine.UI;
 public class WaterPourable : MonoBehaviour
 {
     [SerializeField]
-    Transform waterStatusPrefab;
-    [SerializeField]
     Transform waterCheckPrefab;
     [SerializeField]
     float drainRate = 0.05f;
 
-    private GameObject canvasRef;
     private Transform skillCheckObj;
     private Transform waterCupBarObj;
     private Slider waterCup;
 
     private bool skillChecking = false;
+    private bool isActive = false;
 
-    void Start()
+    void Awake()
     {
-        canvasRef = GameObject.Find("Canvas - Game");
+        waterCupBarObj = transform.Find("Water Status Position/Water Status Canvas/Water Cup Bar");
 
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-        waterCupBarObj = Instantiate(waterStatusPrefab, screenPos, Quaternion.identity);
-        waterCupBarObj.SetParent(canvasRef.transform);
-
+        // start with full cup
         waterCup = waterCupBarObj.GetComponent<Slider>();
         waterCup.value = 1f;
     }
 
     void Update()
     {
-        // make water cup bar follow table when camera follows player
-
         if (skillChecking)
         {
             waterCupBarObj.gameObject.SetActive(false);
@@ -46,7 +39,7 @@ public class WaterPourable : MonoBehaviour
                 skillChecking = false;
                 // TODO enable player movement again
         }
-        else if (!skillChecking)
+        else if (!skillChecking && isActive)
         {
             waterCupBarObj.gameObject.SetActive(true);
 
@@ -66,10 +59,16 @@ public class WaterPourable : MonoBehaviour
 
                 Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
                 skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
-                skillCheckObj.SetParent(canvasRef.transform);
                 skillCheckObj.GetComponent<WaterCheckBar>().setTablePoured(this);
             }
         }
+    }
+
+    public void startDrinking()
+    {
+        waterCupBarObj.gameObject.SetActive(true);
+        isActive = true;
+        drinkSpeedEasy(); // default
     }
 
     public void waterFilled()

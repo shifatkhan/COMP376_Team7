@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 843384210201363856}
   - component: {fileID: 694158589774188420}
   - component: {fileID: 7507664791069644938}
+  - component: {fileID: 919178844}
   m_Layer: 5
   m_Name: Score UI
   m_TagString: Untagged
@@ -38,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 295.69, y: 265.1}
-  m_SizeDelta: {x: 172.70763, y: 36}
+  m_SizeDelta: {x: 172.70764, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &694158589774188420
 CanvasRenderer:
@@ -78,6 +79,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &919178844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473335599648184296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd3539839454d8459031d99ca2e34ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalScore: 10
 --- !u!1 &782082144533436224
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &338609525453451723
 RectTransform:
   m_ObjectHideFlags: 0

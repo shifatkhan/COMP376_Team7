@@ -47,8 +47,8 @@ public class Table : Interactable
     [SerializeField]
     private GameEvent memoryEvent;
 
-    [SerializeField]
-    private Text score;
+    //*** WATER ***//
+    private WaterPourable waterManager;
 
     public override void Start()
     {
@@ -73,7 +73,7 @@ public class Table : Interactable
 
         foodFactory = GameObject.FindGameObjectWithTag("Food Factory").GetComponent<FoodFactory>();
 
-        score = GameObject.Find("Score value").GetComponent<Text>();
+        waterManager = GetComponent<WaterPourable>();
     }
 
     public override void Update()
@@ -100,6 +100,10 @@ public class Table : Interactable
         transform.Find("Cube").gameObject.SetActive(true);
 
         tableState = TableState.Occupied;
+
+        // customers start drinking water
+        waterManager.startDrinking();
+        // TODO adjust difficulty by calling one of waterManager's method
 
         StartCoroutine(OrderFood(Random.Range(minOrderTime, maxOrderTime)));
     }
@@ -157,8 +161,8 @@ public class Table : Interactable
     {
         tableState = TableState.Available;
 
-        // TODO: Move score to a Game Master gameobject.
-        score.text = (int.Parse(score.text) + pay).ToString();
+        // TODO: Move score to a Game Master gameobject, which will update ScoreUI gameobject reference
+        //score.text = (int.Parse(score.text) + pay).ToString();
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.red;
         transform.Find("Cube").gameObject.SetActive(false);
