@@ -1691,6 +1691,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6930768394714030313}
     m_Modifications:
+    - target: {fileID: 3782852093043738007, guid: 9df50fa4d15c2a244b1ea8a2c8a3f7ff, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2527367
+      objectReference: {fileID: 0}
     - target: {fileID: 3782852093043738010, guid: 9df50fa4d15c2a244b1ea8a2c8a3f7ff, type: 3}
       propertyPath: m_Name
       value: Water Status Canvas

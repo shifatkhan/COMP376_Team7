@@ -10,7 +10,7 @@ public class WaterCheckBar : MonoBehaviour
 
     // covers up % of bar
     [SerializeField]
-    float perfectZoneSize = 0.1f;
+    float perfectZoneSize = 0.05f;
     [SerializeField]
     float failZoneSize = 0.05f;
 
@@ -41,7 +41,7 @@ public class WaterCheckBar : MonoBehaviour
         // set up perfect zone on bar
         float perfectZoneCenter = sliderWidth - failZoneLength - (perfectZoneLength / 2);
         perfectZoneImg.anchoredPosition = new Vector2(perfectZoneCenter, 0);
-        perfectZoneImg.sizeDelta = new Vector2(perfectZoneLength, 22f);
+        perfectZoneImg.sizeDelta = new Vector2(perfectZoneLength, 34f);
     }
 
 

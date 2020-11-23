@@ -13,12 +13,14 @@ public class WaterPourable : MonoBehaviour
     private Transform skillCheckObj;
     private Transform waterCupBarObj;
     private Slider waterCup;
+    private GameObject screenCanvas;
 
     private bool skillChecking = false;
     private bool isActive = false;
 
     void Awake()
     {
+        screenCanvas = GameObject.Find("Canvas - Game");
         waterCupBarObj = transform.Find("Water Status Position/Water Status Canvas/Water Cup Bar");
 
         // start with full cup
@@ -57,8 +59,9 @@ public class WaterPourable : MonoBehaviour
             {
                 skillChecking = true;
 
-                Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+                Vector2 screenPos = new Vector2(Screen.width / 2, Screen.height / 2);
                 skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
+                skillCheckObj.SetParent(screenCanvas.transform);
                 skillCheckObj.GetComponent<WaterCheckBar>().setTablePoured(this);
             }
         }
