@@ -376,14 +376,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7842780114100664483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 826fba45d1d0b4679b2933f9e9b6905e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a5b40e3415e3428a9ef67264d9b3204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fillSpeed: 0.5
-  sfx:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   perfectZoneSize: 0.1
   failZoneSize: 0.05
 --- !u!1 &7842780114277696763
