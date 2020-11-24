@@ -21,7 +21,7 @@ public class WaterPourable : MonoBehaviour
     void Awake()
     {
         screenCanvas = GameObject.Find("Canvas - Game");
-        waterCupBarObj = transform.Find("Water Status Position/Water Status Canvas/Water Cup Bar");
+        waterCupBarObj = transform.Find("Water Status Position/Water Status Canvas/Bubble/Water Cup Bar");
 
         // start with full cup
         waterCup = waterCupBarObj.GetComponent<Slider>();
