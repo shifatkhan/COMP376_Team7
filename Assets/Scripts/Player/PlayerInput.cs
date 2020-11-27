@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// TODO: Delete this file.
+[System.Obsolete("This class is getting replaced by PlayerInputManager.cs (use GameManager-James gameobject)", true)]
 public class PlayerInput : MonoBehaviour
 {
     public Vector3 directionalInput { get; private set; }

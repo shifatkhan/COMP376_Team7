@@ -17,9 +17,13 @@ public class Interactable : MonoBehaviour
     public bool interacted;
     [SerializeField] protected GameEvent interactEvent;
 
+    protected PlayerInputManager playerInput; 
+
     public virtual void Start()
     {
         playerInRange = false;
+
+        playerInput = PlayerInputManager.instance;
     }
 
     public virtual void Update()

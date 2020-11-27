@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: Delete this file.
+[System.Obsolete("This class is getting replaced by CustomerManagerJames.cs (use GameManager-James gameobject)", true)]
 public class CustomerManager : MonoBehaviour
 {
     private float spawnTime = 0f;
@@ -46,7 +48,7 @@ public class CustomerManager : MonoBehaviour
 
         //tableManager.tables[tableNumber].chairs.Count;
 
-        while(tableManager.tables[tableNumber].tableState != TableState.Available)
+        while (tableManager.tables[tableNumber].tableState != TableState.Available)
         {
             tableNumber = Random.Range(0, tableManager.tables.Length);
         }

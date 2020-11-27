@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7074143295685165497}
   - component: {fileID: 5087932854438608672}
   - component: {fileID: 6649989142067501213}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Jelly
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
