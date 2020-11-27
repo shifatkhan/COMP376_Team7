@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2482164206668666736}
   - component: {fileID: 5344066073703631963}
   - component: {fileID: 1893924047870083725}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pudding
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

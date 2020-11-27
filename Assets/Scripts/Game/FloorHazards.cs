@@ -36,7 +36,6 @@ public class FloorHazards : MonoBehaviour
     void SpawnPuddle()
     {
         int spawnIndex = Random.Range(0, spawnPoints.Length);
-        print(spawnIndex);
         Instantiate(puddlePrefab, spawnPoints[spawnIndex].transform.position, Quaternion.identity);
     }
 }

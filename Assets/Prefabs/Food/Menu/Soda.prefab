@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2844742329661800618}
   - component: {fileID: 1502073916075209934}
   - component: {fileID: 4716393105438535966}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Soda
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
