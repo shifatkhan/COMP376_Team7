@@ -59,6 +59,7 @@ public class CustomerManager : MonoBehaviour
             customer.GetComponent<NpcMoveToTable>().SetTableNumber(tableNumber);
         }
 
-        specialCutscene.SpecialAIEnters();
+        //Play cutscene
+        //specialCutscene.SpecialAIEnters();
     }
 }
