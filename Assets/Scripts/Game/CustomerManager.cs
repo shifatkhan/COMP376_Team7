@@ -17,9 +17,14 @@ public class CustomerManager : MonoBehaviour
     [SerializeField]
     private GameObject spawnPoint;
 
+    SpecialAICutscene specialCutscene;
+
     void Start()
     {
         tableManager = GameObject.Find("TableManager").GetComponent<TableManager>();
+
+        //print("ai awake");
+        specialCutscene = GetComponent<SpecialAICutscene>();
     }
 
     void Update()
@@ -53,5 +58,7 @@ public class CustomerManager : MonoBehaviour
             GameObject customer = Instantiate(customerPrefab, spawnPoint.transform.position, Quaternion.identity);
             customer.GetComponent<NpcMoveToTable>().SetTableNumber(tableNumber);
         }
+
+        specialCutscene.SpecialAIEnters();
     }
 }
