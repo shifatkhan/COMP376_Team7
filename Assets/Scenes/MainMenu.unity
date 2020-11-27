@@ -205,7 +205,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 888131448}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ExitClicked
         m_Mode: 1
@@ -432,9 +432,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 888131443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53baeb161856c34418857f51a4206152, type: 3}
+  m_Script: {fileID: 11500000, guid: 8104b9057d4633f47926e6ab98d9d82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: Stage1Scene
+  triggerEnabled: 0
 --- !u!1 &1068228195
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +467,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 800551eaf63416146b13d99f3cd7348e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -750,8 +752,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 888131448}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayClicked
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
