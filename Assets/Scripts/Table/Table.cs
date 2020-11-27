@@ -69,13 +69,6 @@ public class Table : Interactable
         occupiedChairs = new bool[chairs.Count];
         tableState = TableState.Available;
 
-        // assign table # in its UI and the state
-        transform.Find("Water Status Position/Water Status Canvas/Bubble/Table Number Text")
-            .GetComponent<Text>().text = (tableNumber + 1).ToString();
-        stateUIText = transform.Find("Water Status Position/Water Status Canvas/Bubble/Table State")
-            .GetComponent<Text>();
-        this.updateStateInUI();
-
         // find scripts
         transform.Find("Cube").gameObject.SetActive(false);
         foodFactory = GameObject.FindGameObjectWithTag("Food Factory").GetComponent<FoodFactory>();
@@ -230,6 +223,16 @@ public class Table : Interactable
                 }
             }
         }
+    }
+
+    public void UpdateTableNumber()
+    {
+        // assign table # in its UI and the state
+        transform.Find("Water Status Position/Water Status Canvas/Bubble/Table Number Text")
+            .GetComponent<Text>().text = (tableNumber + 1).ToString();
+        stateUIText = transform.Find("Water Status Position/Water Status Canvas/Bubble/Table State")
+            .GetComponent<Text>();
+        this.updateStateInUI();
     }
 
     private void updateStateInUI()
