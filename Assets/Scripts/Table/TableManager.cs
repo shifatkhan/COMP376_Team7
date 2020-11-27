@@ -30,18 +30,18 @@ public class TableManager : MonoBehaviour
     void Update()
     {
 
-        // Check if we should spawn.
-        if (Time.time > spawnTime)
-        {
-            spawnTime += spawnRate;
+        //// Check if we should spawn.
+        //if (Time.time > spawnTime)
+        //{
+        //    spawnTime += spawnRate;
 
-            int i = Random.Range(0, tables.Length);
-            // Check if table is occupied
-            if (tables[i].tableState == TableState.Available)
-            {
-                tables[i].EnableCustomers();
-            }
-        }
+        //    int i = Random.Range(0, tables.Length);
+        //    // Check if table is occupied
+        //    if (tables[i].tableState == TableState.Available)
+        //    {
+        //        tables[i].EnableCustomers();
+        //    }
+        //}
     }
 }
 
