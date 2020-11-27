@@ -65,12 +65,12 @@ public class CustomerManagerJames : MonoBehaviour
         {
             spawnTime += spawnRate;
 
-            // Spawn
-            SpawnCustomers();
+            // Spawn - ONLY when there are available tables.
+            if(AreThereTablesAvailable())
+                SpawnCustomers();
         }
     }
 
-    // TODO: Don't run this if all tables are occupied.
     public void SpawnCustomers()
     {
         int tableNumber = Random.Range(0, tableManager.tables.Length);
@@ -89,5 +89,21 @@ public class CustomerManagerJames : MonoBehaviour
             GameObject customer = Instantiate(customerPrefab, spawnPoint.transform.position, Quaternion.identity);
             customer.GetComponent<NpcMoveToTable>().SetTableNumber(tableNumber);
         }
+    }
+
+    public bool AreThereTablesAvailable()
+    {
+        bool available = false;
+
+        foreach (Table table in tableManager.tables)
+        {
+            if (table.tableState == TableState.Available)
+            {
+                available = true;
+                break;
+            }
+        }
+
+        return available;
     }
 }

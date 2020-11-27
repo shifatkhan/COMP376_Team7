@@ -112,6 +112,7 @@ public class Table : Interactable
         // TODO adjust difficulty by calling one of waterManager's method
 
         updateStateInUI();
+        StopAllCoroutines(); // This fixes the glitch where a table places multiple orders.
         StartCoroutine(OrderFood(Random.Range(minOrderTime, maxOrderTime)));
     }
 
@@ -140,7 +141,7 @@ public class Table : Interactable
         
         tableState = TableState.WaitingForFood;
 
-        order = null;
+        //order = null;
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.yellow;
 
@@ -182,6 +183,8 @@ public class Table : Interactable
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.red;
         transform.Find("Cube").gameObject.SetActive(false);
 
+        order = null;
+
         updateStateInUI();
     }
 
@@ -199,7 +202,7 @@ public class Table : Interactable
                 return;
 
             // Check if the food placed was ment for this table number.
-            if(food.tableNumber == this.tableNumber)
+            if(food.foodName == this.order.foodName)
             {
                 // Correctly delivered the food.
                 other.GetComponent<PickUp>().objectPosition = transform.Find("PickupObject");
