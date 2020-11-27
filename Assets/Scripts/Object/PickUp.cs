@@ -7,6 +7,7 @@ public class PickUp : MonoBehaviour
     public Transform objectPosition;
     Rigidbody objectRigidBody;
     BoxCollider objectBoxCollider;
+    Outline outlineScript;
 
     public bool pickedUp { get; private set; }
 
@@ -15,6 +16,10 @@ public class PickUp : MonoBehaviour
         objectPosition = GameObject.FindGameObjectWithTag("Player").transform.Find("Armature/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/PickupObject").transform;
         objectRigidBody = GetComponent<Rigidbody>();
         objectBoxCollider = GetComponent<BoxCollider>();
+        outlineScript = GetComponent<Outline>();
+
+        //Disable outline script when starting the game
+        disableEnableOutline(false);
     }
 
     public void PickObjectUp()
@@ -32,6 +37,9 @@ public class PickUp : MonoBehaviour
         this.transform.localPosition = Vector3.zero;
 
         pickedUp = true;
+
+        //Disable outline script
+        disableEnableOutline(false);
     }
 
     public void PlaceObjectDown()
@@ -43,5 +51,17 @@ public class PickUp : MonoBehaviour
         objectRigidBody.constraints = RigidbodyConstraints.None;
 
         pickedUp = false;
+
+        //Re-enable outline script
+        disableEnableOutline(true);
+    }
+
+    //Disable/Enable outline script
+    void disableEnableOutline(bool value)
+    {
+        if(outlineScript != null)
+        {
+            outlineScript.enabled = value;
+        }
     }
 }
