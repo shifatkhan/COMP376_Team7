@@ -7,6 +7,8 @@ using UnityEngine;
 /// 
 /// @author: ShifatKhan, Nhut Vo
 /// </summary>
+/// // TODO: Delete this file.
+[System.Obsolete("This class is getting replaced by TableManagerJames.cs (use GameManager-James gameobject)", true)]
 public class TableManager : MonoBehaviour
 {
     public Table[] tables;

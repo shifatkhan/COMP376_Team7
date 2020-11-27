@@ -14,6 +14,10 @@ public class NpcMoveToTable : MonoBehaviour
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
+    private void Start()
+    {
+    }
+
     void Update()
     {
     }
@@ -31,7 +35,7 @@ public class NpcMoveToTable : MonoBehaviour
 
     void SetAgentTableDestination()
     {
-        Table[] tables = GameObject.Find("TableManager").GetComponent<TableManager>().tables;
+        Table[] tables = TableManagerJames.Instance.tables;
         agent.destination = tables[tableNumber].transform.position;
     }
 }
