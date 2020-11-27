@@ -19,14 +19,13 @@ public class CustomerManager : MonoBehaviour
     [SerializeField]
     private GameObject spawnPoint;
 
-    SpecialAICutscene specialCutscene;
+    //SpecialAICutscene specialCutscene;
 
     void Start()
     {
         tableManager = GameObject.Find("TableManager").GetComponent<TableManager>();
 
-        //print("ai awake");
-        specialCutscene = GetComponent<SpecialAICutscene>();
+        //specialCutscene = GetComponent<SpecialAICutscene>();
     }
 
     void Update()

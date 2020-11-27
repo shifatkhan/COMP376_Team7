@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 11f782f39b249f1489f3c1cb0829daaf, type: 2}
+--- !u!1 &27901778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1566075174, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
+  m_PrefabInstance: {fileID: 6324832879752201137}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &51137951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,6 +212,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c811d73b6bd20485d83314b348d6e180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &118913311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3818654607244564352, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
+  m_PrefabInstance: {fileID: 6324832879752201137}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &118913314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118913311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2854583361649a78ec6acaa28990b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tables: []
+  spawnRate: 2
 --- !u!1 &198159535
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +547,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePlayer: {fileID: 1875812938}
+--- !u!114 &261650234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261650230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24b1d0e90c474a21ba7c254b38c692e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRate: 2
+  customerPrefab: {fileID: 8122965843993295920, guid: 16126682a08baff459e13a0a2ead1b5b, type: 3}
+  spawnPoint: {fileID: 27901778}
 --- !u!1 &271218003
 GameObject:
   m_ObjectHideFlags: 0
@@ -7166,6 +7205,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 222594707449088039, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4183874049234023408, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
       propertyPath: tables.Array.data[0]
       value: 
@@ -7218,6 +7261,10 @@ PrefabInstance:
       propertyPath: tables.Array.data[12]
       value: 
       objectReference: {fileID: 1778520804}
+    - target: {fileID: 4183874049234023408, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6324832878547371722, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -7269,7 +7316,11 @@ PrefabInstance:
     - target: {fileID: 6427687579361354621, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
       propertyPath: customerPrefab
       value: 
-      objectReference: {fileID: 3621085409282536627, guid: ae2163d1d688aea4c88454a2035f7e19, type: 3}
+      objectReference: {fileID: 8122965843993295920, guid: 16126682a08baff459e13a0a2ead1b5b, type: 3}
+    - target: {fileID: 6427687579361354621, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
 --- !u!1001 &6631162684350400207

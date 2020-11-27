@@ -19,6 +19,8 @@ public class CustomerManagerJames : MonoBehaviour
 
     private static CustomerManagerJames _instance;
 
+    //SpecialAICutscene specialCutscene;
+
     public static CustomerManagerJames Instance
     {
         get
@@ -56,6 +58,8 @@ public class CustomerManagerJames : MonoBehaviour
     {
         //tableManager = GameObject.Find("TableManager").GetComponent<TableManagerJames>();
         tableManager = TableManagerJames.Instance;
+
+        //specialCutscene = GetComponent<SpecialAICutscene>();
     }
 
     void Update()
@@ -89,6 +93,9 @@ public class CustomerManagerJames : MonoBehaviour
             GameObject customer = Instantiate(customerPrefab, spawnPoint.transform.position, Quaternion.identity);
             customer.GetComponent<NpcMoveToTable>().SetTableNumber(tableNumber);
         }
+
+        //Play cutscene
+        //specialCutscene.SpecialAIEnters();
     }
 
     public bool AreThereTablesAvailable()
