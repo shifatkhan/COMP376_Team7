@@ -8,7 +8,7 @@ using UnityEngine;
 /// 
 /// @author ShifatKhan
 /// </summary>
-public class PrepSlot : MonoBehaviour
+public class PrepSlot : Interactable
 {
     public bool occupied { get; private set; }
 
@@ -21,23 +21,23 @@ public class PrepSlot : MonoBehaviour
     private float timer;
     private bool cooking = false;
 
-    private bool canInteract = false; // Checks if player is in range.
-
     private void Awake()
     {
         progressBar = GetComponentInChildren<RadialProgressBar>();
         progressBarGameObject = progressBar.gameObject;
     }
 
-    void Start()
+    public override void Start()
     {
         occupied = false;
         progressBarGameObject.SetActive(false);
+
+        playerInput = PlayerInputManager.instance;
     }
 
-    void Update()
+    public override void Update()
     {
-        if (Input.GetButtonDown("Interact") && canInteract)
+        if (playerInput.pickDropInput && playerInRange)
         {
             TakeFood();
         }
@@ -96,24 +96,5 @@ public class PrepSlot : MonoBehaviour
         progressBarGameObject.SetActive(false);
         foodGameObject = null;
         foodSlot = null;
-    }
-
-    // TODO: Move interact code to a different script.
-    // It is used by PrepSlot, PrepTable, and Table.
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            canInteract = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-
-        if (other.CompareTag("Player"))
-        {
-            canInteract = false;
-        }
     }
 }

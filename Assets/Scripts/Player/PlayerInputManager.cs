@@ -9,7 +9,7 @@ public class PlayerInputManager : MonoBehaviour
     public bool interactInput { get; private set; } = false;
 
     public bool pickDropInput { get; private set; } = false;
-    
+
     // Singleton Pattern
     public static PlayerInputManager instance;
 
@@ -30,8 +30,6 @@ public class PlayerInputManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
-
     void Update()
     {
         // MOVE - remove 'normalized' for analog movements.
@@ -42,5 +40,4 @@ public class PlayerInputManager : MonoBehaviour
         interactInput = Input.GetButtonDown("Interact");
         pickDropInput = Input.GetButtonDown("PickDrop");
     }
- }
-
+}

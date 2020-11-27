@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 32894270983688489}
   - component: {fileID: 5966611798254677754}
   - component: {fileID: 5594864018180463146}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cake
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

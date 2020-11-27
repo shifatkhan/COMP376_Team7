@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// // TODO: Delete this file.
+[System.Obsolete("This class is getting replaced by PuddleManagerJames.cs", true)]
 public class FloorHazards : MonoBehaviour
 {
     public bool keepSpawning = true;
@@ -36,7 +38,6 @@ public class FloorHazards : MonoBehaviour
     void SpawnPuddle()
     {
         int spawnIndex = Random.Range(0, spawnPoints.Length);
-        print(spawnIndex);
         Instantiate(puddlePrefab, spawnPoints[spawnIndex].transform.position, Quaternion.identity);
     }
 }
