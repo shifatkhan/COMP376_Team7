@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PuddleManagerJames : MonoBehaviour
+public class PuddleManager : MonoBehaviour
 {
     public bool keepSpawning = true;
     public float minSpawnTime = 20f;
@@ -14,20 +14,20 @@ public class PuddleManagerJames : MonoBehaviour
     [SerializeField]
     private GameObject[] spawnPoints;
 
-    private static PuddleManagerJames _instance;
+    private static PuddleManager _instance;
 
-    public static PuddleManagerJames Instance
+    public static PuddleManager Instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<PuddleManagerJames>();
+                _instance = FindObjectOfType<PuddleManager>();
                 if (_instance == null)
                 {
                     GameObject go = new GameObject();
-                    go.name = typeof(PuddleManagerJames).Name;
-                    _instance = go.AddComponent<PuddleManagerJames>();
+                    go.name = typeof(PuddleManager).Name;
+                    _instance = go.AddComponent<PuddleManager>();
                     DontDestroyOnLoad(go);
                 }
             }

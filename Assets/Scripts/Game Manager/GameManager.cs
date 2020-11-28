@@ -44,9 +44,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TableManagerJames tableManager = TableManagerJames.Instance;
-        CustomerManagerJames customerManager = CustomerManagerJames.Instance;
-        PuddleManagerJames puddleManager = PuddleManagerJames.Instance;
+        TableManager tableManager = TableManager.Instance;
+        CustomerManager customerManager = CustomerManager.Instance;
+        PuddleManager puddleManager = PuddleManager.Instance;
     }
 
     // Update is called once per frame
