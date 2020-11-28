@@ -35,7 +35,7 @@ public class NpcMoveToTable : MonoBehaviour
 
     void SetAgentTableDestination()
     {
-        Table[] tables = TableManagerJames.Instance.tables;
+        Table[] tables = TableManager.Instance.tables;
         agent.destination = tables[tableNumber].transform.position;
     }
 }
