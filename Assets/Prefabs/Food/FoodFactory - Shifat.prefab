@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foods:
-  - {fileID: 11400000, guid: 3c8cfa77bef032641be507bff957b5f0, type: 2}
-  - {fileID: 11400000, guid: 61b49b1cc4f3f2f4b958920d8db37288, type: 2}
-  - {fileID: 11400000, guid: afea233dd132b2842b6b75d7d3cb1e55, type: 2}
+  - {fileID: 11400000, guid: 6831236c1fae51d43ae945fb63b18502, type: 2}
+  - {fileID: 11400000, guid: e3048d3f5201d474bbe0d7f5e53d5151, type: 2}
+  - {fileID: 11400000, guid: 365f5b27f6742d64bba820b88d046a3c, type: 2}
+  - {fileID: 11400000, guid: f559bf229c591aa449b11ce4d8dea740, type: 2}
+  - {fileID: 11400000, guid: 54de34ba370793245bc16ad36656eec9, type: 2}
+  - {fileID: 11400000, guid: 47d26d2777f743a438b8125b382d36ba, type: 2}
+  - {fileID: 11400000, guid: ea15c25fd58638145bc16cdbdfe050c1, type: 2}
+  - {fileID: 11400000, guid: 1cbb07f156892064e86100b66208ddc2, type: 2}

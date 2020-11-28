@@ -13,7 +13,7 @@ using UnityEngine.UI;
 /// </summary>
 public enum TableState
 {
-    Empty,
+    Available,
     Occupied,
     ReadyToOrder,
     WaitingForFood,
@@ -37,8 +37,7 @@ public class Table : Interactable
 
     private FoodFactory foodFactory;
 
-    [SerializeField]
-    public GameObject[] chairs;
+    public List<GameObject> chairs { get; private set; }
     public bool[] occupiedChairs { get; private set; }
 
     [Header("Other")]
@@ -48,22 +47,39 @@ public class Table : Interactable
     [SerializeField]
     private GameEvent memoryEvent;
 
-    [SerializeField]
-    private Text score;
+    //*** UI ***//
+    private WaterPourable waterManager;
+    private Text stateUIText;
 
     public override void Start()
     {
         base.Start();
 
-        occupiedChairs = new bool[chairs.Length];
+        chairs = new List<GameObject>();
 
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+            if (child.tag == "Chair")
+            {
+                chairs.Add(child.gameObject);
+            }
+        }
+
+        occupiedChairs = new bool[chairs.Count];
+        tableState = TableState.Available;
+
+        // assign table # in its UI and the state
+        transform.Find("Water Status Position/Water Status Canvas/Bubble/Table Number Text")
+            .GetComponent<Text>().text = (tableNumber + 1).ToString();
+        stateUIText = transform.Find("Water Status Position/Water Status Canvas/Bubble/Table State")
+            .GetComponent<Text>();
+        this.updateStateInUI();
+
+        // find scripts
         transform.Find("Cube").gameObject.SetActive(false);
-
-        tableState = TableState.Empty;
-
         foodFactory = GameObject.FindGameObjectWithTag("Food Factory").GetComponent<FoodFactory>();
-
-        score = GameObject.Find("Score value").GetComponent<Text>();
+        waterManager = GetComponent<WaterPourable>();
     }
 
     public override void Update()
@@ -91,6 +107,12 @@ public class Table : Interactable
 
         tableState = TableState.Occupied;
 
+        // customers start drinking water
+        waterManager.startDrinking();
+        // TODO adjust difficulty by calling one of waterManager's method
+
+        updateStateInUI();
+        StopAllCoroutines(); // This fixes the glitch where a table places multiple orders.
         StartCoroutine(OrderFood(Random.Range(minOrderTime, maxOrderTime)));
     }
 
@@ -105,6 +127,8 @@ public class Table : Interactable
         tableState = TableState.ReadyToOrder;
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.green;
+
+        updateStateInUI();
     }
 
     public void Waiting()
@@ -117,9 +141,11 @@ public class Table : Interactable
         
         tableState = TableState.WaitingForFood;
 
-        order = null;
+        //order = null;
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+
+        updateStateInUI();
     }
 
     public void Eating()
@@ -129,6 +155,8 @@ public class Table : Interactable
         StartCoroutine(EatingCo(Random.Range(minOrderTime, maxOrderTime)));
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.cyan;
+
+        updateStateInUI();
     }
 
     IEnumerator EatingCo(float eatingTime)
@@ -141,17 +169,23 @@ public class Table : Interactable
         tableState = TableState.ReadyToPay;
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.white;
+
+        updateStateInUI();
     }
 
     public void Pay()
     {
-        tableState = TableState.Empty;
+        tableState = TableState.Available;
 
-        // TODO: Move score to a Game Master gameobject.
-        score.text = (int.Parse(score.text) + pay).ToString();
+        // TODO: Move score to a Game Master gameobject, which will update ScoreUI gameobject reference
+        //score.text = (int.Parse(score.text) + pay).ToString();
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.red;
         transform.Find("Cube").gameObject.SetActive(false);
+
+        order = null;
+
+        updateStateInUI();
     }
 
     public override void OnTriggerEnter(Collider other)
@@ -168,7 +202,7 @@ public class Table : Interactable
                 return;
 
             // Check if the food placed was ment for this table number.
-            if(food.tableNumber == this.tableNumber)
+            if(food.foodName == this.order.foodName)
             {
                 // Correctly delivered the food.
                 other.GetComponent<PickUp>().objectPosition = transform.Find("PickupObject");
@@ -178,7 +212,7 @@ public class Table : Interactable
                 Eating();
             }
         }
-        else if (other.tag == "Customer")
+        else if (other.CompareTag("Customer"))
         {
             if (other.GetComponent<NpcMoveToTable>().tableNumber == this.tableNumber)
             {
@@ -186,6 +220,8 @@ public class Table : Interactable
                 {
                     if (!occupiedChairs[i])
                     {
+                        other.GetComponent<NpcMoveToTable>().DisableAIMovement();
+                        other.GetComponent<BoxCollider>().enabled = false;
                         other.transform.position = chairs[i].transform.position;
                         occupiedChairs[i] = true;
                         this.EnableCustomers();
@@ -193,6 +229,27 @@ public class Table : Interactable
                     }
                 }
             }
+        }
+    }
+
+    private void updateStateInUI()
+    {
+        switch (this.tableState)
+        {
+            case TableState.Available:
+                stateUIText.text = "Vacant."; break;
+            case TableState.Occupied:
+                stateUIText.text = "Deciding.."; break;
+            case TableState.ReadyToOrder:
+                stateUIText.text = "Ready to order!"; break;
+            case TableState.WaitingForFood:
+                stateUIText.text = "Awaiting food.."; break;
+            case TableState.Eating:
+                stateUIText.text = "Dining."; break;
+            case TableState.ReadyToPay:
+                stateUIText.text = "Ready to pay!"; break;
+            default:
+                break;
         }
     }
 }

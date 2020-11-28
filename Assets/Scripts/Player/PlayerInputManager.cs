@@ -10,9 +10,12 @@ public class PlayerInputManager : MonoBehaviour
 
     public bool pickDropInput { get; private set; } = false;
 
+<<<<<<< HEAD
     public bool throwHold { get; private set; } = false;
     public bool throwRelease { get; private set; } = false;
 
+=======
+>>>>>>> 040f9bddee212c26e4baa559d86b520b901ed06d
     // Singleton Pattern
     public static PlayerInputManager instance;
 
@@ -33,8 +36,6 @@ public class PlayerInputManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
-
     void Update()
     {
         // MOVE - remove 'normalized' for analog movements.
@@ -48,5 +49,4 @@ public class PlayerInputManager : MonoBehaviour
         throwHold = Input.GetButtonDown("ThrowHold");
         throwRelease = Input.GetButtonDown("ThrowRelease");
     }
- }
-
+}

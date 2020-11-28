@@ -57,6 +57,7 @@ public class PrepTable : Interactable
             return;
         else
         {
+            print($"Foods prepping: {tempFoodsInMemory.Count}");
             foreach (FoodSlot f in tempFoodsInMemory)
             {
                 foodQueue.Enqueue(f);
@@ -94,7 +95,7 @@ public class PrepTable : Interactable
         // Return void is there are no free slots.
         if (!free)
             return;
-
+        print("Free slot found");
         // PREP FOODS
         for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
         {

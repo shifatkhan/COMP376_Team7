@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// // TODO: Delete this file.
+[System.Obsolete("This class is getting replaced by PuddleManagerJames.cs", true)]
 public class FloorHazards : MonoBehaviour
 {
     public bool keepSpawning = true;

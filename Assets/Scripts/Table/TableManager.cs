@@ -7,6 +7,8 @@ using UnityEngine;
 /// 
 /// @author: ShifatKhan, Nhut Vo
 /// </summary>
+/// // TODO: Delete this file.
+[System.Obsolete("This class is getting replaced by TableManagerJames.cs (use GameManager-James gameobject)", true)]
 public class TableManager : MonoBehaviour
 {
     public Table[] tables;
@@ -23,25 +25,25 @@ public class TableManager : MonoBehaviour
         // Assign a table number to each table.
         for (int i = 0; i < tables.Length; i++)
         {
-            tables[i].tableNumber = i + 1;
+            tables[i].tableNumber = i;
         }
     }
 
     void Update()
     {
-        
-        // Check if we should spawn.
-        if (Time.time > spawnTime)
-        {
-            spawnTime += spawnRate;
 
-            int i = Random.Range(0, tables.Length);
-            // Check if table is occupied
-            if (tables[i].tableState == TableState.Empty)
-            {
-                tables[i].EnableCustomers();
-            }
-        }
+        //// Check if we should spawn.
+        //if (Time.time > spawnTime)
+        //{
+        //    spawnTime += spawnRate;
+
+        //    int i = Random.Range(0, tables.Length);
+        //    // Check if table is occupied
+        //    if (tables[i].tableState == TableState.Available)
+        //    {
+        //        tables[i].EnableCustomers();
+        //    }
+        //}
     }
 }
 

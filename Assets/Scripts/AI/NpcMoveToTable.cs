@@ -2,29 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent (typeof(UnityEngine.AI.NavMeshAgent))]
 public class NpcMoveToTable : MonoBehaviour
 {
 
     public int tableNumber;
-    UnityEngine.AI.NavMeshAgent agent;
+    private UnityEngine.AI.NavMeshAgent agent;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        SetAgentTableDestination();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+    }
+
     void Update()
     {
-        
+    }
+
+    public void DisableAIMovement()
+    {
+        agent.isStopped = true;
+    }
+
+    public void SetTableNumber(int tableNumber)
+    {
+        this.tableNumber = tableNumber;
+        SetAgentTableDestination();
     }
 
     void SetAgentTableDestination()
     {
-        Table[] tables = GameObject.Find("TableManager").GetComponent<TableManager>().tables;
-        tableNumber = Random.Range(0, tables.Length);
+        Table[] tables = TableManagerJames.Instance.tables;
         agent.destination = tables[tableNumber].transform.position;
     }
 }
