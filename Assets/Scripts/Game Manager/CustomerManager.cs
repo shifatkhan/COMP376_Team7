@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomerManagerJames : MonoBehaviour
+public class CustomerManager : MonoBehaviour
 {
     private float spawnTime = 0f;
 
     [SerializeField]
     private float spawnRate = 2f;
 
-    private TableManagerJames tableManager;
+    private TableManager tableManager;
 
     [SerializeField]
     private GameObject customerPrefab;
@@ -17,22 +17,21 @@ public class CustomerManagerJames : MonoBehaviour
     [SerializeField]
     private GameObject spawnPoint;
 
-    private static CustomerManagerJames _instance;
+    private static CustomerManager _instance;
 
     //SpecialAICutscene specialCutscene;
-
-    public static CustomerManagerJames Instance
+    public static CustomerManager Instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<CustomerManagerJames>();
+                _instance = FindObjectOfType<CustomerManager>();
                 if (_instance == null)
                 {
                     GameObject go = new GameObject();
-                    go.name = typeof(CustomerManagerJames).Name;
-                    _instance = go.AddComponent<CustomerManagerJames>();
+                    go.name = typeof(CustomerManager).Name;
+                    _instance = go.AddComponent<CustomerManager>();
                     DontDestroyOnLoad(go);
                 }
             }
@@ -57,9 +56,13 @@ public class CustomerManagerJames : MonoBehaviour
     void Start()
     {
         //tableManager = GameObject.Find("TableManager").GetComponent<TableManagerJames>();
+<<<<<<< HEAD:Assets/Scripts/Game Manager/CustomerManagerJames.cs
         tableManager = TableManagerJames.Instance;
 
         //specialCutscene = GetComponent<SpecialAICutscene>();
+=======
+        tableManager = TableManager.Instance;
+>>>>>>> 87e5ec7cfc25cc0fcb38bb5b6c688e70b1d061e6:Assets/Scripts/Game Manager/CustomerManager.cs
     }
 
     void Update()

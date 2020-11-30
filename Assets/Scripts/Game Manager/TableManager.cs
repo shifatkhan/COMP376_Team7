@@ -7,8 +7,6 @@ using UnityEngine;
 /// 
 /// @author: ShifatKhan, Nhut Vo
 /// </summary>
-/// // TODO: Delete this file.
-[System.Obsolete("This class is getting replaced by TableManagerJames.cs (use GameManager-James gameobject)", true)]
 public class TableManager : MonoBehaviour
 {
     public Table[] tables;
@@ -17,6 +15,42 @@ public class TableManager : MonoBehaviour
 
     [SerializeField]
     private float spawnRate = 2f;
+
+
+    private static TableManager _instance;
+
+    public static TableManager Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                _instance = FindObjectOfType<TableManager>();
+                if (_instance == null)
+                {
+                    GameObject go = new GameObject();
+                    go.name = typeof(TableManager).Name;
+                    _instance = go.AddComponent<TableManager>();
+                    DontDestroyOnLoad(go);
+                }
+            }
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
     void Start()
     {
@@ -39,12 +73,12 @@ public class TableManager : MonoBehaviour
 
         //    int i = Random.Range(0, tables.Length);
         //    // Check if table is occupied
-        //    if (tables[i].tableState == TableState.Available)
+        //    if (tables[i].tableState == TableState.Empty)
         //    {
         //        tables[i].EnableCustomers();
         //    }
         //}
     }
+
+    
 }
-
-
