@@ -7,7 +7,7 @@ using UnityEngine;
 /// 
 /// @author: ShifatKhan, Nhut Vo
 /// </summary>
-public class TableManagerJames : MonoBehaviour
+public class TableManager : MonoBehaviour
 {
     public Table[] tables;
 
@@ -17,20 +17,20 @@ public class TableManagerJames : MonoBehaviour
     private float spawnRate = 2f;
 
 
-    private static TableManagerJames _instance;
+    private static TableManager _instance;
 
-    public static TableManagerJames Instance
+    public static TableManager Instance
     {
         get
         {
             if(_instance == null)
             {
-                _instance = FindObjectOfType<TableManagerJames>();
+                _instance = FindObjectOfType<TableManager>();
                 if (_instance == null)
                 {
                     GameObject go = new GameObject();
-                    go.name = typeof(TableManagerJames).Name;
-                    _instance = go.AddComponent<TableManagerJames>();
+                    go.name = typeof(TableManager).Name;
+                    _instance = go.AddComponent<TableManager>();
                     DontDestroyOnLoad(go);
                 }
             }
