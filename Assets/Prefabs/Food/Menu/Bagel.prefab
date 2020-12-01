@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 634496198866284452}
   - component: {fileID: 5487377119514117409}
   - component: {fileID: 5511900401449045394}
+  - component: {fileID: 7072393034015904578}
   m_Layer: 11
   m_Name: Bagel
   m_TagString: Food
@@ -77,6 +78,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPosition: {fileID: 0}
+--- !u!114 &7072393034015904578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518394282791750695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dff9e4e4c6dc904ab10bd8220bb4736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 3.64
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &4149719626793030796
 PrefabInstance:
   m_ObjectHideFlags: 0
