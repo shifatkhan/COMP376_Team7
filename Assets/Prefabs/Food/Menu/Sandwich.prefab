@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 481333048136162701}
   - component: {fileID: 4987887032259578999}
   - component: {fileID: 5154997933191443847}
+  - component: {fileID: 9096560710597734126}
   m_Layer: 11
   m_Name: Sandwich
   m_TagString: Food
@@ -77,6 +78,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPosition: {fileID: 0}
+--- !u!114 &9096560710597734126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4702008452242803656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dff9e4e4c6dc904ab10bd8220bb4736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 3.64
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &6918673722948399910
 PrefabInstance:
   m_ObjectHideFlags: 0

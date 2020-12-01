@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8104b9057d4633f47926e6ab98d9d82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Stage1Scene
+  sceneName: ShifatScene
   triggerEnabled: 0
 --- !u!1 &1068228195
 GameObject:

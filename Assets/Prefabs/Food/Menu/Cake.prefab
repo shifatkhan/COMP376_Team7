@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 32894270983688489}
   - component: {fileID: 5966611798254677754}
   - component: {fileID: 5594864018180463146}
+  - component: {fileID: -1920351052400813999}
   m_Layer: 11
   m_Name: Cake
   m_TagString: Food
@@ -77,6 +78,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPosition: {fileID: 0}
+--- !u!114 &-1920351052400813999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148018863766368540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dff9e4e4c6dc904ab10bd8220bb4736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 3.64
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &2515185769193146145
 PrefabInstance:
   m_ObjectHideFlags: 0
