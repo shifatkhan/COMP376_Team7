@@ -20,6 +20,7 @@ public class CustomerManager : MonoBehaviour
     private static CustomerManager _instance;
 
     //SpecialAICutscene specialCutscene;
+    
     public static CustomerManager Instance
     {
         get
@@ -56,13 +57,8 @@ public class CustomerManager : MonoBehaviour
     void Start()
     {
         //tableManager = GameObject.Find("TableManager").GetComponent<TableManagerJames>();
-<<<<<<< HEAD:Assets/Scripts/Game Manager/CustomerManagerJames.cs
-        tableManager = TableManagerJames.Instance;
-
-        //specialCutscene = GetComponent<SpecialAICutscene>();
-=======
+        //specialCutscene = GetComponent<SpecialAICutscene>();  
         tableManager = TableManager.Instance;
->>>>>>> 87e5ec7cfc25cc0fcb38bb5b6c688e70b1d061e6:Assets/Scripts/Game Manager/CustomerManager.cs
     }
 
     void Update()

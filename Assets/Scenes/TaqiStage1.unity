@@ -6246,6 +6246,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6932796534675302083, guid: 0af757819619c0b47b01dc0c53fa31f6, type: 3}
   m_PrefabInstance: {fileID: 1798193908}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1826579807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6324832878516477766, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
+  m_PrefabInstance: {fileID: 6324832879752201137}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1826579809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826579807}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118d75cd2e57e48d29d404d24c8ef40f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keepSpawning: 1
+  minSpawnTime: 20
+  maxSpawnTime: 30
+  puddlePrefab: {fileID: 7026885838406113420, guid: d61efc0da813a2c4a9a155dcbcc27a2c, type: 3}
+  spawnPoints: []
 --- !u!1001 &1854399958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7321,7 +7343,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6324832878516477768, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
 --- !u!1001 &6631162684350400207
 PrefabInstance:
