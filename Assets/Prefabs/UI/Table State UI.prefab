@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1285577197533705080}
   - component: {fileID: 4484298796024732890}
   - component: {fileID: 2915517249405273208}
+  - component: {fileID: 5133449611947873584}
   m_Layer: 5
   m_Name: Customer Patience
   m_TagString: Untagged
@@ -75,6 +76,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &5133449611947873584
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084787060900107462}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8521cd8049caf9a4a910a8134fdf3cb4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1993315476877841078
 GameObject:
   m_ObjectHideFlags: 0

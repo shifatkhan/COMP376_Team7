@@ -48,6 +48,7 @@ public class Table : Interactable
     private GameEvent memoryEvent;
 
     //*** UI ***//
+    private PatienceMeter patienceManager;
     private WaterPourable waterManager;
     private Animator tableStateAnim;
 
@@ -72,6 +73,7 @@ public class Table : Interactable
         // find components
         transform.Find("Cube").gameObject.SetActive(false);
         foodFactory = GameObject.FindGameObjectWithTag("Food Factory").GetComponent<FoodFactory>();
+        patienceManager = GetComponent<PatienceMeter>();
         waterManager = GetComponent<WaterPourable>();
         tableStateAnim = transform.Find("Table State UI/Bubble/Table State").GetComponent<Animator>();
 
@@ -89,7 +91,9 @@ public class Table : Interactable
 
         if (tableState == TableState.ReadyToOrder)
         {
+            // customer's order is taken
             Waiting();
+            patienceManager.increPatience(0.25f);
         }
         else if (tableState == TableState.ReadyToPay)
         {
@@ -104,7 +108,10 @@ public class Table : Interactable
         tableState = TableState.Occupied;
 
         // customers start drinking water
-        waterManager.startDrinking();
+        patienceManager.setActive(true);
+        patienceManager.resetPatience();
+        waterManager.setActive(true);
+        waterManager.waterFilled();
         // TODO adjust difficulty by calling one of waterManager's method
 
         updateStateInUI();
@@ -148,6 +155,9 @@ public class Table : Interactable
     {
         tableState = TableState.Eating;
 
+        patienceManager.increPatience(0.5f);
+        patienceManager.setActive(false);
+
         StartCoroutine(EatingCo(Random.Range(minOrderTime, maxOrderTime)));
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.cyan;
@@ -164,6 +174,8 @@ public class Table : Interactable
 
         tableState = TableState.ReadyToPay;
 
+        patienceManager.setActive(true);
+
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.white;
 
         updateStateInUI();
@@ -172,6 +184,9 @@ public class Table : Interactable
     public void Pay()
     {
         tableState = TableState.Available;
+
+        patienceManager.setActive(false);
+        waterManager.setActive(false);
 
         // TODO: Move score to a Game Master gameobject, which will update ScoreUI gameobject reference
         //score.text = (int.Parse(score.text) + pay).ToString();
@@ -251,8 +266,6 @@ public class Table : Interactable
             default:
                 break;
         }
-
-        // TODO same for patience
     }
 }
 

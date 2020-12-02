@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 2383639064987410904}
   - component: {fileID: 4793173265410594550}
   - component: {fileID: -6039419171531732963}
+  - component: {fileID: 6223534302851483610}
   m_Layer: 0
   m_Name: Table6
   m_TagString: Untagged
@@ -430,6 +431,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterCheckPrefab: {fileID: 435094160892635807, guid: 2059aeb7fb4c43340b7b02a0a91f991f, type: 3}
   drainRate: 0.05
+--- !u!114 &6223534302851483610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914600999852099043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a837a9e1433364cbdc7e4830b081f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drainRate: 0.1
 --- !u!1 &2771756437458108790
 GameObject:
   m_ObjectHideFlags: 0

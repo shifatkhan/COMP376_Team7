@@ -34,17 +34,17 @@ public class WaterPourable : MonoBehaviour
                 waterCup -= (drainRate * 0.1f) * Time.deltaTime;
 
             // check water cup state
-            if (waterCup <= 1 && waterCup > 0.5)
+            if (waterCup > 0.5 && waterCup <= 1)
             {
                 waterStateAnim.SetBool("LowOnWater", false);
                 waterStateAnim.SetBool("EmptyCup", false);
             }
-            if (waterCup <= 0.5 && waterCup > 0)
+            else if (waterCup > 0 && waterCup <= 0.5)
             {
                 waterStateAnim.SetBool("LowOnWater", true);
                 waterStateAnim.SetBool("EmptyCup", false);
             }
-            if (waterCup <= 0)
+            else if (waterCup <= 0)
             {
                 waterStateAnim.SetBool("EmptyCup", true);
                 waterStateAnim.SetBool("LowOnWater", false);
@@ -69,9 +69,9 @@ public class WaterPourable : MonoBehaviour
         }
     }
 
-    public void startDrinking()
+    public void setActive(bool b)
     {
-        isActive = true;
+        isActive = b;
         drinkSpeedEasy(); // default
     }
 
@@ -83,16 +83,16 @@ public class WaterPourable : MonoBehaviour
 
     public void drinkSpeedEasy()
     {
-        drainRate = 0.02f;
+        drainRate = 0.04f;
     }
 
     public void drinkSpeedMedium()
     {
-        drainRate = 0.04f;
+        drainRate = 0.08f;
     }
 
     public void drinkSpeedHard()
     {
-        drainRate = 0.1f;
+        drainRate = 0.2f;
     }
 }
