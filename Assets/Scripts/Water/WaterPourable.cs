@@ -10,9 +10,8 @@ public class WaterPourable : MonoBehaviour
     [SerializeField]
     float drainRate = 0.05f;
 
-    private Transform skillCheckObj;
-    private Transform waterCupBarObj;
-    private Slider waterCup;
+    private Animator waterStateAnim;
+    private float waterCup;
     private GameObject screenCanvas;
 
     private bool skillChecking = false;
@@ -21,38 +20,41 @@ public class WaterPourable : MonoBehaviour
     void Awake()
     {
         screenCanvas = GameObject.Find("Canvas - Game");
-        waterCupBarObj = transform.Find("Water Status Position/Water Status Canvas/Bubble/Water Cup Bar");
+        waterStateAnim = transform.Find("Table State UI/Bubble/Water State").GetComponent<Animator>();
 
         // start with full cup
-        waterCup = waterCupBarObj.GetComponent<Slider>();
-        waterCup.value = 1f;
+        waterFilled();
     }
 
     void Update()
     {
-        if (skillChecking)
+        if (!skillChecking && isActive)
         {
-            waterCupBarObj.gameObject.SetActive(false);
+            if (waterCup > 0)
+                waterCup -= (drainRate * 0.1f) * Time.deltaTime;
 
-            // TODO temporarily disable player movement
-
-            // enable water draining again if done skill check
-            if (skillCheckObj == null)
-                skillChecking = false;
-                // TODO enable player movement again
-        }
-        else if (!skillChecking && isActive)
-        {
-            waterCupBarObj.gameObject.SetActive(true);
-
-            if (waterCup.value > 0)
-                waterCup.value -= (drainRate * 0.1f) * Time.deltaTime;
+            // check water cup state
+            if (waterCup <= 1 && waterCup > 0.5)
+            {
+                waterStateAnim.SetBool("LowOnWater", false);
+                waterStateAnim.SetBool("EmptyCup", false);
+            }
+            if (waterCup <= 0.5 && waterCup > 0)
+            {
+                waterStateAnim.SetBool("LowOnWater", true);
+                waterStateAnim.SetBool("EmptyCup", false);
+            }
+            if (waterCup <= 0)
+            {
+                waterStateAnim.SetBool("EmptyCup", true);
+                waterStateAnim.SetBool("LowOnWater", false);
+            }
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup.value <= 0.5f)
+        if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup <= 0.5f)
         {
             // check if player is holding a water jug
             if (other.gameObject.GetComponent<CheckNearbyInteraction>().getHeldObject().CompareTag("Water Jug"))
@@ -60,7 +62,7 @@ public class WaterPourable : MonoBehaviour
                 skillChecking = true;
 
                 Vector2 screenPos = new Vector2(Screen.width / 2, Screen.height / 2);
-                skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
+                Transform skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
                 skillCheckObj.SetParent(screenCanvas.transform);
                 skillCheckObj.GetComponent<WaterCheckBar>().setTablePoured(this);
             }
@@ -69,14 +71,14 @@ public class WaterPourable : MonoBehaviour
 
     public void startDrinking()
     {
-        waterCupBarObj.gameObject.SetActive(true);
         isActive = true;
         drinkSpeedEasy(); // default
     }
 
     public void waterFilled()
     {
-        waterCup.value = 1f;
+        skillChecking = false;
+        waterCup = 1f;
     }
 
     public void drinkSpeedEasy()
