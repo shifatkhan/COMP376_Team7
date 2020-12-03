@@ -52,8 +52,8 @@ public class MemoryUI : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    public void CloseUI()
     {
-        UpdateMemoryUI();
+        gameObject.SetActive(false);
     }
 }

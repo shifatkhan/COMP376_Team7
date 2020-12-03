@@ -6289,6 +6289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas - Game
       objectReference: {fileID: 0}
+    - target: {fileID: 2697639252413763060, guid: 770fb398b447c08478191f43aa605293, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6465276689786986462, guid: 770fb398b447c08478191f43aa605293, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -7361,7 +7365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7813453918401211330, guid: 2637511a59b441341888c6c81d0f29ad, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2637511a59b441341888c6c81d0f29ad, type: 3}
