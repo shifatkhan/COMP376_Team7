@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomerManagerJames : MonoBehaviour
+public class CustomerManager : MonoBehaviour
 {
     private float spawnTime = 0f;
 
     [SerializeField]
     public float spawnRate = 2f;
 
-    private TableManagerJames tableManager;
+    private TableManager tableManager;
 
     [SerializeField]
     private GameObject customerPrefab;
@@ -17,20 +17,20 @@ public class CustomerManagerJames : MonoBehaviour
     [SerializeField]
     private GameObject spawnPoint;
 
-    private static CustomerManagerJames _instance;
+    private static CustomerManager _instance;
 
-    public static CustomerManagerJames Instance
+    public static CustomerManager Instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<CustomerManagerJames>();
+                _instance = FindObjectOfType<CustomerManager>();
                 if (_instance == null)
                 {
                     GameObject go = new GameObject();
-                    go.name = typeof(CustomerManagerJames).Name;
-                    _instance = go.AddComponent<CustomerManagerJames>();
+                    go.name = typeof(CustomerManager).Name;
+                    _instance = go.AddComponent<CustomerManager>();
                     DontDestroyOnLoad(go);
                 }
             }
@@ -55,7 +55,7 @@ public class CustomerManagerJames : MonoBehaviour
     void Start()
     {
         //tableManager = GameObject.Find("TableManager").GetComponent<TableManagerJames>();
-        tableManager = TableManagerJames.Instance;
+        tableManager = TableManager.Instance;
     }
 
     void Update()
