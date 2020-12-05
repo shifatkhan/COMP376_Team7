@@ -220,8 +220,10 @@ public class Table : Interactable
                 {
                     if (!occupiedChairs[i])
                     {
+                        other.GetComponent<NpcMoveToTable>().EnableSitAnimation();
                         other.GetComponent<NpcMoveToTable>().DisableAIMovement();
-                        other.GetComponent<BoxCollider>().enabled = false;
+                        other.GetComponent<Collider>().enabled = false;
+                        Destroy(other.GetComponent<Rigidbody>());
                         other.transform.position = chairs[i].transform.position;
                         occupiedChairs[i] = true;
                         this.EnableCustomers();
