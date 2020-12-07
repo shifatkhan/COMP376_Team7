@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This script handles the force the player is able to send to the object. The longer
+/// he holds left_mouse_button the stronger the force. The player clicks on the screen the direction he wants to send the force.
+/// @author TaqiHaque
+/// </summary>
+
 public class PlayerForce : MonoBehaviour
 {
+    public LayerMask clickMask; //Ground layer
     float holdDownStartTime;
-    public float holdDownTime = 0;
+    float holdDownTime = 0;
+    bool canceled = false;
+    Vector3 clickedPos; //Position player clicked on screen
+    int extraForce; //Extra force by holding longer
 
+    //Scripts
     PlayerInputManager playerInput;
     public PlayerForceUI forceUI;
     CheckNearbyInteraction nearbyObjectScript;
 
-    Vector3 clickedPos; //Position player clicked on screen
-    int extraForce; //Extra force by holding longer
-
-    bool canceled = false;
-
-    public LayerMask clickMask;
-
-    private void Start()
+    void Start()
     {
         playerInput = PlayerInputManager.instance;
 
@@ -107,7 +111,6 @@ public class PlayerForce : MonoBehaviour
             //print(force + " " + force.normalized);      
             
             heldObject.GetComponent<Rigidbody>().AddForce(extraForce * force.normalized, ForceMode.Impulse); //Normalize the force and multiply it by an extra force depending on hold time
-
         }
     }
 
@@ -120,7 +123,4 @@ public class PlayerForce : MonoBehaviour
             canceled = true;
         }
     }
-
-
-
 }

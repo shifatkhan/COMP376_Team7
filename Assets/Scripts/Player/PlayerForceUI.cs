@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This script handles the progress bar for the force
+/// @author TaqiHaque
+/// </summary>
+
 public class PlayerForceUI : MonoBehaviour
 {
     public Slider slider;
