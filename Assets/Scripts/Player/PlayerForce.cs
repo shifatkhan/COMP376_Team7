@@ -1,0 +1,126 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerForce : MonoBehaviour
+{
+    float holdDownStartTime;
+    public float holdDownTime = 0;
+
+    PlayerInputManager playerInput;
+    public PlayerForceUI forceUI;
+    CheckNearbyInteraction nearbyObjectScript;
+
+    Vector3 clickedPos; //Position player clicked on screen
+    int extraForce; //Extra force by holding longer
+
+    bool canceled = false;
+
+    public LayerMask clickMask;
+
+    private void Start()
+    {
+        playerInput = PlayerInputManager.instance;
+
+        nearbyObjectScript = GetComponent<CheckNearbyInteraction>();
+
+        forceUI.SetMaxTime(1.8f); //Max time is 1.8seconds for force bar
+    }
+
+    void Update()
+    {
+        if(nearbyObjectScript.getHeldObject() != null)
+        {
+            //Player presses mouse left button
+            ForceStart();
+
+            //Holds it
+            ForceHold();
+            
+            //If Canceled it by right clicking
+            ForceCancel();
+
+            //Releases mouse left button
+            ForceLaunch();
+        }
+    }
+
+    void ForceStart()
+    {
+        //Mouse Down, start holding
+        if(playerInput.forceStart)
+        {
+            forceUI.ShowUI();
+            canceled = false;
+
+            holdDownStartTime = Time.time;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit, 100f, clickMask))
+            {
+                clickedPos = hit.point; //Position player clicked
+            }                 
+        }
+    }
+
+    void ForceHold()
+    {
+        //left Mouse still down, show force
+        if(playerInput.forceHold)
+        {
+            holdDownTime = Time.time - holdDownStartTime;
+            forceUI.SetCurrentTime(holdDownTime);
+            //print(holdDownTime );
+        }
+    }
+
+    void ForceLaunch()
+    {
+        if(playerInput.forceLaunch && canceled == false)
+        {
+            forceUI.HideUI();
+
+            //Low force
+            if(holdDownTime <= 0.6f)
+            {
+                extraForce = 8;
+            }
+            //Medium force
+            else if(holdDownTime <=1.2f)
+            {
+                extraForce = 15;
+            }
+            //Hard force
+            else if(holdDownTime >1.2)
+            {
+                extraForce = 20;
+            }
+
+            //print(extraForce);
+            
+            GameObject heldObject = nearbyObjectScript.getHeldObject();
+            nearbyObjectScript.ObjectDown();
+
+            Vector3 force = new Vector3(clickedPos.x-transform.position.x, 2, clickedPos.z-transform.position.z); //Vector is difference between mouse click position and player's position
+            //print(force + " " + force.normalized);      
+            
+            heldObject.GetComponent<Rigidbody>().AddForce(extraForce * force.normalized, ForceMode.Impulse); //Normalize the force and multiply it by an extra force depending on hold time
+
+        }
+    }
+
+    void ForceCancel()
+    {
+        //Left mouse still down, but right mouse click to cancel
+        if(playerInput.forceCancel)
+        {
+            forceUI.HideUI();
+            canceled = true;
+        }
+    }
+
+
+
+}

@@ -7,8 +7,11 @@ public class PlayerInputManager : MonoBehaviour
     public Vector3 directionalInput { get; private set; }
     public bool jumpInput { get; private set; } // TODO: Remove. Testing instantaneous inputs.
     public bool interactInput { get; private set; } = false;
-
     public bool pickDropInput { get; private set; } = false;
+    public bool forceStart { get; private set; } = false;
+    public bool forceHold { get; private set; } = false;
+    public bool forceLaunch { get; private set; } = false;
+    public bool forceCancel { get; private set; } = false;
 
     // Singleton Pattern
     public static PlayerInputManager instance;
@@ -39,5 +42,11 @@ public class PlayerInputManager : MonoBehaviour
         jumpInput = Input.GetButtonDown("Jump");
         interactInput = Input.GetButtonDown("Interact");
         pickDropInput = Input.GetButtonDown("PickDrop");
+
+        //Force/throw 
+        forceStart = Input.GetMouseButtonDown(0);
+        forceHold = Input.GetMouseButton(0);
+        forceLaunch = Input.GetMouseButtonUp(0);
+        forceCancel = Input.GetMouseButtonDown(1);
     }
 }
