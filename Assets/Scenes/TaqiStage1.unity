@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 11f782f39b249f1489f3c1cb0829daaf, type: 2}
+--- !u!1 &3123950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 317948051}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3123951}
+  m_Layer: 0
+  m_Name: UI ProgressBarCircle (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3123951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 317948051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 548668787}
+  m_Father: {fileID: 469875281}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &27901778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1566075174, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
@@ -1541,7 +1572,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 548668787}
+  - {fileID: 3123951}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1682,11 +1713,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4599427271029787789, guid: 7ea36f68efe151c40899e9c2011cbe5a, type: 3}
   m_PrefabInstance: {fileID: 512594904}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &548668787 stripped
+--- !u!224 &548668787
 RectTransform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 224923131576229994, guid: 24d5ab3d18c91fc41a2213a537e21ee7, type: 3}
   m_PrefabInstance: {fileID: 317948051}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570145450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3123951}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &561436029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,6 +1827,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561436029}
   m_Mesh: {fileID: 4300002, guid: 58047469a2abddb42bce3ee293c43729, type: 3}
+--- !u!1 &570145450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 317948051}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548668787}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &585829763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3683,7 +3744,7 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 21627
     ctime1: 43253
-    ctime2: 64571
+    ctime2: 61603
     ctime3: 65535
     ctime4: 65150
     ctime5: 0
@@ -7134,11 +7195,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981120b9206320f4dbaab571e3a85531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdDownTime: 0
-  forceUI: {fileID: 1039965043}
   clickMask:
     serializedVersion: 2
     m_Bits: 256
+  forceUI: {fileID: 1039965043}
+  lowForce: 7
+  medForce: 11
+  hardForce: 14
+  maxForce: 17
+  yForce: 2
 --- !u!120 &1875812946
 LineRenderer:
   m_ObjectHideFlags: 0

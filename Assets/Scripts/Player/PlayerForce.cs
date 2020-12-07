@@ -15,12 +15,15 @@ public class PlayerForce : MonoBehaviour
     float holdDownTime = 0;
     bool canceled = false;
     Vector3 clickedPos; //Position player clicked on screen
-    int extraForce; //Extra force by holding longer
+    float extraForce; //Extra force by holding longer
 
     //Scripts
     PlayerInputManager playerInput;
     public PlayerForceUI forceUI;
     CheckNearbyInteraction nearbyObjectScript;
+
+    [SerializeField] 
+    float lowForce, medForce, hardForce, maxForce, yForce;
 
     void Start()
     {
@@ -89,25 +92,29 @@ public class PlayerForce : MonoBehaviour
             //Low force
             if(holdDownTime <= 0.6f)
             {
-                extraForce = 8;
+                extraForce = lowForce;
             }
             //Medium force
             else if(holdDownTime <=1.2f)
             {
-                extraForce = 15;
+                extraForce = medForce;
             }
             //Hard force
-            else if(holdDownTime >1.2)
+            else if(holdDownTime <=1.7)
             {
-                extraForce = 20;
+                extraForce = hardForce;
+            }
+            else if(holdDownTime >1.7)
+            {
+                extraForce = maxForce;
             }
 
-            //print(extraForce);
+            print(extraForce);
             
             GameObject heldObject = nearbyObjectScript.getHeldObject();
             nearbyObjectScript.ObjectDown();
 
-            Vector3 force = new Vector3(clickedPos.x-transform.position.x, 2, clickedPos.z-transform.position.z); //Vector is difference between mouse click position and player's position
+            Vector3 force = new Vector3(clickedPos.x-transform.position.x, yForce, clickedPos.z-transform.position.z); //Vector is difference between mouse click position and player's position
             //print(force + " " + force.normalized);      
             
             heldObject.GetComponent<Rigidbody>().AddForce(extraForce * force.normalized, ForceMode.Impulse); //Normalize the force and multiply it by an extra force depending on hold time
