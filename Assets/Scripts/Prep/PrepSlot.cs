@@ -37,10 +37,10 @@ public class PrepSlot : Interactable
 
     public override void Update()
     {
-        if (playerInput.pickDropInput && playerInRange)
-        {
-            TakeFood();
-        }
+        //if (playerInput.pickDropInput && playerInRange)
+        //{
+        //    TakeFood();
+        //}
 
         if (cooking)
         {
@@ -96,5 +96,27 @@ public class PrepSlot : Interactable
         progressBarGameObject.SetActive(false);
         foodGameObject = null;
         foodSlot = null;
+    }
+
+    /// <summary>
+    /// Checks if this prep slot's food was taken or not.
+    /// </summary>
+    public void UpdatePrepSlot()
+    {
+        if (cooking)
+            return;
+
+        bool foodFound = false;
+
+        foreach (Transform child in transform)
+        {
+            print($"PrepCHild: {child.name}");
+            if (child.CompareTag("Food"))
+                foodFound = true;
+        }
+
+        // If this slot has no food, then we reset the slot.
+        if (!foodFound)
+            ResetSlot();
     }
 }

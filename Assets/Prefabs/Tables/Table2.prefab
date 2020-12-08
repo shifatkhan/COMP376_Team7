@@ -67,7 +67,9 @@ MonoBehaviour:
   interacted: 0
   interactEvent: {fileID: 0}
   tableNumber: 0
-  pay: 0
+  baseTip: 0.15
+  bonusMultiplier: 1.2
+  totalPay: 0
   maxOrderTime: 20
   minOrderTime: 5
   memory: {fileID: 11400000, guid: 1076c03143d9d71499bdfc0b85e94d68, type: 2}

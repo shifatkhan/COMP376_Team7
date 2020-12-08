@@ -576,15 +576,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6841362864613243369, guid: 13949eef48a774b4099187c2b0720764, type: 3}
       propertyPath: m_Size.z
-      value: 3.7932649
+      value: 4.0867047
       objectReference: {fileID: 0}
     - target: {fileID: 6841362864613243369, guid: 13949eef48a774b4099187c2b0720764, type: 3}
       propertyPath: m_Center.x
-      value: 0.4372034
+      value: 0.08234358
       objectReference: {fileID: 0}
     - target: {fileID: 6841362864613243369, guid: 13949eef48a774b4099187c2b0720764, type: 3}
       propertyPath: m_Center.z
-      value: -0.09782583
+      value: -0.2445677
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841362864613243369, guid: 13949eef48a774b4099187c2b0720764, type: 3}
+      propertyPath: m_Size.x
+      value: 9.232042
       objectReference: {fileID: 0}
     - target: {fileID: 6841362865232293316, guid: 13949eef48a774b4099187c2b0720764, type: 3}
       propertyPath: m_Size.z
@@ -598,6 +602,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.09513259
       objectReference: {fileID: 0}
+    - target: {fileID: 6841362865232293316, guid: 13949eef48a774b4099187c2b0720764, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6841362865542092094, guid: 13949eef48a774b4099187c2b0720764, type: 3}
       propertyPath: m_Size.z
       value: 3.195927
@@ -610,6 +618,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.09513259
       objectReference: {fileID: 0}
+    - target: {fileID: 6841362865542092094, guid: 13949eef48a774b4099187c2b0720764, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6841362865553184173, guid: 13949eef48a774b4099187c2b0720764, type: 3}
       propertyPath: m_Size.z
       value: 3.195927
@@ -621,6 +633,10 @@ PrefabInstance:
     - target: {fileID: 6841362865553184173, guid: 13949eef48a774b4099187c2b0720764, type: 3}
       propertyPath: m_Center.z
       value: -0.09513259
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841362865553184173, guid: 13949eef48a774b4099187c2b0720764, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13949eef48a774b4099187c2b0720764, type: 3}

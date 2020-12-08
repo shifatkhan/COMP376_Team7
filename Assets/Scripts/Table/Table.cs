@@ -29,7 +29,12 @@ public class Table : Interactable
 
     private FoodSlot order;
 
-    public float pay;
+    [Header("Order")]
+    [Range(0,1)]
+    [SerializeField] private float baseTip = 0.15f; // Tip to add to totalPay
+    [Min(1)]
+    [SerializeField] private float bonusMultiplier =  1.2f; // Bonus to multiply on baseTip
+    [SerializeField] private float totalPay; // Total amount to be paid
     private GameObject foodOnTable;
 
     public float maxOrderTime = 20f;
@@ -68,13 +73,6 @@ public class Table : Interactable
 
         occupiedChairs = new bool[chairs.Count];
         tableState = TableState.Available;
-
-        // assign table # in its UI and the state
-        transform.Find("Water Status Position/Water Status Canvas/Bubble/Table Number Text")
-            .GetComponent<Text>().text = (tableNumber + 1).ToString();
-        stateUIText = transform.Find("Water Status Position/Water Status Canvas/Bubble/Table State")
-            .GetComponent<Text>();
-        this.updateStateInUI();
 
         // find scripts
         transform.Find("Cube").gameObject.SetActive(false);
@@ -122,7 +120,7 @@ public class Table : Interactable
 
         // Choose something to order.
         order = new FoodSlot(foodFactory.GetRandomFood(), tableNumber);
-        pay = order.price;
+        totalPay = order.price;
 
         tableState = TableState.ReadyToOrder;
 
@@ -177,22 +175,74 @@ public class Table : Interactable
     {
         tableState = TableState.Available;
 
-        // TODO: Move score to a Game Master gameobject, which will update ScoreUI gameobject reference
-        //score.text = (int.Parse(score.text) + pay).ToString();
-
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.red;
         transform.Find("Cube").gameObject.SetActive(false);
 
         order = null;
 
+        CalculateTotalPay();
         updateStateInUI();
+    }
+
+    public void AddBaseTip(float amount)
+    {
+        // Base tip can't go above 1.
+        if (amount <= 0 || amount + baseTip > 1)
+            return;
+
+        baseTip += amount;
+    }
+
+    public void SubstractBaseTip(float amount)
+    {
+        // Base tip can't go below 0.
+        if (amount <= 0 || baseTip - amount < 0)
+            return;
+
+        baseTip -= amount;
+    }
+
+    public void AddBonusMultiplier(float amount)
+    {
+        if (amount <= 0)
+            return;
+
+        bonusMultiplier += amount;
+    }
+
+    public void SubstractBonusMultiplier(float amount)
+    {
+        // Base tip can't go below 1.
+        if (amount <= 0 || bonusMultiplier - amount < 1)
+            return;
+
+        bonusMultiplier -= amount;
+    }
+
+    /// <summary>
+    /// This should be called at the end.
+    /// AKA when the table is going to pay "Pay()"
+    /// 
+    /// We also update the score in Score Manager.
+    /// </summary>
+    /// <returns>totalPay: the final pay</returns>
+    public float CalculateTotalPay()
+    {
+        // Calculate total tip
+        float totalTip = baseTip + (baseTip * bonusMultiplier);
+
+        // Calculate total pay
+        totalPay += totalTip;
+
+        // Update score
+        ScoreManager.AddScore(totalPay);
+
+        return totalPay;
     }
 
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-
-        // TODO: Fix food pushing player off if it's not the correct food.
 
         if (other.CompareTag("Food"))
         {
@@ -230,6 +280,16 @@ public class Table : Interactable
                 }
             }
         }
+    }
+
+    public void UpdateTableNumber()
+    {
+        // assign table # in its UI and the state
+        transform.Find("Water Status Position/Water Status Canvas/Bubble/Table Number Text")
+            .GetComponent<Text>().text = (tableNumber + 1).ToString();
+        stateUIText = transform.Find("Water Status Position/Water Status Canvas/Bubble/Table State")
+            .GetComponent<Text>();
+        this.updateStateInUI();
     }
 
     private void updateStateInUI()

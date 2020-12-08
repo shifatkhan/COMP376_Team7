@@ -12,6 +12,7 @@ TagManager:
   - Customer
   - Table
   - Chair
+  - PrepSlot
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,8 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - Player
+  - Customer
   - 
   - PickUp
   - 
