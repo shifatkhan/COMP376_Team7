@@ -60,6 +60,7 @@ public class TableManager : MonoBehaviour
         for (int i = 0; i < tables.Length; i++)
         {
             tables[i].tableNumber = i;
+            tables[i].UpdateTableNumber();
         }
     }
 

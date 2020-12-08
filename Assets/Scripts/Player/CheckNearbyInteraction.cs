@@ -97,11 +97,16 @@ public class CheckNearbyInteraction : MonoBehaviour
             //Drop object
             else
             {
-                currentObjectHold.GetComponent<PickUp>().PlaceObjectDown();
-                holdingObject = false;
-                currentObjectHold = null;
+                ObjectDown();
             }
         }
+    }
+
+    public void ObjectDown()
+    {
+        currentObjectHold.GetComponent<PickUp>().PlaceObjectDown();
+        holdingObject = false;
+        currentObjectHold = null;
     }
 
     //Returns current object held

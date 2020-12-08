@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float slipDuration = 3f;
 
     //private PlayerInput playerInput;
+    // MAKING A CHANGE HERE ===================================
+    public GameObject Mop;
+    // ========================================================
 
     private Rigidbody rb;
     private PlayerInputManager playerInput;
@@ -91,11 +94,27 @@ public class PlayerMovement : MonoBehaviour
         slipping = false;
     }
 
+    // MAKE CHANGE HERE =========================================================================
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Puddle"))
+
+        if (Mop.transform.parent != null && Mop.transform.parent.name == "PickupObject")
         {
-            StartCoroutine(SlipCo());
+            Debug.Log("Mop's Parent: " + Mop.transform.parent.name);
+            if (other.CompareTag("Puddle"))
+            {
+                Destroy(other.gameObject);
+                Mop.GetComponent<Mop>().audioSource.Play();
+                Instantiate(Mop.GetComponent<Mop>().cleaningPrefab, transform.position, transform.rotation);
+            }
         }
+        else
+        {
+            if (other.CompareTag("Puddle"))
+            {
+                StartCoroutine(SlipCo());
+            }
+        }
+        // ==========================================================================================
     }
 }
