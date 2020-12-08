@@ -25,6 +25,8 @@ public class PrepTable : Interactable
     [Header("UI")]
     [SerializeField]
     private Text queueText;
+    [SerializeField]
+    private Transform memoryUI;
 
     void Awake()
     {
@@ -60,6 +62,9 @@ public class PrepTable : Interactable
         base.OnInteract();
 
         QueueFoods();
+
+        // TODO show UI
+        memoryUI.gameObject.SetActive(true);
     }
 
     private void QueueFoods()

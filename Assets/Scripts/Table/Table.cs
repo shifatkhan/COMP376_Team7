@@ -53,8 +53,9 @@ public class Table : Interactable
     private GameEvent memoryEvent;
 
     //*** UI ***//
+    private PatienceMeter patienceManager;
     private WaterPourable waterManager;
-    private Text stateUIText;
+    private Animator tableStateAnim;
 
     public override void Start()
     {
@@ -74,10 +75,14 @@ public class Table : Interactable
         occupiedChairs = new bool[chairs.Count];
         tableState = TableState.Available;
 
-        // find scripts
+        // find components
         transform.Find("Cube").gameObject.SetActive(false);
         foodFactory = GameObject.FindGameObjectWithTag("Food Factory").GetComponent<FoodFactory>();
+        patienceManager = GetComponent<PatienceMeter>();
         waterManager = GetComponent<WaterPourable>();
+        tableStateAnim = transform.Find("Table State UI/Bubble/Table State").GetComponent<Animator>();
+
+        this.updateStateInUI();
     }
 
     public override void Update()
@@ -91,7 +96,9 @@ public class Table : Interactable
 
         if (tableState == TableState.ReadyToOrder)
         {
+            // customer's order is taken
             Waiting();
+            patienceManager.increPatience(0.25f);
         }
         else if (tableState == TableState.ReadyToPay)
         {
@@ -106,7 +113,10 @@ public class Table : Interactable
         tableState = TableState.Occupied;
 
         // customers start drinking water
-        waterManager.startDrinking();
+        patienceManager.setActive(true);
+        patienceManager.resetPatience();
+        waterManager.setActive(true);
+        waterManager.waterFilled();
         // TODO adjust difficulty by calling one of waterManager's method
 
         updateStateInUI();
@@ -150,6 +160,9 @@ public class Table : Interactable
     {
         tableState = TableState.Eating;
 
+        patienceManager.increPatience(0.5f);
+        patienceManager.setActive(false);
+
         StartCoroutine(EatingCo(Random.Range(minOrderTime, maxOrderTime)));
 
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.cyan;
@@ -166,6 +179,8 @@ public class Table : Interactable
 
         tableState = TableState.ReadyToPay;
 
+        patienceManager.setActive(true);
+
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.white;
 
         updateStateInUI();
@@ -174,7 +189,13 @@ public class Table : Interactable
     public void Pay()
     {
         tableState = TableState.Available;
+		
+        patienceManager.setActive(false);
+        waterManager.setActive(false);
 
+        // TODO: Move score to a Game Master gameobject, which will update ScoreUI gameobject reference
+        //score.text = (int.Parse(score.text) + pay).ToString();
+		
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.red;
         transform.Find("Cube").gameObject.SetActive(false);
 
@@ -287,29 +308,23 @@ public class Table : Interactable
     public void UpdateTableNumber()
     {
         // assign table # in its UI and the state
-        transform.Find("Water Status Position/Water Status Canvas/Bubble/Table Number Text")
-            .GetComponent<Text>().text = (tableNumber + 1).ToString();
-        stateUIText = transform.Find("Water Status Position/Water Status Canvas/Bubble/Table State")
-            .GetComponent<Text>();
-        this.updateStateInUI();
+        transform.Find("Table State UI/Bubble/Table Number").GetComponent<Text>().text = (tableNumber + 1).ToString();
     }
 
     private void updateStateInUI()
     {
+        tableStateAnim.SetBool("ReadyToOrder", false);
+        tableStateAnim.SetBool("AwaitingFood", false);
+        tableStateAnim.SetBool("ReadyToPay", false);
+
         switch (this.tableState)
         {
-            case TableState.Available:
-                stateUIText.text = "Vacant."; break;
-            case TableState.Occupied:
-                stateUIText.text = "Deciding.."; break;
             case TableState.ReadyToOrder:
-                stateUIText.text = "Ready to order!"; break;
+                tableStateAnim.SetBool("ReadyToOrder", true); break;
             case TableState.WaitingForFood:
-                stateUIText.text = "Awaiting food.."; break;
-            case TableState.Eating:
-                stateUIText.text = "Dining."; break;
+                tableStateAnim.SetBool("AwaitingFood", true); break;
             case TableState.ReadyToPay:
-                stateUIText.text = "Ready to pay!"; break;
+                tableStateAnim.SetBool("ReadyToPay", true); break;
             default:
                 break;
         }
