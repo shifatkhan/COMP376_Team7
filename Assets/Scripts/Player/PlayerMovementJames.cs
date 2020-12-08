@@ -7,6 +7,7 @@ using UnityEngine;
 /// 
 /// @author ShifatKhan
 /// </summary>
+[System.Obsolete("This class is getting replaced by PlayerMovement.cs", true)]
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovementJames : MonoBehaviour
 {

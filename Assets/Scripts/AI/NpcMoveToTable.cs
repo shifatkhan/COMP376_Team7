@@ -18,11 +18,12 @@ public class NpcMoveToTable : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
     {
+        EnableWalkAnimation();
     }
 
     void Update()
@@ -46,17 +47,15 @@ public class NpcMoveToTable : MonoBehaviour
         agent.destination = tables[tableNumber].transform.position;
     }
 
-    public void EnableSitAnimation()
-    {
-        idle.SetActive(false);
-        walking.SetActive(false);
-        sitting.SetActive(true);
-        
-    }
-
     public void EnableWalkAnimation()
     {
         animator.SetBool("walking", true);
         animator.SetBool("sitting", false);
+    }
+
+    public void EnableSittingAnimation()
+    {
+        animator.SetBool("walking", false);
+        animator.SetBool("sitting", true);
     }
 }

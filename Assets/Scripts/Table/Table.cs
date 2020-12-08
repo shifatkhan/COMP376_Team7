@@ -269,7 +269,7 @@ public class Table : Interactable
         {
             // Check if a Food was placed on the table.
             Food food = other.GetComponent<Food>();
-            if (food == null)
+            if (food == null || this.order == null)
                 return;
 
             // Check if the food placed was ment for this table number.
@@ -291,7 +291,7 @@ public class Table : Interactable
                 {
                     if (!occupiedChairs[i])
                     {
-                        other.GetComponent<NpcMoveToTable>().EnableSitAnimation();
+                        other.GetComponent<NpcMoveToTable>().EnableSittingAnimation();
                         other.GetComponent<NpcMoveToTable>().DisableAIMovement();
                         other.GetComponent<Collider>().enabled = false;
                         Destroy(other.GetComponent<Rigidbody>());
