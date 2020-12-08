@@ -13,6 +13,9 @@ public class PlayerInputManager : MonoBehaviour
     public bool forceLaunch { get; private set; } = false;
     public bool forceCancel { get; private set; } = false;
 
+    public bool throwHold { get; private set; } = false;
+    public bool throwRelease { get; private set; } = false;
+
     // Singleton Pattern
     public static PlayerInputManager instance;
 

@@ -7,7 +7,7 @@ public class CustomerManager : MonoBehaviour
     private float spawnTime = 0f;
 
     [SerializeField]
-    private float spawnRate = 2f;
+    public float spawnRate = 2f;
 
     private TableManager tableManager;
 

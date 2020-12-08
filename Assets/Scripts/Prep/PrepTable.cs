@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// This class takes care of the food queue in the prep table.
@@ -11,6 +12,7 @@ using UnityEngine;
 /// </summary>
 public class PrepTable : Interactable
 {
+    [Header("PrepTable vars")]
     [SerializeField]
     private List<Transform> prepSlots;
 
@@ -19,6 +21,12 @@ public class PrepTable : Interactable
 
     [SerializeField]
     private Queue<FoodSlot> foodQueue = new Queue<FoodSlot>();
+
+    [Header("UI")]
+    [SerializeField]
+    private Text queueText;
+    [SerializeField]
+    private Transform memoryUI;
 
     void Awake()
     {
@@ -31,14 +39,22 @@ public class PrepTable : Interactable
 
         foreach (Transform child in transform)
         {
-            prepSlots.Add(child);
+            if(child.CompareTag("PrepSlot"))
+                prepSlots.Add(child);
         }
+
+        UpateQueueText();
     }
 
     public override void Update()
     {
         base.Update();
         CheckForFreeSlots();
+
+        if (playerInput.pickDropInput && playerInRange)
+        {
+            UpdatePrepSlots();
+        }
     }
 
     public override void OnInteract()
@@ -46,6 +62,9 @@ public class PrepTable : Interactable
         base.OnInteract();
 
         QueueFoods();
+
+        // TODO show UI
+        memoryUI.gameObject.SetActive(true);
     }
 
     private void QueueFoods()
@@ -66,15 +85,7 @@ public class PrepTable : Interactable
 
         memory.Clear();
 
-        // PREP FOODS
-        //for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
-        //{
-        //    PrepSlot current = prepSlots[i].GetComponent<PrepSlot>();
-        //    if (!current.occupied)
-        //    {
-        //        current.PrepFood(foodQueue.Dequeue());
-        //    }
-        //}
+        UpateQueueText();
     }
 
     private void CheckForFreeSlots()
@@ -95,7 +106,7 @@ public class PrepTable : Interactable
         // Return void is there are no free slots.
         if (!free)
             return;
-        print("Free slot found");
+        print("PrepTable: Free slot found");
         // PREP FOODS
         for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
         {
@@ -103,7 +114,27 @@ public class PrepTable : Interactable
             if (!current.occupied)
             {
                 current.PrepFood(foodQueue.Dequeue());
+                UpateQueueText();
             }
+        }
+    }
+
+    public void UpateQueueText()
+    {
+        queueText.text = foodQueue.Count.ToString();
+    }
+
+    /// <summary>
+    /// Checks if this prep slot's food was taken or not.
+    /// This is a fix for when the player stands in from of a prepSlot, 
+    /// but takes the food from a different prepSlot.
+    /// </summary>
+    public void UpdatePrepSlots()
+    {
+        foreach (Transform prepSlot in prepSlots)
+        {
+            PrepSlot current = prepSlot.GetComponent<PrepSlot>();
+            current.UpdatePrepSlot();
         }
     }
 }
