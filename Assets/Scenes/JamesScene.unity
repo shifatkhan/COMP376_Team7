@@ -2590,7 +2590,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
-    - {fileID: 4012715535312914149, guid: 634d4df8aeca9414fab7cc5fd0732b5c, type: 3}
     - {fileID: 885287254728396060, guid: 634d4df8aeca9414fab7cc5fd0732b5c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 634d4df8aeca9414fab7cc5fd0732b5c, type: 3}
 --- !u!1 &771904827
@@ -4871,6 +4870,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5242574547023803281, guid: b865c9e9d0686f34f9916f58fa529539, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5243620204597786186, guid: b865c9e9d0686f34f9916f58fa529539, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4878,6 +4881,10 @@ PrefabInstance:
     - target: {fileID: 5243758171149638732, guid: b865c9e9d0686f34f9916f58fa529539, type: 3}
       propertyPath: m_Name
       value: Simpson
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243758171149638732, guid: b865c9e9d0686f34f9916f58fa529539, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5243836283939753124, guid: b865c9e9d0686f34f9916f58fa529539, type: 3}
       propertyPath: m_IsActive
@@ -6242,19 +6249,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &1550698793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550698790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed281114e13ec429aade1a3d9d9e6134, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPosition: {fileID: 0}
 --- !u!1 &1562322757
 GameObject:
   m_ObjectHideFlags: 0
@@ -6894,19 +6888,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5243758171149638732, guid: b865c9e9d0686f34f9916f58fa529539, type: 3}
   m_PrefabInstance: {fileID: 1193658060}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1688325413
+--- !u!114 &1688325414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688325406}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e3b03cd222664690b9aed8e7452195e, type: 3}
+  m_Script: {fileID: 11500000, guid: 564bf0e45e662456a8eb0ce3c55c8f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cleaningPrefab: {fileID: 5852269672373090152, guid: 8d345a6ee8b028c4aa9c225ed56584a2, type: 3}
+  moveSpeed: 500
+  turnSpeed: 1000
+  slipping: 0
+  slipDuration: 3
   Mop: {fileID: 1550698790}
 --- !u!1001 &1691141899
 PrefabInstance:
