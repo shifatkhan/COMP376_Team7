@@ -29,7 +29,12 @@ public class Table : Interactable
 
     private FoodSlot order;
 
-    public float pay;
+    [Header("Order")]
+    [Range(0,1)]
+    [SerializeField] private float baseTip = 0.15f; // Tip to add to totalPay
+    [Min(1)]
+    [SerializeField] private float bonusMultiplier =  1.2f; // Bonus to multiply on baseTip
+    [SerializeField] private float totalPay; // Total amount to be paid
     private GameObject foodOnTable;
 
     public float maxOrderTime = 20f;
@@ -125,7 +130,7 @@ public class Table : Interactable
 
         // Choose something to order.
         order = new FoodSlot(foodFactory.GetRandomFood(), tableNumber);
-        pay = order.price;
+        totalPay = order.price;
 
         tableState = TableState.ReadyToOrder;
 
@@ -184,32 +189,87 @@ public class Table : Interactable
     public void Pay()
     {
         tableState = TableState.Available;
-
+		
         patienceManager.setActive(false);
         waterManager.setActive(false);
 
         // TODO: Move score to a Game Master gameobject, which will update ScoreUI gameobject reference
         //score.text = (int.Parse(score.text) + pay).ToString();
-
+		
         transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.red;
         transform.Find("Cube").gameObject.SetActive(false);
 
         order = null;
 
+        CalculateTotalPay();
         updateStateInUI();
+    }
+
+    public void AddBaseTip(float amount)
+    {
+        // Base tip can't go above 1.
+        if (amount <= 0 || amount + baseTip > 1)
+            return;
+
+        baseTip += amount;
+    }
+
+    public void SubstractBaseTip(float amount)
+    {
+        // Base tip can't go below 0.
+        if (amount <= 0 || baseTip - amount < 0)
+            return;
+
+        baseTip -= amount;
+    }
+
+    public void AddBonusMultiplier(float amount)
+    {
+        if (amount <= 0)
+            return;
+
+        bonusMultiplier += amount;
+    }
+
+    public void SubstractBonusMultiplier(float amount)
+    {
+        // Base tip can't go below 1.
+        if (amount <= 0 || bonusMultiplier - amount < 1)
+            return;
+
+        bonusMultiplier -= amount;
+    }
+
+    /// <summary>
+    /// This should be called at the end.
+    /// AKA when the table is going to pay "Pay()"
+    /// 
+    /// We also update the score in Score Manager.
+    /// </summary>
+    /// <returns>totalPay: the final pay</returns>
+    public float CalculateTotalPay()
+    {
+        // Calculate total tip
+        float totalTip = baseTip + (baseTip * bonusMultiplier);
+
+        // Calculate total pay
+        totalPay += totalTip;
+
+        // Update score
+        ScoreManager.AddScore(totalPay);
+
+        return totalPay;
     }
 
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
 
-        // TODO: Fix food pushing player off if it's not the correct food.
-
         if (other.CompareTag("Food"))
         {
             // Check if a Food was placed on the table.
             Food food = other.GetComponent<Food>();
-            if (food == null)
+            if (food == null || this.order == null)
                 return;
 
             // Check if the food placed was ment for this table number.
@@ -231,8 +291,10 @@ public class Table : Interactable
                 {
                     if (!occupiedChairs[i])
                     {
+                        other.GetComponent<NpcMoveToTable>().EnableSittingAnimation();
                         other.GetComponent<NpcMoveToTable>().DisableAIMovement();
-                        other.GetComponent<BoxCollider>().enabled = false;
+                        other.GetComponent<Collider>().enabled = false;
+                        Destroy(other.GetComponent<Rigidbody>());
                         other.transform.position = chairs[i].transform.position;
                         occupiedChairs[i] = true;
                         this.EnableCustomers();

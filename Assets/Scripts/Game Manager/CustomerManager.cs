@@ -7,7 +7,7 @@ public class CustomerManager : MonoBehaviour
     private float spawnTime = 0f;
 
     [SerializeField]
-    private float spawnRate = 2f;
+    public float spawnRate = 2f;
 
     private TableManager tableManager;
 
@@ -19,6 +19,8 @@ public class CustomerManager : MonoBehaviour
 
     private static CustomerManager _instance;
 
+    //SpecialAICutscene specialCutscene;
+    
     public static CustomerManager Instance
     {
         get
@@ -55,6 +57,7 @@ public class CustomerManager : MonoBehaviour
     void Start()
     {
         //tableManager = GameObject.Find("TableManager").GetComponent<TableManagerJames>();
+        //specialCutscene = GetComponent<SpecialAICutscene>();  
         tableManager = TableManager.Instance;
     }
 
@@ -89,6 +92,9 @@ public class CustomerManager : MonoBehaviour
             GameObject customer = Instantiate(customerPrefab, spawnPoint.transform.position, Quaternion.identity);
             customer.GetComponent<NpcMoveToTable>().SetTableNumber(tableNumber);
         }
+
+        //Play cutscene
+        //specialCutscene.SpecialAIEnters();
     }
 
     public bool AreThereTablesAvailable()

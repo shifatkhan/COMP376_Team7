@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Mop : MonoBehaviour
 {
-    private AudioSource audioSource;
+    public AudioSource audioSource { get; private set; }
 
-    [SerializeField] private GameObject cleaningPrefab;
+    public GameObject cleaningPrefab;
 
     private void Awake()
     {
@@ -17,8 +17,6 @@ public class Mop : MonoBehaviour
     {
         if (other.CompareTag("Puddle"))
         {
-            // TODO: Usually we check if the mop is in the player's hand, but what if the player throws the mop on a puddle?
-            //      Also, instead of waiting 2 seconds before destroying, instantiate a particle onDestroy.
             Destroy(other.gameObject);
             audioSource.Play();
             Instantiate(cleaningPrefab, transform.position, transform.rotation);

@@ -50,6 +50,11 @@ public class PrepTable : Interactable
     {
         base.Update();
         CheckForFreeSlots();
+
+        if (playerInput.pickDropInput && playerInRange)
+        {
+            UpdatePrepSlots();
+        }
     }
 
     public override void OnInteract()
@@ -117,5 +122,19 @@ public class PrepTable : Interactable
     public void UpateQueueText()
     {
         queueText.text = foodQueue.Count.ToString();
+    }
+
+    /// <summary>
+    /// Checks if this prep slot's food was taken or not.
+    /// This is a fix for when the player stands in from of a prepSlot, 
+    /// but takes the food from a different prepSlot.
+    /// </summary>
+    public void UpdatePrepSlots()
+    {
+        foreach (Transform prepSlot in prepSlots)
+        {
+            PrepSlot current = prepSlot.GetComponent<PrepSlot>();
+            current.UpdatePrepSlot();
+        }
     }
 }
