@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8087280815959412687}
   - component: {fileID: 1460277080959325481}
   - component: {fileID: 176836658219175542}
+  - component: {fileID: -8766401413379608066}
   m_Layer: 11
   m_Name: Pizza Slice
   m_TagString: Food
@@ -77,6 +78,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPosition: {fileID: 0}
+--- !u!114 &-8766401413379608066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3414948278229402761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dff9e4e4c6dc904ab10bd8220bb4736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 3.64
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &213228297703278204
 PrefabInstance:
   m_ObjectHideFlags: 0

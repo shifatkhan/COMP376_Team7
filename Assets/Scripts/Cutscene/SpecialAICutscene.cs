@@ -1,35 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class SpecialAICutscene : MonoBehaviour
 {
     public GameObject thePlayer;
 
-    PlayerMovement playerMovement;
     Animator playerAnimator;
 
     Rigidbody playerRigidbody;
 
-    public GameObject mainCamera;
-    public GameObject cutsceneCam;
-
     RigidbodyConstraints originalConstraints;
+    
+    GameObject timeline;
+
+    PlayableDirector timelineDirector;
 
     void Start()
     {
-        playerMovement = thePlayer.GetComponent<PlayerMovement>();
         playerAnimator = thePlayer.GetComponent<Animator>();
         playerRigidbody = thePlayer.GetComponent<Rigidbody>();
         originalConstraints = playerRigidbody.constraints;
+        timeline = GameObject.Find("Timeline");
+        timelineDirector = timeline.GetComponent<PlayableDirector>();
     }
 
     public void SpecialAIEnters()
     {
-        print("AI");
-        cutsceneCam.SetActive(true);
-        mainCamera.SetActive(false);
-        //playerMovement.enabled = false;
+        timelineDirector.Play();
         playerAnimator.enabled = false;
         playerRigidbody.constraints = RigidbodyConstraints.FreezePosition;
         StartCoroutine(FinishCut());
@@ -38,10 +37,8 @@ public class SpecialAICutscene : MonoBehaviour
     IEnumerator FinishCut()
     {
         yield return new WaitForSeconds(3);
-        mainCamera.SetActive(true);
+        timelineDirector.Stop();
         playerRigidbody.constraints = originalConstraints;
-        //playerMovement.enabled = true;
         playerAnimator.enabled = true;
-        cutsceneCam.SetActive(false);
     }
 }
