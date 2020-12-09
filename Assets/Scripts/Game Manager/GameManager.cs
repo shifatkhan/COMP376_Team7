@@ -2,57 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
+    TableManager tableManager = TableManager.Instance;
+    CustomerManager customerManager = CustomerManager.Instance;
+    PuddleManager puddleManager = PuddleManager.Instance;
+    AudioManager audioManager;
+    ScoreManager scoreManager;
 
-    private static GameManager _instance;
+    public static float timeLimit = 300;
+    public static float currentTime = 0;
 
-
-    // Singleton pattern implementation
-    //public static GameManager Instance
-    //{
-    //    get
-    //    {
-    //        if (_instance == null)
-    //        {
-    //            _instance = FindObjectOfType<GameManager>();
-    //            if (_instance == null)
-    //            {
-    //                GameObject go = new GameObject();
-    //                go.name = typeof(GameManager).Name;
-    //                _instance = go.AddComponent<GameManager>();
-    //                DontDestroyOnLoad(go);
-    //            }
-    //        }
-    //        return _instance;
-    //    }
-    //}
-
-    //private void Awake()
-    //{
-    //    if (_instance == null)
-    //    {
-    //        _instance = this;
-    //        DontDestroyOnLoad(this.gameObject);
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
+    //Hidden Player Stats for multipliers and end screens. TODO: To be used for later - Nick
+    private int ordersServed = 0;
+    private int puddlesCleaned = 0;
+    private int puddlesSlippedss = 0;
+    private int customersHappy = 0;
+    private int customersAngry = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        TableManager tableManager = TableManager.Instance;
-        CustomerManager customerManager = CustomerManager.Instance;
-        PuddleManager puddleManager = PuddleManager.Instance;
+        audioManager = GetComponentInChildren<AudioManager>();
+        scoreManager = GetComponentInChildren<ScoreManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        currentTime = Time.deltaTime;
+
+        if(ScoreManager.score == 200 && currentTime < timeLimit)
+        {
+            StageSuccess();
+        }
+        else if(currentTime > timeLimit && ScoreManager.score < 200)
+        {
+            StageFailure();
+        }
+    }
+
+    void StageSuccess()
+    {
+
+    }
+
+    void StageFailure()
+    {
 
     }
 }
