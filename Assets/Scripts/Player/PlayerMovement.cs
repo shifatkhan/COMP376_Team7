@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private bool slipping = false;
     [SerializeField] private float slipDuration = 3f;
+    [SerializeField] private ParticleSystem slipFx;
 
     //private PlayerInput playerInput;
     // MAKING A CHANGE HERE ===================================
@@ -88,10 +89,12 @@ public class PlayerMovement : MonoBehaviour
     {
         slipping = true;
         AudioManager.PlayPlayerSlip();
+        slipFx.Play();
 
         yield return new WaitForSeconds(slipDuration);
 
         slipping = false;
+        slipFx.Stop();
     }
 
     // MAKE CHANGE HERE =========================================================================

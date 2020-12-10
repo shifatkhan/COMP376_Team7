@@ -49,7 +49,8 @@ MonoBehaviour:
   waterCheckSuccessClip: {fileID: 8300000, guid: e868c41d7d890c345ba2cbeb37c078b8, type: 3}
   waterCheckFailClip: {fileID: 8300000, guid: 2c331e503ada6af408f0bfcfc2d4b21c, type: 3}
   waterCheckPerfectClip: {fileID: 8300000, guid: a96a854c1c23ac347bff68ff7dbc198a, type: 3}
-  playerSlipClip: {fileID: 8300000, guid: c417b5776f546fa48adee5a0784a35cf, type: 3}
+  playerSlipClip: {fileID: 8300000, guid: 230cc66f249e7534eb57384d991b1a99, type: 3}
+  playerThrowClip: {fileID: 8300000, guid: 5a2238f05380a6340988527bd570a4d0, type: 3}
   musicGroup: {fileID: -4414341336658451301, guid: 358728edc25fa964694fde7cbf4786ec, type: 2}
   sfxGroup: {fileID: 1937919286969800881, guid: 358728edc25fa964694fde7cbf4786ec, type: 2}
   playerGroup: {fileID: -7695510877192483359, guid: 358728edc25fa964694fde7cbf4786ec, type: 2}

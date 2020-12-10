@@ -2419,14 +2419,6 @@ PrefabInstance:
       propertyPath: Mop
       value: 
       objectReference: {fileID: 848317079}
-    - target: {fileID: 5242574547023803281, guid: b865c9e9d0686f34f9916f58fa529539, type: 3}
-      propertyPath: slipping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242574547023803281, guid: b865c9e9d0686f34f9916f58fa529539, type: 3}
-      propertyPath: slipDuration
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5243758171149638732, guid: b865c9e9d0686f34f9916f58fa529539, type: 3}
       propertyPath: m_Name
       value: Simpson
@@ -5148,7 +5140,11 @@ PrefabInstance:
     - target: {fileID: 3665626512646956379, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
       propertyPath: playerSlipClip
       value: 
-      objectReference: {fileID: 8300000, guid: f6ed4237298b6f74291a7dfd5b3a07db, type: 3}
+      objectReference: {fileID: 8300000, guid: 230cc66f249e7534eb57384d991b1a99, type: 3}
+    - target: {fileID: 3665626512646956379, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
+      propertyPath: playerThrowClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a2238f05380a6340988527bd570a4d0, type: 3}
     - target: {fileID: 4183874049234023408, guid: 7dbaa6929d297e44a88a82af5ec4018e, type: 3}
       propertyPath: tables.Array.data[0]
       value: 

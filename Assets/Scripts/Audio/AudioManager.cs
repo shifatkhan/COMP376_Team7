@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip waterCheckFailClip;        // when land water check in fail zone
     public AudioClip waterCheckPerfectClip;     // when land water check in perfect zone
     public AudioClip playerSlipClip;            // when the player slips
+    public AudioClip playerThrowClip;           // when the player throws an object
 
     [Header("Mixer Groups")]
     public AudioMixerGroup musicGroup;
@@ -86,6 +87,14 @@ public class AudioManager : MonoBehaviour
         if (audioManager == null) return;
 
         audioManager.playerSource.clip = audioManager.playerSlipClip;
+        audioManager.playerSource.Play();
+    }
+    
+    public static void PlayerPlayerThrow()
+    {
+        if (audioManager == null) return;
+
+        audioManager.playerSource.clip = audioManager.playerThrowClip;
         audioManager.playerSource.Play();
     }
 }
