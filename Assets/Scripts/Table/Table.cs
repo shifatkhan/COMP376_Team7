@@ -82,7 +82,6 @@ public class Table : Interactable
         tableState = TableState.Available;
 
         // find components
-        transform.Find("Cube").gameObject.SetActive(false);
         foodFactory = GameObject.FindGameObjectWithTag("Food Factory").GetComponent<FoodFactory>();
         patienceManager = GetComponent<PatienceMeter>();
         waterManager = GetComponent<WaterPourable>();
@@ -115,8 +114,6 @@ public class Table : Interactable
 
     public void EnableCustomers()
     {
-        transform.Find("Cube").gameObject.SetActive(true);
-
         tableState = TableState.Occupied;
 
         // customers start drinking water

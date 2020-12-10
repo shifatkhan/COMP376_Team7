@@ -56,9 +56,6 @@ public class PrepTable : Interactable
         base.OnInteract();
 
         QueueFoods();
-
-        // TODO show UI
-        //memoryUI.gameObject.SetActive(true);
     }
 
     private void QueueFoods()

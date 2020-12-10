@@ -102,7 +102,7 @@ public class WaterCheckBar : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        // TODO enable player movement
+        PlayerInputManager.enableMovement = true;
         Destroy(this.gameObject);
     }
 

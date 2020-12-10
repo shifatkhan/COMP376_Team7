@@ -62,6 +62,7 @@ public class WaterPourable : MonoBehaviour
             if (objectHeld != null && objectHeld.CompareTag("Water Jug"))
             {
                 skillChecking = true;
+                PlayerInputManager.enableMovement = false;
 
                 Vector2 screenPos = new Vector2(Screen.width / 2, Screen.height / 2);
                 Transform skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
