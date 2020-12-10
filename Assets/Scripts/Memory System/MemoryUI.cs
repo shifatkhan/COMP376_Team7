@@ -117,7 +117,9 @@ public class MemoryUI : MonoBehaviour
 
         // customers will start waiting once at least one order is taken
         string foodName = button.GetComponentInChildren<Text>().text;
-        if (foodName == "") Debug.LogError("BUG: Player clicked on an empty order.");
+        if (foodName == "") 
+            Debug.LogError("BUG: Player clicked on an empty order.");
+
         tableRef.TakeOrder(foodName);
     }
 

@@ -278,14 +278,15 @@ public class Table : Interactable
                 return;
 
             // Check if the food placed was meant for this table number.
-            foreach (FoodSlot order in currOrders)
+            for (int i=0; i < currOrders.Count; i++)
             {
-                if (food.foodName == order.foodName)
+                if (food.foodName == currOrders[i].foodName)
                 {
                     // Correctly delivered the food.
                     other.GetComponent<PickUp>().objectPosition = transform.Find("PickupObject");
                     other.GetComponent<PickUp>().PickObjectUp();
                     foodOnTable = other.gameObject;
+                    currOrders.RemoveAt(i);
 
                     patienceManager.increPatience(0.25f);
 
