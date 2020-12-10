@@ -105,7 +105,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (Mop.transform.parent != null && Mop.transform.parent.name == "PickupObject")
         {
-            Debug.Log("Mop's Parent: " + Mop.transform.parent.name);
             if (other.CompareTag("Puddle"))
             {
                 Destroy(other.gameObject);
