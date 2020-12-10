@@ -528,6 +528,7 @@ MonoBehaviour:
   minOrderTime: 5
   memory: {fileID: 11400000, guid: 1076c03143d9d71499bdfc0b85e94d68, type: 2}
   memoryEvent: {fileID: 11400000, guid: 06dabe3ad7d7b0042b5e95535b7e9c53, type: 2}
+  T_memoryUI: {fileID: 0}
 --- !u!114 &6832434782265165974
 MonoBehaviour:
   m_ObjectHideFlags: 0
