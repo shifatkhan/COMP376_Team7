@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 /// <summary>
 /// This Table class will be keeping track of a table's state and the loop.
@@ -287,6 +288,7 @@ public class Table : Interactable
         {
             if (other.GetComponent<NpcMoveToTable>().tableNumber == this.tableNumber)
             {
+                this.EnableCustomers();
                 for (int i = 0; i < occupiedChairs.Length; i++)
                 {
                     if (!occupiedChairs[i])
@@ -296,8 +298,9 @@ public class Table : Interactable
                         other.GetComponent<Collider>().enabled = false;
                         Destroy(other.GetComponent<Rigidbody>());
                         other.transform.position = chairs[i].transform.position;
+                        other.transform.LookAt(transform);
+                        other.transform.Translate(-0.5f, 0.5f, 0.0f);
                         occupiedChairs[i] = true;
-                        this.EnableCustomers();
                         break;
                     }
                 }
