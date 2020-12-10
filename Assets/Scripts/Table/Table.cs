@@ -176,6 +176,7 @@ public class Table : Interactable
         {
             tableState = TableState.ReadyToPay;
             Destroy(foodOnTable);
+            DestroyCustomers();
         }
         else
             tableState = TableState.ReadyToOrder;
@@ -183,6 +184,19 @@ public class Table : Interactable
         patienceManager.setActive(true); // start depleting patience again
 
         updateStateInUI();
+    }
+
+    private void DestroyCustomers()
+    {
+        foreach (GameObject chair in chairs)
+        {
+            // If we find "NpcMoveToTable", then there's a customer sitting on this chair.
+            NpcMoveToTable customer = chair.GetComponentInChildren<NpcMoveToTable>();
+
+            if(customer != null){
+                Destroy(customer.gameObject);
+            }
+        }
     }
 
     public void Pay()
@@ -296,6 +310,7 @@ public class Table : Interactable
                         other.GetComponent<NpcMoveToTable>().DisableAIMovement();
                         other.GetComponent<Collider>().enabled = false;
                         Destroy(other.GetComponent<Rigidbody>());
+                        other.transform.parent = chairs[i].transform;
                         other.transform.position = chairs[i].transform.position;
                         other.transform.LookAt(transform);
                         other.transform.Translate(-0.5f, 0.5f, 0.0f);
