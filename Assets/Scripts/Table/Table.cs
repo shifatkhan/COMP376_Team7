@@ -319,10 +319,11 @@ public class Table : Interactable
                         other.GetComponent<NpcMoveToTable>().DisableAIMovement();
                         other.GetComponent<Collider>().enabled = false;
                         Destroy(other.GetComponent<Rigidbody>());
+
+                        // Sit customers
                         other.transform.parent = chairs[i].transform;
-                        other.transform.position = chairs[i].transform.position;
-                        other.transform.LookAt(transform);
-                        other.transform.Translate(-0.5f, 0.5f, 0.0f);
+                        other.transform.position = chairs[i].GetComponent<Chair>().sitGO.transform.position;
+                        other.transform.LookAt(chairs[i].transform.worldToLocalMatrix.MultiplyVector(transform.forward));
                         occupiedChairs[i] = true;
                         break;
                     }
