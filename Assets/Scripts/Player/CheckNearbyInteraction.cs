@@ -88,6 +88,13 @@ public class CheckNearbyInteraction : MonoBehaviour
                 PickUp pickUpScript = nearest.GetComponent<PickUp>();
                 if(pickUpScript != null) //Object must contain PickUp script
                 {
+                    // Check if we're taking food from a prep table.
+                    PrepSlot prepSlot = pickUpScript.GetComponentInParent<PrepSlot>();
+                    if (prepSlot != null) // Object is a prepped food
+                    {
+                        prepSlot.TakeFood();
+                    }
+
                     pickUpScript.PickObjectUp();
                     currentObjectHold = nearest.gameObject;
                     holdingObject = true;
