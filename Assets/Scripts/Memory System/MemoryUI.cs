@@ -107,7 +107,7 @@ public class MemoryUI : MonoBehaviour
     public void CloseUI()
     {
         PlayerInputManager.enableMovement = true;
-        PlayerInputManager.enableMovement = true;
+        PlayerInputManager.enableThrow = true;
         gameObject.SetActive(false);
     }
 

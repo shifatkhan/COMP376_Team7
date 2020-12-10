@@ -62,7 +62,6 @@ public class Table : Interactable
     private WaterPourable waterManager;
     private Animator tableStateAnim;
 
-
     public override void Start()
     {
         base.Start();
@@ -103,7 +102,11 @@ public class Table : Interactable
         if (tableState == TableState.ReadyToOrder)
         {
             // customer's order is taken
-            memoryUI.OpenUIForOrders(this, allOrders);
+            if (!CheckNearbyInteraction.holdingWaterJug)
+            {
+                memoryUI.OpenUIForOrders(this, allOrders);
+            }
+            
             // note Waiting() now called at bottom when player takes an order
         }
         else if (tableState == TableState.ReadyToPay)

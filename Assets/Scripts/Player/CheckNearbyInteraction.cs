@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CheckNearbyInteraction : MonoBehaviour
 {
-    bool holdingObject = false;
-    GameObject currentObjectHold; //Reference to current object being held
+    public bool holdingObject = false;
+    public static bool holdingWaterJug = false;
+    public GameObject currentObjectHold; //Reference to current object being held
     PlayerInputManager playerInput;
 
     Collider previousNearestObject;
@@ -95,6 +96,12 @@ public class CheckNearbyInteraction : MonoBehaviour
                         prepSlot.TakeFood();
                     }
 
+                    // Check if we're holding a water jug
+                    if(pickUpScript.CompareTag("Water Jug"))
+                    {
+                        holdingWaterJug = true;
+                    }
+
                     pickUpScript.PickObjectUp();
                     currentObjectHold = nearest.gameObject;
                     holdingObject = true;
@@ -111,6 +118,7 @@ public class CheckNearbyInteraction : MonoBehaviour
 
     public void ObjectDown()
     {
+        holdingWaterJug = false;
         currentObjectHold.GetComponent<PickUp>().PlaceObjectDown();
         holdingObject = false;
         currentObjectHold = null;

@@ -75,7 +75,7 @@ public class WaterPourable : MonoBehaviour
     public void setActive(bool b)
     {
         isActive = b;
-        drinkSpeedEasy(); // default
+        drinkSpeedHard(); // default
     }
 
     public void waterFilled()
