@@ -175,8 +175,6 @@ public class Table : Interactable
         if (allOrders.Count == 0)
         {
             tableState = TableState.ReadyToPay;
-            Destroy(foodOnTable);
-            DestroyCustomers();
         }
         else
             tableState = TableState.ReadyToOrder;
@@ -186,25 +184,14 @@ public class Table : Interactable
         updateStateInUI();
     }
 
-    private void DestroyCustomers()
-    {
-        foreach (GameObject chair in chairs)
-        {
-            // If we find "NpcMoveToTable", then there's a customer sitting on this chair.
-            NpcMoveToTable customer = chair.GetComponentInChildren<NpcMoveToTable>();
-
-            if(customer != null){
-                Destroy(customer.gameObject);
-            }
-        }
-    }
-
     public void Pay()
     {
         tableState = TableState.Available;
 		
         patienceManager.setActive(false);
         waterManager.setActive(false);
+
+        ResetTable();
 
         CalculateTotalPay();
         updateStateInUI();
@@ -266,6 +253,29 @@ public class Table : Interactable
         return totalPay;
     }
 
+    public void ResetTable()
+    {
+        tableState = TableState.Available;
+        allOrders.Clear();
+        currOrders.Clear();
+
+        for (int i = 0; i < occupiedChairs.Length; i++)
+        {
+            occupiedChairs[i] = false;
+
+            // If we find "NpcMoveToTable", then there's a customer sitting on this chair.
+            NpcMoveToTable customer = chairs[i].GetComponentInChildren<NpcMoveToTable>();
+            if (customer != null)
+                Destroy(customer.gameObject);
+        }
+
+        Transform pickup = transform.Find("PickupObject");
+        foreach (Transform food in pickup)
+        {
+            Destroy(food.gameObject);
+        }
+    }
+
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
@@ -285,7 +295,6 @@ public class Table : Interactable
                     // Correctly delivered the food.
                     other.GetComponent<PickUp>().objectPosition = transform.Find("PickupObject");
                     other.GetComponent<PickUp>().PickObjectUp();
-                    foodOnTable = other.gameObject;
                     currOrders.RemoveAt(i);
 
                     patienceManager.increPatience(0.25f);

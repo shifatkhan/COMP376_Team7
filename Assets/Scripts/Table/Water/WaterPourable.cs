@@ -57,7 +57,9 @@ public class WaterPourable : MonoBehaviour
         if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup <= 0.5f)
         {
             // check if player is holding a water jug
-            if (other.gameObject.GetComponent<CheckNearbyInteraction>().getHeldObject().CompareTag("Water Jug"))
+            GameObject objectHeld = other.gameObject.GetComponent<CheckNearbyInteraction>().getHeldObject();
+
+            if (objectHeld != null && objectHeld.CompareTag("Water Jug"))
             {
                 skillChecking = true;
 
