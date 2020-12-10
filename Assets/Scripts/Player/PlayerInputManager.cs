@@ -17,6 +17,7 @@ public class PlayerInputManager : MonoBehaviour
 
     public bool throwHold { get; private set; } = false;
     public bool throwRelease { get; private set; } = false;
+    public static bool enableThrow = true;
 
     // Singleton Pattern
     public static PlayerInputManager instance;
