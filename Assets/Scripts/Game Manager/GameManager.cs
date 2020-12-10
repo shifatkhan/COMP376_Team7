@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public static float timeLimit = 300;
     public static float currentTime = 0;
 
+    public GameObject WinScreenPrefab;
+    public GameObject FailScreenPrefab;
+
     //Hidden Player Stats for multipliers and end screens. TODO: To be used for later - Nick
     public static int ordersServed = 0;
     public static int puddlesCleaned = 0;
@@ -34,9 +37,9 @@ public class GameManager : MonoBehaviour
     {
         currentTime += (Time.deltaTime);
 
-        if(ScoreManager.score == 200 && currentTime < timeLimit)
+        if(currentTime > timeLimit && ScoreManager.score >= 200)
         {
-            StageSuccess();
+            StageWin();
         }
         else if(currentTime > timeLimit && ScoreManager.score < 200)
         {
@@ -44,13 +47,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void StageSuccess()
+    void StageWin()
     {
-        print("You win!!!");
+        DisplayWinScreen();
+        Time.timeScale = 0.0f;
     }
 
     void StageFailure()
     {
-        print("You lose :(((");
+        DisplayFailScreen();
+        Time.timeScale = 0.0f;
+    }
+
+    void DisplayWinScreen()
+    {
+        WinScreenPrefab.SetActive(true);
+    }
+
+    void DisplayFailScreen()
+    {
+        FailScreenPrefab.SetActive(true);
     }
 }
