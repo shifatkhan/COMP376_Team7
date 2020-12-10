@@ -85,6 +85,7 @@ public class AudioManager : MonoBehaviour
     public static void PlayPlayerSlip()
     {
         if (audioManager == null) return;
+        if(audioManager.playerSource.isPlaying && audioManager.playerSource.clip == audioManager.playerSlipClip) return;
 
         audioManager.playerSource.clip = audioManager.playerSlipClip;
         audioManager.playerSource.Play();
