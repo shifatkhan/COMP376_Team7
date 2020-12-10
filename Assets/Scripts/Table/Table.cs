@@ -303,6 +303,8 @@ public class Table : Interactable
                     // else, they will keep waiting
                     if (currOrders.Count == 0)
                         Eating();
+
+                    break;
                 }
             }
             
