@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WaterCheckBar : MonoBehaviour
 {
+    [Header("Water check vars")]
     [SerializeField]
     float fillSpeed = 0.5f;
 
@@ -13,6 +14,12 @@ public class WaterCheckBar : MonoBehaviour
     float perfectZoneSize = 0.05f;
     [SerializeField]
     float failZoneSize = 0.05f;
+
+    [Header("Tip modifiers")]
+    [SerializeField]
+    private float addTip = 0.15f;
+    [SerializeField]
+    private float substractTip = 0.1f;
 
     // the zone's length on the bar
     private float failZoneLength;
@@ -24,6 +31,7 @@ public class WaterCheckBar : MonoBehaviour
     private Button spaceIndicator;
 
     private WaterPourable tableBeingPoured;
+    private Table table;
     private bool stopPouring = false;
 
     void Start()
@@ -69,14 +77,16 @@ public class WaterCheckBar : MonoBehaviour
                     Debug.LogWarning("PERFECT ZONE");
                     tableBeingPoured.waterFilled();
                     AudioManager.PlayWaterCheckPerfect();
-                    // TODO add to tip bonus
+
+                    table.AddBonusMultiplier(addTip);
                 }
                 else
                 {
                     Debug.LogWarning("FAIL ZONE");
                     tableBeingPoured.waterFilled();
                     AudioManager.PlayWaterCheckFail();
-                    // TODO remove tip bonus
+
+                    table.AddBonusMultiplier(substractTip);
                 }
                 
                 // indicate where they landed the water check before destroying
@@ -99,5 +109,6 @@ public class WaterCheckBar : MonoBehaviour
     public void setTablePoured(WaterPourable table)
     {
         tableBeingPoured = table;
+        this.table = table.GetComponent<Table>();
     }
 }

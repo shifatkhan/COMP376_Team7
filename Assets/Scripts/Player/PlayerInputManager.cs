@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInputManager : MonoBehaviour
 {
     public Vector3 directionalInput { get; private set; }
-    public bool jumpInput { get; private set; } // TODO: Remove. Testing instantaneous inputs.
+    public bool jumpInput { get; private set; }
     public bool interactInput { get; private set; } = false;
     public bool pickDropInput { get; private set; } = false;
     public bool forceStart { get; private set; } = false;
