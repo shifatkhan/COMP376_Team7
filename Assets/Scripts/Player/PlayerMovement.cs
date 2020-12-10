@@ -90,11 +90,13 @@ public class PlayerMovement : MonoBehaviour
         slipping = true;
         AudioManager.PlayPlayerSlip();
         slipFx.Play();
+        playerAnimator.speed = 1.75f;
 
         yield return new WaitForSeconds(slipDuration);
 
         slipping = false;
         slipFx.Stop();
+        playerAnimator.speed = 1f;
     }
 
     // MAKE CHANGE HERE =========================================================================
