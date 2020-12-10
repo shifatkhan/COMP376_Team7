@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     public ScoreUI scoreUI; // UI manager for score
     public static ScoreUI ui; // UI manager for score
 
+    [SerializeField] private float goalScore = 10;
     public static float score { get; private set; }
     public static float multiplier { get; private set; }
 
@@ -27,6 +28,7 @@ public class ScoreManager : MonoBehaviour
             scoreUI = GameObject.Find("Score UI").GetComponent<ScoreUI>();
 
         ui = scoreUI;
+        ui.goalScore = this.goalScore;
     }
 
     public static void AddScore(float amount)
