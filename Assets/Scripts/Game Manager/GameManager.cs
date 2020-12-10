@@ -5,33 +5,34 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    TableManager tableManager = TableManager.Instance;
-    CustomerManager customerManager = CustomerManager.Instance;
-    PuddleManager puddleManager = PuddleManager.Instance;
+    TableManager tableManager;
+    CustomerManager customerManager;
+    PuddleManager puddleManager;
     AudioManager audioManager;
-    ScoreManager scoreManager;
 
     public static float timeLimit = 300;
     public static float currentTime = 0;
 
     //Hidden Player Stats for multipliers and end screens. TODO: To be used for later - Nick
-    private int ordersServed = 0;
-    private int puddlesCleaned = 0;
-    private int puddlesSlippedss = 0;
-    private int customersHappy = 0;
-    private int customersAngry = 0;
+    public static int ordersServed = 0;
+    public static int puddlesCleaned = 0;
+    public static int puddlesSlippedss = 0;
+    public static int customersHappy = 0;
+    public static int customersAngry = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        tableManager = TableManager.Instance;
+        customerManager = CustomerManager.Instance;
+        puddleManager = PuddleManager.Instance;
         audioManager = GetComponentInChildren<AudioManager>();
-        scoreManager = GetComponentInChildren<ScoreManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTime = Time.deltaTime;
+        currentTime += (Time.deltaTime);
 
         if(ScoreManager.score == 200 && currentTime < timeLimit)
         {
@@ -45,11 +46,11 @@ public class GameManager : MonoBehaviour
 
     void StageSuccess()
     {
-
+        print("You win!!!");
     }
 
     void StageFailure()
     {
-
+        print("You lose :(((");
     }
 }
