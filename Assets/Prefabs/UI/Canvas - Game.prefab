@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 1342179212}
   - component: {fileID: 1342179217}
   - component: {fileID: 1342179216}
+  - component: {fileID: 57745236}
+  - component: {fileID: 9010549335516157943}
+  - component: {fileID: 7481273752424660969}
   m_Layer: 5
   m_Name: Indicator UI
   m_TagString: Untagged
@@ -75,6 +78,49 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &57745236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342179211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85d6c098599348beb7fd487abb854c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenBoundOffset: 0.9
+--- !u!114 &9010549335516157943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342179211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea4860bd55ef04b328c7a0d3ab18dfc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject: {fileID: 8882412240055082369, guid: cd78a79d43dff4a4bb80075414a7ebe7, type: 3}
+  pooledAmount: 1
+  willGrow: 1
+--- !u!114 &7481273752424660969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342179211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8141df8b655246b8ae611f263937600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject: {fileID: 3422313023649904250, guid: 09cefc679ac23c54aa919111d8f3fc40, type: 3}
+  pooledAmount: 1
+  willGrow: 1
 --- !u!1 &2697639252413763060
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +876,10 @@ PrefabInstance:
     - target: {fileID: 7668421287521250629, guid: f902074614b9e2146a5ee876c36ec059, type: 3}
       propertyPath: m_Name
       value: EndScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668421287521250629, guid: f902074614b9e2146a5ee876c36ec059, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f902074614b9e2146a5ee876c36ec059, type: 3}
