@@ -28,6 +28,7 @@ public class StageSelection : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 1.0f;
         string[] stageCodes = System.Enum.GetNames(typeof(StageCode));
         GameObject[] stars = GameObject.FindGameObjectsWithTag("StageStar");
 
