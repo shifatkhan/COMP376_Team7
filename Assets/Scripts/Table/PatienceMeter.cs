@@ -8,7 +8,7 @@ public class PatienceMeter : MonoBehaviour
     float drainRate = 0.1f;
 
     private Animator tableStateAnim;
-    private float patience = 1f;
+    public float patience { get; private set; } = 1f;
     private bool isActive = false;
 
     void Awake()
@@ -24,7 +24,7 @@ public class PatienceMeter : MonoBehaviour
                 patience -= (drainRate * 0.1f) * Time.deltaTime;
 
             // check patience state
-            if (patience > 0.5 && patience <= 1)
+            if (patience > 0.5 && patience < 1)
             {
                 tableStateAnim.SetBool("HighPatience", true);
                 tableStateAnim.SetBool("MediumPatience", false);
@@ -42,7 +42,7 @@ public class PatienceMeter : MonoBehaviour
                 tableStateAnim.SetBool("MediumPatience", false);
                 tableStateAnim.SetBool("LowPatience", true);
             }
-            else if (patience <= 0)
+            else if (patience <= 0 || patience == 1)
             {
                 tableStateAnim.SetBool("HighPatience", false);
                 tableStateAnim.SetBool("MediumPatience", false);
@@ -51,10 +51,15 @@ public class PatienceMeter : MonoBehaviour
         }
     }
 
-    public void setActive(bool b)
+    public void SetActive(bool b)
     {
         isActive = b;
-        drainSpeedEasy(); // default
+        drainSpeedRegular(); // default
+    }
+
+    public void ResetPatience()
+    {
+        patience = 1f;
     }
 
     public void increPatience(float val)

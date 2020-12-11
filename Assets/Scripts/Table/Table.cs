@@ -93,6 +93,9 @@ public class Table : Interactable
     public override void Update()
     {
         base.Update();
+
+        if (patienceManager.patience == 0)
+            ResetTable();
     }
 
     public override void OnInteract()
@@ -120,7 +123,7 @@ public class Table : Interactable
         tableState = TableState.Occupied;
 
         // customers start drinking water
-        patienceManager.setActive(true);
+        patienceManager.SetActive(true);
         patienceManager.resetPatience();
         waterManager.setActive(true);
         waterManager.waterFilled();
@@ -159,7 +162,7 @@ public class Table : Interactable
     public void Eating()
     {
         tableState = TableState.Eating;
-        patienceManager.setActive(false); // stop depleting patience when eating
+        patienceManager.SetActive(false); // stop depleting patience when eating
 
         StartCoroutine(EatingCo(Random.Range(minOrderTime, maxOrderTime)));
 
@@ -179,7 +182,7 @@ public class Table : Interactable
         else
             tableState = TableState.ReadyToOrder;
 
-        patienceManager.setActive(true); // start depleting patience again
+        patienceManager.SetActive(true); // start depleting patience again
 
         updateStateInUI();
     }
@@ -188,7 +191,7 @@ public class Table : Interactable
     {
         tableState = TableState.Available;
 		
-        patienceManager.setActive(false);
+        patienceManager.SetActive(false);
         waterManager.setActive(false);
 
         ResetTable();
@@ -278,7 +281,8 @@ public class Table : Interactable
         }
 
         // reset table state UI
-        patienceManager.setActive(false);
+        patienceManager.ResetPatience();
+        patienceManager.SetActive(false);
         waterManager.waterFilled();
         waterManager.setActive(false);
     }
