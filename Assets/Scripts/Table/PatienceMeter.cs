@@ -69,21 +69,6 @@ public class PatienceMeter : MonoBehaviour
         patience = 1f;
     }
 
-    public void drainSpeedEasy()
-    {
-        drainRate = 0.08f;
-    }
-
-    public void drainSpeedMedium()
-    {
-        drainRate = 0.16f;
-    }
-
-    public void drainSpeedHard()
-    {
-        drainRate = 0.4f;
-    }
-
     public IEnumerator displayHeart()
     {
         isActive = false;
@@ -94,4 +79,10 @@ public class PatienceMeter : MonoBehaviour
         tableStateAnim.SetBool("Heart", false);
         isActive = true;
     }
+
+    //*** DIFFICULTY ADJUSTMENT FOR REGULAR/ANGRY CUSTOMERS ***//
+    public void drainSpeedRegular()
+    { drainRate = 0.06f; }
+    public void drainSpeedMadCust()
+    { drainRate = 0.1f; }
 }
