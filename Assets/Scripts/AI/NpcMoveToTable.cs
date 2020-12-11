@@ -15,6 +15,8 @@ public class NpcMoveToTable : MonoBehaviour
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
+
+        agent.speed = 2.5f;
     }
 
     private void Start()

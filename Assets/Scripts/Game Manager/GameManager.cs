@@ -18,13 +18,6 @@ public class GameManager : MonoBehaviour
     public GameObject WinScreenPrefab;
     public GameObject FailScreenPrefab;
 
-    //Hidden Player Stats for multipliers and end screens. TODO: To be used for later - Nick
-    public static int ordersServed = 0;
-    public static int puddlesCleaned = 0;
-    public static int puddlesSlippedss = 0;
-    public static int customersHappy = 0;
-    public static int customersAngry = 0;
-
     // Start is called before the first frame update
     void Start()
     {
