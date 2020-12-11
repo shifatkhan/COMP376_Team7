@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
     PuddleManager puddleManager;
     AudioManager audioManager;
 
-    public static float timeLimit = 300;
-    public static float currentTime = 0;
+    [SerializeField]
+    private float timeLimit = 300;
+    public static float timeLimitStatic = 300;
+    public static float currentTimeStatic = 0;
 
     public GameObject WinScreenPrefab;
     public GameObject FailScreenPrefab;
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeLimitStatic = timeLimit;
+
         tableManager = TableManager.Instance;
         customerManager = CustomerManager.Instance;
         puddleManager = PuddleManager.Instance;
@@ -35,13 +39,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += (Time.deltaTime);
+        currentTimeStatic += (Time.deltaTime);
 
-        if(currentTime > timeLimit && ScoreManager.score >= 200)
+        if(currentTimeStatic > timeLimitStatic && ScoreManager.score >= ScoreManager.goalScoreStatic)
         {
             StageWin();
         }
-        else if(currentTime > timeLimit && ScoreManager.score < 200)
+        else if(currentTimeStatic > timeLimitStatic && ScoreManager.score < ScoreManager.goalScoreStatic)
         {
             StageFailure();
         }

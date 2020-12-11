@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private bool slipping = false;
     [SerializeField] private float slipDuration = 3f;
+    [SerializeField] private ParticleSystem slipFx;
 
     //private PlayerInput playerInput;
     // MAKING A CHANGE HERE ===================================
@@ -88,10 +89,14 @@ public class PlayerMovement : MonoBehaviour
     {
         slipping = true;
         AudioManager.PlayPlayerSlip();
+        slipFx.Play();
+        playerAnimator.speed = 1.75f;
 
         yield return new WaitForSeconds(slipDuration);
 
         slipping = false;
+        slipFx.Stop();
+        playerAnimator.speed = 1f;
     }
 
     // MAKE CHANGE HERE =========================================================================
@@ -100,7 +105,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (Mop.transform.parent != null && Mop.transform.parent.name == "PickupObject")
         {
-            Debug.Log("Mop's Parent: " + Mop.transform.parent.name);
             if (other.CompareTag("Puddle"))
             {
                 Destroy(other.gameObject);

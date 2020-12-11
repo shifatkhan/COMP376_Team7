@@ -51,6 +51,8 @@ public class MemoryUI : MonoBehaviour
 
     public void OpenUIForOrders(Table table, List<FoodSlot> customerOrders)
     {
+        PlayerInputManager.enableMovement = false;
+        PlayerInputManager.enableThrow = false;
         tableRef = table;
 
         // Header text
@@ -104,6 +106,8 @@ public class MemoryUI : MonoBehaviour
 
     public void CloseUI()
     {
+        PlayerInputManager.enableMovement = true;
+        PlayerInputManager.enableThrow = true;
         gameObject.SetActive(false);
     }
 

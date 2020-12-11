@@ -49,12 +49,6 @@ public class PrepTable : Interactable
     public override void Update()
     {
         base.Update();
-        CheckForFreeSlots();
-
-        if (playerInput.pickDropInput && playerInRange)
-        {
-            UpdatePrepSlots();
-        }
     }
 
     public override void OnInteract()
@@ -62,9 +56,6 @@ public class PrepTable : Interactable
         base.OnInteract();
 
         QueueFoods();
-
-        // TODO show UI
-        memoryUI.gameObject.SetActive(true);
     }
 
     private void QueueFoods()
@@ -76,7 +67,6 @@ public class PrepTable : Interactable
             return;
         else
         {
-            print($"Foods prepping: {tempFoodsInMemory.Count}");
             foreach (FoodSlot f in tempFoodsInMemory)
             {
                 foodQueue.Enqueue(f);
@@ -84,16 +74,17 @@ public class PrepTable : Interactable
         }
 
         memory.Clear();
+        CheckForFreeSlots();
 
         UpateQueueText();
     }
 
-    private void CheckForFreeSlots()
+    public void CheckForFreeSlots()
     {
         bool free = false;
 
         // Check if there's a free slot.
-        for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
+        for (int i = 0; i < prepSlots.Count; i++)
         {
             PrepSlot current = prepSlots[i].GetComponent<PrepSlot>();
             if (!current.occupied)
@@ -106,7 +97,7 @@ public class PrepTable : Interactable
         // Return void is there are no free slots.
         if (!free)
             return;
-        print("PrepTable: Free slot found");
+        
         // PREP FOODS
         for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
         {
@@ -129,6 +120,7 @@ public class PrepTable : Interactable
     /// This is a fix for when the player stands in from of a prepSlot, 
     /// but takes the food from a different prepSlot.
     /// </summary>
+    [System.Obsolete("This will be deleted as we are using PrepSlot.TakeFood() instead.", false)]
     public void UpdatePrepSlots()
     {
         foreach (Transform prepSlot in prepSlots)

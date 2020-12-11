@@ -36,7 +36,7 @@ public class PlayerForce : MonoBehaviour
 
     void Update()
     {
-        if(nearbyObjectScript.getHeldObject() != null)
+        if(nearbyObjectScript.getHeldObject() != null && PlayerInputManager.enableThrow)
         {
             //Player presses mouse left button
             ForceStart();

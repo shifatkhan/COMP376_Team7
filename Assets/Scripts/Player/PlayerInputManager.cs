@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerInputManager : MonoBehaviour
 {
     public Vector3 directionalInput { get; private set; }
-    public bool jumpInput { get; private set; } // TODO: Remove. Testing instantaneous inputs.
+    public static bool enableMovement = true;
+
+    public bool jumpInput { get; private set; }
     public bool interactInput { get; private set; } = false;
     public bool pickDropInput { get; private set; } = false;
     public bool forceStart { get; private set; } = false;
@@ -15,6 +17,7 @@ public class PlayerInputManager : MonoBehaviour
 
     public bool throwHold { get; private set; } = false;
     public bool throwRelease { get; private set; } = false;
+    public static bool enableThrow = true;
 
     // Singleton Pattern
     public static PlayerInputManager instance;
@@ -39,7 +42,10 @@ public class PlayerInputManager : MonoBehaviour
     void Update()
     {
         // MOVE - remove 'normalized' for analog movements.
-        directionalInput = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")).normalized;
+        if (enableMovement)
+            directionalInput = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")).normalized;
+        else
+            directionalInput = Vector3.zero;
 
         // JUMP
         jumpInput = Input.GetButtonDown("Jump");

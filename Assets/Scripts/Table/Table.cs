@@ -62,7 +62,6 @@ public class Table : Interactable
     private WaterPourable waterManager;
     private Animator tableStateAnim;
 
-
     public override void Start()
     {
         base.Start();
@@ -82,7 +81,6 @@ public class Table : Interactable
         tableState = TableState.Available;
 
         // find components
-        transform.Find("Cube").gameObject.SetActive(false);
         foodFactory = GameObject.FindGameObjectWithTag("Food Factory").GetComponent<FoodFactory>();
         patienceManager = GetComponent<PatienceMeter>();
         waterManager = GetComponent<WaterPourable>();
@@ -104,7 +102,11 @@ public class Table : Interactable
         if (tableState == TableState.ReadyToOrder)
         {
             // customer's order is taken
-            memoryUI.OpenUIForOrders(this, allOrders);
+            if (!CheckNearbyInteraction.holdingWaterJug)
+            {
+                memoryUI.OpenUIForOrders(this, allOrders);
+            }
+            
             // note Waiting() now called at bottom when player takes an order
         }
         else if (tableState == TableState.ReadyToPay)
@@ -115,8 +117,6 @@ public class Table : Interactable
 
     public void EnableCustomers()
     {
-        transform.Find("Cube").gameObject.SetActive(true);
-
         tableState = TableState.Occupied;
 
         // customers start drinking water
@@ -175,7 +175,6 @@ public class Table : Interactable
         if (allOrders.Count == 0)
         {
             tableState = TableState.ReadyToPay;
-            Destroy(foodOnTable);
         }
         else
             tableState = TableState.ReadyToOrder;
@@ -191,6 +190,8 @@ public class Table : Interactable
 		
         patienceManager.setActive(false);
         waterManager.setActive(false);
+
+        ResetTable();
 
         CalculateTotalPay();
         updateStateInUI();
@@ -252,6 +253,29 @@ public class Table : Interactable
         return totalPay;
     }
 
+    public void ResetTable()
+    {
+        tableState = TableState.Available;
+        allOrders.Clear();
+        currOrders.Clear();
+
+        for (int i = 0; i < occupiedChairs.Length; i++)
+        {
+            occupiedChairs[i] = false;
+
+            // If we find "NpcMoveToTable", then there's a customer sitting on this chair.
+            NpcMoveToTable customer = chairs[i].GetComponentInChildren<NpcMoveToTable>();
+            if (customer != null)
+                Destroy(customer.gameObject);
+        }
+
+        Transform pickup = transform.Find("PickupObject");
+        foreach (Transform food in pickup)
+        {
+            Destroy(food.gameObject);
+        }
+    }
+
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
@@ -271,7 +295,6 @@ public class Table : Interactable
                     // Correctly delivered the food.
                     other.GetComponent<PickUp>().objectPosition = transform.Find("PickupObject");
                     other.GetComponent<PickUp>().PickObjectUp();
-                    foodOnTable = other.gameObject;
                     currOrders.RemoveAt(i);
 
                     patienceManager.increPatience(0.25f);
@@ -299,9 +322,11 @@ public class Table : Interactable
                         other.GetComponent<NpcMoveToTable>().DisableAIMovement();
                         other.GetComponent<Collider>().enabled = false;
                         Destroy(other.GetComponent<Rigidbody>());
-                        other.transform.position = chairs[i].transform.position;
-                        other.transform.LookAt(transform);
-                        other.transform.Translate(-0.5f, 0.5f, 0.0f);
+
+                        // Sit customers
+                        other.transform.parent = chairs[i].transform;
+                        other.transform.position = chairs[i].GetComponent<Chair>().sitGO.transform.position;
+                        other.transform.LookAt(chairs[i].transform.worldToLocalMatrix.MultiplyVector(transform.forward));
                         occupiedChairs[i] = true;
                         break;
                     }
