@@ -3098,6 +3098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreUI: {fileID: 0}
+  goalScore: 10
 --- !u!1001 &544472429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6691,6 +6692,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2042414784214045437, guid: 770fb398b447c08478191f43aa605293, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2697639252413763048, guid: 770fb398b447c08478191f43aa605293, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7081,6 +7086,10 @@ PrefabInstance:
       objectReference: {fileID: 1658651744}
     - target: {fileID: 3790541744136883464, guid: 770fb398b447c08478191f43aa605293, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8241403001100881848, guid: 770fb398b447c08478191f43aa605293, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7544,6 +7553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4d334a49fbb4f2aa1bdf9f88448bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeLimit: 300
   WinScreenPrefab: {fileID: 0}
   FailScreenPrefab: {fileID: 0}
 --- !u!114 &2004167195

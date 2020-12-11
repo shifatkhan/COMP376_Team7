@@ -31,7 +31,7 @@ public class WaterCheckBar : MonoBehaviour
     private Button spaceIndicator;
 
     private WaterPourable tableBeingPoured;
-    private Table table;
+    private Table tableRef;
     private bool stopPouring = false;
 
     void Start()
@@ -68,25 +68,26 @@ public class WaterCheckBar : MonoBehaviour
 
                 if (slider.value < (perfZoneStartPoint / sliderWidth))
                 {
-                    Debug.LogWarning("SUCCESS ZONE");
+                    // SUCCESS ZONE
                     tableBeingPoured.waterFilled();
                     AudioManager.PlayWaterCheckSuccess();
                 }
                 else if (slider.value <= (perfZoneStartPoint + perfectZoneLength) / sliderWidth)
                 {
-                    Debug.LogWarning("PERFECT ZONE");
+                    // PERFECT ZONE
                     tableBeingPoured.waterFilled();
                     AudioManager.PlayWaterCheckPerfect();
 
-                    table.AddBonusMultiplier(addTip);
+                    tableRef.displayHeart();
+                    tableRef.AddBonusMultiplier(addTip);
                 }
                 else
                 {
-                    Debug.LogWarning("FAIL ZONE");
+                    // FAIL ZONE
                     tableBeingPoured.waterFilled();
                     AudioManager.PlayWaterCheckFail();
 
-                    table.AddBonusMultiplier(substractTip);
+                    tableRef.AddBonusMultiplier(substractTip);
                 }
                 
                 // indicate where they landed the water check before destroying
@@ -109,6 +110,6 @@ public class WaterCheckBar : MonoBehaviour
     public void setTablePoured(WaterPourable table)
     {
         tableBeingPoured = table;
-        this.table = table.GetComponent<Table>();
+        this.tableRef = table.GetComponent<Table>();
     }
 }

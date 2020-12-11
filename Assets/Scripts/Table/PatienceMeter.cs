@@ -83,4 +83,15 @@ public class PatienceMeter : MonoBehaviour
     {
         drainRate = 0.4f;
     }
+
+    public IEnumerator displayHeart()
+    {
+        isActive = false;
+        tableStateAnim.SetBool("Heart", true);
+
+        yield return new WaitForSeconds(3);
+
+        tableStateAnim.SetBool("Heart", false);
+        isActive = true;
+    }
 }

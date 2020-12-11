@@ -7,7 +7,9 @@ public class CustomerManager : MonoBehaviour
     private float spawnTime = 0f;
 
     [SerializeField]
-    public float spawnRate = 2f;
+    public float spawnRateMin = 20f;
+    [SerializeField]
+    public float spawnRateMax = 30f;
 
     private TableManager tableManager;
 
@@ -66,7 +68,7 @@ public class CustomerManager : MonoBehaviour
         // Check if we should spawn.
         if (Time.time > spawnTime)
         {
-            spawnTime += spawnRate;
+            spawnTime += Random.Range(spawnRateMin, spawnRateMax);
 
             // Spawn - ONLY when there are available tables.
             if(AreThereTablesAvailable())
