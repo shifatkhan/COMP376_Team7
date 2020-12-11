@@ -10,10 +10,6 @@ public class NpcMoveToTable : MonoBehaviour
     private UnityEngine.AI.NavMeshAgent agent;
     private Animator animator;
 
-    public GameObject idle;
-    public GameObject walking;
-    public GameObject sitting;
-
 
     void Awake()
     {
@@ -33,6 +29,7 @@ public class NpcMoveToTable : MonoBehaviour
     public void DisableAIMovement()
     {
         agent.isStopped = true;
+        agent.enabled = false;
     }
 
     public void SetTableNumber(int tableNumber)
