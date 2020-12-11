@@ -27,14 +27,12 @@ public class TriggerZone : MonoBehaviour
     {
         if(col.transform.tag == "Player")
         {   
-            //Check if player is holding a mop (should be a child object of PickupObject)      
-            foreach(Transform children in col.transform.Find("PickupObject"))
+            //Check if player is holding a mop (should be a child object of PickupMop)      
+            foreach(Transform children in col.transform.Find("PickupMop"))
             {
                 if(children.gameObject.tag == "Mop")
                 {
                     slidingEffect = false; //Cannot slide anymore
-
-                    //transform.GetChild(0).gameObject.SetActive(false); //Uncomment this if we want water spill to become invisible immediately as mop goes over it
                     
                     mopAudio.Play();   //Sound effect of mopping
                     ps.Play();  //Show bubbly effect of spill
