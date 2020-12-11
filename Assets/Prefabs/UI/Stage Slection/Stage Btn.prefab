@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 511335831046625457}
   - component: {fileID: 511335831046625456}
   - component: {fileID: 431611143}
+  - component: {fileID: 5070503635358453331}
   m_Layer: 5
   m_Name: Stage Btn
   m_TagString: Untagged
@@ -123,7 +124,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 511335831046625457}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5070503635358453331}
+        m_TargetAssemblyTypeName: StageButton, Assembly-CSharp
+        m_MethodName: LoadStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &431611143
 Animator:
   serializedVersion: 3
@@ -143,6 +156,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5070503635358453331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511335831046625462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89e3bed04227994ebfc9d23abb2cc26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StageScene: 
 --- !u!1 &511335831049465397
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +182,7 @@ GameObject:
   - component: {fileID: 511335831049465399}
   m_Layer: 5
   m_Name: star 2
-  m_TagString: Untagged
+  m_TagString: StageStar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,8 +203,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.2999835, y: -19.600025}
-  m_SizeDelta: {x: 48, y: 48}
+  m_AnchoredPosition: {x: -1.6000022, y: -13.1}
+  m_SizeDelta: {x: 28, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &511335831049465392
 CanvasRenderer:
@@ -201,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7691473, b: 0.03459108, a: 1}
+  m_Color: {r: 0.45098042, g: 0.3803922, b: 0.32156864, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -252,8 +278,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3, y: 14.5}
-  m_SizeDelta: {x: 160, y: 64}
+  m_AnchoredPosition: {x: -1.35, y: 8.1}
+  m_SizeDelta: {x: 82.190186, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &511335831057399816
 CanvasRenderer:
@@ -306,7 +332,7 @@ GameObject:
   - component: {fileID: 511335831449310247}
   m_Layer: 5
   m_Name: star 1
-  m_TagString: Untagged
+  m_TagString: StageStar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,8 +353,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54.299988, y: -19.600025}
-  m_SizeDelta: {x: 48, y: 48}
+  m_AnchoredPosition: {x: -29.6, y: -13.1}
+  m_SizeDelta: {x: 28, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &511335831449310240
 CanvasRenderer:
@@ -351,7 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7691473, b: 0.03459108, a: 1}
+  m_Color: {r: 0.45098042, g: 0.3803922, b: 0.32156864, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -381,7 +407,7 @@ GameObject:
   - component: {fileID: 511335831597528765}
   m_Layer: 5
   m_Name: star 3
-  m_TagString: Untagged
+  m_TagString: StageStar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -402,8 +428,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44.3, y: -19.6}
-  m_SizeDelta: {x: 48, y: 48}
+  m_AnchoredPosition: {x: 26.39999, y: -13.100006}
+  m_SizeDelta: {x: 28, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &511335831597528766
 CanvasRenderer:
