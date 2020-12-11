@@ -91,7 +91,7 @@ public class CheckNearbyInteraction : MonoBehaviour
                 PickUp pickUpScript = nearest.GetComponent<PickUp>();
                 if(pickUpScript != null) //Object must contain PickUp script
                 {
-                    playerAnimation.FoodPickedAnimation();
+
 
                     // Check if we're taking food from a prep table.
                     PrepSlot prepSlot = pickUpScript.GetComponentInParent<PrepSlot>();
@@ -109,6 +109,8 @@ public class CheckNearbyInteraction : MonoBehaviour
                     pickUpScript.PickObjectUp();
                     currentObjectHold = nearest.gameObject;
                     holdingObject = true;
+
+                    PlayAnimation();
                 }
             }
 
@@ -133,5 +135,17 @@ public class CheckNearbyInteraction : MonoBehaviour
     public GameObject getHeldObject()
     {
         return currentObjectHold;
+    }
+
+    void PlayAnimation()
+    {
+        if(currentObjectHold.CompareTag("Mop"))
+        {
+            playerAnimation.MopAnimation();
+        }
+        else //its a water jug or food
+        {
+            playerAnimation.FoodPickedAnimation();
+        }
     }
 }

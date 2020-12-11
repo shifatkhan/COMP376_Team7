@@ -52,10 +52,15 @@ public class PlayerInputManager : MonoBehaviour
         interactInput = Input.GetButtonDown("Interact");
         pickDropInput = Input.GetButtonDown("PickDrop");
 
-        //Force/throw 
-        forceStart = Input.GetMouseButtonDown(0);
-        forceHold = Input.GetMouseButton(0);
-        forceLaunch = Input.GetMouseButtonUp(0);
-        forceCancel = Input.GetMouseButtonDown(1);
+        //Force/throw with left_mouse button
+        // forceStart = Input.GetMouseButtonDown(0);
+        // forceHold = Input.GetMouseButton(0);
+        // forceLaunch = Input.GetMouseButtonUp(0);
+        // forceCancel = Input.GetMouseButtonDown(1);
+
+        //Throw with spacebar
+        forceStart = Input.GetButtonDown("ThrowHold");
+        forceHold = Input.GetButton("ThrowHold");
+        forceLaunch = Input.GetButtonUp("ThrowHold");
     }
 }

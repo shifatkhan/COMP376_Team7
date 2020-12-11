@@ -5,6 +5,8 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public Transform objectPosition;
+    Transform mopPosition;
+    Transform foodPosition;
     Rigidbody objectRigidBody;
     BoxCollider objectBoxCollider;
     Outline outlineScript;
@@ -13,8 +15,8 @@ public class PickUp : MonoBehaviour
 
     private void Awake()
     {
-        objectPosition = GameObject.FindGameObjectWithTag("Player").transform.Find("Armature/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/PickupObject").transform;
-        //objectPosition = GameObject.FindGameObjectWithTag("Player").transform.Find("Armature/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/PickUpFood").transform;
+        foodPosition = GameObject.FindGameObjectWithTag("Player").transform.Find("Armature/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/PickupFood").transform;
+        mopPosition = GameObject.FindGameObjectWithTag("Player").transform.Find("Armature/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/PickupMop").transform;
 
         objectRigidBody = GetComponent<Rigidbody>();
         objectBoxCollider = GetComponent<BoxCollider>();
@@ -22,6 +24,16 @@ public class PickUp : MonoBehaviour
 
         //Disable outline script when starting the game
         disableEnableOutline(false);
+
+        //Sets position of object on the hand of the character
+        if(gameObject.CompareTag("Mop"))
+        {
+            objectPosition = mopPosition;
+        }
+        else //its a food or water jug
+        {
+            objectPosition = foodPosition;
+        }
     }
 
     public void PickObjectUp()
@@ -32,14 +44,14 @@ public class PickUp : MonoBehaviour
         //Free rotation and position, so it stops moving when picked
         objectRigidBody.freezeRotation = true; 
         objectRigidBody.constraints = RigidbodyConstraints.FreezePosition;
-        
+ 
         this.transform.position = objectPosition.position;
         this.transform.parent = objectPosition;
         this.transform.localRotation = Quaternion.identity; //object is held upright
         this.transform.localPosition = Vector3.zero;
 
         pickedUp = true;
-
+ 
         //Disable outline script
         disableEnableOutline(false);
     }

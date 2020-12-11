@@ -269,7 +269,7 @@ public class Table : Interactable
                 Destroy(customer.gameObject);
         }
 
-        Transform pickup = transform.Find("PickupObject");
+        Transform pickup = transform.Find("PickupFood");
         foreach (Transform food in pickup)
         {
             Destroy(food.gameObject);

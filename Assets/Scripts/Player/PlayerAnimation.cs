@@ -49,9 +49,10 @@ public class PlayerAnimation : MonoBehaviour
         playerAnimator.SetLayerWeight(1, 0);
     }
 
-    public void FoodDropped()
+    public void ObjectDropped()
     {
         playerAnimator.SetLayerWeight(2, 0);
+        playerAnimator.SetBool("isMopping", false);
     }
 
     public void FoodPickedAnimation()
@@ -64,5 +65,13 @@ public class PlayerAnimation : MonoBehaviour
     public void FoodDroppedAnimation()
     {
         playerAnimator.SetBool("isPickedUp", false);
+        playerAnimator.SetBool("isMopping", false);
+    }
+
+    public void MopAnimation()
+    {
+        playerAnimator.SetLayerWeight(2, 1);
+        playerAnimator.SetBool("isMopping", true);
+        playerAnimator.SetBool("isHolding", false);
     }
 }

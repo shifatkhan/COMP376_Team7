@@ -117,7 +117,7 @@ public class PlayerForce : MonoBehaviour
             Vector3 force = new Vector3(clickedPos.x-transform.position.x, yForce, clickedPos.z-transform.position.z); //Vector is difference between mouse click position and player's position
             //print(force + " " + force.normalized);      
             
-            heldObject.GetComponent<Rigidbody>().AddForce(extraForce * force.normalized, ForceMode.Impulse); //Normalize the force and multiply it by an extra force depending on hold time
+            heldObject.GetComponent<Rigidbody>().AddForce(extraForce * transform.forward, ForceMode.Impulse); //Normalize the force and multiply it by an extra force depending on hold time
         }
     }
 
