@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class ScoreUI : MonoBehaviour
 {
-    [SerializeField]
-    private float goalScore;
+    [HideInInspector]
+    public float goalScore = 0;
 
     private Text scoreTxt;
     private Slider slider;

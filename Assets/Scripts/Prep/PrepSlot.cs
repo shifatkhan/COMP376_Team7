@@ -21,10 +21,13 @@ public class PrepSlot : Interactable
     private float timer;
     private bool cooking = false;
 
+    private PrepTable prepTable;
+
     private void Awake()
     {
         progressBar = GetComponentInChildren<RadialProgressBar>();
         progressBarGameObject = progressBar.gameObject;
+        prepTable = GetComponentInParent<PrepTable>();
     }
 
     public override void Start()
@@ -86,6 +89,7 @@ public class PrepSlot : Interactable
             return;
 
         ResetSlot();
+        prepTable.CheckForFreeSlots();
     }
 
     private void ResetSlot()
@@ -101,6 +105,7 @@ public class PrepSlot : Interactable
     /// <summary>
     /// Checks if this prep slot's food was taken or not.
     /// </summary>
+    [System.Obsolete("This will be deleted as we are using TakeFood() instead.", false)]
     public void UpdatePrepSlot()
     {
         if (cooking)
@@ -110,7 +115,6 @@ public class PrepSlot : Interactable
 
         foreach (Transform child in transform)
         {
-            print($"PrepCHild: {child.name}");
             if (child.CompareTag("Food"))
                 foodFound = true;
         }

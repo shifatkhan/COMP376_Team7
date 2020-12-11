@@ -23,37 +23,41 @@ public enum TableState
 }
 public class Table : Interactable
 {
+    //****************** TABLE INFO ******************//
     [Header("Table info")]
     public int tableNumber;
+    public List<GameObject> chairs { get; private set; }
+    public bool[] occupiedChairs { get; private set; }
 
-    public TableState tableState { get; private set; }
+    private GameObject foodOnTable;
 
-    private FoodSlot order;
-
+    //****************** SCORING ******************//
     [Header("Order")]
     [Range(0,1)]
     [SerializeField] private float baseTip = 0.15f; // Tip to add to totalPay
     [Min(1)]
     [SerializeField] private float bonusMultiplier =  1.2f; // Bonus to multiply on baseTip
-    [SerializeField] private float totalPay; // Total amount to be paid
-    private GameObject foodOnTable;
-
+    [SerializeField] private float totalPay = 0; // Total amount to be paid
+    
+    //****************** ORDERING ******************//
+    public TableState tableState { get; private set; }
     public float maxOrderTime = 20f;
     public float minOrderTime = 5f;
 
-    private FoodFactory foodFactory;
-
-    public List<GameObject> chairs { get; private set; }
-    public bool[] occupiedChairs { get; private set; }
-
+    //****************** MEMORY ******************//
     [Header("Other")]
     [SerializeField]
     private MemoryData memory;
-
     [SerializeField]
     private GameEvent memoryEvent;
 
-    //*** UI ***//
+    private FoodFactory foodFactory;
+    private List<FoodSlot> allOrders;
+    private List<FoodSlot> currOrders = new List<FoodSlot>();
+
+    //****************** UI ******************//
+    [SerializeField] private Transform T_memoryUI;
+    private MemoryUI memoryUI;
     private PatienceMeter patienceManager;
     private WaterPourable waterManager;
     private Animator tableStateAnim;
@@ -77,11 +81,11 @@ public class Table : Interactable
         tableState = TableState.Available;
 
         // find components
-        transform.Find("Cube").gameObject.SetActive(false);
         foodFactory = GameObject.FindGameObjectWithTag("Food Factory").GetComponent<FoodFactory>();
         patienceManager = GetComponent<PatienceMeter>();
         waterManager = GetComponent<WaterPourable>();
         tableStateAnim = transform.Find("Table State UI/Bubble/Table State").GetComponent<Animator>();
+        memoryUI = T_memoryUI.GetComponent<MemoryUI>();
 
         this.updateStateInUI();
     }
@@ -98,8 +102,12 @@ public class Table : Interactable
         if (tableState == TableState.ReadyToOrder)
         {
             // customer's order is taken
-            Waiting();
-            patienceManager.increPatience(0.25f);
+            if (!CheckNearbyInteraction.holdingWaterJug)
+            {
+                memoryUI.OpenUIForOrders(this, allOrders);
+            }
+            
+            // note Waiting() now called at bottom when player takes an order
         }
         else if (tableState == TableState.ReadyToPay)
         {
@@ -109,8 +117,6 @@ public class Table : Interactable
 
     public void EnableCustomers()
     {
-        transform.Find("Cube").gameObject.SetActive(true);
-
         tableState = TableState.Occupied;
 
         // customers start drinking water
@@ -128,31 +134,24 @@ public class Table : Interactable
     IEnumerator OrderFood(float orderTime)
     {
         yield return new WaitForSeconds(orderTime);
-
-        // Choose something to order.
-        order = new FoodSlot(foodFactory.GetRandomFood(), tableNumber);
-        totalPay = order.price;
-
         tableState = TableState.ReadyToOrder;
 
-        transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.green;
+        // Choose something to order.
+        int numOfFoodOrders = Random.Range(1, 9); // 1 to 8
+        allOrders = new List<FoodSlot>(numOfFoodOrders);
+        for (int i = 0; i < numOfFoodOrders; i++)
+        {
+            allOrders.Add(new FoodSlot(foodFactory.GetRandomFood(), tableNumber));
+            totalPay += allOrders[i].price;
+        }
 
         updateStateInUI();
     }
 
     public void Waiting()
     {
-        // Add food to memory.
-        if (!memory.AddFood(order))
-            return;
-
-        memoryEvent.Raise();
-        
         tableState = TableState.WaitingForFood;
-
-        //order = null;
-
-        transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+        memoryEvent.Raise();
 
         updateStateInUI();
     }
@@ -160,13 +159,9 @@ public class Table : Interactable
     public void Eating()
     {
         tableState = TableState.Eating;
-
-        patienceManager.increPatience(0.5f);
-        patienceManager.setActive(false);
+        patienceManager.setActive(false); // stop depleting patience when eating
 
         StartCoroutine(EatingCo(Random.Range(minOrderTime, maxOrderTime)));
-
-        transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.cyan;
 
         updateStateInUI();
     }
@@ -175,14 +170,16 @@ public class Table : Interactable
     {
         yield return new WaitForSeconds(eatingTime);
 
-        // Finished eating.
-        Destroy(foodOnTable);
+        // Finished eating. If all orders are met, they pay
+        // else, they will want to order more
+        if (allOrders.Count == 0)
+        {
+            tableState = TableState.ReadyToPay;
+        }
+        else
+            tableState = TableState.ReadyToOrder;
 
-        tableState = TableState.ReadyToPay;
-
-        patienceManager.setActive(true);
-
-        transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.white;
+        patienceManager.setActive(true); // start depleting patience again
 
         updateStateInUI();
     }
@@ -194,13 +191,7 @@ public class Table : Interactable
         patienceManager.setActive(false);
         waterManager.setActive(false);
 
-        // TODO: Move score to a Game Master gameobject, which will update ScoreUI gameobject reference
-        //score.text = (int.Parse(score.text) + pay).ToString();
-		
-        transform.Find("Cube").gameObject.GetComponent<Renderer>().material.color = Color.red;
-        transform.Find("Cube").gameObject.SetActive(false);
-
-        order = null;
+        ResetTable();
 
         CalculateTotalPay();
         updateStateInUI();
@@ -254,12 +245,35 @@ public class Table : Interactable
         float totalTip = baseTip + (baseTip * bonusMultiplier);
 
         // Calculate total pay
-        totalPay += totalTip;
+        totalPay = totalTip * totalPay;
 
         // Update score
         ScoreManager.AddScore(totalPay);
 
         return totalPay;
+    }
+
+    public void ResetTable()
+    {
+        tableState = TableState.Available;
+        allOrders.Clear();
+        currOrders.Clear();
+
+        for (int i = 0; i < occupiedChairs.Length; i++)
+        {
+            occupiedChairs[i] = false;
+
+            // If we find "NpcMoveToTable", then there's a customer sitting on this chair.
+            NpcMoveToTable customer = chairs[i].GetComponentInChildren<NpcMoveToTable>();
+            if (customer != null)
+                Destroy(customer.gameObject);
+        }
+
+        Transform pickup = transform.Find("PickupObject");
+        foreach (Transform food in pickup)
+        {
+            Destroy(food.gameObject);
+        }
     }
 
     public override void OnTriggerEnter(Collider other)
@@ -270,19 +284,30 @@ public class Table : Interactable
         {
             // Check if a Food was placed on the table.
             Food food = other.GetComponent<Food>();
-            if (food == null || this.order == null)
+            if (food == null || currOrders.Count == 0)
                 return;
 
-            // Check if the food placed was ment for this table number.
-            if(food.foodName == this.order.foodName)
+            // Check if the food placed was meant for this table number.
+            for (int i=0; i < currOrders.Count; i++)
             {
-                // Correctly delivered the food.
-                other.GetComponent<PickUp>().objectPosition = transform.Find("PickupObject");
-                other.GetComponent<PickUp>().PickObjectUp();
-                foodOnTable = other.gameObject;
+                if (food.foodName == currOrders[i].foodName)
+                {
+                    // Correctly delivered the food.
+                    other.GetComponent<PickUp>().objectPosition = transform.Find("PickupObject");
+                    other.GetComponent<PickUp>().PickObjectUp();
+                    currOrders.RemoveAt(i);
 
-                Eating();
+                    patienceManager.increPatience(0.25f);
+
+                    // only when they receive all their current orders will they start eating
+                    // else, they will keep waiting
+                    if (currOrders.Count == 0)
+                        Eating();
+
+                    break;
+                }
             }
+            
         }
         else if (other.CompareTag("Customer"))
         {
@@ -297,9 +322,14 @@ public class Table : Interactable
                         other.GetComponent<NpcMoveToTable>().DisableAIMovement();
                         other.GetComponent<Collider>().enabled = false;
                         Destroy(other.GetComponent<Rigidbody>());
-                        other.transform.position = chairs[i].transform.position;
-                        other.transform.LookAt(transform);
-                        other.transform.Translate(-0.5f, 0.5f, 0.0f);
+
+                        // Sit customers
+                        other.transform.parent = chairs[i].transform;
+                        other.transform.position = chairs[i].GetComponent<Chair>().sitGO.transform.position;
+
+                        Vector3 lookAt = transform.position;
+                        lookAt.y = other.transform.position.y;
+                        other.transform.LookAt(lookAt);
                         occupiedChairs[i] = true;
                         break;
                     }
@@ -331,6 +361,25 @@ public class Table : Interactable
             default:
                 break;
         }
+    }
+
+    public void TakeOrder(string foodName)
+    {
+        for (int i = 0; i < allOrders.Count; i++)
+        {
+            if (allOrders[i].foodName == foodName)
+            {
+                // add taken order to memory and remove it from customer's orders
+                memory.AddFood(allOrders[i]);
+                currOrders.Add(allOrders[i]);
+                allOrders.RemoveAt(i);
+
+                break; // break in case theres a duplicate order
+            }
+        }
+
+        Waiting();
+        memoryUI.UpdateOrdersTakenUI();
     }
 }
 
