@@ -97,7 +97,7 @@ public class Table : Interactable
     {
         base.Update();
 
-        if (patienceManager.patience == 0)
+        if (patienceManager.patience <= 0)
             ResetTable();
     }
 
@@ -284,10 +284,12 @@ public class Table : Interactable
         }
 
         // reset table state UI
-        patienceManager.ResetPatience();
         patienceManager.SetActive(false);
+        patienceManager.ResetPatience();
         waterManager.waterFilled();
         waterManager.setActive(false);
+
+        updateStateInUI();
     }
 
     public override void OnTriggerEnter(Collider other)

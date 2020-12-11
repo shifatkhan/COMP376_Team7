@@ -101,42 +101,74 @@ public class GameManager : MonoBehaviour
         {
             ShowEndScreen(false);
         }
+
+        //// pull up the pause menu
+        //if (Input.GetButtonUp("Cancel"))
+        //{
+        //    if (!EndScreenPrefab.gameObject.activeInHierarchy)
+        //        ShowPauseScreen();
+        //    else
+        //        ResumeStage();
+        //}
+    }
+
+    private void ShowPauseScreen()
+    {
+        EndScreenPrefab.gameObject.SetActive(true);
+        Time.timeScale = 0.0f;
+
+        // Change header based on if win or fail
+        EndScreenPrefab.Find("Header Text").GetComponent<Text>().text = "Game Paused";
+
+        // Show statistics on EndScreen
+        CalcStatistics();
+
+        // Show Buttons appropriately
+        EndScreenPrefab.Find("Resume Btn").GetComponent<Button>().gameObject.SetActive(true);
     }
 
     private void ShowEndScreen(bool wonStage)
     {
         EndScreenPrefab.gameObject.SetActive(true);
         Time.timeScale = 0.0f;
-        PlayerPrefs.DeleteAll();
+
         // Change header based on if win or fail
         if (wonStage)
             EndScreenPrefab.Find("Header Text").GetComponent<Text>().text = "Stage Cleared!";
         else
             EndScreenPrefab.Find("Header Text").GetComponent<Text>().text = "Stage Failed.";
 
-        // Set statistics on end screen
+        // Show statistics on EndScreen
+        CalcStatistics();
+
+        // store stars & score for this stage
+        PlayerPrefs.SetInt(stageCode.ToString(), ScoreManager.CalcStars());
+
+        // Show Buttons appropriately
+        EndScreenPrefab.Find("Resume Btn").GetComponent<Button>().gameObject.SetActive(false);
+    }
+
+    private void CalcStatistics()
+    {
+        // Show statistics on EndScreen
         // Avg Tip %
         if (totalTipPercent != 0 && customersPaid != 0)
-        EndScreenPrefab.Find("Avg Tip").GetComponent<Text>().text 
-            = (totalTipPercent / (float)customersPaid).ToString("F2") + "%";
+            EndScreenPrefab.Find("Avg Tip").GetComponent<Text>().text
+                = (totalTipPercent / customersPaid).ToString("F2") + "%";
         // Orders Served
         EndScreenPrefab.Find("Orders Served").GetComponent<Text>().text = ordersServed.ToString();
         // Tips Received
         EndScreenPrefab.Find("Tips Received").GetComponent<Text>().text = ScoreManager.score.ToString("C");
-
-        // store stars & score for this stage
-        PlayerPrefs.SetInt(stageCode.ToString(), ScoreManager.CalcStars());
     }
 
-    public void ReloadStage()
-    {
-        Time.timeScale = 1.0f;
-        EndScreenPrefab.gameObject.SetActive(false);
-        timeLimitStatic = timeLimit;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-    public void LoadStageSelect()
-    {
-        SceneManager.LoadScene(1); // Stage Select scene
-    }
+    //public void ResumeStage()
+    //{
+    //    Time.timeScale = 1.0f;
+    //    EndScreenPrefab.gameObject.SetActive(false);
+    //}
+    //public void LoadStageSelect()
+    //{
+    //    Time.timeScale = 1.0f;
+    //    SceneManager.LoadScene(1); // Stage Select scene
+    //}
 }
