@@ -608,6 +608,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8093683334601018704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3340894119691838800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 1
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &3513109079590067878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,6 +1732,11 @@ PrefabInstance:
 --- !u!224 &1526630639627891725 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3782852093043738011, guid: 0044bea4e91573a4d892e34250c85dcb, type: 3}
+  m_PrefabInstance: {fileID: 2400644644871893398}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3340894119691838800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1084787060900107462, guid: 0044bea4e91573a4d892e34250c85dcb, type: 3}
   m_PrefabInstance: {fileID: 2400644644871893398}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6999552963117750142 stripped

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6018275118289192220}
   m_Layer: 0
   m_Name: Table2
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drainRate: 0.1
+--- !u!114 &37739100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576501180664330966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 1
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!95 &5740199310820547454
 Animator:
   serializedVersion: 3
@@ -233,6 +250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sofa2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5758096517584733577, guid: 672b5de05e725194cbcfee0b21c3aaaa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 672b5de05e725194cbcfee0b21c3aaaa, type: 3}
 --- !u!4 &5402495925909883091 stripped
@@ -342,6 +363,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3782852093043738011, guid: 0044bea4e91573a4d892e34250c85dcb, type: 3}
   m_PrefabInstance: {fileID: 1940254761628413456}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1576501180664330966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1084787060900107462, guid: 0044bea4e91573a4d892e34250c85dcb, type: 3}
+  m_PrefabInstance: {fileID: 1940254761628413456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5634823495388086746 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6115819507085668298, guid: 0044bea4e91573a4d892e34250c85dcb, type: 3}
@@ -415,6 +441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sofa2
       objectReference: {fileID: 0}
+    - target: {fileID: 5758096517584733577, guid: 672b5de05e725194cbcfee0b21c3aaaa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 672b5de05e725194cbcfee0b21c3aaaa, type: 3}
 --- !u!4 &8985894111562854990 stripped
@@ -432,6 +462,14 @@ PrefabInstance:
     - target: {fileID: 3584050305970501132, guid: 095fb4ce89412dc4fb3a9d561a464092, type: 3}
       propertyPath: m_Name
       value: Table2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584050305970501132, guid: 095fb4ce89412dc4fb3a9d561a464092, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584050305970501132, guid: 095fb4ce89412dc4fb3a9d561a464092, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5862715632594154679, guid: 095fb4ce89412dc4fb3a9d561a464092, type: 3}
       propertyPath: m_LocalPosition.x
