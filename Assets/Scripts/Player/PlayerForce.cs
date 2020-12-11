@@ -21,7 +21,6 @@ public class PlayerForce : MonoBehaviour
     PlayerInputManager playerInput;
     public PlayerForceUI forceUI;
     CheckNearbyInteraction nearbyObjectScript;
-    PlayerRig rig;
 
     [SerializeField] 
     float lowForce, medForce, hardForce, maxForce, yForce;
@@ -33,8 +32,6 @@ public class PlayerForce : MonoBehaviour
         nearbyObjectScript = GetComponent<CheckNearbyInteraction>();
 
         forceUI.SetMaxTime(1.8f); //Max time is 1.8seconds for force bar
-
-        rig = GetComponent<PlayerRig>();
     }
 
     void Update()
@@ -63,10 +60,7 @@ public class PlayerForce : MonoBehaviour
             forceUI.ShowUI();
             canceled = false;
 
-            holdDownStartTime = Time.time;
-
-            //rig.RaiseArm();
-            
+            holdDownStartTime = Time.time;    
         }
     }
 
@@ -85,8 +79,6 @@ public class PlayerForce : MonoBehaviour
     {
         if(playerInput.forceLaunch && canceled == false)
         {
-            //rig.LowerArm();
-
             forceUI.HideUI();
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -117,7 +109,7 @@ public class PlayerForce : MonoBehaviour
                 extraForce = maxForce;
             }
 
-            print(extraForce);
+            //print(extraForce);
             
             GameObject heldObject = nearbyObjectScript.getHeldObject();
             nearbyObjectScript.ObjectDown();

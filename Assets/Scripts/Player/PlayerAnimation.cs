@@ -35,7 +35,6 @@ public class PlayerAnimation : MonoBehaviour
             playerAnimator.SetLayerWeight(1, 1);
         }
 
-
         if(playerInput.forceLaunch)
         {
             playerAnimator.SetBool("isLaunched", true);
