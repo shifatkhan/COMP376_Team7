@@ -785,11 +785,6 @@ Transform:
   m_Father: {fileID: 1782491281}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &226583666 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1389516072954640442, guid: 770fb398b447c08478191f43aa605293, type: 3}
-  m_PrefabInstance: {fileID: 640295412}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &228653575
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,11 +880,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228653575}
   m_Mesh: {fileID: 4300006, guid: 58047469a2abddb42bce3ee293c43729, type: 3}
---- !u!1 &264623158 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7668421287836326620, guid: 770fb398b447c08478191f43aa605293, type: 3}
-  m_PrefabInstance: {fileID: 640295412}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &289069880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4243,6 +4233,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1979333965340848551, guid: 16440365fe3d14248b533138c3a433fd, type: 3}
   m_PrefabInstance: {fileID: 1394334577}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1404221908 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 398985519330961739, guid: 770fb398b447c08478191f43aa605293, type: 3}
+  m_PrefabInstance: {fileID: 640295412}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1404438285
 GameObject:
   m_ObjectHideFlags: 0
@@ -6711,15 +6706,19 @@ PrefabInstance:
     - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: WinScreenPrefab
       value: 
-      objectReference: {fileID: 226583666}
+      objectReference: {fileID: 0}
     - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: FailScreenPrefab
       value: 
-      objectReference: {fileID: 264623158}
+      objectReference: {fileID: 0}
     - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: timeLimit
-      value: 300
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
+      propertyPath: EndScreenPrefab
+      value: 
+      objectReference: {fileID: 1404221908}
     - target: {fileID: 7048457164328636552, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: goalScore
       value: 10
