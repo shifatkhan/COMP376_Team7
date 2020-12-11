@@ -801,7 +801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1672843416684729194, guid: f902074614b9e2146a5ee876c36ec059, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReloadStage
+      value: ResumeStage
       objectReference: {fileID: 0}
     - target: {fileID: 1672843416684729194, guid: f902074614b9e2146a5ee876c36ec059, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
