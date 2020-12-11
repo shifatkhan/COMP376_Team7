@@ -25,7 +25,26 @@ public class PlayerAnimation : MonoBehaviour
         //Idle animation when player is not walking
         else
         {
+            playerAnimator.SetBool("isLaunched", false);
             playerAnimator.SetBool("isWalking", false);
         }
+
+        if(playerInput.forceStart)
+        {
+            playerAnimator.SetBool("isHolding", true);
+            playerAnimator.SetLayerWeight(1, 1);
+        }
+
+
+        if(playerInput.forceLaunch)
+        {
+            playerAnimator.SetBool("isLaunched", true);
+            playerAnimator.SetBool("isHolding", false);
+        }
+    }
+
+    public void FinishThrow()
+    {
+        playerAnimator.SetLayerWeight(1, 0);
     }
 }
