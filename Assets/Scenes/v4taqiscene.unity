@@ -2318,7 +2318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c942254092db2447b71ccf31abda055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreUI: {fileID: 829636180}
+  scoreUI: {fileID: 0}
+  goalScore: 10
 --- !u!1001 &544472429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2981,17 +2982,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3886648731830357190, guid: 89d08f86dc0ba8c4399fa994c03cd845, type: 3}
   m_PrefabInstance: {fileID: 815236619}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &829636180 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1768497102, guid: 770fb398b447c08478191f43aa605293, type: 3}
-  m_PrefabInstance: {fileID: 1859366849}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd3539839454d8459031d99ca2e34ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &891858980
 GameObject:
   m_ObjectHideFlags: 0
@@ -6006,6 +5996,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas - Game
       objectReference: {fileID: 0}
+    - target: {fileID: 3790541744136883464, guid: 770fb398b447c08478191f43aa605293, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7813453916947921488, guid: 770fb398b447c08478191f43aa605293, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6452,6 +6446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4d334a49fbb4f2aa1bdf9f88448bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeLimit: 300
+  WinScreenPrefab: {fileID: 0}
+  FailScreenPrefab: {fileID: 0}
 --- !u!114 &2004167195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6464,8 +6461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24b1d0e90c474a21ba7c254b38c692e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 10
-  customerPrefab: {fileID: 2867586984957409040, guid: 58002666bfb879c498df300a4362c141, type: 3}
+  spawnRateMin: 20
+  spawnRateMax: 30
+  customerPrefabs: []
   spawnPoint: {fileID: 2004167182}
 --- !u!114 &2004167196
 MonoBehaviour:

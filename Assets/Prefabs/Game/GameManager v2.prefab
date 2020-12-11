@@ -359,9 +359,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4d334a49fbb4f2aa1bdf9f88448bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 90
-  WinScreenPrefab: {fileID: 0}
-  FailScreenPrefab: {fileID: 0}
+  customerSpawnRateMin: 20
+  customerSpawnRateMax: 30
+  minOrderTime: 5
+  maxOrderTime: 20
+  minOrderAmount: 1
+  maxOrderAmount: 9
+  waterDepletionEasy: 1
+  waterDepletionMedium: 0
+  waterDepletionHard: 0
+  puddleMinSpawnRate: 20
+  puddleMaxSpawnRate: 30
+  stageCode: 0
+  timeLimit: 300
+  EndScreenPrefab: {fileID: 0}
 --- !u!1 &3897715447398761026
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +489,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  spawnRate: 2
 --- !u!1 &7048457163259512277
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +563,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreUI: {fileID: 0}
-  goalScore: 5
+  goalScore: 10
+  twoStarsGoal: 0
+  threeStarsGoal: 0
 --- !u!1 &7117929071876433108
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,19 +610,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24b1d0e90c474a21ba7c254b38c692e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 6
+  spawnRateMin: 20
+  spawnRateMax: 30
   customerPrefabs:
   - {fileID: 2867586984957409040, guid: 6aa7f5fd94234fc4a953851e84532e98, type: 3}
-  - {fileID: 2867586984957409040, guid: 72a6b7afc6186364a80800420f094ee7, type: 3}
-  - {fileID: 2867586984957409040, guid: 3a98a37bb99e0444083a8176315430f6, type: 3}
+  - {fileID: 2867586984957409040, guid: 8dfd3a29132a88f42ac052cf749b359c, type: 3}
+  - {fileID: 2867586984957409040, guid: b44b287740147f7458d1015f92c6b256, type: 3}
   - {fileID: 2867586984957409040, guid: 37af3d4c4045efa4ab56c5d38fd31459, type: 3}
   - {fileID: 2867586984957409040, guid: 0e9e820ca2a8b4f40be434355307883c, type: 3}
   - {fileID: 2867586984957409040, guid: 9fcd112f51d6fcd48ad1a135db494f43, type: 3}
-  - {fileID: 2867586984957409040, guid: a20e4e0a05bac0e4a93e83cd16be8c34, type: 3}
+  - {fileID: 2867586984957409040, guid: b1e06ea97a1151c40963286fb3cb38d6, type: 3}
   - {fileID: 2867586984957409040, guid: 58002666bfb879c498df300a4362c141, type: 3}
   - {fileID: 2867586984957409040, guid: e907992fd1c288548b8f685decbd0d0c, type: 3}
   - {fileID: 2867586984957409040, guid: 709fba6c9fd1fa745bfd4609e3a0fbeb, type: 3}
-  - {fileID: 2867586984957409040, guid: 8dfd3a29132a88f42ac052cf749b359c, type: 3}
   spawnPoint: {fileID: 7048457163259512277}
 --- !u!1001 &3897715445830079248
 PrefabInstance:

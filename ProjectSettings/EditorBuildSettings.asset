@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 6182491bc7fc56e42ae5737db6720383
   - enabled: 1
+    path: Assets/Scenes/StageSelection.unity
+    guid: c3c82eecfa9e0a64a870a20510cdb907
+  - enabled: 1
     path: Assets/Scenes/Stage1Scene old.unity
     guid: d502a25d44c8b5f4b811f654d0c03482
   - enabled: 1
@@ -17,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ShifatScene.unity
     guid: b5081c01e496dd24f9384b4bf40e9022
+  - enabled: 1
+    path: Assets/Scenes/JustinScene/JustinScene.unity
+    guid: 5fb787d94c73af74e9d308f391552fb8
   m_configObjects: {}

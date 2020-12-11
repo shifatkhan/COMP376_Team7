@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Holds a list (max 4) of food in memory.
 /// 
-/// @author ShifatKhan
+/// @author ShifatKhan, Thanh Tung Nguyen
 /// </summary>
 public class MemoryUI : MonoBehaviour
 {
@@ -89,7 +89,7 @@ public class MemoryUI : MonoBehaviour
     {
         List<FoodSlot> foodMemorized = memory.GetFoodsMemorized();
         int numMemorized = foodMemorized.Count;
-        Debug.LogWarning(numMemorized);
+
         for (int i = 0; i < leftItems.Length; i++)
         {
             if (i < numMemorized)

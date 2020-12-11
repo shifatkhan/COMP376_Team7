@@ -10,7 +10,7 @@ using UnityEngine.AI;
 /// 
 /// This script inherits from Interactable, which allows Player to interact on it.
 /// 
-/// @author: ShifatKhan, Nhut Vo
+/// @author: ShifatKhan, Nhut Vo, Thanh Tung Nguyen
 /// </summary>
 public enum TableState
 {
@@ -43,6 +43,9 @@ public class Table : Interactable
     public TableState tableState { get; private set; }
     public float maxOrderTime = 20f;
     public float minOrderTime = 5f;
+
+    public int maxOrderAmount = 1;
+    public int minOrderAmount = 9;
 
     //****************** MEMORY ******************//
     [Header("Other")]
@@ -93,6 +96,9 @@ public class Table : Interactable
     public override void Update()
     {
         base.Update();
+
+        if (patienceManager.patience <= 0)
+            ResetTable();
     }
 
     public override void OnInteract()
@@ -120,7 +126,7 @@ public class Table : Interactable
         tableState = TableState.Occupied;
 
         // customers start drinking water
-        patienceManager.setActive(true);
+        patienceManager.SetActive(true);
         patienceManager.resetPatience();
         waterManager.setActive(true);
         waterManager.waterFilled();
@@ -137,7 +143,7 @@ public class Table : Interactable
         tableState = TableState.ReadyToOrder;
 
         // Choose something to order.
-        int numOfFoodOrders = Random.Range(1, 9); // 1 to 8
+        int numOfFoodOrders = Random.Range(minOrderAmount, maxOrderAmount); // 1 to 8
         allOrders = new List<FoodSlot>(numOfFoodOrders);
         for (int i = 0; i < numOfFoodOrders; i++)
         {
@@ -159,7 +165,7 @@ public class Table : Interactable
     public void Eating()
     {
         tableState = TableState.Eating;
-        patienceManager.setActive(false); // stop depleting patience when eating
+        patienceManager.SetActive(false); // stop depleting patience when eating
 
         StartCoroutine(EatingCo(Random.Range(minOrderTime, maxOrderTime)));
 
@@ -179,7 +185,7 @@ public class Table : Interactable
         else
             tableState = TableState.ReadyToOrder;
 
-        patienceManager.setActive(true); // start depleting patience again
+        patienceManager.SetActive(true); // start depleting patience again
 
         updateStateInUI();
     }
@@ -188,7 +194,7 @@ public class Table : Interactable
     {
         tableState = TableState.Available;
 		
-        patienceManager.setActive(false);
+        patienceManager.SetActive(false);
         waterManager.setActive(false);
 
         ResetTable();
@@ -249,6 +255,8 @@ public class Table : Interactable
 
         // Update score
         ScoreManager.AddScore(totalPay);
+        GameManager.customersPaid++;
+        GameManager.totalTipPercent += totalTip;
 
         return totalPay;
     }
@@ -269,11 +277,19 @@ public class Table : Interactable
                 Destroy(customer.gameObject);
         }
 
-        Transform pickup = transform.Find("PickupObject");
+        Transform pickup = transform.Find("PickupFood");
         foreach (Transform food in pickup)
         {
             Destroy(food.gameObject);
         }
+
+        // reset table state UI
+        patienceManager.SetActive(false);
+        patienceManager.ResetPatience();
+        waterManager.waterFilled();
+        waterManager.setActive(false);
+
+        updateStateInUI();
     }
 
     public override void OnTriggerEnter(Collider other)
@@ -298,6 +314,7 @@ public class Table : Interactable
                     currOrders.RemoveAt(i);
 
                     patienceManager.increPatience(0.25f);
+                    GameManager.ordersServed++;
 
                     // only when they receive all their current orders will they start eating
                     // else, they will keep waiting

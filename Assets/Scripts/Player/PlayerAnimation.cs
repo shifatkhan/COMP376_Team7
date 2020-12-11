@@ -6,13 +6,14 @@ public class PlayerAnimation : MonoBehaviour
 {
     //private PlayerInput playerInput;
     private PlayerInputManager playerInput;
-
+    private CheckNearbyInteraction nearbyObject;
     Animator playerAnimator;
     void Start()
     {
         //playerInput = GetComponent<PlayerInput>();
         playerInput = PlayerInputManager.instance;
         playerAnimator = GetComponent<Animator>();
+        nearbyObject = GetComponent<CheckNearbyInteraction>();
     }
 
     void Update() 
@@ -33,6 +34,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             playerAnimator.SetBool("isHolding", true);
             playerAnimator.SetLayerWeight(1, 1);
+            playerAnimator.SetLayerWeight(2, 0);
         }
 
         if(playerInput.forceLaunch)
@@ -45,5 +47,31 @@ public class PlayerAnimation : MonoBehaviour
     public void FinishThrow()
     {
         playerAnimator.SetLayerWeight(1, 0);
+    }
+
+    public void ObjectDropped()
+    {
+        playerAnimator.SetLayerWeight(2, 0);
+        playerAnimator.SetBool("isMopping", false);
+    }
+
+    public void FoodPickedAnimation()
+    {
+        playerAnimator.SetLayerWeight(2, 1);
+        playerAnimator.SetBool("isPickedUp", true);
+        playerAnimator.SetBool("isHolding", false);
+    }
+
+    public void FoodDroppedAnimation()
+    {
+        playerAnimator.SetBool("isPickedUp", false);
+        playerAnimator.SetBool("isMopping", false);
+    }
+
+    public void MopAnimation()
+    {
+        playerAnimator.SetLayerWeight(2, 1);
+        playerAnimator.SetBool("isMopping", true);
+        playerAnimator.SetBool("isHolding", false);
     }
 }

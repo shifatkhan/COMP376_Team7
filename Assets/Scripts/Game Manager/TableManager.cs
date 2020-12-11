@@ -11,11 +11,6 @@ public class TableManager : MonoBehaviour
 {
     public Table[] tables;
 
-    private float spawnTime = 0f;
-
-    [SerializeField]
-    private float spawnRate = 2f;
-
 
     private static TableManager _instance;
 
@@ -51,11 +46,8 @@ public class TableManager : MonoBehaviour
         }
     }
 
-
     void Start()
     {
-        spawnTime = Time.time + spawnRate;
-
         GameObject[] gameTables = GameObject.FindGameObjectsWithTag("Table");
 
         // Assign a table number to each table.
@@ -67,22 +59,22 @@ public class TableManager : MonoBehaviour
         }
     }
 
-    void Update()
+    public void SetDifficulty(float minOrderTime, float maxOrderTime, int minOrderAmount, int maxOrderAmount, bool waterDepletionEasy, bool waterDepletionMedium)
     {
+        // Assign a table number to each table.
+        for (int i = 0; i < tables.Length; i++)
+        {
+            tables[i].minOrderTime = minOrderTime;
+            tables[i].maxOrderTime = maxOrderTime;
+            tables[i].minOrderAmount = minOrderAmount;
+            tables[i].maxOrderAmount = maxOrderAmount;
 
-        //// Check if we should spawn.
-        //if (Time.time > spawnTime)
-        //{
-        //    spawnTime += spawnRate;
-
-        //    int i = Random.Range(0, tables.Length);
-        //    // Check if table is occupied
-        //    if (tables[i].tableState == TableState.Empty)
-        //    {
-        //        tables[i].EnableCustomers();
-        //    }
-        //}
+            if (waterDepletionEasy)
+                tables[i].GetComponent<WaterPourable>().drinkSpeedEasy();
+            else if (waterDepletionMedium)
+                tables[i].GetComponent<WaterPourable>().drinkSpeedMedium();
+            else
+                tables[i].GetComponent<WaterPourable>().drinkSpeedHard();
+        }
     }
-
-    
 }

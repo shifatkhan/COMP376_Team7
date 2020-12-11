@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// Keeps track of overall score in a level.
 /// It will call ScoreUI to update the UI.
 /// 
-/// @author ShifatKhan
+/// @author ShifatKhan, Thanh Tung Nguyen
 /// </summary>
 public class ScoreManager : MonoBehaviour
 {
@@ -16,8 +16,12 @@ public class ScoreManager : MonoBehaviour
     public ScoreUI scoreUI; // UI manager for score
     public static ScoreUI ui; // UI manager for score
 
-    [SerializeField] private float goalScore = 10;
-    public static float goalScoreStatic = 10;
+    [SerializeField] private float goalScore;
+    [SerializeField] private float twoStarsGoal;
+    [SerializeField] private float threeStarsGoal;
+    public static float goalScoreStatic;
+    public static float twoStarsGoalStatic;
+    public static float threeStarsGoalStatic;
     public static float score { get; private set; }
 
     void Start()
@@ -27,13 +31,19 @@ public class ScoreManager : MonoBehaviour
 
         ui = scoreUI;
         ui.goalScore = this.goalScore;
+
         goalScoreStatic = goalScore;
+        twoStarsGoalStatic = twoStarsGoal;
+        threeStarsGoalStatic = threeStarsGoal;
     }
 
     public static void AddScore(float amount)
     {
         if (amount <= 0)
             return;
+
+        // Round to 2 decimal points
+        amount = Mathf.Round(amount * 100f) / 100f;
 
         // Change score
         score += amount;
@@ -47,10 +57,25 @@ public class ScoreManager : MonoBehaviour
         if (amount <= 0)
             return;
 
+        // Round to 2 decimal points
+        amount = Mathf.Round(amount * 100f) / 100f;
+
         // Change score
         score -= amount;
 
         // Update UI
         ui.NewScore(score);
+    }
+
+    public static int CalcStars()
+    {
+        if (score >= threeStarsGoalStatic)
+            return 3;
+        else if (score >= twoStarsGoalStatic)
+            return 2;
+        else if (score >= goalScoreStatic)
+            return 1;
+        else
+            return 0;
     }
 }
