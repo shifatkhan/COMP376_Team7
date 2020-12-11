@@ -57,9 +57,12 @@ public class WaterPourable : MonoBehaviour
         if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup <= 0.5f)
         {
             // check if player is holding a water jug
-            if (other.gameObject.GetComponent<CheckNearbyInteraction>().getHeldObject().CompareTag("Water Jug"))
+            GameObject objectHeld = other.gameObject.GetComponent<CheckNearbyInteraction>().getHeldObject();
+
+            if (objectHeld != null && objectHeld.CompareTag("Water Jug"))
             {
                 skillChecking = true;
+                PlayerInputManager.enableMovement = false;
 
                 Vector2 screenPos = new Vector2(Screen.width / 2, Screen.height / 2);
                 Transform skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
@@ -72,7 +75,7 @@ public class WaterPourable : MonoBehaviour
     public void setActive(bool b)
     {
         isActive = b;
-        drinkSpeedEasy(); // default
+        drinkSpeedHard(); // default
     }
 
     public void waterFilled()

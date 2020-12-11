@@ -7,12 +7,14 @@ public class CustomerManager : MonoBehaviour
     private float spawnTime = 0f;
 
     [SerializeField]
-    public float spawnRate = 2f;
+    public float spawnRateMin = 20f;
+    [SerializeField]
+    public float spawnRateMax = 30f;
 
     private TableManager tableManager;
 
     [SerializeField]
-    private GameObject customerPrefab;
+    private GameObject[] customerPrefabs;
 
     [SerializeField]
     private GameObject spawnPoint;
@@ -66,7 +68,7 @@ public class CustomerManager : MonoBehaviour
         // Check if we should spawn.
         if (Time.time > spawnTime)
         {
-            spawnTime += spawnRate;
+            spawnTime += Random.Range(spawnRateMin, spawnRateMax);
 
             // Spawn - ONLY when there are available tables.
             if(AreThereTablesAvailable())
@@ -89,7 +91,8 @@ public class CustomerManager : MonoBehaviour
 
         for (int i = 0; i < customersToSpawn; i++)
         {
-            GameObject customer = Instantiate(customerPrefab, spawnPoint.transform.position, Quaternion.identity);
+            int customerIndex = Random.Range(0, customerPrefabs.Length);
+            GameObject customer = Instantiate(customerPrefabs[customerIndex], spawnPoint.transform.position, Quaternion.identity);
             customer.GetComponent<NpcMoveToTable>().SetTableNumber(tableNumber);
         }
 
@@ -112,4 +115,6 @@ public class CustomerManager : MonoBehaviour
 
         return available;
     }
+
+    
 }

@@ -56,9 +56,12 @@ public class TableManager : MonoBehaviour
     {
         spawnTime = Time.time + spawnRate;
 
+        GameObject[] gameTables = GameObject.FindGameObjectsWithTag("Table");
+
         // Assign a table number to each table.
         for (int i = 0; i < tables.Length; i++)
         {
+            tables[i] = gameTables[i].GetComponent<Table>();
             tables[i].tableNumber = i;
             tables[i].UpdateTableNumber();
         }

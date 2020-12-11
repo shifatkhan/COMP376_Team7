@@ -29,7 +29,7 @@ public class TimerUI : MonoBehaviour
     void Update()
     {
         
-        timeLeft = (int)(GameManager.timeLimit - GameManager.currentTime);
+        timeLeft = (int)(GameManager.timeLimitStatic - GameManager.currentTimeStatic);
 
         text.text = getMin(timeLeft).ToString();
         text.text += ":";

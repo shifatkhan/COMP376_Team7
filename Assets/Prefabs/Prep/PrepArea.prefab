@@ -316,8 +316,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.2533655, y: 0.7747669, z: 3.9488873}
-  m_Center: {x: 0.43719926, y: -0.11261654, z: -1.4744538}
+  m_Size: {x: 9.179284, y: 0.7747669, z: 3.7688565}
+  m_Center: {x: 0.046242777, y: -0.11261654, z: -1.3844547}
 --- !u!114 &6841362864613243368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +335,7 @@ MonoBehaviour:
   prepSlots: []
   memory: {fileID: 11400000, guid: 1076c03143d9d71499bdfc0b85e94d68, type: 2}
   queueText: {fileID: 2392347635623803156}
+  memoryUI: {fileID: 0}
 --- !u!1 &6841362865232293314
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class PlayerForce : MonoBehaviour
 
     void Update()
     {
-        if(nearbyObjectScript.getHeldObject() != null)
+        if(nearbyObjectScript.getHeldObject() != null && PlayerInputManager.enableThrow)
         {
             //Player presses mouse left button
             ForceStart();
@@ -60,9 +60,7 @@ public class PlayerForce : MonoBehaviour
             forceUI.ShowUI();
             canceled = false;
 
-            holdDownStartTime = Time.time;
-
-            
+            holdDownStartTime = Time.time;    
         }
     }
 
@@ -111,7 +109,7 @@ public class PlayerForce : MonoBehaviour
                 extraForce = maxForce;
             }
 
-            print(extraForce);
+            //print(extraForce);
             
             GameObject heldObject = nearbyObjectScript.getHeldObject();
             nearbyObjectScript.ObjectDown();

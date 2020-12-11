@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WaterCheckBar : MonoBehaviour
 {
+    [Header("Water check vars")]
     [SerializeField]
     float fillSpeed = 0.5f;
 
@@ -13,6 +14,12 @@ public class WaterCheckBar : MonoBehaviour
     float perfectZoneSize = 0.05f;
     [SerializeField]
     float failZoneSize = 0.05f;
+
+    [Header("Tip modifiers")]
+    [SerializeField]
+    private float addTip = 0.15f;
+    [SerializeField]
+    private float substractTip = 0.1f;
 
     // the zone's length on the bar
     private float failZoneLength;
@@ -24,6 +31,7 @@ public class WaterCheckBar : MonoBehaviour
     private Button spaceIndicator;
 
     private WaterPourable tableBeingPoured;
+    private Table tableRef;
     private bool stopPouring = false;
 
     void Start()
@@ -60,23 +68,26 @@ public class WaterCheckBar : MonoBehaviour
 
                 if (slider.value < (perfZoneStartPoint / sliderWidth))
                 {
-                    Debug.LogWarning("SUCCESS ZONE");
+                    // SUCCESS ZONE
                     tableBeingPoured.waterFilled();
                     AudioManager.PlayWaterCheckSuccess();
                 }
                 else if (slider.value <= (perfZoneStartPoint + perfectZoneLength) / sliderWidth)
                 {
-                    Debug.LogWarning("PERFECT ZONE");
+                    // PERFECT ZONE
                     tableBeingPoured.waterFilled();
                     AudioManager.PlayWaterCheckPerfect();
-                    // TODO add to tip bonus
+
+                    tableRef.displayHeart();
+                    tableRef.AddBonusMultiplier(addTip);
                 }
                 else
                 {
-                    Debug.LogWarning("FAIL ZONE");
+                    // FAIL ZONE
                     tableBeingPoured.waterFilled();
                     AudioManager.PlayWaterCheckFail();
-                    // TODO remove tip bonus
+
+                    tableRef.AddBonusMultiplier(substractTip);
                 }
                 
                 // indicate where they landed the water check before destroying
@@ -92,12 +103,13 @@ public class WaterCheckBar : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        // TODO enable player movement
+        PlayerInputManager.enableMovement = true;
         Destroy(this.gameObject);
     }
 
     public void setTablePoured(WaterPourable table)
     {
         tableBeingPoured = table;
+        this.tableRef = table.GetComponent<Table>();
     }
 }
