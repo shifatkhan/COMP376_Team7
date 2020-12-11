@@ -44,6 +44,9 @@ public class Table : Interactable
     public float maxOrderTime = 20f;
     public float minOrderTime = 5f;
 
+    public int maxOrderAmount = 1;
+    public int minOrderAmount = 9;
+
     //****************** MEMORY ******************//
     [Header("Other")]
     [SerializeField]
@@ -140,7 +143,7 @@ public class Table : Interactable
         tableState = TableState.ReadyToOrder;
 
         // Choose something to order.
-        int numOfFoodOrders = Random.Range(1, 9); // 1 to 8
+        int numOfFoodOrders = Random.Range(minOrderAmount, maxOrderAmount); // 1 to 8
         allOrders = new List<FoodSlot>(numOfFoodOrders);
         for (int i = 0; i < numOfFoodOrders; i++)
         {

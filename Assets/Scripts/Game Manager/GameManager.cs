@@ -17,17 +17,41 @@ public class GameManager : MonoBehaviour
     PuddleManager puddleManager;
     AudioManager audioManager;
 
-    //
+    [Header ("Difficulty: Customers")]
+    //****************** CUSTOMER ******************//
     public float customerSpawnRateMin = 20f;
     public float customerSpawnRateMax = 30f;
 
-    public float maxOrderTime = 20f;
+    [Header("Difficulty: Table")]
+    //****************** TABLE ******************//
+    [Min(0)]
     public float minOrderTime = 5f;
+    [Min(0)]
+    public float maxOrderTime = 20f;
+    [Min(1)]
+    public int minOrderAmount = 1;
+    [Min(1)]
+    public int maxOrderAmount = 9; 
+
+    [Header("Difficulty: Water")]
+    //****************** WATER ******************//
+    public bool waterDepletionEasy = true;
+    public bool waterDepletionMedium = false;
+    public bool waterDepletionHard = false;
+
+    [Header("Difficulty: Puddle")]
+    //****************** PUDDLE ******************//
+    [Min(0)]
+    public float puddleMinSpawnRate = 20f;
+    [Min(0)]
+    public float puddleMaxSpawnRate = 30f;
 
     [SerializeField] private StageCode stageCode;
 
-    [Header("Time")]
+    [Header("Difficulty: Time")]
+    //****************** TIME ******************//
     [SerializeField]
+    [Min(1)]
     private float timeLimit = 300;
     public static float timeLimitStatic = 300;
     public static float currentTimeStatic = 0;
@@ -54,6 +78,13 @@ public class GameManager : MonoBehaviour
         customerManager = CustomerManager.Instance;
         puddleManager = PuddleManager.Instance;
         audioManager = GetComponentInChildren<AudioManager>();
+
+        tableManager.SetDifficulty(minOrderTime, maxOrderTime, minOrderAmount, maxOrderAmount, waterDepletionEasy, waterDepletionMedium);
+        customerManager.spawnRateMin = customerSpawnRateMin;
+        customerManager.spawnRateMax = customerSpawnRateMax;
+        puddleManager.minSpawnTime = puddleMinSpawnRate;
+        puddleManager.maxSpawnTime = puddleMaxSpawnRate;
+
     }
 
     // Update is called once per frame

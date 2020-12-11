@@ -6695,33 +6695,9 @@ PrefabInstance:
       propertyPath: tables.Array.data[12]
       value: 
       objectReference: {fileID: 1044142053}
-    - target: {fileID: 7048457164154498243, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
-      propertyPath: customerPrefabs.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7048457164154498243, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
-      propertyPath: customerPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 2867586984957409040, guid: 8dfd3a29132a88f42ac052cf749b359c, type: 3}
-    - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
-      propertyPath: WinScreenPrefab
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
-      propertyPath: FailScreenPrefab
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
-      propertyPath: timeLimit
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: EndScreenPrefab
       value: 
       objectReference: {fileID: 1404221908}
-    - target: {fileID: 7048457164328636552, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
-      propertyPath: goalScore
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
