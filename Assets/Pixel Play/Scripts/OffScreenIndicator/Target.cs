@@ -101,4 +101,9 @@ public class Target : MonoBehaviour
         float distanceFromCamera = Vector3.Distance(cameraPosition, transform.position);
         return distanceFromCamera;
     }
+
+    public void ChangeColor(Color newColor)
+    {
+        targetColor = newColor;
+    }
 }

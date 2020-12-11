@@ -17,8 +17,16 @@ public class GameManager : MonoBehaviour
     PuddleManager puddleManager;
     AudioManager audioManager;
 
+    //
+    public float customerSpawnRateMin = 20f;
+    public float customerSpawnRateMax = 30f;
+
+    public float maxOrderTime = 20f;
+    public float minOrderTime = 5f;
+
     [SerializeField] private StageCode stageCode;
 
+    [Header("Time")]
     [SerializeField]
     private float timeLimit = 300;
     public static float timeLimitStatic = 300;
@@ -26,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public Transform EndScreenPrefab;
 
+    [Header("Stats")]
     //Hidden Player Stats for multipliers and end screens. TODO: To be used for later - Nick
     public static int ordersServed = 0;
     public static int puddlesCleaned = 0;

@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 499259486294750344}
   m_Layer: 0
   m_Name: Table3
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,6 +171,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drainRate: 0.1
+--- !u!114 &882271517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7711646352950535917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 1
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1001 &922116735532822427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,6 +198,14 @@ PrefabInstance:
     - target: {fileID: 4034266605822606688, guid: bc3f2676068dce249a33e7403c428611, type: 3}
       propertyPath: m_Name
       value: Chair1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034266605822606688, guid: bc3f2676068dce249a33e7403c428611, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034266605822606688, guid: bc3f2676068dce249a33e7403c428611, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8706194160463796221, guid: bc3f2676068dce249a33e7403c428611, type: 3}
       propertyPath: m_LocalPosition.x
@@ -292,6 +317,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stand7
       objectReference: {fileID: 0}
+    - target: {fileID: 8504530951812902482, guid: b386ad298f8e7424db867f85191f48cd, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8504530951812902482, guid: b386ad298f8e7424db867f85191f48cd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b386ad298f8e7424db867f85191f48cd, type: 3}
 --- !u!4 &6563288476141343372 stripped
@@ -309,6 +342,14 @@ PrefabInstance:
     - target: {fileID: 4034266605822606688, guid: bc3f2676068dce249a33e7403c428611, type: 3}
       propertyPath: m_Name
       value: Chair1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034266605822606688, guid: bc3f2676068dce249a33e7403c428611, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034266605822606688, guid: bc3f2676068dce249a33e7403c428611, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8706194160463796221, guid: bc3f2676068dce249a33e7403c428611, type: 3}
       propertyPath: m_LocalPosition.x
@@ -371,6 +412,14 @@ PrefabInstance:
     - target: {fileID: 4034266605822606688, guid: bc3f2676068dce249a33e7403c428611, type: 3}
       propertyPath: m_Name
       value: Chair1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034266605822606688, guid: bc3f2676068dce249a33e7403c428611, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034266605822606688, guid: bc3f2676068dce249a33e7403c428611, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8706194160463796221, guid: bc3f2676068dce249a33e7403c428611, type: 3}
       propertyPath: m_LocalPosition.x
@@ -523,6 +572,11 @@ PrefabInstance:
 --- !u!224 &5798338915393779632 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3782852093043738011, guid: 0044bea4e91573a4d892e34250c85dcb, type: 3}
+  m_PrefabInstance: {fileID: 7208210672103567915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7711646352950535917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1084787060900107462, guid: 0044bea4e91573a4d892e34250c85dcb, type: 3}
   m_PrefabInstance: {fileID: 7208210672103567915}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3519409289617169889 stripped
