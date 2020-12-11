@@ -60,9 +60,7 @@ public class PlayerForce : MonoBehaviour
             forceUI.ShowUI();
             canceled = false;
 
-            holdDownStartTime = Time.time;
-
-            
+            holdDownStartTime = Time.time;    
         }
     }
 
@@ -111,7 +109,7 @@ public class PlayerForce : MonoBehaviour
                 extraForce = maxForce;
             }
 
-            print(extraForce);
+            //print(extraForce);
             
             GameObject heldObject = nearbyObjectScript.getHeldObject();
             nearbyObjectScript.ObjectDown();
