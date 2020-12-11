@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt(stageCode.ToString(), ScoreManager.CalcStars());
     }
 
-    public void ReloadStage()
+    public void ResumeStage()
     {
         Time.timeScale = 1.0f;
         EndScreenPrefab.gameObject.SetActive(false);

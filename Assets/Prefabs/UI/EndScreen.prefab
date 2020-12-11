@@ -818,7 +818,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Retry Stage
+  m_Text: Resume
 --- !u!1 &6254690908509067223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,7 +1117,7 @@ GameObject:
   - component: {fileID: 3283458263115992441}
   - component: {fileID: 1672843416684729194}
   m_Layer: 5
-  m_Name: Restart Btn
+  m_Name: Resume Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
