@@ -360,6 +360,11 @@ public class Table : Interactable
         }
     }
 
+    public void displayHeart()
+    {
+        StartCoroutine(patienceManager.displayHeart());
+    } 
+
     public void TakeOrder(string foodName)
     {
         for (int i = 0; i < allOrders.Count; i++)
