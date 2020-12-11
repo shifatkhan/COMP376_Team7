@@ -6574,6 +6574,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7048457164154498243, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
+      propertyPath: customerPrefabs.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048457164154498243, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
+      propertyPath: customerPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048457164154498243, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
+      propertyPath: customerPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2867586984957409040, guid: 8dfd3a29132a88f42ac052cf749b359c, type: 3}
     - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: WinScreenPrefab
       value: 
