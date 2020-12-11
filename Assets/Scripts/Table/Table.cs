@@ -10,7 +10,7 @@ using UnityEngine.AI;
 /// 
 /// This script inherits from Interactable, which allows Player to interact on it.
 /// 
-/// @author: ShifatKhan, Nhut Vo
+/// @author: ShifatKhan, Nhut Vo, Thanh Tung Nguyen
 /// </summary>
 public enum TableState
 {
@@ -249,6 +249,8 @@ public class Table : Interactable
 
         // Update score
         ScoreManager.AddScore(totalPay);
+        GameManager.customersPaid++;
+        GameManager.totalTipPercent += totalTip;
 
         return totalPay;
     }
@@ -274,6 +276,11 @@ public class Table : Interactable
         {
             Destroy(food.gameObject);
         }
+
+        // reset table state UI
+        patienceManager.setActive(false);
+        waterManager.waterFilled();
+        waterManager.setActive(false);
     }
 
     public override void OnTriggerEnter(Collider other)
@@ -298,6 +305,7 @@ public class Table : Interactable
                     currOrders.RemoveAt(i);
 
                     patienceManager.increPatience(0.25f);
+                    GameManager.ordersServed++;
 
                     // only when they receive all their current orders will they start eating
                     // else, they will keep waiting

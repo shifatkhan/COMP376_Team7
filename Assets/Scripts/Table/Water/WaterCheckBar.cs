@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Oversees the water skill check mechanic.
+/// Coded to allow flexible adjustments
+/// 
+/// @author Thanh Tung Nguyen
+/// </summary>
 public class WaterCheckBar : MonoBehaviour
 {
     [Header("Water check vars")]
@@ -55,17 +61,20 @@ public class WaterCheckBar : MonoBehaviour
 
     void Update()
     {
+        // highlight spacebar visual indicator when skill check is pressable
         if (slider.value >= 0.5)
             spaceIndicator.interactable = true;
 
         if (!stopPouring)
         {
+            // check conditions before landing on a zone
             if ((slider.value >= 0.5 && Input.GetButton("Hit Water Check")) || slider.value >= 1)
             {
                 stopPouring = true;  // stops pouring water
 
                 float perfZoneStartPoint = sliderWidth - failZoneLength - perfectZoneLength;
 
+                // calculates where the player stop pouring by the size of the slider
                 if (slider.value < (perfZoneStartPoint / sliderWidth))
                 {
                     // SUCCESS ZONE
@@ -90,15 +99,19 @@ public class WaterCheckBar : MonoBehaviour
                     tableRef.AddBonusMultiplier(substractTip);
                 }
                 
-                // indicate where they landed the water check before destroying
+                // indicate where they land the water check before destroying
                 StartCoroutine(WaitBeforeDestroy());
             }
             else if (slider.value < 1)
+                // keep pouring water
                 slider.value += fillSpeed * Time.deltaTime;
         }
     }
 
-    // Show player's skill check result before destroy
+    /// <summary>
+    /// Show player's skill check result before destroy.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator WaitBeforeDestroy()
     {
         yield return new WaitForSeconds(1);
@@ -107,6 +120,10 @@ public class WaterCheckBar : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// Pass reference of which table is being poured.
+    /// </summary>
+    /// <param name="table"></param>
     public void setTablePoured(WaterPourable table)
     {
         tableBeingPoured = table;

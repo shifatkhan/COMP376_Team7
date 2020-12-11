@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Holds a list (max 4) of food in memory.
 /// 
-/// @author ShifatKhan
+/// @author ShifatKhan, Thanh Tung Nguyen
 /// </summary>
 public class MemoryUI : MonoBehaviour
 {
