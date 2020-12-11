@@ -2355,7 +2355,7 @@ MonoBehaviour:
   moveSpeed: 500
   turnSpeed: 1000
   slipping: 0
-  slipDuration: 0
+  slipDuration: 2
   Mop: {fileID: 0}
 --- !u!114 &6631162683817107258
 MonoBehaviour:
