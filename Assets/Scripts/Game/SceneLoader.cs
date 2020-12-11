@@ -42,6 +42,7 @@ public class SceneLoader : MonoBehaviour
     public void ExitClicked()
     {
         Application.Quit();
+        Debug.Log("APPLICATION QUIT");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
