@@ -326,7 +326,10 @@ public class Table : Interactable
                         // Sit customers
                         other.transform.parent = chairs[i].transform;
                         other.transform.position = chairs[i].GetComponent<Chair>().sitGO.transform.position;
-                        other.transform.LookAt(chairs[i].transform.worldToLocalMatrix.MultiplyVector(transform.forward));
+
+                        Vector3 lookAt = transform.position;
+                        lookAt.y = other.transform.position.y;
+                        other.transform.LookAt(lookAt);
                         occupiedChairs[i] = true;
                         break;
                     }
