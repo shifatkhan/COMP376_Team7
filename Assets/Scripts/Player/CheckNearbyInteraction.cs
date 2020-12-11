@@ -8,6 +8,7 @@ public class CheckNearbyInteraction : MonoBehaviour
     public static bool holdingWaterJug = false;
     public GameObject currentObjectHold; //Reference to current object being held
     PlayerInputManager playerInput;
+    PlayerAnimation playerAnimation;
 
     Collider previousNearestObject;
 
@@ -20,6 +21,7 @@ public class CheckNearbyInteraction : MonoBehaviour
     private void Start()
     {
         playerInput = PlayerInputManager.instance;
+        playerAnimation = GetComponent<PlayerAnimation>();
     }
 
     void Update() 
@@ -89,6 +91,8 @@ public class CheckNearbyInteraction : MonoBehaviour
                 PickUp pickUpScript = nearest.GetComponent<PickUp>();
                 if(pickUpScript != null) //Object must contain PickUp script
                 {
+                    playerAnimation.FoodPickedAnimation();
+
                     // Check if we're taking food from a prep table.
                     PrepSlot prepSlot = pickUpScript.GetComponentInParent<PrepSlot>();
                     if (prepSlot != null) // Object is a prepped food
@@ -118,6 +122,7 @@ public class CheckNearbyInteraction : MonoBehaviour
 
     public void ObjectDown()
     {
+        playerAnimation.FoodDroppedAnimation();
         holdingWaterJug = false;
         currentObjectHold.GetComponent<PickUp>().PlaceObjectDown();
         holdingObject = false;

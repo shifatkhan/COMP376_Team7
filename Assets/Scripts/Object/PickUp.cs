@@ -14,6 +14,8 @@ public class PickUp : MonoBehaviour
     private void Awake()
     {
         objectPosition = GameObject.FindGameObjectWithTag("Player").transform.Find("Armature/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/PickupObject").transform;
+        //objectPosition = GameObject.FindGameObjectWithTag("Player").transform.Find("Armature/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/PickUpFood").transform;
+
         objectRigidBody = GetComponent<Rigidbody>();
         objectBoxCollider = GetComponent<BoxCollider>();
         outlineScript = GetComponent<Outline>();
