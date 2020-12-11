@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         // Avg Tip %
         if (totalTipPercent != 0 && customersPaid != 0)
             EndScreenPrefab.Find("Avg Tip").GetComponent<Text>().text
-                = (totalTipPercent / (float)customersPaid).ToString("F2") + "%";
+                = (totalTipPercent / customersPaid).ToString("F2") + "%";
         // Orders Served
         EndScreenPrefab.Find("Orders Served").GetComponent<Text>().text = ordersServed.ToString();
         // Tips Received

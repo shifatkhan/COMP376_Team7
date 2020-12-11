@@ -94,14 +94,17 @@ public class WaterPourable : MonoBehaviour
     {
         skillChecking = false;
         waterCup = 1f;
+
+        waterStateAnim.SetBool("LowOnWater", false);
+        waterStateAnim.SetBool("EmptyCup", false);
     }
 
     //*** Draining Speed Difficulty ***//
     public void drinkSpeedEasy()    
-    { drainRate = 0.04f; }
+    { drainRate = 0.06f; }
     public void drinkSpeedMedium()  
-    { drainRate = 0.08f; }
+    { drainRate = 0.1f; }
     public void drinkSpeedHard()
-    { drainRate = 0.2f; }
+    { drainRate = 0.12f; }
     //********************************//
 }

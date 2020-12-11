@@ -89,7 +89,7 @@ public class MemoryUI : MonoBehaviour
     {
         List<FoodSlot> foodMemorized = memory.GetFoodsMemorized();
         int numMemorized = foodMemorized.Count;
-        Debug.LogWarning(numMemorized);
+
         for (int i = 0; i < leftItems.Length; i++)
         {
             if (i < numMemorized)
