@@ -12,7 +12,7 @@ public class CustomerManager : MonoBehaviour
     private TableManager tableManager;
 
     [SerializeField]
-    private GameObject customerPrefab;
+    private GameObject[] customerPrefabs;
 
     [SerializeField]
     private GameObject spawnPoint;
@@ -89,7 +89,8 @@ public class CustomerManager : MonoBehaviour
 
         for (int i = 0; i < customersToSpawn; i++)
         {
-            GameObject customer = Instantiate(customerPrefab, spawnPoint.transform.position, Quaternion.identity);
+            int customerIndex = Random.Range(0, customerPrefabs.Length);
+            GameObject customer = Instantiate(customerPrefabs[customerIndex], spawnPoint.transform.position, Quaternion.identity);
             customer.GetComponent<NpcMoveToTable>().SetTableNumber(tableNumber);
         }
 
@@ -112,4 +113,6 @@ public class CustomerManager : MonoBehaviour
 
         return available;
     }
+
+    
 }
