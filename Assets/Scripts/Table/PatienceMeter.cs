@@ -8,7 +8,7 @@ public class PatienceMeter : MonoBehaviour
     float drainRate = 0.1f;
 
     private Animator tableStateAnim;
-    private float patience = 1f;
+    public float patience { get; private set; } = 1f;
     private bool isActive = false;
 
     private Target targetIndicator;
@@ -32,7 +32,7 @@ public class PatienceMeter : MonoBehaviour
                 patience -= (drainRate * 0.1f) * Time.deltaTime;
 
             // check patience state
-            if (patience > 0.5 && patience <= 1)
+            if (patience > 0.5 && patience < 1)
             {
                 targetIndicator.enabled = false;
                 tableStateAnim.SetBool("HighPatience", true);
@@ -59,7 +59,7 @@ public class PatienceMeter : MonoBehaviour
                 tableStateAnim.SetBool("MediumPatience", false);
                 tableStateAnim.SetBool("LowPatience", true);
             }
-            else if (patience <= 0)
+            else if (patience <= 0 || patience == 1)
             {
                 targetIndicator.enabled = false;
                 tableStateAnim.SetBool("HighPatience", false);
@@ -69,10 +69,15 @@ public class PatienceMeter : MonoBehaviour
         }
     }
 
-    public void setActive(bool b)
+    public void SetActive(bool b)
     {
         isActive = b;
-        drainSpeedEasy(); // default
+        drainSpeedRegular(); // default
+    }
+
+    public void ResetPatience()
+    {
+        patience = 1f;
     }
 
     public void increPatience(float val)
@@ -87,21 +92,6 @@ public class PatienceMeter : MonoBehaviour
         patience = 1f;
     }
 
-    public void drainSpeedEasy()
-    {
-        drainRate = 0.08f;
-    }
-
-    public void drainSpeedMedium()
-    {
-        drainRate = 0.16f;
-    }
-
-    public void drainSpeedHard()
-    {
-        drainRate = 0.4f;
-    }
-
     public IEnumerator displayHeart()
     {
         isActive = false;
@@ -112,4 +102,10 @@ public class PatienceMeter : MonoBehaviour
         tableStateAnim.SetBool("Heart", false);
         isActive = true;
     }
+
+    //*** DIFFICULTY ADJUSTMENT FOR REGULAR/ANGRY CUSTOMERS ***//
+    public void drainSpeedRegular()
+    { drainRate = 0.06f; }
+    public void drainSpeedMadCust()
+    { drainRate = 0.1f; }
 }
