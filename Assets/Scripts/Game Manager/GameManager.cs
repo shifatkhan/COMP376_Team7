@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     AudioManager audioManager;
     ScoreManager scoreManager;
 
+    [SerializeField] private StageCode stageCode;
+
     [Header ("Difficulty: Customers")]
     //****************** CUSTOMER ******************//
     public float customerSpawnRateMin = 20f;
@@ -54,8 +56,6 @@ public class GameManager : MonoBehaviour
     [Min(0)]
     public float puddleMaxSpawnRate = 30f;
 
-    [SerializeField] private StageCode stageCode;
-
     [Header("Difficulty: Score")]
     //****************** TIME ******************//
     [SerializeField]
@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.LogWarning(stageCode.ToString());
         timeLimitStatic = timeLimit;
 
         tableManager = TableManager.Instance;
