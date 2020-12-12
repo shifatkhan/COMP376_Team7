@@ -6601,6 +6601,22 @@ PrefabInstance:
       propertyPath: EndScreenPrefab
       value: 
       objectReference: {fileID: 1859366851}
+    - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
+      propertyPath: pouringSpeedRate
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
+      propertyPath: perfectZoneSize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
+      propertyPath: waterDepletionHard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
+      propertyPath: waterDepletionEasy
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7048457164328636552, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: scoreUI
       value: 

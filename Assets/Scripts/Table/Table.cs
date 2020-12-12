@@ -284,10 +284,10 @@ public class Table : Interactable
         }
 
         // reset table state UI
-        patienceManager.ResetPatience();
         patienceManager.SetActive(false);
-        waterManager.waterFilled();
+        patienceManager.ResetPatience();
         waterManager.setActive(false);
+        waterManager.waterFilled();
 
         updateStateInUI();
     }

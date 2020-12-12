@@ -39,6 +39,13 @@ public class GameManager : MonoBehaviour
     public bool waterDepletionMedium = false;
     public bool waterDepletionHard = false;
 
+    [Header("Difficulty: Skill Check")]
+    //*************** SKILL CHECK ***************//
+    [Range(0.3f, 1.0f)]
+    public float pouringSpeedRate = 0.5f;
+    [Range(0.05f, 0.1f)]
+    public float perfectZoneSize = 0.05f;
+
     [Header("Difficulty: Puddle")]
     //****************** PUDDLE ******************//
     [Min(0)]
@@ -79,7 +86,7 @@ public class GameManager : MonoBehaviour
         puddleManager = PuddleManager.Instance;
         audioManager = GetComponentInChildren<AudioManager>();
 
-        tableManager.SetDifficulty(minOrderTime, maxOrderTime, minOrderAmount, maxOrderAmount, waterDepletionEasy, waterDepletionMedium);
+        tableManager.SetDifficulty(minOrderTime, maxOrderTime, minOrderAmount, maxOrderAmount, waterDepletionEasy, waterDepletionMedium, pouringSpeedRate, perfectZoneSize);
         customerManager.spawnRateMin = customerSpawnRateMin;
         customerManager.spawnRateMax = customerSpawnRateMax;
         puddleManager.minSpawnTime = puddleMinSpawnRate;
@@ -101,30 +108,6 @@ public class GameManager : MonoBehaviour
         {
             ShowEndScreen(false);
         }
-
-        //// pull up the pause menu
-        //if (Input.GetButtonUp("Cancel"))
-        //{
-        //    if (!EndScreenPrefab.gameObject.activeInHierarchy)
-        //        ShowPauseScreen();
-        //    else
-        //        ResumeStage();
-        //}
-    }
-
-    private void ShowPauseScreen()
-    {
-        EndScreenPrefab.gameObject.SetActive(true);
-        Time.timeScale = 0.0f;
-
-        // Change header based on if win or fail
-        EndScreenPrefab.Find("Header Text").GetComponent<Text>().text = "Game Paused";
-
-        // Show statistics on EndScreen
-        CalcStatistics();
-
-        // Show Buttons appropriately
-        EndScreenPrefab.Find("Resume Btn").GetComponent<Button>().gameObject.SetActive(true);
     }
 
     private void ShowEndScreen(bool wonStage)
@@ -148,7 +131,7 @@ public class GameManager : MonoBehaviour
         EndScreenPrefab.Find("Resume Btn").GetComponent<Button>().gameObject.SetActive(false);
     }
 
-    private void CalcStatistics()
+    public void CalcStatistics()
     {
         // Show statistics on EndScreen
         // Avg Tip %
@@ -161,14 +144,4 @@ public class GameManager : MonoBehaviour
         EndScreenPrefab.Find("Tips Received").GetComponent<Text>().text = ScoreManager.score.ToString("C");
     }
 
-    //public void ResumeStage()
-    //{
-    //    Time.timeScale = 1.0f;
-    //    EndScreenPrefab.gameObject.SetActive(false);
-    //}
-    //public void LoadStageSelect()
-    //{
-    //    Time.timeScale = 1.0f;
-    //    SceneManager.LoadScene(1); // Stage Select scene
-    //}
 }
