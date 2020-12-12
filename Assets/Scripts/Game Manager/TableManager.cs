@@ -59,7 +59,7 @@ public class TableManager : MonoBehaviour
         }
     }
 
-    public void SetDifficulty(float minOrderTime, float maxOrderTime, int minOrderAmount, int maxOrderAmount, bool waterDepletionEasy, bool waterDepletionMedium)
+    public void SetDifficulty(float minOrderTime, float maxOrderTime, int minOrderAmount, int maxOrderAmount, bool waterDepletionEasy, bool waterDepletionMedium, float pouringSpeedRate, float perfectZoneSize)
     {
         // Assign a table number to each table.
         for (int i = 0; i < tables.Length; i++)
@@ -69,12 +69,15 @@ public class TableManager : MonoBehaviour
             tables[i].minOrderAmount = minOrderAmount;
             tables[i].maxOrderAmount = maxOrderAmount;
 
+            WaterPourable waterManager = tables[i].GetComponent<WaterPourable>();
             if (waterDepletionEasy)
-                tables[i].GetComponent<WaterPourable>().drinkSpeedEasy();
+                waterManager.drinkSpeedEasy();
             else if (waterDepletionMedium)
-                tables[i].GetComponent<WaterPourable>().drinkSpeedMedium();
+                waterManager.drinkSpeedMedium();
             else
-                tables[i].GetComponent<WaterPourable>().drinkSpeedHard();
+                waterManager.drinkSpeedHard();
+
+            waterManager.setSkillCheckDifficulty(pouringSpeedRate, perfectZoneSize);
         }
     }
 }

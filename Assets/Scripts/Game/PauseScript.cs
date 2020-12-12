@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseScript : MonoBehaviour
 {
@@ -31,6 +32,11 @@ public class PauseScript : MonoBehaviour
         pauseScreen.SetActive(true);
         isPaused = true;
         Time.timeScale = 0f;
+
+        // Change header based on if win or fail
+        pauseScreen.transform.Find("Header Text").GetComponent<Text>().text = "Game Paused";
+        // Show Buttons appropriately
+        pauseScreen.transform.Find("Resume Btn").GetComponent<Button>().gameObject.SetActive(true);
     }
 
     public void ResumeGame()
