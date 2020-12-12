@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     CustomerManager customerManager;
     PuddleManager puddleManager;
     AudioManager audioManager;
+    ScoreManager scoreManager;
 
     [Header ("Difficulty: Customers")]
     //****************** CUSTOMER ******************//
@@ -55,11 +56,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private StageCode stageCode;
 
-    [Header("Difficulty: Time")]
+    [Header("Difficulty: Score")]
     //****************** TIME ******************//
     [SerializeField]
     [Min(1)]
     private float timeLimit = 300;
+    public float goalScore = 10;
+    public float twoStarsGoal;
+    public float threeStarsGoal;
     public static float timeLimitStatic = 300;
     public static float currentTimeStatic = 0;
 
@@ -85,13 +89,17 @@ public class GameManager : MonoBehaviour
         customerManager = CustomerManager.Instance;
         puddleManager = PuddleManager.Instance;
         audioManager = GetComponentInChildren<AudioManager>();
+        scoreManager = GetComponentInChildren<ScoreManager>();
 
         tableManager.SetDifficulty(minOrderTime, maxOrderTime, minOrderAmount, maxOrderAmount, waterDepletionEasy, waterDepletionMedium, pouringSpeedRate, perfectZoneSize);
         customerManager.spawnRateMin = customerSpawnRateMin;
         customerManager.spawnRateMax = customerSpawnRateMax;
         puddleManager.minSpawnTime = puddleMinSpawnRate;
         puddleManager.maxSpawnTime = puddleMaxSpawnRate;
-
+        ScoreManager.goalScoreStatic = goalScore;
+        scoreManager.twoStarsGoal = twoStarsGoal;
+        scoreManager.threeStarsGoal = threeStarsGoal; 
+        GameObject.Find("Score UI").GetComponent<ScoreUI>().goalScore = goalScore;
     }
 
     // Update is called once per frame
