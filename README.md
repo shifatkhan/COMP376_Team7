@@ -1,6 +1,6 @@
 # COMP376_Team7
 
-Project download link: 
+Project download link: https://drive.google.com/drive/folders/1R1cfHWb6B-IIgsejifNLvxl3hFD0wnv6?usp=sharing
 Github: https://github.com/shifatkhan/COMP376_Team7
 
 Since the prototype presentation, there has been a lot of addition. Approximately 95% of the game has been done
