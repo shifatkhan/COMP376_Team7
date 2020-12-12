@@ -451,6 +451,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: Stage 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
 --- !u!224 &431611139 stripped
@@ -820,6 +824,10 @@ PrefabInstance:
     - target: {fileID: 511335831597528764, guid: 1a33813c818217c42b833c3b50947536, type: 3}
       propertyPath: m_SizeDelta.y
       value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: Stage 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
@@ -1345,6 +1353,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: Stage 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
 --- !u!224 &706666443 stripped
@@ -1533,6 +1545,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: Stage 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
 --- !u!224 &780167720 stripped
@@ -1634,6 +1650,10 @@ PrefabInstance:
     - target: {fileID: 511335831046625463, guid: 1a33813c818217c42b833c3b50947536, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: ShifatScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
@@ -2013,6 +2033,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: Stage 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
 --- !u!224 &1141217453 stripped
@@ -2264,6 +2288,10 @@ PrefabInstance:
     - target: {fileID: 511335831046625463, guid: 1a33813c818217c42b833c3b50947536, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: Stage 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
@@ -2553,6 +2581,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: Stage 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
 --- !u!1 &1540573955
@@ -2733,6 +2765,10 @@ PrefabInstance:
     - target: {fileID: 511335831046625463, guid: 1a33813c818217c42b833c3b50947536, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: ShifatScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
@@ -3332,6 +3368,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: Stage 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
 --- !u!1 &2018501092
@@ -3526,6 +3566,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: ShifatScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
 --- !u!1001 &511335831203431860
@@ -3622,6 +3666,10 @@ PrefabInstance:
     - target: {fileID: 511335831046625463, guid: 1a33813c818217c42b833c3b50947536, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: StageScene
+      value: ShifatScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
