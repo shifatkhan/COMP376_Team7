@@ -127,32 +127,32 @@ public class AudioManager : MonoBehaviour
         if (audioManager == null) return;
         if(audioManager.playerSource.isPlaying && audioManager.playerSource.clip == audioManager.playerSlipClip) return;
 
-        audioManager.playerSource.clip = audioManager.playerSlipClip;
-        audioManager.playerSource.Play();
+        audioManager.sfxSource.clip = audioManager.playerSlipClip;
+        audioManager.sfxSource.Play();
     }
     
     public static void PlayPlayerThrow()
     {
         if (audioManager == null) return;
 
-        audioManager.playerSource.clip = audioManager.playerThrowClip;
-        audioManager.playerSource.Play();
+        audioManager.sfxSource.clip = audioManager.playerThrowClip;
+        audioManager.sfxSource.Play();
     }
 
     public static void PlayPlayerDrop()
     {
         if (audioManager == null) return;
 
-        audioManager.playerSource.clip = audioManager.playerDropClip;
-        audioManager.playerSource.Play();
+        audioManager.sfxSource.clip = audioManager.playerDropClip;
+        audioManager.sfxSource.Play();
     }
 
     public static void PlayPlayerPickup()
     {
         if (audioManager == null) return;
 
-        audioManager.playerSource.clip = audioManager.playerPickupClip;
-        audioManager.playerSource.Play();
+        audioManager.sfxSource.clip = audioManager.playerPickupClip;
+        audioManager.sfxSource.Play();
     }
 
     public static void PlayFootstepAudio()
