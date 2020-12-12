@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*<summary>
+    This class handles spawning the puddles at specific intervals for each spawn point.
+</ summary>*/
 public class PuddleManager : MonoBehaviour
 {
     public bool keepSpawning = true;
