@@ -74,4 +74,9 @@ public class PlayerAnimation : MonoBehaviour
         playerAnimator.SetBool("isMopping", true);
         playerAnimator.SetBool("isHolding", false);
     }
+
+    public void PlayWalkSound()
+    {
+        AudioManager.PlayFootstepAudio();
+    }
 }

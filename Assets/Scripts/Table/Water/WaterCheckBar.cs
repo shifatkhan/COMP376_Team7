@@ -117,6 +117,7 @@ public class WaterCheckBar : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         PlayerInputManager.enableMovement = true;
+        PlayerInputManager.enableThrow = true;
         Destroy(this.gameObject);
     }
 
@@ -128,5 +129,11 @@ public class WaterCheckBar : MonoBehaviour
     {
         tableBeingPoured = table;
         this.tableRef = table.GetComponent<Table>();
+    }
+
+    public void setDifficulty(float pourRate, float perfectZoneSize)
+    {
+        this.fillSpeed = pourRate;
+        this.perfectZoneSize = perfectZoneSize;
     }
 }

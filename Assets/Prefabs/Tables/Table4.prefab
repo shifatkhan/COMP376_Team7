@@ -51,9 +51,10 @@ GameObject:
   - component: {fileID: 1471138163}
   - component: {fileID: -795003022890785028}
   - component: {fileID: 1198086842590184103}
+  - component: {fileID: 6535141207095978510}
   m_Layer: 0
   m_Name: Table4
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,6 +143,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drainRate: 0.1
+--- !u!65 &6535141207095978510
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630088966078689800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.618154, y: 3.3418303, z: 3.3127804}
+  m_Center: {x: -0.11178589, y: 1.1709151, z: -0.09712732}
 --- !u!114 &841231859635944132
 MonoBehaviour:
   m_ObjectHideFlags: 0

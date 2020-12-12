@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*<summary>
+    This class handles spawning the customers and keeping track of the state of the occupied tables.
+</ summary>*/
 public class CustomerManager : MonoBehaviour
 {
     private float spawnTime = 0f;
@@ -20,8 +23,6 @@ public class CustomerManager : MonoBehaviour
     private GameObject spawnPoint;
 
     private static CustomerManager _instance;
-
-    //SpecialAICutscene specialCutscene;
     
     public static CustomerManager Instance
     {
@@ -58,19 +59,16 @@ public class CustomerManager : MonoBehaviour
 
     void Start()
     {
-        //tableManager = GameObject.Find("TableManager").GetComponent<TableManagerJames>();
-        //specialCutscene = GetComponent<SpecialAICutscene>();  
         tableManager = TableManager.Instance;
+        spawnTime = Time.time;
     }
 
     void Update()
     {
-        // Check if we should spawn.
         if (Time.time > spawnTime)
         {
             spawnTime += Random.Range(spawnRateMin, spawnRateMax);
 
-            // Spawn - ONLY when there are available tables.
             if(AreThereTablesAvailable())
                 SpawnCustomers();
         }
@@ -79,8 +77,6 @@ public class CustomerManager : MonoBehaviour
     public void SpawnCustomers()
     {
         int tableNumber = Random.Range(0, tableManager.tables.Length);
-
-        //tableManager.tables[tableNumber].chairs.Count;
 
         while (tableManager.tables[tableNumber].tableState != TableState.Available)
         {
@@ -96,8 +92,6 @@ public class CustomerManager : MonoBehaviour
             customer.GetComponent<NpcMoveToTable>().SetTableNumber(tableNumber);
         }
 
-        //Play cutscene
-        //specialCutscene.SpecialAIEnters();
     }
 
     public bool AreThereTablesAvailable()

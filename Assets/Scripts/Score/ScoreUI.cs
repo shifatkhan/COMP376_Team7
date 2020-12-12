@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Updates the score UI.
+/// 
+/// @author Thanh Tung Nguyen
+/// </summary>
 public class ScoreUI : MonoBehaviour
 {
     [HideInInspector]

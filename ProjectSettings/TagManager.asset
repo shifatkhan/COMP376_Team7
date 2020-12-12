@@ -14,6 +14,8 @@ TagManager:
   - Chair
   - PrepSlot
   - StageStar
+  - MemoryUI
+  - GM
   layers:
   - Default
   - TransparentFX
@@ -48,9 +50,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Water Status
-    uniqueID: 4292439929
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Water Status
+    uniqueID: 4292439929
     locked: 0

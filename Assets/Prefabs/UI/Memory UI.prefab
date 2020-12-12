@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.7, y: 0}
-  m_SizeDelta: {x: -45.716843, y: 0}
+  m_AnchoredPosition: {x: -0.64, y: 0}
+  m_SizeDelta: {x: -41.589523, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2239963693545208366
 CanvasRenderer:
@@ -142,10 +142,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c05a8d4429944d1498031536edb77887, type: 3}
-    m_FontSize: 13
+    m_FontSize: 12
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -418,8 +418,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.7, y: 0}
-  m_SizeDelta: {x: -45.716843, y: 0}
+  m_AnchoredPosition: {x: -0.57, y: 0}
+  m_SizeDelta: {x: -41.589523, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2239963693920863516
 CanvasRenderer:
@@ -451,10 +451,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c05a8d4429944d1498031536edb77887, type: 3}
-    m_FontSize: 13
+    m_FontSize: 12
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -935,8 +935,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.7, y: 0}
-  m_SizeDelta: {x: -45.716843, y: 0}
+  m_AnchoredPosition: {x: -0.57, y: 0}
+  m_SizeDelta: {x: -41.589523, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2239963694278366545
 CanvasRenderer:
@@ -968,10 +968,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c05a8d4429944d1498031536edb77887, type: 3}
-    m_FontSize: 13
+    m_FontSize: 12
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -1093,8 +1093,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.7, y: 0}
-  m_SizeDelta: {x: -45.716843, y: 0}
+  m_AnchoredPosition: {x: -0.57, y: 0}
+  m_SizeDelta: {x: -41.589523, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2239963694327053258
 CanvasRenderer:
@@ -1126,10 +1126,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c05a8d4429944d1498031536edb77887, type: 3}
-    m_FontSize: 13
+    m_FontSize: 12
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -1137,7 +1137,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hamburger Steak
+  m_Text: Gello-My_Jello
 --- !u!1 &2239963694462856508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,8 +1625,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.7, y: 0}
-  m_SizeDelta: {x: -45.716843, y: 0}
+  m_AnchoredPosition: {x: -0.61, y: 0}
+  m_SizeDelta: {x: -41.589523, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2239963694588406133
 CanvasRenderer:
@@ -1658,10 +1658,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c05a8d4429944d1498031536edb77887, type: 3}
-    m_FontSize: 13
+    m_FontSize: 12
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -1984,8 +1984,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.7, y: 0}
-  m_SizeDelta: {x: -45.716843, y: 0}
+  m_AnchoredPosition: {x: -0.57, y: 0}
+  m_SizeDelta: {x: -41.589523, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2239963694957655227
 CanvasRenderer:
@@ -2017,10 +2017,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c05a8d4429944d1498031536edb77887, type: 3}
-    m_FontSize: 13
+    m_FontSize: 12
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -2393,7 +2393,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   memory: {fileID: 11400000, guid: 1076c03143d9d71499bdfc0b85e94d68, type: 2}
-  memorySlot: {fileID: 0}
 --- !u!1 &2239963695168172175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2428,8 +2427,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.7, y: 0}
-  m_SizeDelta: {x: -45.716843, y: 0}
+  m_AnchoredPosition: {x: -0.64, y: 0}
+  m_SizeDelta: {x: -41.589523, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2239963695168172172
 CanvasRenderer:
@@ -2461,10 +2460,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c05a8d4429944d1498031536edb77887, type: 3}
-    m_FontSize: 13
+    m_FontSize: 12
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -2472,7 +2471,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hamburger Steak
+  m_Text: Gello-My-Jello
 --- !u!1 &2239963695257584510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2507,8 +2506,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.7, y: 0}
-  m_SizeDelta: {x: -45.716843, y: 0}
+  m_AnchoredPosition: {x: -0.61, y: 0}
+  m_SizeDelta: {x: -41.589523, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2239963695257584387
 CanvasRenderer:
@@ -2540,10 +2539,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c05a8d4429944d1498031536edb77887, type: 3}
-    m_FontSize: 13
+    m_FontSize: 12
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0

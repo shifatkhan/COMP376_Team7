@@ -11,18 +11,22 @@ using UnityEngine.UI;
 /// </summary>
 public class ScoreManager : MonoBehaviour
 {
-    static ScoreManager gm;
+    static ScoreManager instance;
 
     public ScoreUI scoreUI; // UI manager for score
     public static ScoreUI ui; // UI manager for score
 
-    [SerializeField] private float goalScore;
-    [SerializeField] private float twoStarsGoal;
-    [SerializeField] private float threeStarsGoal;
+    //public float twoStarsGoal;
+    //public float threeStarsGoal;
     public static float goalScoreStatic;
     public static float twoStarsGoalStatic;
     public static float threeStarsGoalStatic;
     public static float score { get; private set; }
+
+    private void Awake()
+    {
+        score = 0;
+    }
 
     void Start()
     {
@@ -30,11 +34,10 @@ public class ScoreManager : MonoBehaviour
             scoreUI = GameObject.Find("Score UI").GetComponent<ScoreUI>();
 
         ui = scoreUI;
-        ui.goalScore = this.goalScore;
+        //ui.goalScore = goalScoreStatic;
 
-        goalScoreStatic = goalScore;
-        twoStarsGoalStatic = twoStarsGoal;
-        threeStarsGoalStatic = threeStarsGoal;
+        //twoStarsGoalStatic = twoStarsGoal;
+        //threeStarsGoalStatic = threeStarsGoal;
     }
 
     public static void AddScore(float amount)

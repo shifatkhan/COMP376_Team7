@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     CustomerManager customerManager;
     PuddleManager puddleManager;
     AudioManager audioManager;
+    ScoreManager scoreManager;
+
+    [SerializeField] private StageCode stageCode;
 
     [Header ("Difficulty: Customers")]
     //****************** CUSTOMER ******************//
@@ -39,6 +42,13 @@ public class GameManager : MonoBehaviour
     public bool waterDepletionMedium = false;
     public bool waterDepletionHard = false;
 
+    [Header("Difficulty: Skill Check")]
+    //*************** SKILL CHECK ***************//
+    [Range(0.3f, 1.0f)]
+    public float pouringSpeedRate = 0.5f;
+    [Range(0.05f, 0.1f)]
+    public float perfectZoneSize = 0.05f;
+
     [Header("Difficulty: Puddle")]
     //****************** PUDDLE ******************//
     [Min(0)]
@@ -46,13 +56,14 @@ public class GameManager : MonoBehaviour
     [Min(0)]
     public float puddleMaxSpawnRate = 30f;
 
-    [SerializeField] private StageCode stageCode;
-
-    [Header("Difficulty: Time")]
+    [Header("Difficulty: Score")]
     //****************** TIME ******************//
     [SerializeField]
     [Min(1)]
     private float timeLimit = 300;
+    public float goalScore = 10;
+    public float twoStarsGoal;
+    public float threeStarsGoal;
     public static float timeLimitStatic = 300;
     public static float currentTimeStatic = 0;
 
@@ -68,7 +79,15 @@ public class GameManager : MonoBehaviour
     // to calc average tip %
     public static float totalTipPercent = 0;
     public static int customersPaid = 0;
-    
+
+    private void Awake()
+    {
+        currentTimeStatic = 0;
+        ordersServed = 0;
+        totalTipPercent = 0;
+        customersPaid = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,13 +97,17 @@ public class GameManager : MonoBehaviour
         customerManager = CustomerManager.Instance;
         puddleManager = PuddleManager.Instance;
         audioManager = GetComponentInChildren<AudioManager>();
+        scoreManager = GetComponentInChildren<ScoreManager>();
 
-        tableManager.SetDifficulty(minOrderTime, maxOrderTime, minOrderAmount, maxOrderAmount, waterDepletionEasy, waterDepletionMedium);
+        tableManager.SetDifficulty(minOrderTime, maxOrderTime, minOrderAmount, maxOrderAmount, waterDepletionEasy, waterDepletionMedium, pouringSpeedRate, perfectZoneSize);
         customerManager.spawnRateMin = customerSpawnRateMin;
         customerManager.spawnRateMax = customerSpawnRateMax;
         puddleManager.minSpawnTime = puddleMinSpawnRate;
         puddleManager.maxSpawnTime = puddleMaxSpawnRate;
-
+        ScoreManager.goalScoreStatic = goalScore;
+        ScoreManager.twoStarsGoalStatic = twoStarsGoal;
+        ScoreManager.threeStarsGoalStatic = threeStarsGoal; 
+        GameObject.Find("Score UI").GetComponent<ScoreUI>().goalScore = goalScore;
     }
 
     // Update is called once per frame
@@ -101,35 +124,12 @@ public class GameManager : MonoBehaviour
         {
             ShowEndScreen(false);
         }
-
-        //// pull up the pause menu
-        //if (Input.GetButtonUp("Cancel"))
-        //{
-        //    if (!EndScreenPrefab.gameObject.activeInHierarchy)
-        //        ShowPauseScreen();
-        //    else
-        //        ResumeStage();
-        //}
-    }
-
-    private void ShowPauseScreen()
-    {
-        EndScreenPrefab.gameObject.SetActive(true);
-        Time.timeScale = 0.0f;
-
-        // Change header based on if win or fail
-        EndScreenPrefab.Find("Header Text").GetComponent<Text>().text = "Game Paused";
-
-        // Show statistics on EndScreen
-        CalcStatistics();
-
-        // Show Buttons appropriately
-        EndScreenPrefab.Find("Resume Btn").GetComponent<Button>().gameObject.SetActive(true);
     }
 
     private void ShowEndScreen(bool wonStage)
     {
         EndScreenPrefab.gameObject.SetActive(true);
+        currentTimeStatic = 0;
         Time.timeScale = 0.0f;
 
         // Change header based on if win or fail
@@ -140,35 +140,28 @@ public class GameManager : MonoBehaviour
 
         // Show statistics on EndScreen
         CalcStatistics();
-
         // store stars & score for this stage
-        PlayerPrefs.SetInt(stageCode.ToString(), ScoreManager.CalcStars());
+        int currScore = PlayerPrefs.GetInt(stageCode.ToString(), 0);
+        int newScore = ScoreManager.CalcStars();
+
+        if (currScore < newScore)
+            PlayerPrefs.SetInt(stageCode.ToString(), newScore);
 
         // Show Buttons appropriately
         EndScreenPrefab.Find("Resume Btn").GetComponent<Button>().gameObject.SetActive(false);
     }
 
-    private void CalcStatistics()
+    public void CalcStatistics()
     {
         // Show statistics on EndScreen
         // Avg Tip %
         if (totalTipPercent != 0 && customersPaid != 0)
             EndScreenPrefab.Find("Avg Tip").GetComponent<Text>().text
-                = (totalTipPercent / customersPaid).ToString("F2") + "%";
+                = ((totalTipPercent / customersPaid)*100).ToString("F1") + "%";
         // Orders Served
         EndScreenPrefab.Find("Orders Served").GetComponent<Text>().text = ordersServed.ToString();
         // Tips Received
         EndScreenPrefab.Find("Tips Received").GetComponent<Text>().text = ScoreManager.score.ToString("C");
     }
 
-    //public void ResumeStage()
-    //{
-    //    Time.timeScale = 1.0f;
-    //    EndScreenPrefab.gameObject.SetActive(false);
-    //}
-    //public void LoadStageSelect()
-    //{
-    //    Time.timeScale = 1.0f;
-    //    SceneManager.LoadScene(1); // Stage Select scene
-    //}
 }

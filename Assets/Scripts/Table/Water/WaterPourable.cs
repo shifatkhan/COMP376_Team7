@@ -24,6 +24,10 @@ public class WaterPourable : MonoBehaviour
     private bool skillChecking = false;
     private bool isActive = false;
 
+    // for skill check configurations
+    private float pourRate;
+    private float perfectZoneSize;
+
     void Awake()
     {
         // find gameobjects & components
@@ -74,12 +78,14 @@ public class WaterPourable : MonoBehaviour
             {
                 skillChecking = true;
                 PlayerInputManager.enableMovement = false;
+                PlayerInputManager.enableThrow = false;
 
                 // instantiate skill check prefab on screen
                 Vector2 screenPos = new Vector2(Screen.width / 2, Screen.height / 2);
                 Transform skillCheckObj = Instantiate(waterCheckPrefab, screenPos, waterCheckPrefab.rotation);
                 skillCheckObj.SetParent(screenCanvas.transform);
                 skillCheckObj.GetComponent<WaterCheckBar>().setTablePoured(this);
+                skillCheckObj.GetComponent<WaterCheckBar>().setDifficulty(pourRate, perfectZoneSize);
             }
         }
     }
@@ -105,5 +111,9 @@ public class WaterPourable : MonoBehaviour
     { drainRate = 0.1f; }
     public void drinkSpeedHard()
     { drainRate = 0.12f; }
-    //********************************//
+
+    //**** Skill Check Difficulty ****//
+    public void setSkillCheckDifficulty(float pourRate, float perfectZoneSize)
+    { this.pourRate = pourRate; 
+      this.perfectZoneSize = perfectZoneSize; }
 }

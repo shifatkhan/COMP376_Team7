@@ -143,7 +143,7 @@ public class Table : Interactable
         tableState = TableState.ReadyToOrder;
 
         // Choose something to order.
-        int numOfFoodOrders = Random.Range(minOrderAmount, maxOrderAmount); // 1 to 8
+        int numOfFoodOrders = Random.Range(minOrderAmount, maxOrderAmount+1); // 1 to 8
         allOrders = new List<FoodSlot>(numOfFoodOrders);
         for (int i = 0; i < numOfFoodOrders; i++)
         {
@@ -196,6 +196,8 @@ public class Table : Interactable
 		
         patienceManager.SetActive(false);
         waterManager.setActive(false);
+
+        AudioManager.PlayPayAudio();
 
         ResetTable();
 
@@ -277,7 +279,7 @@ public class Table : Interactable
                 Destroy(customer.gameObject);
         }
 
-        Transform pickup = transform.Find("PickupFood");
+        Transform pickup = transform.Find("PickupObject");
         foreach (Transform food in pickup)
         {
             Destroy(food.gameObject);
@@ -286,8 +288,8 @@ public class Table : Interactable
         // reset table state UI
         patienceManager.SetActive(false);
         patienceManager.ResetPatience();
-        waterManager.waterFilled();
         waterManager.setActive(false);
+        waterManager.waterFilled();
 
         updateStateInUI();
     }
