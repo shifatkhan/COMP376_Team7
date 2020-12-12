@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*<summary>
+    This class handles spawning the customers and keeping track of the state of the occupied tables.
+</ summary>*/
 public class CustomerManager : MonoBehaviour
 {
     private float spawnTime = 0f;
@@ -62,12 +65,10 @@ public class CustomerManager : MonoBehaviour
 
     void Update()
     {
-        // Check if we should spawn.
         if (Time.time > spawnTime)
         {
             spawnTime += Random.Range(spawnRateMin, spawnRateMax);
 
-            // Spawn - ONLY when there are available tables.
             if(AreThereTablesAvailable())
                 SpawnCustomers();
         }
@@ -76,7 +77,6 @@ public class CustomerManager : MonoBehaviour
     public void SpawnCustomers()
     {
         int tableNumber = Random.Range(0, tableManager.tables.Length);
-
 
         while (tableManager.tables[tableNumber].tableState != TableState.Available)
         {
