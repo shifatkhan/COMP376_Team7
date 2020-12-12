@@ -471,7 +471,7 @@ PrefabInstance:
     - target: {fileID: 511335831046625456, guid: 1a33813c818217c42b833c3b50947536, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 73116331}
+      objectReference: {fileID: 393962777}
     - target: {fileID: 511335831046625456, guid: 1a33813c818217c42b833c3b50947536, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.AudioSource, UnityEngine
