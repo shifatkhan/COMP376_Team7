@@ -79,7 +79,12 @@ public class GameManager : MonoBehaviour
     // to calc average tip %
     public static float totalTipPercent = 0;
     public static int customersPaid = 0;
-    
+
+    private void Awake()
+    {
+        currentTimeStatic = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
