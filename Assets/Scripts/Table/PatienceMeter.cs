@@ -59,7 +59,7 @@ public class PatienceMeter : MonoBehaviour
                 tableStateAnim.SetBool("MediumPatience", false);
                 tableStateAnim.SetBool("LowPatience", true);
             }
-            else if (patience <= 0 || patience == 1)
+            else if (patience <= 0)
             {
                 targetIndicator.enabled = false;
                 tableStateAnim.SetBool("HighPatience", false);
@@ -78,6 +78,11 @@ public class PatienceMeter : MonoBehaviour
     public void ResetPatience()
     {
         patience = 1f;
+
+        targetIndicator.enabled = false;
+        tableStateAnim.SetBool("HighPatience", false);
+        tableStateAnim.SetBool("MediumPatience", false);
+        tableStateAnim.SetBool("LowPatience", false);
     }
 
     public void increPatience(float val)
