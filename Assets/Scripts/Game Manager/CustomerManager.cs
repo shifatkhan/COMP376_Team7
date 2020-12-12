@@ -61,6 +61,7 @@ public class CustomerManager : MonoBehaviour
         //tableManager = GameObject.Find("TableManager").GetComponent<TableManagerJames>();
         //specialCutscene = GetComponent<SpecialAICutscene>();  
         tableManager = TableManager.Instance;
+        spawnTime = Time.time;
     }
 
     void Update()

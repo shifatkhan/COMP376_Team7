@@ -8,6 +8,12 @@ public class PauseScript : MonoBehaviour
     public GameObject pauseScreen;
     public static bool isPaused;
     GameManager gm;
+
+    private void Awake()
+    {
+        ResumeGame();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
