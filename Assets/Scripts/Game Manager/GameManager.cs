@@ -88,7 +88,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.LogWarning(stageCode.ToString());
         timeLimitStatic = timeLimit;
 
         tableManager = TableManager.Instance;
@@ -137,7 +136,7 @@ public class GameManager : MonoBehaviour
 
         // Show statistics on EndScreen
         CalcStatistics();
-        Debug.LogWarning("HA: "+ScoreManager.CalcStars());
+
         // store stars & score for this stage
         PlayerPrefs.SetInt(stageCode.ToString(), ScoreManager.CalcStars());
 

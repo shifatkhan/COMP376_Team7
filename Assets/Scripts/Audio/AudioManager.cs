@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+/// <summary>
+/// Static manager that's used to 
+/// play audio sfx and music.
+/// 
+/// @author Thanh Tung Nguyen
+/// </summary>
 public class AudioManager : MonoBehaviour
 {
     // class holds static reference to itself (singleton)

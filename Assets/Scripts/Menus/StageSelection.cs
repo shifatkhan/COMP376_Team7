@@ -32,7 +32,7 @@ public class StageSelection : MonoBehaviour
         Time.timeScale = 1.0f;
         stageCodes = System.Enum.GetNames(typeof(StageCode));
         GameObject[] stars = GameObject.FindGameObjectsWithTag("StageStar");
-        test();
+        //test();
 
         for (int lvl=0; lvl < numLevels; lvl++)
         {
