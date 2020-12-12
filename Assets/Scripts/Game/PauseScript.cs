@@ -7,12 +7,13 @@ public class PauseScript : MonoBehaviour
 {
     public GameObject pauseScreen;
     public static bool isPaused;
-
+    GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
         pauseScreen.SetActive(false);
         isPaused = false;
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -32,7 +33,7 @@ public class PauseScript : MonoBehaviour
         pauseScreen.SetActive(true);
         isPaused = true;
         Time.timeScale = 0f;
-
+        gm.CalcStatistics();
         // Change header based on if win or fail
         pauseScreen.transform.Find("Header Text").GetComponent<Text>().text = "Game Paused";
         // Show Buttons appropriately

@@ -15,6 +15,7 @@ TagManager:
   - PrepSlot
   - StageStar
   - MemoryUI
+  - GM
   layers:
   - Default
   - TransparentFX
