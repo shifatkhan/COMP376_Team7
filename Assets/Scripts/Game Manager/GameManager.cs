@@ -83,12 +83,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         currentTimeStatic = 0;
+        ordersServed = 0;
+        totalTipPercent = 0;
+        customersPaid = 0;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.LogWarning(stageCode.ToString());
         timeLimitStatic = timeLimit;
 
         tableManager = TableManager.Instance;
@@ -103,8 +105,8 @@ public class GameManager : MonoBehaviour
         puddleManager.minSpawnTime = puddleMinSpawnRate;
         puddleManager.maxSpawnTime = puddleMaxSpawnRate;
         ScoreManager.goalScoreStatic = goalScore;
-        scoreManager.twoStarsGoal = twoStarsGoal;
-        scoreManager.threeStarsGoal = threeStarsGoal; 
+        ScoreManager.twoStarsGoalStatic = twoStarsGoal;
+        ScoreManager.threeStarsGoalStatic = threeStarsGoal; 
         GameObject.Find("Score UI").GetComponent<ScoreUI>().goalScore = goalScore;
     }
 
@@ -127,6 +129,7 @@ public class GameManager : MonoBehaviour
     private void ShowEndScreen(bool wonStage)
     {
         EndScreenPrefab.gameObject.SetActive(true);
+        currentTimeStatic = 0;
         Time.timeScale = 0.0f;
 
         // Change header based on if win or fail
@@ -138,8 +141,13 @@ public class GameManager : MonoBehaviour
         // Show statistics on EndScreen
         CalcStatistics();
         Debug.LogWarning("HA: "+ScoreManager.CalcStars());
+        
         // store stars & score for this stage
-        PlayerPrefs.SetInt(stageCode.ToString(), ScoreManager.CalcStars());
+        int currScore = PlayerPrefs.GetInt(stageCode.ToString(), 0);
+        int newScore = ScoreManager.CalcStars();
+
+        if (currScore < newScore)
+            PlayerPrefs.SetInt(stageCode.ToString(), newScore);
 
         // Show Buttons appropriately
         EndScreenPrefab.Find("Resume Btn").GetComponent<Button>().gameObject.SetActive(false);

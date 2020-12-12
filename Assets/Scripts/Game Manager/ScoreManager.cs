@@ -16,12 +16,17 @@ public class ScoreManager : MonoBehaviour
     public ScoreUI scoreUI; // UI manager for score
     public static ScoreUI ui; // UI manager for score
 
-    public float twoStarsGoal;
-    public float threeStarsGoal;
+    //public float twoStarsGoal;
+    //public float threeStarsGoal;
     public static float goalScoreStatic;
     public static float twoStarsGoalStatic;
     public static float threeStarsGoalStatic;
     public static float score { get; private set; }
+
+    private void Awake()
+    {
+        score = 0;
+    }
 
     void Start()
     {
@@ -31,8 +36,8 @@ public class ScoreManager : MonoBehaviour
         ui = scoreUI;
         //ui.goalScore = goalScoreStatic;
 
-        twoStarsGoalStatic = twoStarsGoal;
-        threeStarsGoalStatic = threeStarsGoal;
+        //twoStarsGoalStatic = twoStarsGoal;
+        //threeStarsGoalStatic = threeStarsGoal;
     }
 
     public static void AddScore(float amount)

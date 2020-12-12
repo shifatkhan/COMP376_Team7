@@ -32,7 +32,6 @@ public class StageSelection : MonoBehaviour
         Time.timeScale = 1.0f;
         stageCodes = System.Enum.GetNames(typeof(StageCode));
         GameObject[] stars = GameObject.FindGameObjectsWithTag("StageStar");
-        test();
 
         for (int lvl=0; lvl < numLevels; lvl++)
         {
@@ -61,12 +60,5 @@ public class StageSelection : MonoBehaviour
             if (numStars[0] + numStars[1] + numStars[2] == 9)
                 transform.Find("Level " + (lvl + 1) + "/Medal").gameObject.SetActive(true);
         }    
-    }
-
-    private void test()
-    {
-        PlayerPrefs.SetInt(stageCodes[0], 2);
-        PlayerPrefs.SetInt(stageCodes[1], 3);
-        PlayerPrefs.SetInt(stageCodes[2], 1);
     }
 }
