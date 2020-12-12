@@ -23,11 +23,16 @@ public class PrepSlot : Interactable
 
     private PrepTable prepTable;
 
+    private AudioSource audioSource;
+    public AudioClip bell;
+
     private void Awake()
     {
         progressBar = GetComponentInChildren<RadialProgressBar>();
         progressBarGameObject = progressBar.gameObject;
         prepTable = GetComponentInParent<PrepTable>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void Start()
@@ -66,7 +71,13 @@ public class PrepSlot : Interactable
 
         cooking = true;
 
+        audioSource.loop = true;
+        audioSource.Play();
+
         yield return new WaitForSeconds(foodSlot.prepTime);
+
+        audioSource.Stop();
+        audioSource.PlayOneShot(bell);
 
         cooking = false;
         timer = 0;

@@ -197,6 +197,8 @@ public class Table : Interactable
         patienceManager.SetActive(false);
         waterManager.setActive(false);
 
+        AudioManager.PlayPayAudio();
+
         ResetTable();
 
         CalculateTotalPay();
@@ -277,7 +279,7 @@ public class Table : Interactable
                 Destroy(customer.gameObject);
         }
 
-        Transform pickup = transform.Find("PickupFood");
+        Transform pickup = transform.Find("PickupObject");
         foreach (Transform food in pickup)
         {
             Destroy(food.gameObject);

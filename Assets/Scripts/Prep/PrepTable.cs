@@ -28,9 +28,12 @@ public class PrepTable : Interactable
     [SerializeField]
     private Transform memoryUI;
 
+    private AudioSource audioSource;
+
     void Awake()
     {
         prepSlots = new List<Transform>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void Start()
@@ -97,13 +100,14 @@ public class PrepTable : Interactable
         // Return void is there are no free slots.
         if (!free)
             return;
-        
+
         // PREP FOODS
         for (int i = 0; i < prepSlots.Count && foodQueue.Count > 0; i++)
         {
             PrepSlot current = prepSlots[i].GetComponent<PrepSlot>();
             if (!current.occupied)
             {
+                audioSource.Play();
                 current.PrepFood(foodQueue.Dequeue());
                 UpateQueueText();
             }

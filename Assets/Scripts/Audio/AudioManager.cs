@@ -10,7 +10,8 @@ public class AudioManager : MonoBehaviour
 
     [Header("Music")]
     public AudioClip gameMusic;             // plays in-game music
-    public AudioClip menuMusic;             // plays in menu or stage selection
+    public AudioClip menuMusic;             // plays in menu music
+    public AudioClip ambianceSound;         // plays in cafe ambiance
 
     [Header("SFX")]
     public AudioClip menuClickClip;             // when click menu buttons
@@ -19,6 +20,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip waterCheckPerfectClip;     // when land water check in perfect zone
     public AudioClip playerSlipClip;            // when the player slips
     public AudioClip playerThrowClip;           // when the player throws an object
+    public AudioClip playerDropClip;           // when the player throws an object
+    public AudioClip playerPickupClip;          // when the player Pickup an object
+    public AudioClip[] walkStepClips;           // The footstep sound effects
+    public AudioClip paySlipClip;          // When customer pay sfx
+
 
     [Header("Mixer Groups")]
     public AudioMixerGroup musicGroup;
@@ -58,6 +64,40 @@ public class AudioManager : MonoBehaviour
         voiceSource.outputAudioMixerGroup  = voiceGroup;
     }
 
+    private void Start()
+    {
+        PlayMenuMusic();
+        PlayGameMusic();
+        PlayAmbianceAudio();
+    }
+
+    public static void PlayMenuMusic()
+    {
+        if (audioManager == null || audioManager.menuMusic == null) return;
+
+        audioManager.musicSource.clip = audioManager.menuMusic;
+        audioManager.musicSource.loop = true;
+        audioManager.musicSource.Play();
+    }
+
+    public static void PlayGameMusic()
+    {
+        if (audioManager == null || audioManager.gameMusic == null) return;
+
+        audioManager.musicSource.clip = audioManager.gameMusic;
+        audioManager.musicSource.loop = true;
+        audioManager.musicSource.Play();
+    }
+
+    public static void PlayAmbianceAudio()
+    {
+        if (audioManager == null || audioManager.ambianceSound == null) return;
+
+        audioManager.voiceSource.clip = audioManager.ambianceSound;
+        audioManager.voiceSource.loop = true;
+        audioManager.voiceSource.Play();
+    }
+
     public static void PlayWaterCheckSuccess()
     {
         if (audioManager == null) return;
@@ -91,11 +131,50 @@ public class AudioManager : MonoBehaviour
         audioManager.playerSource.Play();
     }
     
-    public static void PlayerPlayerThrow()
+    public static void PlayPlayerThrow()
     {
         if (audioManager == null) return;
 
         audioManager.playerSource.clip = audioManager.playerThrowClip;
         audioManager.playerSource.Play();
+    }
+
+    public static void PlayPlayerDrop()
+    {
+        if (audioManager == null) return;
+
+        audioManager.playerSource.clip = audioManager.playerDropClip;
+        audioManager.playerSource.Play();
+    }
+
+    public static void PlayPlayerPickup()
+    {
+        if (audioManager == null) return;
+
+        audioManager.playerSource.clip = audioManager.playerPickupClip;
+        audioManager.playerSource.Play();
+    }
+
+    public static void PlayFootstepAudio()
+    {
+        //If there is no current AudioManager or the player source is already playing
+        //a clip, exit 
+        if (audioManager == null || audioManager.playerSource.isPlaying)
+            return;
+
+        //Pick a random footstep sound
+        int index = Random.Range(0, audioManager.walkStepClips.Length);
+
+        //Set the footstep clip and tell the source to play
+        audioManager.playerSource.clip = audioManager.walkStepClips[index];
+        audioManager.playerSource.Play();
+    }
+
+    public static void PlayPayAudio()
+    {
+        if (audioManager == null) return;
+
+        audioManager.sfxSource.clip = audioManager.paySlipClip;
+        audioManager.sfxSource.Play();
     }
 }

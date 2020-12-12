@@ -81,14 +81,6 @@ public class PlayerForce : MonoBehaviour
         {
             forceUI.HideUI();
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if(Physics.Raycast(ray, out hit, 100f, clickMask))
-            {
-                clickedPos = hit.point; //Position player clicked
-            }     
-
             //Low force
             if(holdDownTime <= 0.6f)
             {
@@ -108,16 +100,13 @@ public class PlayerForce : MonoBehaviour
             {
                 extraForce = maxForce;
             }
-
-            //print(extraForce);
             
             GameObject heldObject = nearbyObjectScript.getHeldObject();
             nearbyObjectScript.ObjectDown();
 
-            Vector3 force = new Vector3(clickedPos.x-transform.position.x, yForce, clickedPos.z-transform.position.z); //Vector is difference between mouse click position and player's position
-            //print(force + " " + force.normalized);      
-            
             heldObject.GetComponent<Rigidbody>().AddForce(extraForce * transform.forward, ForceMode.Impulse); //Normalize the force and multiply it by an extra force depending on hold time
+
+            AudioManager.PlayPlayerThrow();
         }
     }
 

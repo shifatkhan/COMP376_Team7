@@ -109,6 +109,7 @@ public class CheckNearbyInteraction : MonoBehaviour
                     pickUpScript.PickObjectUp();
                     currentObjectHold = nearest.gameObject;
                     holdingObject = true;
+                    AudioManager.PlayPlayerPickup();
 
                     PlayAnimation();
                 }
@@ -124,6 +125,7 @@ public class CheckNearbyInteraction : MonoBehaviour
 
     public void ObjectDown()
     {
+        AudioManager.PlayPlayerDrop();
         playerAnimation.FoodDroppedAnimation();
         holdingWaterJug = false;
         currentObjectHold.GetComponent<PickUp>().PlaceObjectDown();
