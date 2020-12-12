@@ -74,6 +74,7 @@ public class WaterPourable : MonoBehaviour
             {
                 skillChecking = true;
                 PlayerInputManager.enableMovement = false;
+                PlayerInputManager.enableThrow = false;
 
                 // instantiate skill check prefab on screen
                 Vector2 screenPos = new Vector2(Screen.width / 2, Screen.height / 2);
