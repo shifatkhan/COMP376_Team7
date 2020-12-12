@@ -6682,6 +6682,10 @@ PrefabInstance:
       propertyPath: tables.Array.data[12]
       value: 
       objectReference: {fileID: 1044142053}
+    - target: {fileID: 7048457164154498243, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
+      propertyPath: customerPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 2867586984957409040, guid: 0bf5a2ab98e469a45820380d903eab20, type: 3}
     - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: EndScreenPrefab
       value: 

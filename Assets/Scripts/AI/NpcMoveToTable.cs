@@ -17,6 +17,7 @@ public class NpcMoveToTable : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
 
         agent.speed = 2.5f;
+        agent.radius = 0.4f;
     }
 
     private void Start()
