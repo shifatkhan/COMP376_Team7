@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
 
         // Show statistics on EndScreen
         CalcStatistics();
-
+        Debug.LogWarning("HA: "+ScoreManager.CalcStars());
         // store stars & score for this stage
         PlayerPrefs.SetInt(stageCode.ToString(), ScoreManager.CalcStars());
 
