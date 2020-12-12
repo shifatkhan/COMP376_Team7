@@ -25,13 +25,14 @@ public class StageSelection : MonoBehaviour
     private int numLevels = 4;  // each level has 3 stages
     private int numStages = 3;  // each stage belongs to one level
     private Color starColor = new Color(1f, 0.77f, 0.03f);
+    string[] stageCodes;
 
     void Awake()
     {
-        PlayerPrefs.DeleteAll();
         Time.timeScale = 1.0f;
-        string[] stageCodes = System.Enum.GetNames(typeof(StageCode));
+        stageCodes = System.Enum.GetNames(typeof(StageCode));
         GameObject[] stars = GameObject.FindGameObjectsWithTag("StageStar");
+        test();
 
         for (int lvl=0; lvl < numLevels; lvl++)
         {
@@ -41,7 +42,7 @@ public class StageSelection : MonoBehaviour
             {
                 // get number of stars for each level
                 numStars[stg] = PlayerPrefs.GetInt(stageCodes[lvl * numStages + stg], 0);
-
+                Debug.LogWarning(numStars[stg]);
                 // display how many stars each stage has
                 int starsPerStage = 3;
                 int starsPerLevel = 9;
@@ -60,5 +61,12 @@ public class StageSelection : MonoBehaviour
             if (numStars[0] + numStars[1] + numStars[2] == 9)
                 transform.Find("Level " + (lvl + 1) + "/Medal").gameObject.SetActive(true);
         }    
+    }
+
+    private void test()
+    {
+        PlayerPrefs.SetInt(stageCodes[0], 2);
+        PlayerPrefs.SetInt(stageCodes[1], 3);
+        PlayerPrefs.SetInt(stageCodes[2], 1);
     }
 }
