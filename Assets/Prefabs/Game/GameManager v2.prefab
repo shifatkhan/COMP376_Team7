@@ -365,9 +365,9 @@ MonoBehaviour:
   maxOrderTime: 20
   minOrderAmount: 1
   maxOrderAmount: 9
-  waterDepletionEasy: 1
+  waterDepletionEasy: 0
   waterDepletionMedium: 0
-  waterDepletionHard: 0
+  waterDepletionHard: 1
   puddleMinSpawnRate: 20
   puddleMaxSpawnRate: 30
   stageCode: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
   - {fileID: 2867586984957409040, guid: 37af3d4c4045efa4ab56c5d38fd31459, type: 3}
   - {fileID: 2867586984957409040, guid: 0e9e820ca2a8b4f40be434355307883c, type: 3}
   - {fileID: 2867586984957409040, guid: 9fcd112f51d6fcd48ad1a135db494f43, type: 3}
-  - {fileID: 2867586984957409040, guid: b1e06ea97a1151c40963286fb3cb38d6, type: 3}
+  - {fileID: 2867586984957409040, guid: 0bf5a2ab98e469a45820380d903eab20, type: 3}
   - {fileID: 2867586984957409040, guid: 58002666bfb879c498df300a4362c141, type: 3}
   - {fileID: 2867586984957409040, guid: e907992fd1c288548b8f685decbd0d0c, type: 3}
   - {fileID: 2867586984957409040, guid: 709fba6c9fd1fa745bfd4609e3a0fbeb, type: 3}
@@ -675,6 +675,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: walkStepClips.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: gameMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 6bbb5168bd25ebf489ca567fa6eba407, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: ambianceSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e5b13c70c0728a47a4c436af75aedce, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: playerDropClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4afcc429eaa2a6744b7a9b5b51bb7ce6, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: playerPickupClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f7f97ea5f3b1cd54c9297128b1aab290, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: walkStepClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 073a0305ebab7c142813b5d85873799e, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: walkStepClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4480d0bded47d6f4fbf329947e5c58b5, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: walkStepClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: eea4fcfe3558c974c95c9c3bff5e40f6, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: walkStepClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 111a5c0c95a39ac43b8ca5495ced86ce, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: walkStepClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ddd777244b8bbb4cbc8283fdb804ecf, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: walkStepClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a4403ed733004c46b52a9003c2a7de8, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: walkStepClips.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: b45fd2de4235e3a4da35e62d85922746, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: walkStepClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b1a859e05951d64daf399fb373d33c8, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: walkStepClips.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: 84e439ae40c90d04e9d1301a8593149e, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: walkStepClips.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: 55ff1af372e978d499e3c90b42167e1f, type: 3}
+    - target: {fileID: 7284777018475829944, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
+      propertyPath: paySlipClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 056d4fe76ed14f24d8936834885a2604, type: 3}
     - target: {fileID: 7326747575624417350, guid: 71a1f0c9d3932e647965b183f807b3b8, type: 3}
       propertyPath: m_Name
       value: Audio Manager
