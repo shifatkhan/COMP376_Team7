@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the patience state of the customers, 
+/// such as drain rate, icon indicator, etc.
+/// 
+/// @author Thanh Tung Nguyen
+/// </summary>
 public class PatienceMeter : MonoBehaviour
 {
     [SerializeField]
