@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
     // MAKE CHANGE HERE =========================================================================
     private void OnTriggerEnter(Collider other)
     {
-
+        Debug.LogWarning(other.name);
         if (Mop.transform.parent != null && Mop.transform.parent.name == "PickupMop")
         {
             if (other.CompareTag("Puddle"))
