@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// This is a ScriptableObject that holds data/stats about a particular food.
@@ -16,4 +17,5 @@ public class FoodData : ScriptableObject
     public float price;
     public float prepTime;
     public GameObject foodPrefab;
+    public Sprite foodImage;
 }

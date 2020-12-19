@@ -55,7 +55,7 @@ public class TableManager : MonoBehaviour
         {
             tables[i] = gameTables[i].GetComponent<Table>();
             tables[i].tableNumber = i;
-            tables[i].UpdateTableNumber();
+            //tables[i].UpdateTableNumber();
         }
     }
 

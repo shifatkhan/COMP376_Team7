@@ -64,6 +64,7 @@ public class Table : Interactable
     private PatienceMeter patienceManager;
     private WaterPourable waterManager;
     private Animator tableStateAnim;
+    private Image foodOrdersImg;
 
     public override void Start()
     {
@@ -88,6 +89,7 @@ public class Table : Interactable
         patienceManager = GetComponent<PatienceMeter>();
         waterManager = GetComponent<WaterPourable>();
         tableStateAnim = transform.Find("Table State UI/Bubble/Table State").GetComponent<Animator>();
+        foodOrdersImg = transform.Find("Table State UI/Bubble/Food Orders").GetComponent<Image>();
         memoryUI = T_memoryUI.GetComponent<MemoryUI>();
 
         this.updateStateInUI();
@@ -322,6 +324,8 @@ public class Table : Interactable
                     // else, they will keep waiting
                     if (currOrders.Count == 0)
                         Eating();
+                    else
+                        updateStateInUI();
 
                     break;
                 }
@@ -357,24 +361,24 @@ public class Table : Interactable
         }
     }
 
-    public void UpdateTableNumber()
-    {
-        // assign table # in its UI and the state
-        transform.Find("Table State UI/Bubble/Table Number").GetComponent<Text>().text = (tableNumber + 1).ToString();
-    }
-
     private void updateStateInUI()
     {
         tableStateAnim.SetBool("ReadyToOrder", false);
         tableStateAnim.SetBool("AwaitingFood", false);
         tableStateAnim.SetBool("ReadyToPay", false);
+        foodOrdersImg.gameObject.SetActive(false);
 
         switch (this.tableState)
         {
             case TableState.ReadyToOrder:
                 tableStateAnim.SetBool("ReadyToOrder", true); break;
             case TableState.WaitingForFood:
-                tableStateAnim.SetBool("AwaitingFood", true); break;
+                if (currOrders.Count >= 1)
+                {
+                    foodOrdersImg.sprite = currOrders[0].food.foodImage;
+                    foodOrdersImg.gameObject.SetActive(true);
+                }
+                break;
             case TableState.ReadyToPay:
                 tableStateAnim.SetBool("ReadyToPay", true); break;
             default:

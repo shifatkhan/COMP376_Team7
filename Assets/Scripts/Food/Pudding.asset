@@ -16,3 +16,4 @@ MonoBehaviour:
   price: 7
   prepTime: 7
   foodPrefab: {fileID: 6174335061632600127, guid: 31b1e95e937d6b448aec7bb484df4120, type: 3}
+  foodImage: {fileID: 21300000, guid: 43df08ae80d0553469188b9c634baf93, type: 3}
