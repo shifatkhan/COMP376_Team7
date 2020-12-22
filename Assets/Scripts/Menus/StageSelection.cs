@@ -41,7 +41,7 @@ public class StageSelection : MonoBehaviour
             {
                 // get number of stars for each level
                 numStars[stg] = PlayerPrefs.GetInt(stageCodes[lvl * numStages + stg], 0);
-                Debug.LogWarning(numStars[stg]);
+
                 // display how many stars each stage has
                 int starsPerStage = 3;
                 int starsPerLevel = 9;

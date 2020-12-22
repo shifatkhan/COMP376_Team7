@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pizza Slice
   m_EditorClassIdentifier: 
   foodName: Pizza Pizzaria
-  price: 6
-  prepTime: 15
+  price: 5
+  prepTime: 10
   foodPrefab: {fileID: 3414948278229402761, guid: 8e4a6fc785053b648b7a5a97456e1604, type: 3}
   foodImage: {fileID: 21300000, guid: 3523f9096e240624bad01190262fe6b8, type: 3}

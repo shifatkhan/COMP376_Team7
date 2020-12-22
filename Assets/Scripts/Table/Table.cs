@@ -119,7 +119,10 @@ public class Table : Interactable
         }
         else if (tableState == TableState.ReadyToPay)
         {
-            Pay();
+            if (!CheckNearbyInteraction.holdingWaterJug)
+            {
+                Pay();
+            }
         }
     }
 
@@ -317,7 +320,7 @@ public class Table : Interactable
                     other.GetComponent<PickUp>().PickObjectUp();
                     currOrders.RemoveAt(i);
 
-                    patienceManager.increPatience(0.25f);
+                    patienceManager.increPatience(0.1f);
                     GameManager.ordersServed++;
 
                     // only when they receive all their current orders will they start eating

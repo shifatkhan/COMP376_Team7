@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bagel
   m_EditorClassIdentifier: 
   foodName: Bagets
-  price: 5
-  prepTime: 7
+  price: 2
+  prepTime: 4
   foodPrefab: {fileID: 8518394282791750695, guid: 5c045a6bcc6eb0346b65469ee34ba7cd, type: 3}
   foodImage: {fileID: 21300000, guid: 001beaef0b254664fb9b2726270ddc97, type: 3}

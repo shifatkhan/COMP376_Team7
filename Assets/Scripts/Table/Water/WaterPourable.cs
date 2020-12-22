@@ -47,12 +47,12 @@ public class WaterPourable : MonoBehaviour
                 waterCup -= (drainRate * 0.1f) * Time.deltaTime;
 
             // check water cup and indicate its state on UI
-            if (waterCup > 0.5 && waterCup <= 1)
+            if (waterCup > 0.6 && waterCup <= 1)
             {
                 waterStateAnim.SetBool("LowOnWater", false);
                 waterStateAnim.SetBool("EmptyCup", false);
             }
-            else if (waterCup > 0 && waterCup <= 0.5)
+            else if (waterCup > 0 && waterCup <= 0.6)
             {
                 waterStateAnim.SetBool("LowOnWater", true);
                 waterStateAnim.SetBool("EmptyCup", false);
@@ -68,7 +68,7 @@ public class WaterPourable : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         // check first if player is attempting to interact with table
-        if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup <= 0.5f)
+        if (Input.GetButton("Interact") && other.CompareTag("Player") && !skillChecking && waterCup <= 0.6f)
         {
             // then, check if player is holding a water jug
             // this happens later to prevent overcalling GetComponents
@@ -106,11 +106,11 @@ public class WaterPourable : MonoBehaviour
 
     //*** Draining Speed Difficulty ***//
     public void drinkSpeedEasy()    
-    { drainRate = 0.06f; }
+    { drainRate = 0.08f; }
     public void drinkSpeedMedium()  
     { drainRate = 0.1f; }
     public void drinkSpeedHard()
-    { drainRate = 0.12f; }
+    { drainRate = 0.13f; }
 
     //**** Skill Check Difficulty ****//
     public void setSkillCheckDifficulty(float pourRate, float perfectZoneSize)

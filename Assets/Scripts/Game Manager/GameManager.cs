@@ -20,6 +20,20 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private StageCode stageCode;
 
+    [Header("Difficulty: Score")]
+    //****************** TIME ******************//
+    [SerializeField]
+    [Min(1)]
+    public bool hasTutorialPause;
+    private float timeLimit = 300;
+    public float goalScore = 10;
+    public float twoStarsGoal;
+    public float threeStarsGoal;
+    public static float timeLimitStatic = 300;
+    public static float currentTimeStatic = 0;
+
+    public Transform EndScreenPrefab;
+
     [Header ("Difficulty: Customers")]
     //****************** CUSTOMER ******************//
     public float customerSpawnRateMin = 20f;
@@ -55,19 +69,6 @@ public class GameManager : MonoBehaviour
     public float puddleMinSpawnRate = 20f;
     [Min(0)]
     public float puddleMaxSpawnRate = 30f;
-
-    [Header("Difficulty: Score")]
-    //****************** TIME ******************//
-    [SerializeField]
-    [Min(1)]
-    private float timeLimit = 300;
-    public float goalScore = 10;
-    public float twoStarsGoal;
-    public float threeStarsGoal;
-    public static float timeLimitStatic = 300;
-    public static float currentTimeStatic = 0;
-
-    public Transform EndScreenPrefab;
 
     [Header("Stats")]
     //Hidden Player Stats for multipliers and end screens. TODO: To be used for later - Nick
@@ -108,6 +109,8 @@ public class GameManager : MonoBehaviour
         ScoreManager.twoStarsGoalStatic = twoStarsGoal;
         ScoreManager.threeStarsGoalStatic = threeStarsGoal; 
         GameObject.Find("Score UI").GetComponent<ScoreUI>().goalScore = goalScore;
+
+        PauseGame(hasTutorialPause);
     }
 
     // Update is called once per frame
@@ -164,4 +167,11 @@ public class GameManager : MonoBehaviour
         EndScreenPrefab.Find("Tips Received").GetComponent<Text>().text = ScoreManager.score.ToString("C");
     }
 
+    public void PauseGame(bool doPause)
+    {
+        if (doPause)
+            Time.timeScale = 0f;
+        else
+            Time.timeScale = 1f;
+    }
 }

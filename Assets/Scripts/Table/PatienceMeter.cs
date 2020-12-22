@@ -78,7 +78,6 @@ public class PatienceMeter : MonoBehaviour
     public void SetActive(bool b)
     {
         isActive = b;
-        drainSpeedRegular(); // default
     }
 
     public void ResetPatience()

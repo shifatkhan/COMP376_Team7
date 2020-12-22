@@ -102,14 +102,13 @@ public class PlayerMovement : MonoBehaviour
     // MAKE CHANGE HERE =========================================================================
     private void OnTriggerEnter(Collider other)
     {
-        Debug.LogWarning(other.name);
         if (Mop.transform.parent != null && Mop.transform.parent.name == "PickupMop")
         {
             if (other.CompareTag("Puddle"))
             {
                 Destroy(other.gameObject);
                 Mop.GetComponent<Mop>().audioSource.Play();
-                Instantiate(Mop.GetComponent<Mop>().cleaningPrefab, transform.position, transform.rotation);
+                Instantiate(Mop.GetComponent<Mop>().bubblePrefab, transform.position, transform.rotation);
             }
         }
         else

@@ -6,7 +6,7 @@ public class Mop : MonoBehaviour
 {
     public AudioSource audioSource { get; private set; }
 
-    public GameObject cleaningPrefab;
+    public GameObject bubblePrefab;
 
     private void Awake()
     {
@@ -18,8 +18,8 @@ public class Mop : MonoBehaviour
         if (other.CompareTag("Puddle"))
         {
             Destroy(other.gameObject);
-            audioSource.Play();
-            Instantiate(cleaningPrefab, transform.position, transform.rotation);
+            //audioSource.Play();
+            Instantiate(bubblePrefab, transform.position, transform.rotation);
         }
     }
 }

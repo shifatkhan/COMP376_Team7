@@ -23,9 +23,11 @@ public class WaterCheckBar : MonoBehaviour
 
     [Header("Tip modifiers")]
     [SerializeField]
-    private float addTip = 0.15f;
+    private float successTip = 0.15f;
     [SerializeField]
-    private float substractTip = 0.1f;
+    private float perfectTip = 0.30f;
+    [SerializeField]
+    private float failTip = 0.15f;
 
     // the zone's length on the bar
     private float failZoneLength;
@@ -80,6 +82,8 @@ public class WaterCheckBar : MonoBehaviour
                     // SUCCESS ZONE
                     tableBeingPoured.waterFilled();
                     AudioManager.PlayWaterCheckSuccess();
+
+                    tableRef.AddBonusMultiplier(successTip);
                 }
                 else if (slider.value <= (perfZoneStartPoint + perfectZoneLength) / sliderWidth)
                 {
@@ -88,7 +92,7 @@ public class WaterCheckBar : MonoBehaviour
                     AudioManager.PlayWaterCheckPerfect();
 
                     tableRef.displayHeart();
-                    tableRef.AddBonusMultiplier(addTip);
+                    tableRef.AddBonusMultiplier(perfectTip);
                 }
                 else
                 {
@@ -96,7 +100,7 @@ public class WaterCheckBar : MonoBehaviour
                     tableBeingPoured.waterFilled();
                     AudioManager.PlayWaterCheckFail();
 
-                    tableRef.AddBonusMultiplier(substractTip);
+                    tableRef.AddBonusMultiplier(failTip);
                 }
                 
                 // indicate where they land the water check before destroying
