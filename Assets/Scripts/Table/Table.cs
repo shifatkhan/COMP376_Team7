@@ -320,7 +320,7 @@ public class Table : Interactable
                     other.GetComponent<PickUp>().PickObjectUp();
                     currOrders.RemoveAt(i);
 
-                    patienceManager.increPatience(0.1f);
+                    patienceManager.increPatience(0.15f);
                     GameManager.ordersServed++;
 
                     // only when they receive all their current orders will they start eating

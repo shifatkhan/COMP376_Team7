@@ -72,9 +72,23 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayMenuMusic();
-        PlayGameMusic();
+        EnableMusic(true);
         PlayAmbianceAudio();
+    }
+
+    public static void EnableMusic(bool isEnabled)
+    {
+        if (isEnabled) {
+            PlayMenuMusic();
+            PlayGameMusic();
+        }
+        else
+            audioManager.musicSource.Stop();
+    }
+
+    public static bool isMusicEnabled()
+    {
+        return audioManager.musicSource.isPlaying;
     }
 
     public static void PlayMenuMusic()

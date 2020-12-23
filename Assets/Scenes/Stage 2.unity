@@ -8579,6 +8579,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4659369719224960700, guid: 770fb398b447c08478191f43aa605293, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770fb398b447c08478191f43aa605293, type: 3}
 --- !u!224 &1948997762 stripped
@@ -8700,7 +8704,7 @@ RectTransform:
   - {fileID: 1884546399}
   - {fileID: 1647269336}
   m_Father: {fileID: 1948997763}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
