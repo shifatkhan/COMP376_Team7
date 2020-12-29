@@ -104,13 +104,11 @@ public class PatienceMeter : MonoBehaviour
 
     public IEnumerator displayHeart()
     {
-        isActive = false;
         tableStateAnim.SetBool("Heart", true);
 
         yield return new WaitForSeconds(3);
 
         tableStateAnim.SetBool("Heart", false);
-        isActive = true;
     }
 
     //*** DIFFICULTY ADJUSTMENT FOR REGULAR/ANGRY CUSTOMERS ***//

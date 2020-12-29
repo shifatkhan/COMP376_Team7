@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     AudioManager audioManager;
     ScoreManager scoreManager;
 
+    public Transform gameMenuObj;
+    private GameMenu gameMenu;
+
     [SerializeField] private StageCode stageCode;
 
     [Header("Difficulty: Score")]
@@ -25,14 +28,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     [Min(1)]
     public bool hasTutorialPause;
-    private float timeLimit = 300;
+    public float timeLimit = 300;
     public float goalScore = 10;
     public float twoStarsGoal;
     public float threeStarsGoal;
     public static float timeLimitStatic = 300;
     public static float currentTimeStatic = 0;
-
-    public Transform EndScreenPrefab;
+    private bool gameEnded;
 
     [Header ("Difficulty: Customers")]
     //****************** CUSTOMER ******************//
@@ -93,12 +95,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         timeLimitStatic = timeLimit;
+        gameEnded = false;
 
         tableManager = TableManager.Instance;
         customerManager = CustomerManager.Instance;
         puddleManager = PuddleManager.Instance;
         audioManager = GetComponentInChildren<AudioManager>();
         scoreManager = GetComponentInChildren<ScoreManager>();
+        gameMenu = gameMenuObj.GetComponent<GameMenu>();
 
         tableManager.SetDifficulty(minOrderTime, maxOrderTime, minOrderAmount, maxOrderAmount, waterDepletionEasy, waterDepletionMedium, pouringSpeedRate, perfectZoneSize);
         customerManager.spawnRateMin = customerSpawnRateMin;
@@ -118,53 +122,39 @@ public class GameManager : MonoBehaviour
     {
         currentTimeStatic += (Time.deltaTime);
 
+        if (Input.GetButtonDown("Cancel"))
+        {
+            if (Time.timeScale == 0.0f) // game paused
+                gameMenu.ResumeGame();
+            else
+                gameMenu.PauseGame();
+        }
+
         // determine if player won or lost respectively
-        if(currentTimeStatic > timeLimitStatic && ScoreManager.score >= ScoreManager.goalScoreStatic)
+        if (!gameEnded && currentTimeStatic > timeLimitStatic)
         {
-            ShowEndScreen(true);
-        }
-        else if(currentTimeStatic > timeLimitStatic && ScoreManager.score < ScoreManager.goalScoreStatic)
-        {
-            ShowEndScreen(false);
+            // player wins the stage
+            gameEnded = true;
+            currentTimeStatic = 0;
+            SaveStageScore();
+
+            // player wins the stage
+            if (ScoreManager.score >= ScoreManager.goalScoreStatic)
+                gameMenu.ShowEndScreen(true);
+            // player loses the stage
+            else if (ScoreManager.score < ScoreManager.goalScoreStatic)
+                gameMenu.ShowEndScreen(false);
         }
     }
 
-    private void ShowEndScreen(bool wonStage)
+    private void SaveStageScore()
     {
-        EndScreenPrefab.gameObject.SetActive(true);
-        currentTimeStatic = 0;
-        Time.timeScale = 0.0f;
-
-        // Change header based on if win or fail
-        if (wonStage)
-            EndScreenPrefab.Find("Header Text").GetComponent<Text>().text = "Stage Cleared!";
-        else
-            EndScreenPrefab.Find("Header Text").GetComponent<Text>().text = "Stage Failed.";
-
-        // Show statistics on EndScreen
-        CalcStatistics();
         // store stars & score for this stage
-        int currScore = PlayerPrefs.GetInt(stageCode.ToString(), 0);
-        int newScore = ScoreManager.CalcStars();
+        int currStars = PlayerPrefs.GetInt(stageCode.ToString(), 0);
+        int newStars = ScoreManager.CalcStars();
 
-        if (currScore < newScore)
-            PlayerPrefs.SetInt(stageCode.ToString(), newScore);
-
-        // Show Buttons appropriately
-        EndScreenPrefab.Find("Resume Btn").GetComponent<Button>().gameObject.SetActive(false);
-    }
-
-    public void CalcStatistics()
-    {
-        // Show statistics on EndScreen
-        // Avg Tip %
-        if (totalTipPercent != 0 && customersPaid != 0)
-            EndScreenPrefab.Find("Avg Tip").GetComponent<Text>().text
-                = ((totalTipPercent / customersPaid)*100).ToString("F1") + "%";
-        // Orders Served
-        EndScreenPrefab.Find("Orders Served").GetComponent<Text>().text = ordersServed.ToString();
-        // Tips Received
-        EndScreenPrefab.Find("Tips Received").GetComponent<Text>().text = ScoreManager.score.ToString("C");
+        if (currStars < newStars)
+            PlayerPrefs.SetInt(stageCode.ToString(), newStars);
     }
 
     public void PauseGame(bool doPause)
@@ -174,4 +164,17 @@ public class GameManager : MonoBehaviour
         else
             Time.timeScale = 1f;
     }
+
+    //public void CalcStatistics()
+    //{
+    //    // Show statistics on EndScreen
+    //    // Avg Tip %
+    //    if (totalTipPercent != 0 && customersPaid != 0)
+    //        EndScreenPrefab.Find("Avg Tip").GetComponent<Text>().text
+    //            = ((totalTipPercent / customersPaid)*100).ToString("F1") + "%";
+    //    // Orders Served
+    //    EndScreenPrefab.Find("Orders Served").GetComponent<Text>().text = ordersServed.ToString();
+    //    // Tips Received
+    //    EndScreenPrefab.Find("Tips Received").GetComponent<Text>().text = ScoreManager.score.ToString("C");
+    //}
 }

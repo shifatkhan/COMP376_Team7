@@ -2899,6 +2899,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770fb398b447c08478191f43aa605293, type: 3}
+--- !u!224 &640295413 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 348202850076040401, guid: 770fb398b447c08478191f43aa605293, type: 3}
+  m_PrefabInstance: {fileID: 640295412}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &651641839
 GameObject:
   m_ObjectHideFlags: 0
@@ -7006,11 +7011,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394107844}
   m_Mesh: {fileID: 4300006, guid: 58047469a2abddb42bce3ee293c43729, type: 3}
---- !u!224 &1404221908 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 398985519330961739, guid: 770fb398b447c08478191f43aa605293, type: 3}
-  m_PrefabInstance: {fileID: 640295412}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1408553350
 GameObject:
   m_ObjectHideFlags: 0
@@ -10420,7 +10420,7 @@ PrefabInstance:
     - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: EndScreenPrefab
       value: 
-      objectReference: {fileID: 1404221908}
+      objectReference: {fileID: 0}
     - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: customerSpawnRateMin
       value: 30
@@ -10493,5 +10493,9 @@ PrefabInstance:
       propertyPath: waterDepletionMedium
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
+      propertyPath: gameMenuObj
+      value: 
+      objectReference: {fileID: 640295413}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}

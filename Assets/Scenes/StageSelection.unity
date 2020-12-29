@@ -588,6 +588,10 @@ PrefabInstance:
       propertyPath: StageScene
       value: Stage 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: stageCode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
 --- !u!1 &393962771 stripped
@@ -1167,6 +1171,10 @@ PrefabInstance:
     - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
       propertyPath: StageScene
       value: Stage 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: stageCode
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
@@ -2503,6 +2511,10 @@ PrefabInstance:
       propertyPath: StageScene
       value: Stage 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: stageCode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
 --- !u!224 &1141217453 stripped
@@ -2841,6 +2853,10 @@ PrefabInstance:
     - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
       propertyPath: StageScene
       value: Stage 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: stageCode
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}
@@ -4550,6 +4566,10 @@ PrefabInstance:
     - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
       propertyPath: StageScene
       value: Stage 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070503635358453331, guid: 1a33813c818217c42b833c3b50947536, type: 3}
+      propertyPath: stageCode
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a33813c818217c42b833c3b50947536, type: 3}

@@ -2789,6 +2789,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3403036327100388627, guid: 770fb398b447c08478191f43aa605293, type: 3}
   m_PrefabInstance: {fileID: 640295412}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &640295414 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 348202850076040401, guid: 770fb398b447c08478191f43aa605293, type: 3}
+  m_PrefabInstance: {fileID: 640295412}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &651641839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,7 +2968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2387154930024048004, guid: 7ea15738ba31ce94cb83d39f468f8f09, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.331
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2387154930024048004, guid: 7ea15738ba31ce94cb83d39f468f8f09, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4900,11 +4905,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1979333965340848551, guid: 16440365fe3d14248b533138c3a433fd, type: 3}
   m_PrefabInstance: {fileID: 1394334577}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1404221908 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 398985519330961739, guid: 770fb398b447c08478191f43aa605293, type: 3}
-  m_PrefabInstance: {fileID: 640295412}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1404438285
 GameObject:
@@ -7940,7 +7940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5579979268310716864, guid: 56318b13c64c3764787fcbae15c3e3f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.356494
+      value: 11.125494
       objectReference: {fileID: 0}
     - target: {fileID: 5579979268310716864, guid: 56318b13c64c3764787fcbae15c3e3f7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8182,7 +8182,7 @@ PrefabInstance:
     - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: EndScreenPrefab
       value: 
-      objectReference: {fileID: 1404221908}
+      objectReference: {fileID: 0}
     - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
       propertyPath: customerSpawnRateMin
       value: 30
@@ -8255,6 +8255,10 @@ PrefabInstance:
       propertyPath: minOrderAmount
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7048457164154498300, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
+      propertyPath: gameMenuObj
+      value: 
+      objectReference: {fileID: 640295414}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be3aae2633b768a468e29d4bbb6392d2, type: 3}
 --- !u!1001 &7310890153098469164

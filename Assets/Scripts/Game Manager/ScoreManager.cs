@@ -34,10 +34,6 @@ public class ScoreManager : MonoBehaviour
             scoreUI = GameObject.Find("Score UI").GetComponent<ScoreUI>();
 
         ui = scoreUI;
-        //ui.goalScore = goalScoreStatic;
-
-        //twoStarsGoalStatic = twoStarsGoal;
-        //threeStarsGoalStatic = threeStarsGoal;
     }
 
     public static void AddScore(float amount)
