@@ -18,8 +18,8 @@ public class StageSelection : MonoBehaviour
 {
     void Awake()
     {
-        if (!Application.isEditor)
-            PlayerPrefs.DeleteAll();
+        //if (!Application.isEditor)
+        //    PlayerPrefs.DeleteAll();
 
         Time.timeScale = 1.0f;
         string[] stageCodes = System.Enum.GetNames(typeof(StageCode));
