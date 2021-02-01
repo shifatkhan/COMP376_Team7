@@ -82,7 +82,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 435094162186424988}
   m_FillRect: {fileID: 435094160973272775}
   m_HandleRect: {fileID: 435094162186424991}
@@ -109,8 +109,9 @@ MonoBehaviour:
   fillSpeed: 0.6
   perfectZoneSize: 0.03
   failZoneSize: 0.05
-  addTip: 0.15
-  substractTip: 0.1
+  successTip: 0.15
+  perfectTip: 0.3
+  failTip: 0.15
 --- !u!1 &435094160973272774
 GameObject:
   m_ObjectHideFlags: 0
