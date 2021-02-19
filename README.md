@@ -1,4 +1,4 @@
-# COMP376_Team7
+# Game made for COMP376 at Concordia University
 
 Project download link: https://drive.google.com/drive/folders/1R1cfHWb6B-IIgsejifNLvxl3hFD0wnv6?usp=sharing
 Github: https://github.com/shifatkhan/OrderUp
